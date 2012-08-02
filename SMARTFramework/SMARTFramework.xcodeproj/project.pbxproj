@@ -1,0 +1,676 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EEC9C59915CB2EA800B7C568 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEC9C59815CB2EA800B7C568 /* Foundation.framework */; };
+		EEC9C5A715CB2EA900B7C568 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEC9C5A615CB2EA900B7C568 /* SenTestingKit.framework */; };
+		EEC9C5A915CB2EA900B7C568 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEC9C5A815CB2EA900B7C568 /* UIKit.framework */; };
+		EEC9C5AA15CB2EA900B7C568 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEC9C59815CB2EA800B7C568 /* Foundation.framework */; };
+		EEC9C5AD15CB2EA900B7C568 /* libSMARTFramework.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EEC9C59515CB2EA800B7C568 /* libSMARTFramework.a */; };
+		EEC9C5B615CB2EA900B7C568 /* SMARTFrameworkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC9C5B515CB2EA900B7C568 /* SMARTFrameworkTests.m */; };
+		EEF0192A15CB447100FFD480 /* Config.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0192915CB447100FFD480 /* Config.h */; };
+		EEF0192C15CB447900FFD480 /* Config-default.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0192B15CB447900FFD480 /* Config-default.h */; };
+		EEF0193215CB448700FFD480 /* SMART.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0192D15CB448700FFD480 /* SMART.h */; };
+		EEF0193315CB448700FFD480 /* SMServer.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0192E15CB448700FFD480 /* SMServer.h */; };
+		EEF0193415CB448700FFD480 /* SMServer.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF0192F15CB448700FFD480 /* SMServer.m */; };
+		EEF0196615CB453400FFD480 /* Base64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = EEF0193915CB453400FFD480 /* Base64Transcoder.c */; };
+		EEF0196715CB453400FFD480 /* Base64Transcoder.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0193A15CB453400FFD480 /* Base64Transcoder.h */; };
+		EEF0196815CB453400FFD480 /* MPDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0193B15CB453400FFD480 /* MPDebug.h */; };
+		EEF0196915CB453400FFD480 /* MPOAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0193C15CB453400FFD480 /* MPOAuth.h */; };
+		EEF0196A15CB453400FFD480 /* MPOAuthAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0193D15CB453400FFD480 /* MPOAuthAPI.h */; };
+		EEF0196B15CB453400FFD480 /* MPOAuthAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF0193E15CB453400FFD480 /* MPOAuthAPI.m */; };
+		EEF0196C15CB453400FFD480 /* MPOAuthAPIRequestLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0193F15CB453400FFD480 /* MPOAuthAPIRequestLoader.h */; };
+		EEF0196D15CB453400FFD480 /* MPOAuthAPIRequestLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF0194015CB453400FFD480 /* MPOAuthAPIRequestLoader.m */; };
+		EEF0196E15CB453400FFD480 /* MPOAuthAuthenticationMethod.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0194115CB453400FFD480 /* MPOAuthAuthenticationMethod.h */; };
+		EEF0196F15CB453400FFD480 /* MPOAuthAuthenticationMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF0194215CB453400FFD480 /* MPOAuthAuthenticationMethod.m */; };
+		EEF0197015CB453400FFD480 /* MPOAuthAuthenticationMethodAuthExchange.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0194315CB453400FFD480 /* MPOAuthAuthenticationMethodAuthExchange.h */; };
+		EEF0197115CB453400FFD480 /* MPOAuthAuthenticationMethodAuthExchange.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF0194415CB453400FFD480 /* MPOAuthAuthenticationMethodAuthExchange.m */; };
+		EEF0197215CB453400FFD480 /* MPOAuthAuthenticationMethodOAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0194515CB453400FFD480 /* MPOAuthAuthenticationMethodOAuth.h */; };
+		EEF0197315CB453400FFD480 /* MPOAuthAuthenticationMethodOAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF0194615CB453400FFD480 /* MPOAuthAuthenticationMethodOAuth.m */; };
+		EEF0197415CB453400FFD480 /* MPOAuthAuthenticationMethodTwoLegged.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0194715CB453400FFD480 /* MPOAuthAuthenticationMethodTwoLegged.h */; };
+		EEF0197515CB453400FFD480 /* MPOAuthAuthenticationMethodTwoLegged.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF0194815CB453400FFD480 /* MPOAuthAuthenticationMethodTwoLegged.m */; };
+		EEF0197615CB453400FFD480 /* MPOAuthAuthenticationMethodXAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0194915CB453400FFD480 /* MPOAuthAuthenticationMethodXAuth.h */; };
+		EEF0197715CB453400FFD480 /* MPOAuthAuthenticationMethodXAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF0194A15CB453400FFD480 /* MPOAuthAuthenticationMethodXAuth.m */; };
+		EEF0197815CB453400FFD480 /* MPOAuthConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0194B15CB453400FFD480 /* MPOAuthConnection.h */; };
+		EEF0197915CB453400FFD480 /* MPOAuthConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF0194C15CB453400FFD480 /* MPOAuthConnection.m */; };
+		EEF0197A15CB453400FFD480 /* MPOAuthCredentiaIConcreteStore+KeychainAdditionsMac.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF0194D15CB453400FFD480 /* MPOAuthCredentiaIConcreteStore+KeychainAdditionsMac.m */; };
+		EEF0197B15CB453400FFD480 /* MPOAuthCredentialConcreteStore+KeychainAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0194E15CB453400FFD480 /* MPOAuthCredentialConcreteStore+KeychainAdditions.h */; };
+		EEF0197C15CB453400FFD480 /* MPOAuthCredentialConcreteStore+KeychainAdditionsiPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF0194F15CB453400FFD480 /* MPOAuthCredentialConcreteStore+KeychainAdditionsiPhone.m */; };
+		EEF0197D15CB453400FFD480 /* MPOAuthCredentialConcreteStore.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0195015CB453400FFD480 /* MPOAuthCredentialConcreteStore.h */; };
+		EEF0197E15CB453400FFD480 /* MPOAuthCredentialConcreteStore.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF0195115CB453400FFD480 /* MPOAuthCredentialConcreteStore.m */; };
+		EEF0197F15CB453400FFD480 /* MPOAuthCredentialStore.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0195215CB453400FFD480 /* MPOAuthCredentialStore.h */; };
+		EEF0198015CB453400FFD480 /* MPOAuthParameterFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0195315CB453400FFD480 /* MPOAuthParameterFactory.h */; };
+		EEF0198115CB453400FFD480 /* MPOAuthSignatureParameter.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0195415CB453400FFD480 /* MPOAuthSignatureParameter.h */; };
+		EEF0198215CB453400FFD480 /* MPOAuthSignatureParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF0195515CB453400FFD480 /* MPOAuthSignatureParameter.m */; };
+		EEF0198315CB453400FFD480 /* MPOAuthURLRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0195615CB453400FFD480 /* MPOAuthURLRequest.h */; };
+		EEF0198415CB453400FFD480 /* MPOAuthURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF0195715CB453400FFD480 /* MPOAuthURLRequest.m */; };
+		EEF0198515CB453400FFD480 /* MPOAuthURLResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0195815CB453400FFD480 /* MPOAuthURLResponse.h */; };
+		EEF0198615CB453400FFD480 /* MPOAuthURLResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF0195915CB453400FFD480 /* MPOAuthURLResponse.m */; };
+		EEF0198715CB453400FFD480 /* MPURLRequestParameter.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0195A15CB453400FFD480 /* MPURLRequestParameter.h */; };
+		EEF0198815CB453400FFD480 /* MPURLRequestParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF0195B15CB453400FFD480 /* MPURLRequestParameter.m */; };
+		EEF0198915CB453400FFD480 /* MPWSLRDDiscoverer.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0195C15CB453400FFD480 /* MPWSLRDDiscoverer.h */; };
+		EEF0198A15CB453400FFD480 /* MPWSLRDDiscoverer.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF0195D15CB453400FFD480 /* MPWSLRDDiscoverer.m */; };
+		EEF0198B15CB453400FFD480 /* MPWSXRDDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0195E15CB453400FFD480 /* MPWSXRDDocument.h */; };
+		EEF0198C15CB453400FFD480 /* MPWSXRDDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF0195F15CB453400FFD480 /* MPWSXRDDocument.m */; };
+		EEF0198D15CB453400FFD480 /* NSString+URLEscapingAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0196015CB453400FFD480 /* NSString+URLEscapingAdditions.h */; };
+		EEF0198E15CB453400FFD480 /* NSString+URLEscapingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF0196115CB453400FFD480 /* NSString+URLEscapingAdditions.m */; };
+		EEF0198F15CB453400FFD480 /* NSURL+MPURLParameterAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0196215CB453400FFD480 /* NSURL+MPURLParameterAdditions.h */; };
+		EEF0199015CB453400FFD480 /* NSURL+MPURLParameterAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF0196315CB453400FFD480 /* NSURL+MPURLParameterAdditions.m */; };
+		EEF0199115CB453400FFD480 /* NSURLResponse+Encoding.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0196415CB453400FFD480 /* NSURLResponse+Encoding.h */; };
+		EEF0199215CB453400FFD480 /* NSURLResponse+Encoding.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF0196515CB453400FFD480 /* NSURLResponse+Encoding.m */; };
+		EEF0199915CB489A00FFD480 /* INServerCall.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0199315CB489A00FFD480 /* INServerCall.h */; };
+		EEF0199A15CB489A00FFD480 /* INServerCall.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF0199415CB489A00FFD480 /* INServerCall.m */; };
+		EEF0199B15CB489A00FFD480 /* INURLFetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0199515CB489A00FFD480 /* INURLFetcher.h */; };
+		EEF0199C15CB489A00FFD480 /* INURLFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF0199615CB489A00FFD480 /* INURLFetcher.m */; };
+		EEF0199D15CB489A00FFD480 /* INURLLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0199715CB489A00FFD480 /* INURLLoader.h */; };
+		EEF0199E15CB489A00FFD480 /* INURLLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF0199815CB489A00FFD480 /* INURLLoader.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EEC9C5AB15CB2EA900B7C568 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEC9C58A15CB2EA800B7C568 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EEC9C59415CB2EA800B7C568;
+			remoteInfo = SMARTFramework;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EEC9C59515CB2EA800B7C568 /* libSMARTFramework.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSMARTFramework.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		EEC9C59815CB2EA800B7C568 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		EEC9C59C15CB2EA800B7C568 /* SMARTFramework-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SMARTFramework-Prefix.pch"; sourceTree = "<group>"; };
+		EEC9C5A515CB2EA900B7C568 /* SMARTFrameworkTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SMARTFrameworkTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EEC9C5A615CB2EA900B7C568 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		EEC9C5A815CB2EA900B7C568 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		EEC9C5B015CB2EA900B7C568 /* SMARTFrameworkTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SMARTFrameworkTests-Info.plist"; sourceTree = "<group>"; };
+		EEC9C5B415CB2EA900B7C568 /* SMARTFrameworkTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMARTFrameworkTests.h; sourceTree = "<group>"; };
+		EEC9C5B515CB2EA900B7C568 /* SMARTFrameworkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMARTFrameworkTests.m; sourceTree = "<group>"; };
+		EEF0192915CB447100FFD480 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
+		EEF0192B15CB447900FFD480 /* Config-default.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Config-default.h"; sourceTree = "<group>"; };
+		EEF0192D15CB448700FFD480 /* SMART.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMART.h; sourceTree = "<group>"; };
+		EEF0192E15CB448700FFD480 /* SMServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMServer.h; sourceTree = "<group>"; };
+		EEF0192F15CB448700FFD480 /* SMServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMServer.m; sourceTree = "<group>"; };
+		EEF0193915CB453400FFD480 /* Base64Transcoder.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Base64Transcoder.c; sourceTree = "<group>"; };
+		EEF0193A15CB453400FFD480 /* Base64Transcoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64Transcoder.h; sourceTree = "<group>"; };
+		EEF0193B15CB453400FFD480 /* MPDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPDebug.h; sourceTree = "<group>"; };
+		EEF0193C15CB453400FFD480 /* MPOAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPOAuth.h; sourceTree = "<group>"; };
+		EEF0193D15CB453400FFD480 /* MPOAuthAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPOAuthAPI.h; sourceTree = "<group>"; };
+		EEF0193E15CB453400FFD480 /* MPOAuthAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPOAuthAPI.m; sourceTree = "<group>"; };
+		EEF0193F15CB453400FFD480 /* MPOAuthAPIRequestLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPOAuthAPIRequestLoader.h; sourceTree = "<group>"; };
+		EEF0194015CB453400FFD480 /* MPOAuthAPIRequestLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPOAuthAPIRequestLoader.m; sourceTree = "<group>"; };
+		EEF0194115CB453400FFD480 /* MPOAuthAuthenticationMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPOAuthAuthenticationMethod.h; sourceTree = "<group>"; };
+		EEF0194215CB453400FFD480 /* MPOAuthAuthenticationMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPOAuthAuthenticationMethod.m; sourceTree = "<group>"; };
+		EEF0194315CB453400FFD480 /* MPOAuthAuthenticationMethodAuthExchange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPOAuthAuthenticationMethodAuthExchange.h; sourceTree = "<group>"; };
+		EEF0194415CB453400FFD480 /* MPOAuthAuthenticationMethodAuthExchange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPOAuthAuthenticationMethodAuthExchange.m; sourceTree = "<group>"; };
+		EEF0194515CB453400FFD480 /* MPOAuthAuthenticationMethodOAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPOAuthAuthenticationMethodOAuth.h; sourceTree = "<group>"; };
+		EEF0194615CB453400FFD480 /* MPOAuthAuthenticationMethodOAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPOAuthAuthenticationMethodOAuth.m; sourceTree = "<group>"; };
+		EEF0194715CB453400FFD480 /* MPOAuthAuthenticationMethodTwoLegged.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPOAuthAuthenticationMethodTwoLegged.h; sourceTree = "<group>"; };
+		EEF0194815CB453400FFD480 /* MPOAuthAuthenticationMethodTwoLegged.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPOAuthAuthenticationMethodTwoLegged.m; sourceTree = "<group>"; };
+		EEF0194915CB453400FFD480 /* MPOAuthAuthenticationMethodXAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPOAuthAuthenticationMethodXAuth.h; sourceTree = "<group>"; };
+		EEF0194A15CB453400FFD480 /* MPOAuthAuthenticationMethodXAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPOAuthAuthenticationMethodXAuth.m; sourceTree = "<group>"; };
+		EEF0194B15CB453400FFD480 /* MPOAuthConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPOAuthConnection.h; sourceTree = "<group>"; };
+		EEF0194C15CB453400FFD480 /* MPOAuthConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPOAuthConnection.m; sourceTree = "<group>"; };
+		EEF0194D15CB453400FFD480 /* MPOAuthCredentiaIConcreteStore+KeychainAdditionsMac.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MPOAuthCredentiaIConcreteStore+KeychainAdditionsMac.m"; sourceTree = "<group>"; };
+		EEF0194E15CB453400FFD480 /* MPOAuthCredentialConcreteStore+KeychainAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MPOAuthCredentialConcreteStore+KeychainAdditions.h"; sourceTree = "<group>"; };
+		EEF0194F15CB453400FFD480 /* MPOAuthCredentialConcreteStore+KeychainAdditionsiPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MPOAuthCredentialConcreteStore+KeychainAdditionsiPhone.m"; sourceTree = "<group>"; };
+		EEF0195015CB453400FFD480 /* MPOAuthCredentialConcreteStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPOAuthCredentialConcreteStore.h; sourceTree = "<group>"; };
+		EEF0195115CB453400FFD480 /* MPOAuthCredentialConcreteStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPOAuthCredentialConcreteStore.m; sourceTree = "<group>"; };
+		EEF0195215CB453400FFD480 /* MPOAuthCredentialStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPOAuthCredentialStore.h; sourceTree = "<group>"; };
+		EEF0195315CB453400FFD480 /* MPOAuthParameterFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPOAuthParameterFactory.h; sourceTree = "<group>"; };
+		EEF0195415CB453400FFD480 /* MPOAuthSignatureParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPOAuthSignatureParameter.h; sourceTree = "<group>"; };
+		EEF0195515CB453400FFD480 /* MPOAuthSignatureParameter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPOAuthSignatureParameter.m; sourceTree = "<group>"; };
+		EEF0195615CB453400FFD480 /* MPOAuthURLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPOAuthURLRequest.h; sourceTree = "<group>"; };
+		EEF0195715CB453400FFD480 /* MPOAuthURLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPOAuthURLRequest.m; sourceTree = "<group>"; };
+		EEF0195815CB453400FFD480 /* MPOAuthURLResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPOAuthURLResponse.h; sourceTree = "<group>"; };
+		EEF0195915CB453400FFD480 /* MPOAuthURLResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPOAuthURLResponse.m; sourceTree = "<group>"; };
+		EEF0195A15CB453400FFD480 /* MPURLRequestParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPURLRequestParameter.h; sourceTree = "<group>"; };
+		EEF0195B15CB453400FFD480 /* MPURLRequestParameter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPURLRequestParameter.m; sourceTree = "<group>"; };
+		EEF0195C15CB453400FFD480 /* MPWSLRDDiscoverer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPWSLRDDiscoverer.h; sourceTree = "<group>"; };
+		EEF0195D15CB453400FFD480 /* MPWSLRDDiscoverer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPWSLRDDiscoverer.m; sourceTree = "<group>"; };
+		EEF0195E15CB453400FFD480 /* MPWSXRDDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPWSXRDDocument.h; sourceTree = "<group>"; };
+		EEF0195F15CB453400FFD480 /* MPWSXRDDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPWSXRDDocument.m; sourceTree = "<group>"; };
+		EEF0196015CB453400FFD480 /* NSString+URLEscapingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEscapingAdditions.h"; sourceTree = "<group>"; };
+		EEF0196115CB453400FFD480 /* NSString+URLEscapingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEscapingAdditions.m"; sourceTree = "<group>"; };
+		EEF0196215CB453400FFD480 /* NSURL+MPURLParameterAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+MPURLParameterAdditions.h"; sourceTree = "<group>"; };
+		EEF0196315CB453400FFD480 /* NSURL+MPURLParameterAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+MPURLParameterAdditions.m"; sourceTree = "<group>"; };
+		EEF0196415CB453400FFD480 /* NSURLResponse+Encoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLResponse+Encoding.h"; sourceTree = "<group>"; };
+		EEF0196515CB453400FFD480 /* NSURLResponse+Encoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLResponse+Encoding.m"; sourceTree = "<group>"; };
+		EEF0199315CB489A00FFD480 /* INServerCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INServerCall.h; sourceTree = "<group>"; };
+		EEF0199415CB489A00FFD480 /* INServerCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INServerCall.m; sourceTree = "<group>"; };
+		EEF0199515CB489A00FFD480 /* INURLFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INURLFetcher.h; sourceTree = "<group>"; };
+		EEF0199615CB489A00FFD480 /* INURLFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INURLFetcher.m; sourceTree = "<group>"; };
+		EEF0199715CB489A00FFD480 /* INURLLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INURLLoader.h; sourceTree = "<group>"; };
+		EEF0199815CB489A00FFD480 /* INURLLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INURLLoader.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EEC9C59115CB2EA800B7C568 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EEC9C59915CB2EA800B7C568 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EEC9C5A115CB2EA900B7C568 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EEC9C5A715CB2EA900B7C568 /* SenTestingKit.framework in Frameworks */,
+				EEC9C5A915CB2EA900B7C568 /* UIKit.framework in Frameworks */,
+				EEC9C5AA15CB2EA900B7C568 /* Foundation.framework in Frameworks */,
+				EEC9C5AD15CB2EA900B7C568 /* libSMARTFramework.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EEC9C58815CB2EA800B7C568 = {
+			isa = PBXGroup;
+			children = (
+				EEF0192915CB447100FFD480 /* Config.h */,
+				EEF0192B15CB447900FFD480 /* Config-default.h */,
+				EEC9C59A15CB2EA800B7C568 /* Classes */,
+				EEF0193715CB453400FFD480 /* MPOAuth Framework */,
+				EEC9C59B15CB2EA800B7C568 /* Supporting Files */,
+				EEC9C5AE15CB2EA900B7C568 /* SMARTFrameworkTests */,
+				EEC9C59715CB2EA800B7C568 /* Frameworks */,
+				EEC9C59615CB2EA800B7C568 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EEC9C59615CB2EA800B7C568 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EEC9C59515CB2EA800B7C568 /* libSMARTFramework.a */,
+				EEC9C5A515CB2EA900B7C568 /* SMARTFrameworkTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EEC9C59715CB2EA800B7C568 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EEC9C59815CB2EA800B7C568 /* Foundation.framework */,
+				EEC9C5A615CB2EA900B7C568 /* SenTestingKit.framework */,
+				EEC9C5A815CB2EA900B7C568 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EEC9C59A15CB2EA800B7C568 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				EEF0192D15CB448700FFD480 /* SMART.h */,
+				EEF0192E15CB448700FFD480 /* SMServer.h */,
+				EEF0192F15CB448700FFD480 /* SMServer.m */,
+				EEF0199F15CB489E00FFD480 /* Server Calls */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		EEC9C59B15CB2EA800B7C568 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EEC9C59C15CB2EA800B7C568 /* SMARTFramework-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		EEC9C5AE15CB2EA900B7C568 /* SMARTFrameworkTests */ = {
+			isa = PBXGroup;
+			children = (
+				EEC9C5B415CB2EA900B7C568 /* SMARTFrameworkTests.h */,
+				EEC9C5B515CB2EA900B7C568 /* SMARTFrameworkTests.m */,
+				EEC9C5AF15CB2EA900B7C568 /* Supporting Files */,
+			);
+			path = SMARTFrameworkTests;
+			sourceTree = "<group>";
+		};
+		EEC9C5AF15CB2EA900B7C568 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EEC9C5B015CB2EA900B7C568 /* SMARTFrameworkTests-Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EEF0193715CB453400FFD480 /* MPOAuth Framework */ = {
+			isa = PBXGroup;
+			children = (
+				EEF0193B15CB453400FFD480 /* MPDebug.h */,
+				EEF0193C15CB453400FFD480 /* MPOAuth.h */,
+				EEF0193D15CB453400FFD480 /* MPOAuthAPI.h */,
+				EEF0193E15CB453400FFD480 /* MPOAuthAPI.m */,
+				EEF0193F15CB453400FFD480 /* MPOAuthAPIRequestLoader.h */,
+				EEF0194015CB453400FFD480 /* MPOAuthAPIRequestLoader.m */,
+				EEF0194115CB453400FFD480 /* MPOAuthAuthenticationMethod.h */,
+				EEF0194215CB453400FFD480 /* MPOAuthAuthenticationMethod.m */,
+				EEF0194315CB453400FFD480 /* MPOAuthAuthenticationMethodAuthExchange.h */,
+				EEF0194415CB453400FFD480 /* MPOAuthAuthenticationMethodAuthExchange.m */,
+				EEF0194515CB453400FFD480 /* MPOAuthAuthenticationMethodOAuth.h */,
+				EEF0194615CB453400FFD480 /* MPOAuthAuthenticationMethodOAuth.m */,
+				EEF0194715CB453400FFD480 /* MPOAuthAuthenticationMethodTwoLegged.h */,
+				EEF0194815CB453400FFD480 /* MPOAuthAuthenticationMethodTwoLegged.m */,
+				EEF0194915CB453400FFD480 /* MPOAuthAuthenticationMethodXAuth.h */,
+				EEF0194A15CB453400FFD480 /* MPOAuthAuthenticationMethodXAuth.m */,
+				EEF0194B15CB453400FFD480 /* MPOAuthConnection.h */,
+				EEF0194C15CB453400FFD480 /* MPOAuthConnection.m */,
+				EEF0194D15CB453400FFD480 /* MPOAuthCredentiaIConcreteStore+KeychainAdditionsMac.m */,
+				EEF0194E15CB453400FFD480 /* MPOAuthCredentialConcreteStore+KeychainAdditions.h */,
+				EEF0194F15CB453400FFD480 /* MPOAuthCredentialConcreteStore+KeychainAdditionsiPhone.m */,
+				EEF0195015CB453400FFD480 /* MPOAuthCredentialConcreteStore.h */,
+				EEF0195115CB453400FFD480 /* MPOAuthCredentialConcreteStore.m */,
+				EEF0195215CB453400FFD480 /* MPOAuthCredentialStore.h */,
+				EEF0195315CB453400FFD480 /* MPOAuthParameterFactory.h */,
+				EEF0195415CB453400FFD480 /* MPOAuthSignatureParameter.h */,
+				EEF0195515CB453400FFD480 /* MPOAuthSignatureParameter.m */,
+				EEF0195615CB453400FFD480 /* MPOAuthURLRequest.h */,
+				EEF0195715CB453400FFD480 /* MPOAuthURLRequest.m */,
+				EEF0195815CB453400FFD480 /* MPOAuthURLResponse.h */,
+				EEF0195915CB453400FFD480 /* MPOAuthURLResponse.m */,
+				EEF0195A15CB453400FFD480 /* MPURLRequestParameter.h */,
+				EEF0195B15CB453400FFD480 /* MPURLRequestParameter.m */,
+				EEF0195C15CB453400FFD480 /* MPWSLRDDiscoverer.h */,
+				EEF0195D15CB453400FFD480 /* MPWSLRDDiscoverer.m */,
+				EEF0195E15CB453400FFD480 /* MPWSXRDDocument.h */,
+				EEF0195F15CB453400FFD480 /* MPWSXRDDocument.m */,
+				EEF0193815CB453400FFD480 /* Crypto */,
+				EEF0196015CB453400FFD480 /* NSString+URLEscapingAdditions.h */,
+				EEF0196115CB453400FFD480 /* NSString+URLEscapingAdditions.m */,
+				EEF0196215CB453400FFD480 /* NSURL+MPURLParameterAdditions.h */,
+				EEF0196315CB453400FFD480 /* NSURL+MPURLParameterAdditions.m */,
+				EEF0196415CB453400FFD480 /* NSURLResponse+Encoding.h */,
+				EEF0196515CB453400FFD480 /* NSURLResponse+Encoding.m */,
+			);
+			name = "MPOAuth Framework";
+			path = ../MPOAuth/Source/Framework;
+			sourceTree = "<group>";
+		};
+		EEF0193815CB453400FFD480 /* Crypto */ = {
+			isa = PBXGroup;
+			children = (
+				EEF0193915CB453400FFD480 /* Base64Transcoder.c */,
+				EEF0193A15CB453400FFD480 /* Base64Transcoder.h */,
+			);
+			path = Crypto;
+			sourceTree = "<group>";
+		};
+		EEF0199F15CB489E00FFD480 /* Server Calls */ = {
+			isa = PBXGroup;
+			children = (
+				EEF0199315CB489A00FFD480 /* INServerCall.h */,
+				EEF0199415CB489A00FFD480 /* INServerCall.m */,
+				EEF0199515CB489A00FFD480 /* INURLFetcher.h */,
+				EEF0199615CB489A00FFD480 /* INURLFetcher.m */,
+				EEF0199715CB489A00FFD480 /* INURLLoader.h */,
+				EEF0199815CB489A00FFD480 /* INURLLoader.m */,
+			);
+			name = "Server Calls";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		EEC9C59215CB2EA800B7C568 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EEF0192A15CB447100FFD480 /* Config.h in Headers */,
+				EEF0192C15CB447900FFD480 /* Config-default.h in Headers */,
+				EEF0193215CB448700FFD480 /* SMART.h in Headers */,
+				EEF0193315CB448700FFD480 /* SMServer.h in Headers */,
+				EEF0196715CB453400FFD480 /* Base64Transcoder.h in Headers */,
+				EEF0196815CB453400FFD480 /* MPDebug.h in Headers */,
+				EEF0196915CB453400FFD480 /* MPOAuth.h in Headers */,
+				EEF0196A15CB453400FFD480 /* MPOAuthAPI.h in Headers */,
+				EEF0196C15CB453400FFD480 /* MPOAuthAPIRequestLoader.h in Headers */,
+				EEF0196E15CB453400FFD480 /* MPOAuthAuthenticationMethod.h in Headers */,
+				EEF0197015CB453400FFD480 /* MPOAuthAuthenticationMethodAuthExchange.h in Headers */,
+				EEF0197215CB453400FFD480 /* MPOAuthAuthenticationMethodOAuth.h in Headers */,
+				EEF0197415CB453400FFD480 /* MPOAuthAuthenticationMethodTwoLegged.h in Headers */,
+				EEF0197615CB453400FFD480 /* MPOAuthAuthenticationMethodXAuth.h in Headers */,
+				EEF0197815CB453400FFD480 /* MPOAuthConnection.h in Headers */,
+				EEF0197B15CB453400FFD480 /* MPOAuthCredentialConcreteStore+KeychainAdditions.h in Headers */,
+				EEF0197D15CB453400FFD480 /* MPOAuthCredentialConcreteStore.h in Headers */,
+				EEF0197F15CB453400FFD480 /* MPOAuthCredentialStore.h in Headers */,
+				EEF0198015CB453400FFD480 /* MPOAuthParameterFactory.h in Headers */,
+				EEF0198115CB453400FFD480 /* MPOAuthSignatureParameter.h in Headers */,
+				EEF0198315CB453400FFD480 /* MPOAuthURLRequest.h in Headers */,
+				EEF0198515CB453400FFD480 /* MPOAuthURLResponse.h in Headers */,
+				EEF0198715CB453400FFD480 /* MPURLRequestParameter.h in Headers */,
+				EEF0198915CB453400FFD480 /* MPWSLRDDiscoverer.h in Headers */,
+				EEF0198B15CB453400FFD480 /* MPWSXRDDocument.h in Headers */,
+				EEF0198D15CB453400FFD480 /* NSString+URLEscapingAdditions.h in Headers */,
+				EEF0198F15CB453400FFD480 /* NSURL+MPURLParameterAdditions.h in Headers */,
+				EEF0199115CB453400FFD480 /* NSURLResponse+Encoding.h in Headers */,
+				EEF0199915CB489A00FFD480 /* INServerCall.h in Headers */,
+				EEF0199B15CB489A00FFD480 /* INURLFetcher.h in Headers */,
+				EEF0199D15CB489A00FFD480 /* INURLLoader.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		EEC9C59415CB2EA800B7C568 /* SMARTFramework */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EEC9C5B915CB2EA900B7C568 /* Build configuration list for PBXNativeTarget "SMARTFramework" */;
+			buildPhases = (
+				EEC9C58F15CB2EA800B7C568 /* ShellScript */,
+				EEC9C59015CB2EA800B7C568 /* Sources */,
+				EEC9C59115CB2EA800B7C568 /* Frameworks */,
+				EEC9C59215CB2EA800B7C568 /* Headers */,
+				EEC9C59315CB2EA800B7C568 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SMARTFramework;
+			productName = SMARTFramework;
+			productReference = EEC9C59515CB2EA800B7C568 /* libSMARTFramework.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		EEC9C5A415CB2EA900B7C568 /* SMARTFrameworkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EEC9C5BC15CB2EA900B7C568 /* Build configuration list for PBXNativeTarget "SMARTFrameworkTests" */;
+			buildPhases = (
+				EEC9C5A015CB2EA900B7C568 /* Sources */,
+				EEC9C5A115CB2EA900B7C568 /* Frameworks */,
+				EEC9C5A215CB2EA900B7C568 /* Resources */,
+				EEC9C5A315CB2EA900B7C568 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EEC9C5AC15CB2EA900B7C568 /* PBXTargetDependency */,
+			);
+			name = SMARTFrameworkTests;
+			productName = SMARTFrameworkTests;
+			productReference = EEC9C5A515CB2EA900B7C568 /* SMARTFrameworkTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EEC9C58A15CB2EA800B7C568 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = "CHIP, Boston Children's Hospital";
+			};
+			buildConfigurationList = EEC9C58D15CB2EA800B7C568 /* Build configuration list for PBXProject "SMARTFramework" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = EEC9C58815CB2EA800B7C568;
+			productRefGroup = EEC9C59615CB2EA800B7C568 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EEC9C59415CB2EA800B7C568 /* SMARTFramework */,
+				EEC9C5A415CB2EA900B7C568 /* SMARTFrameworkTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EEC9C5A215CB2EA900B7C568 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		EEC9C58F15CB2EA800B7C568 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nif [ \"$CALLED_FROM_MASTER\" ]\nthen\n# This is the other build, called from the original instance\nexit 0\nfi\n\n# Clean up prior to build\n\nCURRENTCONFIG_DEVICE_DIR=\"${SYMROOT}/${CONFIGURATION}-iphoneos\"\nCURRENTCONFIG_SIMULATOR_DIR=\"${SYMROOT}/${CONFIGURATION}-iphonesimulator\"\nCURRENTCONFIG_UNIVERSAL_DIR=\"${SYMROOT}/${CONFIGURATION}-universal\"\n\nif [ ! -f \"${CURRENTCONFIG_DEVICE_DIR}/${EXECUTABLE_NAME}\" ]; then\n  echo \"Device build cleaned; cleaning other builds too\"\n  rm -f \"${CURRENTCONFIG_SIMULATOR_DIR}/${EXECUTABLE_NAME}\" \n  rm -f \"${CURRENTCONFIG_UNIVERSAL_DIR}/${EXECUTABLE_NAME}\"\nelif [ ! -f \"${CURRENTCONFIG_SIMULATOR_DIR}/${EXECUTABLE_NAME}\" ]; then\n  echo \"Simulator build cleaned; cleaning other builds too\"\n  rm -f \"${CURRENTCONFIG_DEVICE_DIR}/${EXECUTABLE_NAME}\"\n  rm -f \"${CURRENTCONFIG_UNIVERSAL_DIR}/${EXECUTABLE_NAME}\"\nfi\n";
+		};
+		EEC9C59315CB2EA800B7C568 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\n#\n# Universal static library script\n# http://github.com/michaeltyson/iOS-Universal-Library-Template\n#\n# Version 2.5\n# \n# Purpose:\n#   Create a static library for iPhone from within XCode\n#\n# Author: Adam Martin - http://twitter.com/redglassesapps\n# Tweaked and made into an Xcode template by Michael Tyson - http://atastypixel.com/blog\n# Based on original script from Eonil\n# More info: see this Stack Overflow question: http://stackoverflow.com/questions/3520977/build-fat-static-library-device-simulator-using-xcode-and-sdk-4\n#\n#################[ Tests: helps workaround any future bugs in Xcode ]########\n#\nDEBUG_THIS_SCRIPT=\"false\"\n\nif [ $DEBUG_THIS_SCRIPT = \"true\" ]\nthen\necho \"########### TESTS #############\"\necho \"Use the following variables when debugging this script; note that they may change on recursions\"\necho \"BUILD_DIR = $BUILD_DIR\"\necho \"BUILD_ROOT = $BUILD_ROOT\"\necho \"CONFIGURATION_BUILD_DIR = $CONFIGURATION_BUILD_DIR\"\necho \"BUILT_PRODUCTS_DIR = $BUILT_PRODUCTS_DIR\"\necho \"CONFIGURATION_TEMP_DIR = $CONFIGURATION_TEMP_DIR\"\necho \"TARGET_BUILD_DIR = $TARGET_BUILD_DIR\"\nfi\n\nif [ \"$CALLED_FROM_MASTER\" ]\nthen\n  # This is the other build, called from the original instance\n  exit 0\nfi\n\n# Find the BASESDK version number\nSDK_VERSION=$(echo ${SDK_NAME} | grep -o '.\\{3\\}$')\n\n# Next, work out if we're in SIM or DEVICE\nif [ ${PLATFORM_NAME} = \"iphonesimulator\" ]\nthen\n    OTHER_SDK_TO_BUILD=iphoneos${SDK_VERSION}\nelse\n    OTHER_SDK_TO_BUILD=iphonesimulator${SDK_VERSION}\nfi\n\necho \"XCode has selected SDK: ${PLATFORM_NAME} with version: ${SDK_VERSION} (although back-targetting: ${IPHONEOS_DEPLOYMENT_TARGET})\"\necho \"...therefore, OTHER_SDK_TO_BUILD = ${OTHER_SDK_TO_BUILD}\"\n\n# Build the other architecture\necho \"xcodebuild -project \\\"${PROJECT_FILE_PATH}\\\" -configuration \\\"${CONFIGURATION}\\\" -target \\\"${TARGET_NAME}\\\" -sdk \\\"${OTHER_SDK_TO_BUILD}\\\" ${ACTION} RUN_CLANG_STATIC_ANALYZER=NO BUILD_DIR=\\\"${BUILD_DIR}\\\" BUILD_ROOT=\\\"${BUILD_ROOT}\\\" CALLED_FROM_MASTER=1\"\nxcodebuild -project \"${PROJECT_FILE_PATH}\" -configuration \"${CONFIGURATION}\" -target \"${TARGET_NAME}\" -sdk \"${OTHER_SDK_TO_BUILD}\" ${ACTION} RUN_CLANG_STATIC_ANALYZER=NO BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" CALLED_FROM_MASTER=1\n\n# Merge built architectures\nCURRENTCONFIG_DEVICE_DIR=\"${SYMROOT}/${CONFIGURATION}-iphoneos\"\nCURRENTCONFIG_SIMULATOR_DIR=\"${SYMROOT}/${CONFIGURATION}-iphonesimulator\"\nCURRENTCONFIG_UNIVERSAL_DIR=\"${SYMROOT}/${CONFIGURATION}-universal\"\n\necho \"Taking device build from: ${CURRENTCONFIG_DEVICE_DIR}\"\necho \"Taking simulator build from: ${CURRENTCONFIG_SIMULATOR_DIR}\"\necho \"...I will output a universal build to: ${CURRENTCONFIG_UNIVERSAL_DIR}\"\n\nif [ ! -e \"${CURRENTCONFIG_UNIVERSAL_DIR}/${EXECUTABLE_NAME}\" -o \\\n        \"${CURRENTCONFIG_DEVICE_DIR}/${EXECUTABLE_NAME}\" -nt \"${CURRENTCONFIG_UNIVERSAL_DIR}/${EXECUTABLE_NAME}\" -o \\\n        \"${CURRENTCONFIG_SIMULATOR_DIR}/${EXECUTABLE_NAME}\" -nt \"${CURRENTCONFIG_UNIVERSAL_DIR}/${EXECUTABLE_NAME}\" ]\nthen\n    mkdir -p \"${CURRENTCONFIG_UNIVERSAL_DIR}\"\n    rm -f \"${CURRENTCONFIG_UNIVERSAL_DIR}/${EXECUTABLE_NAME}\"\n\n    echo \"lipo: for current configuration (${CONFIGURATION}) creating output file: ${CURRENTCONFIG_UNIVERSAL_DIR}/${EXECUTABLE_NAME}\"\n    lipo -create -output \"${CURRENTCONFIG_UNIVERSAL_DIR}/${EXECUTABLE_NAME}\" \"${CURRENTCONFIG_DEVICE_DIR}/${EXECUTABLE_NAME}\" \"${CURRENTCONFIG_SIMULATOR_DIR}/${EXECUTABLE_NAME}\"\n\n    echo \"Copying universal build back over to ${CURRENTCONFIG_DEVICE_DIR} and ${CURRENTCONFIG_SIMULATOR_DIR}\"\n    cp \"${CURRENTCONFIG_UNIVERSAL_DIR}/${EXECUTABLE_NAME}\" \"${CURRENTCONFIG_DEVICE_DIR}/${EXECUTABLE_NAME}\"\n    cp \"${CURRENTCONFIG_UNIVERSAL_DIR}/${EXECUTABLE_NAME}\" \"${CURRENTCONFIG_SIMULATOR_DIR}/${EXECUTABLE_NAME}\"\n    touch \"${CURRENTCONFIG_UNIVERSAL_DIR}/${EXECUTABLE_NAME}\"\n\n    # Also copy public headers\n    if [ -d \"${CURRENTCONFIG_DEVICE_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}\" ]\n    then\n        mkdir -p \"${CURRENTCONFIG_UNIVERSAL_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}\"\n        cp \"${CURRENTCONFIG_DEVICE_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/\"* \"${CURRENTCONFIG_UNIVERSAL_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}\"\n    fi\nelse\n    echo \"Everything up to date.\"\nfi\n";
+		};
+		EEC9C5A315CB2EA900B7C568 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EEC9C59015CB2EA800B7C568 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EEF0193415CB448700FFD480 /* SMServer.m in Sources */,
+				EEF0196615CB453400FFD480 /* Base64Transcoder.c in Sources */,
+				EEF0196B15CB453400FFD480 /* MPOAuthAPI.m in Sources */,
+				EEF0196D15CB453400FFD480 /* MPOAuthAPIRequestLoader.m in Sources */,
+				EEF0196F15CB453400FFD480 /* MPOAuthAuthenticationMethod.m in Sources */,
+				EEF0197115CB453400FFD480 /* MPOAuthAuthenticationMethodAuthExchange.m in Sources */,
+				EEF0197315CB453400FFD480 /* MPOAuthAuthenticationMethodOAuth.m in Sources */,
+				EEF0197515CB453400FFD480 /* MPOAuthAuthenticationMethodTwoLegged.m in Sources */,
+				EEF0197715CB453400FFD480 /* MPOAuthAuthenticationMethodXAuth.m in Sources */,
+				EEF0197915CB453400FFD480 /* MPOAuthConnection.m in Sources */,
+				EEF0197A15CB453400FFD480 /* MPOAuthCredentiaIConcreteStore+KeychainAdditionsMac.m in Sources */,
+				EEF0197C15CB453400FFD480 /* MPOAuthCredentialConcreteStore+KeychainAdditionsiPhone.m in Sources */,
+				EEF0197E15CB453400FFD480 /* MPOAuthCredentialConcreteStore.m in Sources */,
+				EEF0198215CB453400FFD480 /* MPOAuthSignatureParameter.m in Sources */,
+				EEF0198415CB453400FFD480 /* MPOAuthURLRequest.m in Sources */,
+				EEF0198615CB453400FFD480 /* MPOAuthURLResponse.m in Sources */,
+				EEF0198815CB453400FFD480 /* MPURLRequestParameter.m in Sources */,
+				EEF0198A15CB453400FFD480 /* MPWSLRDDiscoverer.m in Sources */,
+				EEF0198C15CB453400FFD480 /* MPWSXRDDocument.m in Sources */,
+				EEF0198E15CB453400FFD480 /* NSString+URLEscapingAdditions.m in Sources */,
+				EEF0199015CB453400FFD480 /* NSURL+MPURLParameterAdditions.m in Sources */,
+				EEF0199215CB453400FFD480 /* NSURLResponse+Encoding.m in Sources */,
+				EEF0199A15CB489A00FFD480 /* INServerCall.m in Sources */,
+				EEF0199C15CB489A00FFD480 /* INURLFetcher.m in Sources */,
+				EEF0199E15CB489A00FFD480 /* INURLLoader.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EEC9C5A015CB2EA900B7C568 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EEC9C5B615CB2EA900B7C568 /* SMARTFrameworkTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EEC9C5AC15CB2EA900B7C568 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EEC9C59415CB2EA800B7C568 /* SMARTFramework */;
+			targetProxy = EEC9C5AB15CB2EA900B7C568 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		EEC9C5B715CB2EA900B7C568 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		EEC9C5B815CB2EA900B7C568 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EEC9C5BA15CB2EA900B7C568 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					armv6,
+					"$(ARCHS_STANDARD_32_BIT)",
+				);
+				DSTROOT = /tmp/SMARTFramework_ios.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SMARTFramework/SMARTFramework-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		EEC9C5BB15CB2EA900B7C568 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					armv6,
+					"$(ARCHS_STANDARD_32_BIT)",
+				);
+				DSTROOT = /tmp/SMARTFramework_ios.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SMARTFramework/SMARTFramework-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		EEC9C5BD15CB2EA900B7C568 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SMARTFramework/SMARTFramework-Prefix.pch";
+				INFOPLIST_FILE = "SMARTFrameworkTests/SMARTFrameworkTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		EEC9C5BE15CB2EA900B7C568 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SMARTFramework/SMARTFramework-Prefix.pch";
+				INFOPLIST_FILE = "SMARTFrameworkTests/SMARTFrameworkTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EEC9C58D15CB2EA800B7C568 /* Build configuration list for PBXProject "SMARTFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EEC9C5B715CB2EA900B7C568 /* Debug */,
+				EEC9C5B815CB2EA900B7C568 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EEC9C5B915CB2EA900B7C568 /* Build configuration list for PBXNativeTarget "SMARTFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EEC9C5BA15CB2EA900B7C568 /* Debug */,
+				EEC9C5BB15CB2EA900B7C568 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EEC9C5BC15CB2EA900B7C568 /* Build configuration list for PBXNativeTarget "SMARTFrameworkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EEC9C5BD15CB2EA900B7C568 /* Debug */,
+				EEC9C5BE15CB2EA900B7C568 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EEC9C58A15CB2EA800B7C568 /* Project object */;
+}
