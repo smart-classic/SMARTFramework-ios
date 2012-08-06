@@ -41,7 +41,7 @@
 @property (nonatomic, strong) NSMutableArray *suspendedCalls;					///< Calls that were dequeued, we need to hold on to them to not deallocate them
 @property (nonatomic, strong) INServerCall *currentCall;						///< Only one call at a time, this is the current one
 
-@property (nonatomic, strong) SMARTLoginViewController *loginVC;				///< A handle to the currently shown login view controller
+@property (nonatomic, strong) SMLoginViewController *loginVC;				///< A handle to the currently shown login view controller
 @property (nonatomic, readwrite, copy) NSString *lastOAuthVerifier;
 
 - (void)_presentLoginScreenAtURL:(NSURL *)loginURL;
@@ -53,11 +53,11 @@
 
 @implementation SMServer
 
-NSString *const SMARTErrorKey = @"SMARTError";
-NSString *const SMARTRecordIDKey = @"record_id";
-NSString *const SMARTResponseStringKey = @"SMARTServerCallResponseText";
-NSString *const SMARTResponseArrayKey = @"SMARTResponseArray";
-NSString *const SMARTResponseDocumentKey = @"SMARTResponseDocument";
+NSString *const INErrorKey = @"SMARTError";
+NSString *const INRecordIDKey = @"record_id";
+NSString *const INResponseStringKey = @"SMARTServerCallResponseText";
+NSString *const INResponseArrayKey = @"SMARTResponseArray";
+NSString *const INResponseDocumentKey = @"SMARTResponseDocument";
 
 NSString *const SMARTInternalScheme = @"smart-app";
 NSString *const SMARTOAuthRecordIDKey = @"smart_record_id";
@@ -256,7 +256,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 		
 		// successfully selected a record
 		if (success) {
-			NSString *forRecordId = [userInfo objectForKey:SMARTRecordIDKey];
+			NSString *forRecordId = [userInfo objectForKey:INRecordIDKey];
 			if (forRecordId && [this.activeRecord is:forRecordId]) {
 				this.activeRecord.accessToken = [userInfo objectForKey:@"oauth_token"];
 				this.activeRecord.accessTokenSecret = [userInfo objectForKey:@"oauth_token_secret"];
@@ -282,7 +282,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 		
 		// failed: Cancelled or other failure
 		else {
-			didCancel = (nil == [userInfo objectForKey:SMARTErrorKey]);
+			didCancel = (nil == [userInfo objectForKey:INErrorKey]);
 			CANCEL_ERROR_CALLBACK_OR_LOG_USER_INFO(callback, didCancel, userInfo)
 		}
 	};
@@ -328,7 +328,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 		
 		// successfully authenticated
 		if (success) {
-			NSString *forRecordId = [userInfo objectForKey:SMARTRecordIDKey];
+			NSString *forRecordId = [userInfo objectForKey:INRecordIDKey];
 			if (forRecordId && [this.activeRecord is:forRecordId]) {
 				this.activeRecord.accessToken = [userInfo objectForKey:@"oauth_token"];
 				this.activeRecord.accessTokenSecret = [userInfo objectForKey:@"oauth_token_secret"];
@@ -336,7 +336,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 			
 			userInfo = nil;
 		}
-		else if (![userInfo objectForKey:SMARTErrorKey]) {
+		else if (![userInfo objectForKey:INErrorKey]) {
 			didCancel = YES;
 		}
 		
@@ -366,7 +366,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 	}
 	
 	// newly display a login screen
-	SMARTLoginViewController *vc = [SMARTLoginViewController new];
+	SMLoginViewController *vc = [SMLoginViewController new];
 	UIViewController *pvc = [delegate viewControllerToPresentLoginViewController:vc];
 	if (pvc) {
 		vc.delegate = self;
@@ -390,7 +390,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 /**
  *	Called when the user selected a record
  */
-- (void)loginView:(SMARTLoginViewController *)aLoginController didSelectRecordId:(NSString *)recordId
+- (void)loginView:(SMLoginViewController *)aLoginController didSelectRecordId:(NSString *)recordId
 {
 	NSError *error = nil;
 	
@@ -440,7 +440,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 /**
  *	A delegate method which gets called when the callback is received
  */
-- (void)loginView:(SMARTLoginViewController *)aLoginController didReceiveVerifier:(NSString *)aVerifier
+- (void)loginView:(SMLoginViewController *)aLoginController didReceiveVerifier:(NSString *)aVerifier
 {
 	self.lastOAuthVerifier = aVerifier;
 	
@@ -462,7 +462,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 /**
  *	Delegate method called when the user dismisses the login screen, i.e. cancels the record selection process
  */
-- (void)loginViewDidCancel:(SMARTLoginViewController *)loginController
+- (void)loginViewDidCancel:(SMLoginViewController *)loginController
 {
 	if (currentCall) {
 		[currentCall cancel];
@@ -479,7 +479,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 /**
  *	The user logged out
  */
-- (void)loginViewDidLogout:(SMARTLoginViewController *)aLoginController
+- (void)loginViewDidLogout:(SMLoginViewController *)aLoginController
 {
 	self.activeRecord = nil;
 	[currentCall cancel];
@@ -494,7 +494,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 /**
  *	The scheme for URL that we treat differently internally (by default this is "smart-app")
  */
-- (NSString *)callbackSchemeForLoginView:(SMARTLoginViewController *)aLoginController
+- (NSString *)callbackSchemeForLoginView:(SMLoginViewController *)aLoginController
 {
 	return self.callbackScheme;
 }
@@ -519,26 +519,8 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 		
 		// fetched successfully...
 		if (success) {
-			//DLog(@"Incoming XML: %@", [userInfo objectForKey:SMARTResponseStringKey]);
-			INXMLNode *docNode = [userInfo objectForKey:INResponseXMLKey];
-			NSArray *metaDocuments = [docNode childrenNamed:@"Document"];
-			
-			// instantiate meta documents...
-			NSMutableArray *appDocArr = [NSMutableArray arrayWithCapacity:[metaDocuments count]];
-			for (INXMLNode *metaNode in metaDocuments) {
-				IndivoMetaDocument *meta = [[IndivoMetaDocument alloc] initFromNode:metaNode withServer:self];
-				if (meta) {
-					meta.documentClass = [IndivoAppDocument class];
-					
-					// ...but return the actual app documents
-					IndivoAppDocument *appDoc = (IndivoAppDocument *)[meta document];
-					if (appDoc) {
-						[appDocArr addObject:appDoc];
-					}
-				}
-			}
-			
-			usrIfo = [NSDictionary dictionaryWithObject:appDocArr forKey:INResponseArrayKey];
+			DLog(@"Incoming: %@", [userInfo objectForKey:INResponseStringKey]);
+			//usrIfo = [NSDictionary dictionaryWithObject:appDocArr forKey:INResponseArrayKey];
 		}
 		else {
 			usrIfo = userInfo;

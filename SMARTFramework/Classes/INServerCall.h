@@ -22,7 +22,7 @@
 
 
 #import <Foundation/Foundation.h>
-#import "Indivo.h"
+#import "SMART.h"
 #import "MPOAuthAPI.h"
 
 @class SMServer;
@@ -34,14 +34,14 @@
 @interface INServerCall : NSObject <MPOAuthAPIAuthDelegate, MPOAuthAPILoadDelegate>
 
 @property (nonatomic, assign) SMServer *server;							///< The server upon which we are called
-@property (nonatomic, copy) NSString *method;								///< The method to call on the server URL
-@property (nonatomic, copy) NSString *HTTPMethod;							///< Will be GET by default
-@property (nonatomic, copy) NSString *body;									///< Body data, takes precedence over "parameters" if length is > 0
-@property (nonatomic, strong) NSArray *parameters;							///< An array with @"key=value" strings to be passed to the server, overridden by "body"
-@property (nonatomic, strong) MPOAuthAPI *oauth;							///< The call will retain a copy of the oauth instance
-@property (nonatomic, assign) BOOL finishIfAuthenticated;					///< If YES the call is merely a proxy to the OAuth authentication call
-@property (nonatomic, copy) INSuccessRetvalueBlock myCallback;				///< The callback after finishing our call
-@property (nonatomic, readonly, assign) BOOL hasBeenFired;					///< As the name suggests, tells us whether it has been sent on the journey
+@property (nonatomic, copy) NSString *method;							///< The method to call on the server URL
+@property (nonatomic, copy) NSString *HTTPMethod;						///< Will be GET by default
+@property (nonatomic, copy) NSString *body;								///< Body data, takes precedence over "parameters" if length is > 0
+@property (nonatomic, strong) NSArray *parameters;						///< An array with @"key=value" strings to be passed to the server, overridden by "body"
+@property (nonatomic, strong) MPOAuthAPI *oauth;						///< The call will retain a copy of the oauth instance
+@property (nonatomic, assign) BOOL finishIfAuthenticated;				///< If YES the call is merely a proxy to the OAuth authentication call
+@property (nonatomic, copy) INSuccessRetvalueBlock myCallback;			///< The callback after finishing our call
+@property (nonatomic, readonly, assign) BOOL hasBeenFired;				///< As the name suggests, tells us whether it has been sent on the journey
 
 + (INServerCall *)newForServer:(SMServer *)aServer;
 - (id)initWithServer:(SMServer *)aServer;

@@ -1,8 +1,8 @@
 /*
- INURLFetcher.h
+ IndivoActionView.h
  IndivoFramework
  
- Created by Pascal Pfiffner on 11/07/11.
+ Created by Pascal Pfiffner on 12/5/11.
  Copyright (c) 2011 Children's Hospital Boston
  
  This library is free software; you can redistribute it and/or
@@ -20,22 +20,25 @@
  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#import <Foundation/Foundation.h>
-#import "SMART.h"
+#import <UIKit/UIKit.h>
 
 
 /**
- *	The fetcher is an accessor-class to INURLLoader objects; for example if you want to queue up loading multiple URLs you
- *	can use one fetcher instead of handling multiple INURLLoader instances yourself.
+ *	A semi-transparent view that can be overlaid over existing views and display text, a hint or a spinner
  */
-@interface INURLFetcher : NSObject
+@interface IndivoActionView : UIControl {
+	BOOL animateNextLayout;
+}
 
-@property (nonatomic, readonly, copy) NSArray *successfulLoads;					///< Contains INURLLoader instances which loaded with an HTTP response < 400
-@property (nonatomic, readonly, copy) NSArray *failedLoads;						///< Contains all INURLLoader instances that failed to load for any reason
+- (void)showActivityIn:(UIView *)aParent animated:(BOOL)animated;
+- (void)showIn:(UIView *)aParent mainText:(NSString *)mainText hintText:(NSString *)hintText animated:(BOOL)animated;
 
-- (void)getURLs:(NSArray *)anURLArray callback:(INCancelErrorBlock)aCallback;
-- (void)cancel;
-- (BOOL)isIdle;
+- (void)showSpinnerAnimated:(BOOL)animated;
+- (void)hideSpinnerAnimated:(BOOL)animated;
+- (void)showMainText:(NSString *)mainText animated:(BOOL)animated;
+- (void)hideMainTextAnimated:(BOOL)animated;
+- (void)showHintText:(NSString *)hintText animated:(BOOL)animated;
+- (void)hideHintTextAnimated:(BOOL)animated;
 
 
 @end

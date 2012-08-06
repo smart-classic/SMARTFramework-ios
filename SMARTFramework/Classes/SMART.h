@@ -27,11 +27,11 @@
 
 
 // Dictionary keys
-extern NSString *const SMARTErrorKey;						///< Dictionaries return an NSError for this key
-extern NSString *const SMARTRecordIDKey;					///< Dictionaries return an NSString for this key. The key reflects the oauth URL param name.
-extern NSString *const SMARTResponseStringKey;				///< Dictionaries return the server's response as an NSString for this key
-extern NSString *const SMARTResponseArrayKey;				///< Dictionaries return an NSArray for this key
-extern NSString *const SMARTResponseDocumentKey;			///< Dictionaries return an IndivoDocument for this key
+extern NSString *const INErrorKey;							///< Dictionaries return an NSError for this key
+extern NSString *const INRecordIDKey;						///< Dictionaries return an NSString for this key. The key reflects the oauth URL param name.
+extern NSString *const INResponseStringKey;					///< Dictionaries return the server's response as an NSString for this key
+extern NSString *const INResponseArrayKey;					///< Dictionaries return an NSArray for this key
+extern NSString *const INResponseDocumentKey;				///< Dictionaries return an IndivoDocument for this key
 
 // Other globals
 extern NSString *const SMARTInternalScheme;					///< The URL scheme we use to identify when the framework should intercept a request
@@ -43,7 +43,7 @@ extern NSString *const SMARTRecordUserInfoKey;						///< For SMARTRecordDocument
 
 /**
  *	A block returning a success flag and a user info dictionary.
- *	If success is NO, you might find an NSError object in userInfo with key "SMARTErrorKey". If no error is present, the operation was cancelled.
+ *	If success is NO, you might find an NSError object in userInfo with key "INErrorKey". If no error is present, the operation was cancelled.
  */
 typedef void (^INSuccessRetvalueBlock)(BOOL success, NSDictionary * __autoreleasing userInfo);
 
@@ -108,7 +108,7 @@ typedef void (^INCancelErrorBlock)(BOOL userDidCancel, NSString * __autoreleasin
 		cb(success, userInfo);\
 	}\
 	else if (!success) {\
-		DLog(@"No callback on this method, logging to debug. Result: %@", [[userInfo objectForKey:SMARTErrorKey] localizedDescription]);\
+		DLog(@"No callback on this method, logging to debug. Result: %@", [[userInfo objectForKey:INErrorKey] localizedDescription]);\
 	}
 #endif
 #ifndef SUCCESS_RETVAL_CALLBACK_OR_LOG_ERR_STRING
@@ -118,7 +118,7 @@ typedef void (^INCancelErrorBlock)(BOOL userDidCancel, NSString * __autoreleasin
 		if (errStr) {\
 			error = [NSError errorWithDomain:NSCocoaErrorDomain code:(errCode ? errCode : 0) userInfo:[NSDictionary dictionaryWithObject:errStr forKey:NSLocalizedDescriptionKey]];\
 		}\
-		cb((nil == error), error ? [NSDictionary dictionaryWithObject:error forKey:SMARTErrorKey] : nil);\
+		cb((nil == error), error ? [NSDictionary dictionaryWithObject:error forKey:INErrorKey] : nil);\
 	}\
 	else if (errStr) {\
 		DLog(@"No callback on this method, logging to debug. Error %d: %@", errCode, errStr);\

@@ -7,16 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EE6A5A7E15CC723500DD0F68 /* libredland-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE6A5A7D15CC723500DD0F68 /* libredland-ios.a */; };
+		EE6A5A8215CC72D500DD0F68 /* TestServer.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6A5A8115CC72D500DD0F68 /* TestServer.m */; };
+		EE6A5A8515CC731200DD0F68 /* TestServerCalls.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6A5A8415CC731200DD0F68 /* TestServerCalls.m */; };
+		EE6A5A9015CC736E00DD0F68 /* SMMockServer.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6A5A8F15CC736E00DD0F68 /* SMMockServer.m */; };
+		EE6A5A9615CC753800DD0F68 /* SMRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = EE6A5A9415CC753800DD0F68 /* SMRecord.h */; };
+		EE6A5A9715CC753800DD0F68 /* SMRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6A5A9515CC753800DD0F68 /* SMRecord.m */; };
+		EE832F7D15D004A500E7FFF1 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EE832F7C15D004A500E7FFF1 /* libxml2.dylib */; };
+		EE832F8115D006D100E7FFF1 /* SMLoginViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EE832F7F15D006D100E7FFF1 /* SMLoginViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EE832F8315D006EE00E7FFF1 /* SMLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE832F8015D006D100E7FFF1 /* SMLoginViewController.m */; };
 		EEC9C59915CB2EA800B7C568 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEC9C59815CB2EA800B7C568 /* Foundation.framework */; };
 		EEC9C5A715CB2EA900B7C568 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEC9C5A615CB2EA900B7C568 /* SenTestingKit.framework */; };
-		EEC9C5A915CB2EA900B7C568 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEC9C5A815CB2EA900B7C568 /* UIKit.framework */; };
 		EEC9C5AA15CB2EA900B7C568 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEC9C59815CB2EA800B7C568 /* Foundation.framework */; };
-		EEC9C5AD15CB2EA900B7C568 /* libSMARTFramework.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EEC9C59515CB2EA800B7C568 /* libSMARTFramework.a */; };
-		EEC9C5B615CB2EA900B7C568 /* SMARTFrameworkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC9C5B515CB2EA900B7C568 /* SMARTFrameworkTests.m */; };
+		EEC9C5AD15CB2EA900B7C568 /* libSMART.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EEC9C59515CB2EA800B7C568 /* libSMART.a */; };
+		EEE82D8515D008510017EA0B /* IndivoActionView.h in Headers */ = {isa = PBXBuildFile; fileRef = EEE82D8315D008500017EA0B /* IndivoActionView.h */; };
+		EEE82D8615D008510017EA0B /* IndivoActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = EEE82D8415D008500017EA0B /* IndivoActionView.m */; };
+		EEE82D8D15D00D810017EA0B /* SMARTDocuments.h in Headers */ = {isa = PBXBuildFile; fileRef = EEE82D8C15D00D810017EA0B /* SMARTDocuments.h */; };
+		EEE82D9015D01E780017EA0B /* libredland-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE6A5A7D15CC723500DD0F68 /* libredland-ios.a */; };
+		EEE82D9215D02F4A0017EA0B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE82D9115D02F4A0017EA0B /* UIKit.framework */; };
+		EEE82D9615D02FD80017EA0B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE82D9415D02F970017EA0B /* CoreGraphics.framework */; };
 		EEF0192A15CB447100FFD480 /* Config.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0192915CB447100FFD480 /* Config.h */; };
-		EEF0192C15CB447900FFD480 /* Config-default.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0192B15CB447900FFD480 /* Config-default.h */; };
-		EEF0193215CB448700FFD480 /* SMART.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0192D15CB448700FFD480 /* SMART.h */; };
-		EEF0193315CB448700FFD480 /* SMServer.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0192E15CB448700FFD480 /* SMServer.h */; };
+		EEF0193215CB448700FFD480 /* SMART.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0192D15CB448700FFD480 /* SMART.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EEF0193315CB448700FFD480 /* SMServer.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0192E15CB448700FFD480 /* SMServer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EEF0193415CB448700FFD480 /* SMServer.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF0192F15CB448700FFD480 /* SMServer.m */; };
 		EEF0196615CB453400FFD480 /* Base64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = EEF0193915CB453400FFD480 /* Base64Transcoder.c */; };
 		EEF0196715CB453400FFD480 /* Base64Transcoder.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0193A15CB453400FFD480 /* Base64Transcoder.h */; };
@@ -63,11 +75,11 @@
 		EEF0199015CB453400FFD480 /* NSURL+MPURLParameterAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF0196315CB453400FFD480 /* NSURL+MPURLParameterAdditions.m */; };
 		EEF0199115CB453400FFD480 /* NSURLResponse+Encoding.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0196415CB453400FFD480 /* NSURLResponse+Encoding.h */; };
 		EEF0199215CB453400FFD480 /* NSURLResponse+Encoding.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF0196515CB453400FFD480 /* NSURLResponse+Encoding.m */; };
-		EEF0199915CB489A00FFD480 /* INServerCall.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0199315CB489A00FFD480 /* INServerCall.h */; };
+		EEF0199915CB489A00FFD480 /* INServerCall.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0199315CB489A00FFD480 /* INServerCall.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EEF0199A15CB489A00FFD480 /* INServerCall.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF0199415CB489A00FFD480 /* INServerCall.m */; };
-		EEF0199B15CB489A00FFD480 /* INURLFetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0199515CB489A00FFD480 /* INURLFetcher.h */; };
+		EEF0199B15CB489A00FFD480 /* INURLFetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0199515CB489A00FFD480 /* INURLFetcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EEF0199C15CB489A00FFD480 /* INURLFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF0199615CB489A00FFD480 /* INURLFetcher.m */; };
-		EEF0199D15CB489A00FFD480 /* INURLLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0199715CB489A00FFD480 /* INURLLoader.h */; };
+		EEF0199D15CB489A00FFD480 /* INURLLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0199715CB489A00FFD480 /* INURLLoader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EEF0199E15CB489A00FFD480 /* INURLLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF0199815CB489A00FFD480 /* INURLLoader.m */; };
 /* End PBXBuildFile section */
 
@@ -82,15 +94,29 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		EEC9C59515CB2EA800B7C568 /* libSMARTFramework.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSMARTFramework.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE6A5A7D15CC723500DD0F68 /* libredland-ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libredland-ios.a"; path = "../Redland-ObjC/build/Development-iphoneos/libredland-ios.a"; sourceTree = "<group>"; };
+		EE6A5A8015CC72D500DD0F68 /* TestServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestServer.h; sourceTree = "<group>"; };
+		EE6A5A8115CC72D500DD0F68 /* TestServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestServer.m; sourceTree = "<group>"; };
+		EE6A5A8315CC731200DD0F68 /* TestServerCalls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestServerCalls.h; sourceTree = "<group>"; };
+		EE6A5A8415CC731200DD0F68 /* TestServerCalls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestServerCalls.m; sourceTree = "<group>"; };
+		EE6A5A8E15CC736E00DD0F68 /* SMMockServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMockServer.h; sourceTree = "<group>"; };
+		EE6A5A8F15CC736E00DD0F68 /* SMMockServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMockServer.m; sourceTree = "<group>"; };
+		EE6A5A9415CC753800DD0F68 /* SMRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRecord.h; sourceTree = "<group>"; };
+		EE6A5A9515CC753800DD0F68 /* SMRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRecord.m; sourceTree = "<group>"; };
+		EE832F7C15D004A500E7FFF1 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		EE832F7F15D006D100E7FFF1 /* SMLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMLoginViewController.h; sourceTree = "<group>"; };
+		EE832F8015D006D100E7FFF1 /* SMLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMLoginViewController.m; sourceTree = "<group>"; };
+		EEC9C59515CB2EA800B7C568 /* libSMART.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSMART.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEC9C59815CB2EA800B7C568 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EEC9C59C15CB2EA800B7C568 /* SMARTFramework-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SMARTFramework-Prefix.pch"; sourceTree = "<group>"; };
 		EEC9C5A515CB2EA900B7C568 /* SMARTFrameworkTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SMARTFrameworkTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEC9C5A615CB2EA900B7C568 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		EEC9C5A815CB2EA900B7C568 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		EEC9C5B015CB2EA900B7C568 /* SMARTFrameworkTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SMARTFrameworkTests-Info.plist"; sourceTree = "<group>"; };
-		EEC9C5B415CB2EA900B7C568 /* SMARTFrameworkTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMARTFrameworkTests.h; sourceTree = "<group>"; };
-		EEC9C5B515CB2EA900B7C568 /* SMARTFrameworkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMARTFrameworkTests.m; sourceTree = "<group>"; };
+		EEE82D8315D008500017EA0B /* IndivoActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndivoActionView.h; sourceTree = "<group>"; };
+		EEE82D8415D008500017EA0B /* IndivoActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndivoActionView.m; sourceTree = "<group>"; };
+		EEE82D8C15D00D810017EA0B /* SMARTDocuments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMARTDocuments.h; sourceTree = "<group>"; };
+		EEE82D9115D02F4A0017EA0B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		EEE82D9415D02F970017EA0B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		EEF0192915CB447100FFD480 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		EEF0192B15CB447900FFD480 /* Config-default.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Config-default.h"; sourceTree = "<group>"; };
 		EEF0192D15CB448700FFD480 /* SMART.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMART.h; sourceTree = "<group>"; };
@@ -155,6 +181,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEC9C59915CB2EA800B7C568 /* Foundation.framework in Frameworks */,
+				EE832F7D15D004A500E7FFF1 /* libxml2.dylib in Frameworks */,
+				EE6A5A7E15CC723500DD0F68 /* libredland-ios.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,10 +190,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EEC9C5A715CB2EA900B7C568 /* SenTestingKit.framework in Frameworks */,
-				EEC9C5A915CB2EA900B7C568 /* UIKit.framework in Frameworks */,
 				EEC9C5AA15CB2EA900B7C568 /* Foundation.framework in Frameworks */,
-				EEC9C5AD15CB2EA900B7C568 /* libSMARTFramework.a in Frameworks */,
+				EEE82D9615D02FD80017EA0B /* CoreGraphics.framework in Frameworks */,
+				EEE82D9215D02F4A0017EA0B /* UIKit.framework in Frameworks */,
+				EEC9C5A715CB2EA900B7C568 /* SenTestingKit.framework in Frameworks */,
+				EEE82D9015D01E780017EA0B /* libredland-ios.a in Frameworks */,
+				EEC9C5AD15CB2EA900B7C568 /* libSMART.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,7 +219,7 @@
 		EEC9C59615CB2EA800B7C568 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EEC9C59515CB2EA800B7C568 /* libSMARTFramework.a */,
+				EEC9C59515CB2EA800B7C568 /* libSMART.a */,
 				EEC9C5A515CB2EA900B7C568 /* SMARTFrameworkTests.octest */,
 			);
 			name = Products;
@@ -199,8 +229,11 @@
 			isa = PBXGroup;
 			children = (
 				EEC9C59815CB2EA800B7C568 /* Foundation.framework */,
+				EEE82D9415D02F970017EA0B /* CoreGraphics.framework */,
+				EEE82D9115D02F4A0017EA0B /* UIKit.framework */,
 				EEC9C5A615CB2EA900B7C568 /* SenTestingKit.framework */,
-				EEC9C5A815CB2EA900B7C568 /* UIKit.framework */,
+				EE832F7C15D004A500E7FFF1 /* libxml2.dylib */,
+				EE6A5A7D15CC723500DD0F68 /* libredland-ios.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -211,6 +244,10 @@
 				EEF0192D15CB448700FFD480 /* SMART.h */,
 				EEF0192E15CB448700FFD480 /* SMServer.h */,
 				EEF0192F15CB448700FFD480 /* SMServer.m */,
+				EE6A5A9415CC753800DD0F68 /* SMRecord.h */,
+				EE6A5A9515CC753800DD0F68 /* SMRecord.m */,
+				EEE82D8C15D00D810017EA0B /* SMARTDocuments.h */,
+				EEE82D8215D008330017EA0B /* View Controller */,
 				EEF0199F15CB489E00FFD480 /* Server Calls */,
 			);
 			path = Classes;
@@ -228,8 +265,12 @@
 		EEC9C5AE15CB2EA900B7C568 /* SMARTFrameworkTests */ = {
 			isa = PBXGroup;
 			children = (
-				EEC9C5B415CB2EA900B7C568 /* SMARTFrameworkTests.h */,
-				EEC9C5B515CB2EA900B7C568 /* SMARTFrameworkTests.m */,
+				EE6A5A8E15CC736E00DD0F68 /* SMMockServer.h */,
+				EE6A5A8F15CC736E00DD0F68 /* SMMockServer.m */,
+				EE6A5A8015CC72D500DD0F68 /* TestServer.h */,
+				EE6A5A8115CC72D500DD0F68 /* TestServer.m */,
+				EE6A5A8315CC731200DD0F68 /* TestServerCalls.h */,
+				EE6A5A8415CC731200DD0F68 /* TestServerCalls.m */,
 				EEC9C5AF15CB2EA900B7C568 /* Supporting Files */,
 			);
 			path = SMARTFrameworkTests;
@@ -241,6 +282,17 @@
 				EEC9C5B015CB2EA900B7C568 /* SMARTFrameworkTests-Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EEE82D8215D008330017EA0B /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EE832F7F15D006D100E7FFF1 /* SMLoginViewController.h */,
+				EE832F8015D006D100E7FFF1 /* SMLoginViewController.m */,
+				EEE82D8315D008500017EA0B /* IndivoActionView.h */,
+				EEE82D8415D008500017EA0B /* IndivoActionView.m */,
+			);
+			name = "View Controller";
 			sourceTree = "<group>";
 		};
 		EEF0193715CB453400FFD480 /* MPOAuth Framework */ = {
@@ -325,7 +377,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEF0192A15CB447100FFD480 /* Config.h in Headers */,
-				EEF0192C15CB447900FFD480 /* Config-default.h in Headers */,
 				EEF0193215CB448700FFD480 /* SMART.h in Headers */,
 				EEF0193315CB448700FFD480 /* SMServer.h in Headers */,
 				EEF0196715CB453400FFD480 /* Base64Transcoder.h in Headers */,
@@ -355,29 +406,31 @@
 				EEF0199915CB489A00FFD480 /* INServerCall.h in Headers */,
 				EEF0199B15CB489A00FFD480 /* INURLFetcher.h in Headers */,
 				EEF0199D15CB489A00FFD480 /* INURLLoader.h in Headers */,
+				EE6A5A9615CC753800DD0F68 /* SMRecord.h in Headers */,
+				EE832F8115D006D100E7FFF1 /* SMLoginViewController.h in Headers */,
+				EEE82D8515D008510017EA0B /* IndivoActionView.h in Headers */,
+				EEE82D8D15D00D810017EA0B /* SMARTDocuments.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		EEC9C59415CB2EA800B7C568 /* SMARTFramework */ = {
+		EEC9C59415CB2EA800B7C568 /* SMART */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EEC9C5B915CB2EA900B7C568 /* Build configuration list for PBXNativeTarget "SMARTFramework" */;
+			buildConfigurationList = EEC9C5B915CB2EA900B7C568 /* Build configuration list for PBXNativeTarget "SMART" */;
 			buildPhases = (
-				EEC9C58F15CB2EA800B7C568 /* ShellScript */,
 				EEC9C59015CB2EA800B7C568 /* Sources */,
 				EEC9C59115CB2EA800B7C568 /* Frameworks */,
 				EEC9C59215CB2EA800B7C568 /* Headers */,
-				EEC9C59315CB2EA800B7C568 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = SMARTFramework;
+			name = SMART;
 			productName = SMARTFramework;
-			productReference = EEC9C59515CB2EA800B7C568 /* libSMARTFramework.a */;
+			productReference = EEC9C59515CB2EA800B7C568 /* libSMART.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		EEC9C5A415CB2EA900B7C568 /* SMARTFrameworkTests */ = {
@@ -420,7 +473,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EEC9C59415CB2EA800B7C568 /* SMARTFramework */,
+				EEC9C59415CB2EA800B7C568 /* SMART */,
 				EEC9C5A415CB2EA900B7C568 /* SMARTFrameworkTests */,
 			);
 		};
@@ -437,32 +490,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		EEC9C58F15CB2EA800B7C568 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "set -e\n\nif [ \"$CALLED_FROM_MASTER\" ]\nthen\n# This is the other build, called from the original instance\nexit 0\nfi\n\n# Clean up prior to build\n\nCURRENTCONFIG_DEVICE_DIR=\"${SYMROOT}/${CONFIGURATION}-iphoneos\"\nCURRENTCONFIG_SIMULATOR_DIR=\"${SYMROOT}/${CONFIGURATION}-iphonesimulator\"\nCURRENTCONFIG_UNIVERSAL_DIR=\"${SYMROOT}/${CONFIGURATION}-universal\"\n\nif [ ! -f \"${CURRENTCONFIG_DEVICE_DIR}/${EXECUTABLE_NAME}\" ]; then\n  echo \"Device build cleaned; cleaning other builds too\"\n  rm -f \"${CURRENTCONFIG_SIMULATOR_DIR}/${EXECUTABLE_NAME}\" \n  rm -f \"${CURRENTCONFIG_UNIVERSAL_DIR}/${EXECUTABLE_NAME}\"\nelif [ ! -f \"${CURRENTCONFIG_SIMULATOR_DIR}/${EXECUTABLE_NAME}\" ]; then\n  echo \"Simulator build cleaned; cleaning other builds too\"\n  rm -f \"${CURRENTCONFIG_DEVICE_DIR}/${EXECUTABLE_NAME}\"\n  rm -f \"${CURRENTCONFIG_UNIVERSAL_DIR}/${EXECUTABLE_NAME}\"\nfi\n";
-		};
-		EEC9C59315CB2EA800B7C568 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "set -e\n\n#\n# Universal static library script\n# http://github.com/michaeltyson/iOS-Universal-Library-Template\n#\n# Version 2.5\n# \n# Purpose:\n#   Create a static library for iPhone from within XCode\n#\n# Author: Adam Martin - http://twitter.com/redglassesapps\n# Tweaked and made into an Xcode template by Michael Tyson - http://atastypixel.com/blog\n# Based on original script from Eonil\n# More info: see this Stack Overflow question: http://stackoverflow.com/questions/3520977/build-fat-static-library-device-simulator-using-xcode-and-sdk-4\n#\n#################[ Tests: helps workaround any future bugs in Xcode ]########\n#\nDEBUG_THIS_SCRIPT=\"false\"\n\nif [ $DEBUG_THIS_SCRIPT = \"true\" ]\nthen\necho \"########### TESTS #############\"\necho \"Use the following variables when debugging this script; note that they may change on recursions\"\necho \"BUILD_DIR = $BUILD_DIR\"\necho \"BUILD_ROOT = $BUILD_ROOT\"\necho \"CONFIGURATION_BUILD_DIR = $CONFIGURATION_BUILD_DIR\"\necho \"BUILT_PRODUCTS_DIR = $BUILT_PRODUCTS_DIR\"\necho \"CONFIGURATION_TEMP_DIR = $CONFIGURATION_TEMP_DIR\"\necho \"TARGET_BUILD_DIR = $TARGET_BUILD_DIR\"\nfi\n\nif [ \"$CALLED_FROM_MASTER\" ]\nthen\n  # This is the other build, called from the original instance\n  exit 0\nfi\n\n# Find the BASESDK version number\nSDK_VERSION=$(echo ${SDK_NAME} | grep -o '.\\{3\\}$')\n\n# Next, work out if we're in SIM or DEVICE\nif [ ${PLATFORM_NAME} = \"iphonesimulator\" ]\nthen\n    OTHER_SDK_TO_BUILD=iphoneos${SDK_VERSION}\nelse\n    OTHER_SDK_TO_BUILD=iphonesimulator${SDK_VERSION}\nfi\n\necho \"XCode has selected SDK: ${PLATFORM_NAME} with version: ${SDK_VERSION} (although back-targetting: ${IPHONEOS_DEPLOYMENT_TARGET})\"\necho \"...therefore, OTHER_SDK_TO_BUILD = ${OTHER_SDK_TO_BUILD}\"\n\n# Build the other architecture\necho \"xcodebuild -project \\\"${PROJECT_FILE_PATH}\\\" -configuration \\\"${CONFIGURATION}\\\" -target \\\"${TARGET_NAME}\\\" -sdk \\\"${OTHER_SDK_TO_BUILD}\\\" ${ACTION} RUN_CLANG_STATIC_ANALYZER=NO BUILD_DIR=\\\"${BUILD_DIR}\\\" BUILD_ROOT=\\\"${BUILD_ROOT}\\\" CALLED_FROM_MASTER=1\"\nxcodebuild -project \"${PROJECT_FILE_PATH}\" -configuration \"${CONFIGURATION}\" -target \"${TARGET_NAME}\" -sdk \"${OTHER_SDK_TO_BUILD}\" ${ACTION} RUN_CLANG_STATIC_ANALYZER=NO BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" CALLED_FROM_MASTER=1\n\n# Merge built architectures\nCURRENTCONFIG_DEVICE_DIR=\"${SYMROOT}/${CONFIGURATION}-iphoneos\"\nCURRENTCONFIG_SIMULATOR_DIR=\"${SYMROOT}/${CONFIGURATION}-iphonesimulator\"\nCURRENTCONFIG_UNIVERSAL_DIR=\"${SYMROOT}/${CONFIGURATION}-universal\"\n\necho \"Taking device build from: ${CURRENTCONFIG_DEVICE_DIR}\"\necho \"Taking simulator build from: ${CURRENTCONFIG_SIMULATOR_DIR}\"\necho \"...I will output a universal build to: ${CURRENTCONFIG_UNIVERSAL_DIR}\"\n\nif [ ! -e \"${CURRENTCONFIG_UNIVERSAL_DIR}/${EXECUTABLE_NAME}\" -o \\\n        \"${CURRENTCONFIG_DEVICE_DIR}/${EXECUTABLE_NAME}\" -nt \"${CURRENTCONFIG_UNIVERSAL_DIR}/${EXECUTABLE_NAME}\" -o \\\n        \"${CURRENTCONFIG_SIMULATOR_DIR}/${EXECUTABLE_NAME}\" -nt \"${CURRENTCONFIG_UNIVERSAL_DIR}/${EXECUTABLE_NAME}\" ]\nthen\n    mkdir -p \"${CURRENTCONFIG_UNIVERSAL_DIR}\"\n    rm -f \"${CURRENTCONFIG_UNIVERSAL_DIR}/${EXECUTABLE_NAME}\"\n\n    echo \"lipo: for current configuration (${CONFIGURATION}) creating output file: ${CURRENTCONFIG_UNIVERSAL_DIR}/${EXECUTABLE_NAME}\"\n    lipo -create -output \"${CURRENTCONFIG_UNIVERSAL_DIR}/${EXECUTABLE_NAME}\" \"${CURRENTCONFIG_DEVICE_DIR}/${EXECUTABLE_NAME}\" \"${CURRENTCONFIG_SIMULATOR_DIR}/${EXECUTABLE_NAME}\"\n\n    echo \"Copying universal build back over to ${CURRENTCONFIG_DEVICE_DIR} and ${CURRENTCONFIG_SIMULATOR_DIR}\"\n    cp \"${CURRENTCONFIG_UNIVERSAL_DIR}/${EXECUTABLE_NAME}\" \"${CURRENTCONFIG_DEVICE_DIR}/${EXECUTABLE_NAME}\"\n    cp \"${CURRENTCONFIG_UNIVERSAL_DIR}/${EXECUTABLE_NAME}\" \"${CURRENTCONFIG_SIMULATOR_DIR}/${EXECUTABLE_NAME}\"\n    touch \"${CURRENTCONFIG_UNIVERSAL_DIR}/${EXECUTABLE_NAME}\"\n\n    # Also copy public headers\n    if [ -d \"${CURRENTCONFIG_DEVICE_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}\" ]\n    then\n        mkdir -p \"${CURRENTCONFIG_UNIVERSAL_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}\"\n        cp \"${CURRENTCONFIG_DEVICE_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/\"* \"${CURRENTCONFIG_UNIVERSAL_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}\"\n    fi\nelse\n    echo \"Everything up to date.\"\nfi\n";
-		};
 		EEC9C5A315CB2EA900B7C568 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -508,6 +535,9 @@
 				EEF0199A15CB489A00FFD480 /* INServerCall.m in Sources */,
 				EEF0199C15CB489A00FFD480 /* INURLFetcher.m in Sources */,
 				EEF0199E15CB489A00FFD480 /* INURLLoader.m in Sources */,
+				EE6A5A9715CC753800DD0F68 /* SMRecord.m in Sources */,
+				EE832F8315D006EE00E7FFF1 /* SMLoginViewController.m in Sources */,
+				EEE82D8615D008510017EA0B /* IndivoActionView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -515,7 +545,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EEC9C5B615CB2EA900B7C568 /* SMARTFrameworkTests.m in Sources */,
+				EE6A5A8215CC72D500DD0F68 /* TestServer.m in Sources */,
+				EE6A5A8515CC731200DD0F68 /* TestServerCalls.m in Sources */,
+				EE6A5A9015CC736E00DD0F68 /* SMMockServer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -524,12 +556,73 @@
 /* Begin PBXTargetDependency section */
 		EEC9C5AC15CB2EA900B7C568 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = EEC9C59415CB2EA800B7C568 /* SMARTFramework */;
+			target = EEC9C59415CB2EA800B7C568 /* SMART */;
 			targetProxy = EEC9C5AB15CB2EA900B7C568 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		EE6A5A9115CC74A000DD0F68 /* Debug+Static */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				SDKROOT = iphoneos;
+			};
+			name = "Debug+Static";
+		};
+		EE6A5A9215CC74A000DD0F68 /* Debug+Static */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/SMARTFramework_ios.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Classes/SMARTFramework-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(SDK_DIR)/usr/include/libxml2";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)\"/**";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = "Debug+Static";
+		};
+		EE6A5A9315CC74A000DD0F68 /* Debug+Static */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Classes/SMARTFramework-Prefix.pch";
+				INFOPLIST_FILE = "SMARTFrameworkTests/SMARTFrameworkTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(BUILT_PRODUCTS_DIR)/**",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = "Debug+Static";
+		};
 		EEC9C5B715CB2EA900B7C568 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -579,14 +672,12 @@
 		EEC9C5BA15CB2EA900B7C568 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv6,
-					"$(ARCHS_STANDARD_32_BIT)",
-				);
 				DSTROOT = /tmp/SMARTFramework_ios.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SMARTFramework/SMARTFramework-Prefix.pch";
-				GCC_THUMB_SUPPORT = NO;
+				GCC_PREFIX_HEADER = "Classes/SMARTFramework-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(SDK_DIR)/usr/include/libxml2";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)\"/**";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -596,14 +687,12 @@
 		EEC9C5BB15CB2EA900B7C568 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv6,
-					"$(ARCHS_STANDARD_32_BIT)",
-				);
 				DSTROOT = /tmp/SMARTFramework_ios.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SMARTFramework/SMARTFramework-Prefix.pch";
-				GCC_THUMB_SUPPORT = NO;
+				GCC_PREFIX_HEADER = "Classes/SMARTFramework-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(SDK_DIR)/usr/include/libxml2";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)\"/**";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -618,8 +707,12 @@
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SMARTFramework/SMARTFramework-Prefix.pch";
+				GCC_PREFIX_HEADER = "Classes/SMARTFramework-Prefix.pch";
 				INFOPLIST_FILE = "SMARTFrameworkTests/SMARTFrameworkTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(BUILT_PRODUCTS_DIR)/**",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -633,8 +726,12 @@
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SMARTFramework/SMARTFramework-Prefix.pch";
+				GCC_PREFIX_HEADER = "Classes/SMARTFramework-Prefix.pch";
 				INFOPLIST_FILE = "SMARTFrameworkTests/SMARTFrameworkTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(BUILT_PRODUCTS_DIR)/**",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -647,15 +744,17 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EEC9C5B715CB2EA900B7C568 /* Debug */,
+				EE6A5A9115CC74A000DD0F68 /* Debug+Static */,
 				EEC9C5B815CB2EA900B7C568 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EEC9C5B915CB2EA900B7C568 /* Build configuration list for PBXNativeTarget "SMARTFramework" */ = {
+		EEC9C5B915CB2EA900B7C568 /* Build configuration list for PBXNativeTarget "SMART" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EEC9C5BA15CB2EA900B7C568 /* Debug */,
+				EE6A5A9215CC74A000DD0F68 /* Debug+Static */,
 				EEC9C5BB15CB2EA900B7C568 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -665,6 +764,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EEC9C5BD15CB2EA900B7C568 /* Debug */,
+				EE6A5A9315CC74A000DD0F68 /* Debug+Static */,
 				EEC9C5BE15CB2EA900B7C568 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;

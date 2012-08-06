@@ -21,7 +21,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "Indivo.h"
+#import "SMART.h"
 
 #define kINURLLoaderDefaultTimeoutInterval 60.0								///< timeout interval in seconds
 

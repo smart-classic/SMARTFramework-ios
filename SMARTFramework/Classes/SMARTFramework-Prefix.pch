@@ -5,3 +5,7 @@
 #ifdef __OBJC__
 	#import <Foundation/Foundation.h>
 #endif
+
+// Make localization easy
+#define L_(s) NSLocalizedString(s, nil)
+#define L_2(s, c) NSLocalizedString(s, c)

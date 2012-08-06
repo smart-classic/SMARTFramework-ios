@@ -43,11 +43,10 @@
 #import <UIKit/UIKit.h>
 #import "SMART.h"
 #import "INServerCall.h"
-#import "SMARTLoginViewController.h"
+#import "SMLoginViewController.h"
 
 @class SMServer;
 @class SMRecord;
-@class SMARTLoginViewController;
 
 
 /**
@@ -62,7 +61,7 @@
  *	@param loginViewController The login view controller about to load the login screen
  *	@return A view controller from which to present the login view controller
  */
-- (UIViewController *)viewControllerToPresentLoginViewController:(SMARTLoginViewController *)loginViewController;
+- (UIViewController *)viewControllerToPresentLoginViewController:(SMLoginViewController *)loginViewController;
 
 /**
  *	This delegate method is called when the user logs out. You must implement this method in your delegate, and ideally
@@ -80,7 +79,7 @@
  *	A class to represent the server you want to connect to.
  *	This is the main interaction point of the framework with your targeted SMART Server.
  */
-@interface SMServer : NSObject <SMARTLoginViewControllerDelegate>
+@interface SMServer : NSObject <SMLoginViewControllerDelegate>
 
 @property (nonatomic, assign) id<SMARTServerDelegate> delegate;					///< A delegate to receive notifications
 

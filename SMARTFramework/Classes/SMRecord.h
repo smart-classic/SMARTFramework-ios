@@ -1,9 +1,9 @@
 /*
- INURLFetcher.h
- IndivoFramework
- 
- Created by Pascal Pfiffner on 11/07/11.
- Copyright (c) 2011 Children's Hospital Boston
+ SMRecord.h
+ SMARTFramework
+
+ Created by Pascal Pfiffner on 8/3/12.
+ Copyright (c) 2012 Harvard Medical School. All rights reserved.
  
  This library is free software; you can redistribute it and/or
  modify it under the terms of the GNU Lesser General Public
@@ -23,19 +23,25 @@
 #import <Foundation/Foundation.h>
 #import "SMART.h"
 
+@class SMServer;
+
 
 /**
- *	The fetcher is an accessor-class to INURLLoader objects; for example if you want to queue up loading multiple URLs you
- *	can use one fetcher instead of handling multiple INURLLoader instances yourself.
+ *	Represents a SMART record on a SMART server
  */
-@interface INURLFetcher : NSObject
+@interface SMRecord : NSObject
 
-@property (nonatomic, readonly, copy) NSArray *successfulLoads;					///< Contains INURLLoader instances which loaded with an HTTP response < 400
-@property (nonatomic, readonly, copy) NSArray *failedLoads;						///< Contains all INURLLoader instances that failed to load for any reason
+@property (nonatomic, copy) NSString *uuid;
 
-- (void)getURLs:(NSArray *)anURLArray callback:(INCancelErrorBlock)aCallback;
-- (void)cancel;
-- (BOOL)isIdle;
+@property (nonatomic, copy) NSString *accessToken;
+@property (nonatomic, copy) NSString *accessTokenSecret;
+
+- (id)initWithId:(NSString *)anId onServer:(SMServer *)aServer;
+
+- (void)fetchRecordInfoWithCallback:(INCancelErrorBlock)callback;
+
+// Utilities
+- (BOOL)is:(NSString *)anId;
 
 
 @end
