@@ -19,14 +19,18 @@
  License along with this library; if not, write to the Free Software
  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
-#import "INURLLoader.h"
+
+#import "SMART.h"
 #import "SMServer.h"
-#import "Config.h"
 #import "SMRecord.h"
 #import "SMARTDocuments.h"
+#import "INURLLoader.h"
 #import "INServerCall.h"
 #import "MPOAuthAPI.h"
 #import "MPOAuthAuthenticationMethodOAuth.h"			// to get ahold of dictionary key constants
+#ifndef UNIT_TEST
+# import "Config.h"
+#endif
 
 
 @interface SMServer ()
@@ -65,8 +69,10 @@ NSString *const SMARTOAuthRecordIDKey = @"smart_record_id";
 NSString *const SMARTRecordDocumentsDidChangeNotification = @"SMARTRecordDocumentsDidChangeNotification";
 NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 
-@synthesize delegate, activeRecord, knownRecords;
-@synthesize appId, callbackScheme, url, ui_url, startURL, authorizeURL;
+@synthesize delegate;
+@synthesize manifest, appManifest;
+@synthesize activeRecord, knownRecords;
+@synthesize appId, callbackScheme, url, startURL, authorizeURL;
 @dynamic activeRecordId;
 @synthesize oauth, callQueue, suspendedCalls, currentCall;
 @synthesize loginVC, lastOAuthVerifier;
@@ -112,28 +118,125 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 	return self;
 }
 
+
+
+#pragma mark - Endpoint Locations/Manifests
 /**
- *	startURL is the start URL of the app, usually leads to a webpage where the user can choose a record. It is created from ui_url
- *	and by default is located at "smart-server.com/apps/app@id/launch"
+ *	Fetches the server and app manifests, if needed, then executes the block.
+ *	Authentication calls are wrapped into this method since we need to know our endpoints before we can authenticate.
  */
+- (void)prepareToConnect:(INCancelErrorBlock)callback
+{
+	if ([[url absoluteString] length] < 5) {
+		CANCEL_ERROR_CALLBACK_OR_LOG_ERR_STRING(callback, NO, L_(@"No server URL provided"))		// Error 1001
+		return;
+	}
+	if ([appId length] < 1) {
+		CANCEL_ERROR_CALLBACK_OR_LOG_ERR_STRING(callback, NO, L_(@"No App id provided"))			// Error 1003
+		return;
+	}
+	
+	// need to fetch the manifest first?
+	if (!manifest || !appManifest) {
+		
+	}
+	
+	// all good, execute callback
+	else {
+		CANCEL_ERROR_CALLBACK_OR_LOG_ERR_STRING(callback, NO, nil)
+	}
+}
+
+/**
+ *	Fetches the server manifest.
+ *	@attention You usually don't call this method manually, use "prepareToConnect:" and access the server manifest in "manifest" afterwards.
+ */
+- (void)fetchServerManifest:(INCancelErrorBlock)callback
+{
+	NSURL *manifestURL = [url URLByAppendingPathComponent:@"manifest"];
+	INURLLoader *loader = [INURLLoader loaderWithURL:manifestURL];
+	
+	// fetch
+	[loader getWithCallback:^(BOOL userDidCancel, NSString *errorMessage) {
+		
+		// upon success, parse the response into the manifest dictionary
+		if (!errorMessage && !userDidCancel) {
+			NSError *jsonError = nil;
+			id resDict = [NSJSONSerialization JSONObjectWithData:loader.responseData options:0 error:&jsonError];
+			if (!resDict) {
+				errorMessage = [jsonError localizedDescription];
+			}
+			else if ([resDict isKindOfClass:[NSDictionary class]]) {
+				self.manifest = (NSDictionary *)resDict;
+			}
+			else {
+				errorMessage = [NSString stringWithFormat:@"Did not receive a dictionary for the manifest, but a %@:  %@", NSStringFromClass([resDict class]), resDict];
+			}
+		}
+		
+		// pass it all to the main callback
+		CANCEL_ERROR_CALLBACK_OR_LOG_ERR_STRING(callback, userDidCancel, errorMessage);
+	}];
+}
+
+/**
+ *	Fetches the app manifest.
+ *	@attention You usually don't call this method, use "prepareToConnect:" which performs this method. Afterwards, "appManifest" contains the manifest.
+ */
+- (void)fetchAppManifest:(INCancelErrorBlock)callback
+{
+	if (!YES) {
+	}
+	
+	NSURL *manifestURL = [url URLByAppendingPathComponent:@"manifest"];
+	INURLLoader *loader = [INURLLoader loaderWithURL:manifestURL];
+	
+	// fetch
+	[loader getWithCallback:^(BOOL userDidCancel, NSString *errorMessage) {
+		
+		// upon success, parse the response into the manifest dictionary
+		if (!errorMessage && !userDidCancel) {
+			NSError *jsonError = nil;
+			id resDict = [NSJSONSerialization JSONObjectWithData:loader.responseData options:0 error:&jsonError];
+			if (!resDict) {
+				errorMessage = [jsonError localizedDescription];
+			}
+			else if ([resDict isKindOfClass:[NSDictionary class]]) {
+				self.manifest = (NSDictionary *)resDict;
+			}
+			else {
+				errorMessage = [NSString stringWithFormat:@"Did not receive a dictionary for the manifest, but a %@:  %@", NSStringFromClass([resDict class]), resDict];
+			}
+		}
+		
+		// pass it all to the main callback
+		CANCEL_ERROR_CALLBACK_OR_LOG_ERR_STRING(callback, userDidCancel, errorMessage);
+	}];
+}
+
+
+/**
+  *	startURL is the start URL of the app, usually leads to a webpage where the user can choose a record.
+  *	It is extracted from the app manifest found at "https://smart-server.com/apps/app@id/manifest"
+  */
 - (NSURL *)startURL
 {
 	if (!startURL) {
 		if ([appId length] < 1) {
 			ALog(@"appId is not set, startURL will most likely be invalid!");
 		}
-		self.startURL = [[[ui_url URLByAppendingPathComponent:@"apps"] URLByAppendingPathComponent:self.appId] URLByAppendingPathComponent:@"launch"];
+		//self.startURL = [[[ui_url URLByAppendingPathComponent:@"apps"] URLByAppendingPathComponent:self.appId] URLByAppendingPathComponent:@"launch"];
 	}
 	return startURL;
 }
 
 /**
- *	authorizeURL is created from ui_url
+ *	authorizeURL is extracted from the server manifest
  */
 - (NSURL *)authorizeURL
 {
 	if (!authorizeURL) {
-		self.authorizeURL = [self.ui_url URLByAppendingPathComponent:@"oauth/authorize"];
+		//self.authorizeURL = [self.ui_url URLByAppendingPathComponent:@"oauth/authorize"];
 	}
 	return authorizeURL;
 }
@@ -153,31 +256,9 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 
 
 
-#pragma mark - Server
+#pragma mark - Record Selection
 /**
- *	Sets the active record and resets the oauth instance upon logout
- */
-- (void)setActiveRecord:(SMRecord *)aRecord
-{
-	if (aRecord != activeRecord) {
-		activeRecord = aRecord;
-		
-		if (!activeRecord) {
-			self.oauth = nil;
-		}
-	}
-}
-
-/**
- *	Shortcut to the active record id
- */
-- (NSString *)activeRecordId
-{
-	return activeRecord.uuid;
-}
-
-/**
- *	Obviously returns the record with the given id, returns nil if it is not found
+ *	@return The record with the given id, nil if it is not found
  */
 - (SMRecord *)recordWithId:(NSString *)recordId
 {
@@ -189,39 +270,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 	return nil;
 }
 
-/**
- *	Test server readyness
- *	@return A BOOL whether the server is ready; if NO, error is guaranteed to not be nil, if a pointer was passed
- */
-- (BOOL)readyToConnect:(NSError * __autoreleasing *)error
-{
-	if ([[url absoluteString] length] < 5) {
-		ERR(error, L_(@"No server URL provided"), 1001)
-		return NO;
-	}
-	if ([[ui_url absoluteString] length] < 5) {
-		ERR(error, L_(@"No UI server URL provided"), 1002)
-		return NO;
-	}
-	if ([appId length] < 1) {
-		ERR(error, L_(@"No App id provided"), 1003)
-		return NO;
-	}
-	if ([consumerKey length] < 1) {
-		ERR(error, L_(@"No consumer key provided"), 1004)
-		return NO;
-	}
-	if ([consumerSecret length] < 1) {
-		ERR(error, L_(@"No consumer secret provided"), 1005)
-		return NO;
-	}
-	
-	return YES;
-}
 
-
-
-#pragma mark - Record Selection
 /**
  *	This is the main authentication entry point, this method will ask the delegate where to present a login view controller, if authentication is necessary, and
  *	handle all user interactions until login was successful or the user cancels the login operation.
@@ -233,12 +282,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 	NSError *error = nil;
 	
 	// check whether we are ready
-	if (![self readyToConnect:&error]) {
-		NSString *errorStr = error ? [error localizedDescription] : @"Error Connecting";
-		CANCEL_ERROR_CALLBACK_OR_LOG_ERR_STRING(callback, NO, errorStr)
-		return;
-	}
-	
+#warning WRAP IN prepareToConnect
 	// dequeue current call
 	if (currentCall) {
 		[self suspendCall:currentCall];
@@ -302,11 +346,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 	NSError *error = nil;
 	
 	// check whether we are ready
-	if (![self readyToConnect:&error]) {
-		NSString *errorStr = error ? [error localizedDescription] : @"Error Connecting";
-		CANCEL_ERROR_CALLBACK_OR_LOG_ERR_STRING(callback, NO, errorStr)
-		return;
-	}
+#warning WRAP IN prepareToConnect
 	
 	// dequeue current call
 	if (!currentCall) {
@@ -714,6 +754,31 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 		}
 	}
 	return api;
+}
+
+
+
+#pragma mark - KVC
+/**
+ *	Sets the active record and resets the oauth instance upon logout
+ */
+- (void)setActiveRecord:(SMRecord *)aRecord
+{
+	if (aRecord != activeRecord) {
+		activeRecord = aRecord;
+		
+		if (!activeRecord) {
+			self.oauth = nil;
+		}
+	}
+}
+
+/**
+ *	Shortcut to the active record id
+ */
+- (NSString *)activeRecordId
+{
+	return activeRecord.uuid;
 }
 
 

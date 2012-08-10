@@ -5,6 +5,9 @@
       location = "container:README.md">
    </FileRef>
    <FileRef
+      location = "group:SMARTMedSample-ios/SMART Medications Sample.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "container:SMARTFramework/SMARTFramework.xcodeproj">
    </FileRef>
    <FileRef

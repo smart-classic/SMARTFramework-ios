@@ -6,3 +6,6 @@
 	path = MPOAuth
 	url = git://github.com/chb/MPOAuth.git
 	pushURL = git@github.com:chb/MPOAuth.git
+[submodule "SMARTMedSample-ios"]
+	path = SMARTMedSample-ios
+	url = git://github.com/p2/SMARTMedSample-ios.git

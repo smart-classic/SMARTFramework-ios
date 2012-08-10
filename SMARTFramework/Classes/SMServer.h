@@ -84,8 +84,11 @@
 @property (nonatomic, assign) id<SMARTServerDelegate> delegate;					///< A delegate to receive notifications
 
 @property (nonatomic, strong) NSURL *url;										///< The server URL
-@property (nonatomic, strong) NSURL *ui_url;									///< The UI-server URL (needed for login)
 @property (nonatomic, copy) NSString *appId;									///< The id of the app as it is known on the server
+
+@property (nonatomic, copy) NSDictionary *manifest;								///< The server manifest, decoded from JSON
+@property (nonatomic, copy) NSDictionary *appManifest;							///< The app manifest, decoded from JSON
+
 @property (nonatomic, copy) NSString *consumerKey;								///< The consumer key for the app
 @property (nonatomic, copy) NSString *consumerSecret;							///< The consumer secret for the app
 @property (nonatomic, copy) NSString *callbackScheme;							///< Defaults to "smart-app", but you can use your own
@@ -102,12 +105,16 @@
 
 - (void)selectRecord:(INCancelErrorBlock)callback;
 - (void)authenticate:(INCancelErrorBlock)callback;
-- (SMRecord *)recordWithId:(NSString *)recordId;
 
 // authentication
-- (BOOL)readyToConnect:(NSError **)error;
+- (void)prepareToConnect:(INCancelErrorBlock)callback;
+- (void)fetchServerManifest:(INCancelErrorBlock)callback;
+- (void)fetchAppManifest:(INCancelErrorBlock)callback;
 - (BOOL)shouldAutomaticallyAuthenticateFrom:(NSURL *)authURL;
 - (NSURL *)authorizeCallbackURL;
+
+// records
+- (SMRecord *)recordWithId:(NSString *)recordId;
 
 // app-specific storage
 - (void)fetchAppSpecificDocumentsWithCallback:(INSuccessRetvalueBlock)callback;

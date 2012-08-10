@@ -27,6 +27,7 @@
 @implementation SMRecord
 
 @synthesize uuid = _uuid;
+@synthesize server = _server;
 @synthesize accessToken = _accessToken, accessTokenSecret = _accessTokenSecret;
 
 #pragma mark -
@@ -38,6 +39,7 @@
 {
 	if ((self = [super init])) {
 		self.uuid = anId;
+		self.server = aServer;
 	}
 	return self;
 }

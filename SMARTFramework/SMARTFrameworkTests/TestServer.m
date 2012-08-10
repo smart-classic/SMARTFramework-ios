@@ -25,4 +25,17 @@
 
 @implementation TestServer
 
+
+- (void)testManifests
+{
+	SMServer *realServer = [SMServer serverWithDelegate:nil];
+	realServer.url = [NSURL URLWithString:@"http://coruscant.local:7000"];
+	realServer.appId = @"medsample@apps.indivo.org";
+	
+	[realServer fetchServerManifest:^(BOOL userDidCancel, NSString *__autoreleasing errorMessage) {
+		NSLog(@"manifest: %@", realServer.manifest);
+	}];
+}
+
+
 @end

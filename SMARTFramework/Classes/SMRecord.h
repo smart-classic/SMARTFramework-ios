@@ -31,10 +31,11 @@
  */
 @interface SMRecord : NSObject
 
-@property (nonatomic, copy) NSString *uuid;
+@property (nonatomic, copy) NSString *uuid;							///< The record id
 
-@property (nonatomic, copy) NSString *accessToken;
-@property (nonatomic, copy) NSString *accessTokenSecret;
+@property (nonatomic, weak) SMServer *server;						///< The server this record lives on
+@property (nonatomic, copy) NSString *accessToken;					///< The OAuth token tied to this record and its server
+@property (nonatomic, copy) NSString *accessTokenSecret;			///< The OAuth secret
 
 - (id)initWithId:(NSString *)anId onServer:(SMServer *)aServer;
 

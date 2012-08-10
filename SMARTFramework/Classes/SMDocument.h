@@ -1,8 +1,8 @@
 /*
- SMARTDocuments.h
+ SMDocument.h
  SMARTFramework
-
- Created by Pascal Pfiffner on 8/6/12.
+ 
+ Created by Pascal Pfiffner on 8/10/12.
  Copyright (c) 2012 CHIP, Boston Children's Hospital. All rights reserved.
  
  This library is free software; you can redistribute it and/or
@@ -20,9 +20,25 @@
  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-/**
- *	@file SMARTDocuments.h
- *	This header file includes all our document subclasses. Include this header where you use these classes.
- */
+#import <Foundation/Foundation.h>
+#import "SMART.h"
 
-#import "SMMedication.h"
+@class SMRecord;
+
+
+/**
+ *	The base class for all our documents
+ */
+@interface SMDocument : NSObject
+
+@property (nonatomic, copy) NSString *uuid;				///< This document's ID on the server
+@property (nonatomic, weak) SMRecord *record;			///< The record this document belongs to
+
+// performing server calls
+- (void)get:(NSString *)aMethod callback:(INSuccessRetvalueBlock)callback;
+- (void)get:(NSString *)aMethod parameters:(NSArray *)paramArray callback:(INSuccessRetvalueBlock)callback;
+
+- (void)performMethod:(NSString *)aMethod withBody:(NSString *)body orParameters:(NSArray *)parameters httpMethod:(NSString *)httpMethod callback:(INSuccessRetvalueBlock)callback;
+
+
+@end

@@ -1,8 +1,8 @@
 /*
- SMARTDocuments.h
+ SMARTDocument.h
  SMARTFramework
-
- Created by Pascal Pfiffner on 8/6/12.
+ 
+ Created by Pascal Pfiffner on 8/10/12.
  Copyright (c) 2012 CHIP, Boston Children's Hospital. All rights reserved.
  
  This library is free software; you can redistribute it and/or
@@ -20,9 +20,12 @@
  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-/**
- *	@file SMARTDocuments.h
- *	This header file includes all our document subclasses. Include this header where you use these classes.
- */
+#import "SMDocument.h"
 
-#import "SMMedication.h"
+
+/**
+ *	Represents a medication object
+ */
+@interface SMMedication : SMDocument
+
+@end

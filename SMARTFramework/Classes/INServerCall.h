@@ -29,13 +29,14 @@
 
 
 /**
- *	Our internal class to handle a call to the server
+ *	Our internal class to handle a call to the server, signed with OAuth credentials,
  */
 @interface INServerCall : NSObject <MPOAuthAPIAuthDelegate, MPOAuthAPILoadDelegate>
 
 @property (nonatomic, assign) SMServer *server;							///< The server upon which we are called
 @property (nonatomic, copy) NSString *method;							///< The method to call on the server URL
 @property (nonatomic, copy) NSString *HTTPMethod;						///< Will be GET by default
+@property (nonatomic, copy) NSString *contentType;						///< "application/xml" by default
 @property (nonatomic, copy) NSString *body;								///< Body data, takes precedence over "parameters" if length is > 0
 @property (nonatomic, strong) NSArray *parameters;						///< An array with @"key=value" strings to be passed to the server, overridden by "body"
 @property (nonatomic, strong) MPOAuthAPI *oauth;						///< The call will retain a copy of the oauth instance

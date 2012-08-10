@@ -40,7 +40,7 @@
 @implementation INServerCall
 
 @synthesize server;
-@synthesize method, body, parameters, HTTPMethod, oauth, finishIfAuthenticated;
+@synthesize method, HTTPMethod, contentType, body, parameters, oauth, finishIfAuthenticated;
 @synthesize hasBeenFired, retryWithNewTokenAfterFailure, didRetryWithNewTokenAfterFailure, responseObject, myCallback;
 
 
@@ -212,9 +212,9 @@
 			
 			NSURL *fullURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", [self.oauth.baseURL absoluteString], self.method]];
 			NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:fullURL];
-			
+			NSString *contType = ([contentType length] > 0) ? contentType : @"application/xml";
 			[request setHTTPMethod:HTTPMethod];
-			[request setValue:@"application/xml" forHTTPHeaderField:@"Content-Type"];
+			[request setValue:contType forHTTPHeaderField:@"Content-Type"];
 			[request setValue:[NSString stringWithFormat:@"%d", [bodyData length]] forHTTPHeaderField:@"Content-Length"];
 			[request setHTTPBody:bodyData];
 			
@@ -405,7 +405,7 @@
 	if ([inData length] > 0) {
 		retString = [[NSString alloc] initWithData:inData encoding:NSUTF8StringEncoding];
 	}
-	//DLog(@"%@ %@  -----  %@", HTTPMethod, method, retString);
+	DLog(@"%@ %@ %@  -----  %@", HTTPMethod, method, [aResponse MIMEType], retString);
 	
 	// compose the response
 	if ([retString length] > 0) {
@@ -431,6 +431,7 @@
 	// get the correct error (if we have one in responseObject alread, we ignore inError)
 	NSError *prevError = [responseObject objectForKey:INErrorKey];
 	NSError *actualError = prevError ? prevError : inError;
+	DLog(@"%@ %@  xxxxx  %@", HTTPMethod, method, [actualError localizedDescription]);
 	
 	// we should arrive here if the token was rejected
 	if (retryWithNewTokenAfterFailure) {

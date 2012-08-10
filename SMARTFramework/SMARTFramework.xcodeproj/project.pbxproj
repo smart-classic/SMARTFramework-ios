@@ -7,11 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EE249A4315D59F04001A63D7 /* SMDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = EE249A4115D59F04001A63D7 /* SMDocument.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EE249A4415D59F04001A63D7 /* SMDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = EE249A4215D59F04001A63D7 /* SMDocument.m */; };
+		EE249A4815D59F4B001A63D7 /* SMMedication.h in Headers */ = {isa = PBXBuildFile; fileRef = EE249A4615D59F4B001A63D7 /* SMMedication.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EE249A4915D59F4B001A63D7 /* SMMedication.m in Sources */ = {isa = PBXBuildFile; fileRef = EE249A4715D59F4B001A63D7 /* SMMedication.m */; };
+		EE249AB315D5CBB1001A63D7 /* libraptor2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE249AB215D5CBB1001A63D7 /* libraptor2.a */; };
+		EE249AB515D5CBB4001A63D7 /* librasqal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE249AB415D5CBB4001A63D7 /* librasqal.a */; };
+		EE249AB715D5CBB6001A63D7 /* librdf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE249AB615D5CBB6001A63D7 /* librdf.a */; };
 		EE6A5A7E15CC723500DD0F68 /* libredland-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE6A5A7D15CC723500DD0F68 /* libredland-ios.a */; };
 		EE6A5A8215CC72D500DD0F68 /* TestServer.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6A5A8115CC72D500DD0F68 /* TestServer.m */; };
 		EE6A5A8515CC731200DD0F68 /* TestServerCalls.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6A5A8415CC731200DD0F68 /* TestServerCalls.m */; };
 		EE6A5A9015CC736E00DD0F68 /* SMMockServer.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6A5A8F15CC736E00DD0F68 /* SMMockServer.m */; };
-		EE6A5A9615CC753800DD0F68 /* SMRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = EE6A5A9415CC753800DD0F68 /* SMRecord.h */; };
+		EE6A5A9615CC753800DD0F68 /* SMRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = EE6A5A9415CC753800DD0F68 /* SMRecord.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EE6A5A9715CC753800DD0F68 /* SMRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6A5A9515CC753800DD0F68 /* SMRecord.m */; };
 		EE832F7D15D004A500E7FFF1 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EE832F7C15D004A500E7FFF1 /* libxml2.dylib */; };
 		EE832F8115D006D100E7FFF1 /* SMLoginViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EE832F7F15D006D100E7FFF1 /* SMLoginViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -20,9 +27,9 @@
 		EEC9C5A715CB2EA900B7C568 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEC9C5A615CB2EA900B7C568 /* SenTestingKit.framework */; };
 		EEC9C5AA15CB2EA900B7C568 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEC9C59815CB2EA800B7C568 /* Foundation.framework */; };
 		EEC9C5AD15CB2EA900B7C568 /* libSMART.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EEC9C59515CB2EA800B7C568 /* libSMART.a */; };
-		EEE82D8515D008510017EA0B /* IndivoActionView.h in Headers */ = {isa = PBXBuildFile; fileRef = EEE82D8315D008500017EA0B /* IndivoActionView.h */; };
+		EEE82D8515D008510017EA0B /* IndivoActionView.h in Headers */ = {isa = PBXBuildFile; fileRef = EEE82D8315D008500017EA0B /* IndivoActionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EEE82D8615D008510017EA0B /* IndivoActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = EEE82D8415D008500017EA0B /* IndivoActionView.m */; };
-		EEE82D8D15D00D810017EA0B /* SMARTDocuments.h in Headers */ = {isa = PBXBuildFile; fileRef = EEE82D8C15D00D810017EA0B /* SMARTDocuments.h */; };
+		EEE82D8D15D00D810017EA0B /* SMARTDocuments.h in Headers */ = {isa = PBXBuildFile; fileRef = EEE82D8C15D00D810017EA0B /* SMARTDocuments.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EEE82D9015D01E780017EA0B /* libredland-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE6A5A7D15CC723500DD0F68 /* libredland-ios.a */; };
 		EEE82D9215D02F4A0017EA0B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE82D9115D02F4A0017EA0B /* UIKit.framework */; };
 		EEE82D9615D02FD80017EA0B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE82D9415D02F970017EA0B /* CoreGraphics.framework */; };
@@ -33,10 +40,10 @@
 		EEF0196615CB453400FFD480 /* Base64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = EEF0193915CB453400FFD480 /* Base64Transcoder.c */; };
 		EEF0196715CB453400FFD480 /* Base64Transcoder.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0193A15CB453400FFD480 /* Base64Transcoder.h */; };
 		EEF0196815CB453400FFD480 /* MPDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0193B15CB453400FFD480 /* MPDebug.h */; };
-		EEF0196915CB453400FFD480 /* MPOAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0193C15CB453400FFD480 /* MPOAuth.h */; };
-		EEF0196A15CB453400FFD480 /* MPOAuthAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0193D15CB453400FFD480 /* MPOAuthAPI.h */; };
+		EEF0196915CB453400FFD480 /* MPOAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0193C15CB453400FFD480 /* MPOAuth.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EEF0196A15CB453400FFD480 /* MPOAuthAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0193D15CB453400FFD480 /* MPOAuthAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EEF0196B15CB453400FFD480 /* MPOAuthAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF0193E15CB453400FFD480 /* MPOAuthAPI.m */; };
-		EEF0196C15CB453400FFD480 /* MPOAuthAPIRequestLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0193F15CB453400FFD480 /* MPOAuthAPIRequestLoader.h */; };
+		EEF0196C15CB453400FFD480 /* MPOAuthAPIRequestLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0193F15CB453400FFD480 /* MPOAuthAPIRequestLoader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EEF0196D15CB453400FFD480 /* MPOAuthAPIRequestLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF0194015CB453400FFD480 /* MPOAuthAPIRequestLoader.m */; };
 		EEF0196E15CB453400FFD480 /* MPOAuthAuthenticationMethod.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0194115CB453400FFD480 /* MPOAuthAuthenticationMethod.h */; };
 		EEF0196F15CB453400FFD480 /* MPOAuthAuthenticationMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF0194215CB453400FFD480 /* MPOAuthAuthenticationMethod.m */; };
@@ -55,8 +62,8 @@
 		EEF0197C15CB453400FFD480 /* MPOAuthCredentialConcreteStore+KeychainAdditionsiPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF0194F15CB453400FFD480 /* MPOAuthCredentialConcreteStore+KeychainAdditionsiPhone.m */; };
 		EEF0197D15CB453400FFD480 /* MPOAuthCredentialConcreteStore.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0195015CB453400FFD480 /* MPOAuthCredentialConcreteStore.h */; };
 		EEF0197E15CB453400FFD480 /* MPOAuthCredentialConcreteStore.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF0195115CB453400FFD480 /* MPOAuthCredentialConcreteStore.m */; };
-		EEF0197F15CB453400FFD480 /* MPOAuthCredentialStore.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0195215CB453400FFD480 /* MPOAuthCredentialStore.h */; };
-		EEF0198015CB453400FFD480 /* MPOAuthParameterFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0195315CB453400FFD480 /* MPOAuthParameterFactory.h */; };
+		EEF0197F15CB453400FFD480 /* MPOAuthCredentialStore.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0195215CB453400FFD480 /* MPOAuthCredentialStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EEF0198015CB453400FFD480 /* MPOAuthParameterFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0195315CB453400FFD480 /* MPOAuthParameterFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EEF0198115CB453400FFD480 /* MPOAuthSignatureParameter.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0195415CB453400FFD480 /* MPOAuthSignatureParameter.h */; };
 		EEF0198215CB453400FFD480 /* MPOAuthSignatureParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF0195515CB453400FFD480 /* MPOAuthSignatureParameter.m */; };
 		EEF0198315CB453400FFD480 /* MPOAuthURLRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0195615CB453400FFD480 /* MPOAuthURLRequest.h */; };
@@ -94,6 +101,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EE249A4115D59F04001A63D7 /* SMDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDocument.h; sourceTree = "<group>"; };
+		EE249A4215D59F04001A63D7 /* SMDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDocument.m; sourceTree = "<group>"; };
+		EE249A4615D59F4B001A63D7 /* SMMedication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMedication.h; sourceTree = "<group>"; };
+		EE249A4715D59F4B001A63D7 /* SMMedication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMedication.m; sourceTree = "<group>"; };
+		EE249A5815D5A19D001A63D7 /* ErrorCodes.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = ErrorCodes.md; sourceTree = "<group>"; };
+		EE249AB215D5CBB1001A63D7 /* libraptor2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libraptor2.a; path = "../Redland-ObjC/Redland-source/Universal/libraptor2.a"; sourceTree = "<group>"; };
+		EE249AB415D5CBB4001A63D7 /* librasqal.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = librasqal.a; path = "../Redland-ObjC/Redland-source/Universal/librasqal.a"; sourceTree = "<group>"; };
+		EE249AB615D5CBB6001A63D7 /* librdf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = librdf.a; path = "../Redland-ObjC/Redland-source/Universal/librdf.a"; sourceTree = "<group>"; };
 		EE6A5A7D15CC723500DD0F68 /* libredland-ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libredland-ios.a"; path = "../Redland-ObjC/build/Development-iphoneos/libredland-ios.a"; sourceTree = "<group>"; };
 		EE6A5A8015CC72D500DD0F68 /* TestServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestServer.h; sourceTree = "<group>"; };
 		EE6A5A8115CC72D500DD0F68 /* TestServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestServer.m; sourceTree = "<group>"; };
@@ -182,6 +197,9 @@
 			files = (
 				EEC9C59915CB2EA800B7C568 /* Foundation.framework in Frameworks */,
 				EE832F7D15D004A500E7FFF1 /* libxml2.dylib in Frameworks */,
+				EE249AB315D5CBB1001A63D7 /* libraptor2.a in Frameworks */,
+				EE249AB515D5CBB4001A63D7 /* librasqal.a in Frameworks */,
+				EE249AB715D5CBB6001A63D7 /* librdf.a in Frameworks */,
 				EE6A5A7E15CC723500DD0F68 /* libredland-ios.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -205,6 +223,7 @@
 		EEC9C58815CB2EA800B7C568 = {
 			isa = PBXGroup;
 			children = (
+				EE249A5815D5A19D001A63D7 /* ErrorCodes.md */,
 				EEF0192915CB447100FFD480 /* Config.h */,
 				EEF0192B15CB447900FFD480 /* Config-default.h */,
 				EEC9C59A15CB2EA800B7C568 /* Classes */,
@@ -233,6 +252,9 @@
 				EEE82D9115D02F4A0017EA0B /* UIKit.framework */,
 				EEC9C5A615CB2EA900B7C568 /* SenTestingKit.framework */,
 				EE832F7C15D004A500E7FFF1 /* libxml2.dylib */,
+				EE249AB615D5CBB6001A63D7 /* librdf.a */,
+				EE249AB415D5CBB4001A63D7 /* librasqal.a */,
+				EE249AB215D5CBB1001A63D7 /* libraptor2.a */,
 				EE6A5A7D15CC723500DD0F68 /* libredland-ios.a */,
 			);
 			name = Frameworks;
@@ -247,6 +269,10 @@
 				EE6A5A9415CC753800DD0F68 /* SMRecord.h */,
 				EE6A5A9515CC753800DD0F68 /* SMRecord.m */,
 				EEE82D8C15D00D810017EA0B /* SMARTDocuments.h */,
+				EE249A4115D59F04001A63D7 /* SMDocument.h */,
+				EE249A4215D59F04001A63D7 /* SMDocument.m */,
+				EE249A4615D59F4B001A63D7 /* SMMedication.h */,
+				EE249A4715D59F4B001A63D7 /* SMMedication.m */,
 				EEE82D8215D008330017EA0B /* View Controller */,
 				EEF0199F15CB489E00FFD480 /* Server Calls */,
 			);
@@ -376,15 +402,22 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EEF0192A15CB447100FFD480 /* Config.h in Headers */,
 				EEF0193215CB448700FFD480 /* SMART.h in Headers */,
+				EEF0192A15CB447100FFD480 /* Config.h in Headers */,
 				EEF0193315CB448700FFD480 /* SMServer.h in Headers */,
-				EEF0196715CB453400FFD480 /* Base64Transcoder.h in Headers */,
-				EEF0196815CB453400FFD480 /* MPDebug.h in Headers */,
+				EE6A5A9615CC753800DD0F68 /* SMRecord.h in Headers */,
+				EEE82D8D15D00D810017EA0B /* SMARTDocuments.h in Headers */,
+				EE249A4315D59F04001A63D7 /* SMDocument.h in Headers */,
+				EE249A4815D59F4B001A63D7 /* SMMedication.h in Headers */,
 				EEF0196915CB453400FFD480 /* MPOAuth.h in Headers */,
 				EEF0196A15CB453400FFD480 /* MPOAuthAPI.h in Headers */,
+				EEF0198015CB453400FFD480 /* MPOAuthParameterFactory.h in Headers */,
+				EEF0196715CB453400FFD480 /* Base64Transcoder.h in Headers */,
 				EEF0196C15CB453400FFD480 /* MPOAuthAPIRequestLoader.h in Headers */,
+				EEF0197F15CB453400FFD480 /* MPOAuthCredentialStore.h in Headers */,
+				EEF0196815CB453400FFD480 /* MPDebug.h in Headers */,
 				EEF0196E15CB453400FFD480 /* MPOAuthAuthenticationMethod.h in Headers */,
+				EEE82D8515D008510017EA0B /* IndivoActionView.h in Headers */,
 				EEF0197015CB453400FFD480 /* MPOAuthAuthenticationMethodAuthExchange.h in Headers */,
 				EEF0197215CB453400FFD480 /* MPOAuthAuthenticationMethodOAuth.h in Headers */,
 				EEF0197415CB453400FFD480 /* MPOAuthAuthenticationMethodTwoLegged.h in Headers */,
@@ -392,8 +425,6 @@
 				EEF0197815CB453400FFD480 /* MPOAuthConnection.h in Headers */,
 				EEF0197B15CB453400FFD480 /* MPOAuthCredentialConcreteStore+KeychainAdditions.h in Headers */,
 				EEF0197D15CB453400FFD480 /* MPOAuthCredentialConcreteStore.h in Headers */,
-				EEF0197F15CB453400FFD480 /* MPOAuthCredentialStore.h in Headers */,
-				EEF0198015CB453400FFD480 /* MPOAuthParameterFactory.h in Headers */,
 				EEF0198115CB453400FFD480 /* MPOAuthSignatureParameter.h in Headers */,
 				EEF0198315CB453400FFD480 /* MPOAuthURLRequest.h in Headers */,
 				EEF0198515CB453400FFD480 /* MPOAuthURLResponse.h in Headers */,
@@ -406,10 +437,7 @@
 				EEF0199915CB489A00FFD480 /* INServerCall.h in Headers */,
 				EEF0199B15CB489A00FFD480 /* INURLFetcher.h in Headers */,
 				EEF0199D15CB489A00FFD480 /* INURLLoader.h in Headers */,
-				EE6A5A9615CC753800DD0F68 /* SMRecord.h in Headers */,
 				EE832F8115D006D100E7FFF1 /* SMLoginViewController.h in Headers */,
-				EEE82D8515D008510017EA0B /* IndivoActionView.h in Headers */,
-				EEE82D8D15D00D810017EA0B /* SMARTDocuments.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -538,6 +566,8 @@
 				EE6A5A9715CC753800DD0F68 /* SMRecord.m in Sources */,
 				EE832F8315D006EE00E7FFF1 /* SMLoginViewController.m in Sources */,
 				EEE82D8615D008510017EA0B /* IndivoActionView.m in Sources */,
+				EE249A4415D59F04001A63D7 /* SMDocument.m in Sources */,
+				EE249A4915D59F4B001A63D7 /* SMMedication.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -597,7 +627,10 @@
 				GCC_PREFIX_HEADER = "Classes/SMARTFramework-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(SDK_DIR)/usr/include/libxml2";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)\"/**";
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(BUILT_PRODUCTS_DIR)\"/**",
+					"\"$(SRCROOT)/../Redland-ObjC/Redland-source/Universal\"",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -677,7 +710,10 @@
 				GCC_PREFIX_HEADER = "Classes/SMARTFramework-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(SDK_DIR)/usr/include/libxml2";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)\"/**";
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(BUILT_PRODUCTS_DIR)\"/**",
+					"\"$(SRCROOT)/../Redland-ObjC/Redland-source/Universal\"",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -692,7 +728,10 @@
 				GCC_PREFIX_HEADER = "Classes/SMARTFramework-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(SDK_DIR)/usr/include/libxml2";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)\"/**";
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(BUILT_PRODUCTS_DIR)\"/**",
+					"\"$(SRCROOT)/../Redland-ObjC/Redland-source/Universal\"",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
