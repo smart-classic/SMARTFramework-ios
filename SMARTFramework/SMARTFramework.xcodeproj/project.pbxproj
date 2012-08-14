@@ -14,6 +14,8 @@
 		EE249AB315D5CBB1001A63D7 /* libraptor2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE249AB215D5CBB1001A63D7 /* libraptor2.a */; };
 		EE249AB515D5CBB4001A63D7 /* librasqal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE249AB415D5CBB4001A63D7 /* librasqal.a */; };
 		EE249AB715D5CBB6001A63D7 /* librdf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE249AB615D5CBB6001A63D7 /* librdf.a */; };
+		EE5144FE15DAF60B00DA9BA2 /* SMDemographics.h in Headers */ = {isa = PBXBuildFile; fileRef = EE5144FC15DAF60A00DA9BA2 /* SMDemographics.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EE5144FF15DAF60B00DA9BA2 /* SMDemographics.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5144FD15DAF60A00DA9BA2 /* SMDemographics.m */; };
 		EE6A5A7E15CC723500DD0F68 /* libredland-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE6A5A7D15CC723500DD0F68 /* libredland-ios.a */; };
 		EE6A5A8215CC72D500DD0F68 /* TestServer.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6A5A8115CC72D500DD0F68 /* TestServer.m */; };
 		EE6A5A8515CC731200DD0F68 /* TestServerCalls.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6A5A8415CC731200DD0F68 /* TestServerCalls.m */; };
@@ -109,6 +111,8 @@
 		EE249AB215D5CBB1001A63D7 /* libraptor2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libraptor2.a; path = "../Redland-ObjC/Redland-source/Universal/libraptor2.a"; sourceTree = "<group>"; };
 		EE249AB415D5CBB4001A63D7 /* librasqal.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = librasqal.a; path = "../Redland-ObjC/Redland-source/Universal/librasqal.a"; sourceTree = "<group>"; };
 		EE249AB615D5CBB6001A63D7 /* librdf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = librdf.a; path = "../Redland-ObjC/Redland-source/Universal/librdf.a"; sourceTree = "<group>"; };
+		EE5144FC15DAF60A00DA9BA2 /* SMDemographics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDemographics.h; sourceTree = "<group>"; };
+		EE5144FD15DAF60A00DA9BA2 /* SMDemographics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDemographics.m; sourceTree = "<group>"; };
 		EE6A5A7D15CC723500DD0F68 /* libredland-ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libredland-ios.a"; path = "../Redland-ObjC/build/Development-iphoneos/libredland-ios.a"; sourceTree = "<group>"; };
 		EE6A5A8015CC72D500DD0F68 /* TestServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestServer.h; sourceTree = "<group>"; };
 		EE6A5A8115CC72D500DD0F68 /* TestServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestServer.m; sourceTree = "<group>"; };
@@ -273,6 +277,8 @@
 				EE249A4215D59F04001A63D7 /* SMDocument.m */,
 				EE249A4615D59F4B001A63D7 /* SMMedication.h */,
 				EE249A4715D59F4B001A63D7 /* SMMedication.m */,
+				EE5144FC15DAF60A00DA9BA2 /* SMDemographics.h */,
+				EE5144FD15DAF60A00DA9BA2 /* SMDemographics.m */,
 				EEE82D8215D008330017EA0B /* View Controller */,
 				EEF0199F15CB489E00FFD480 /* Server Calls */,
 			);
@@ -438,6 +444,7 @@
 				EEF0199B15CB489A00FFD480 /* INURLFetcher.h in Headers */,
 				EEF0199D15CB489A00FFD480 /* INURLLoader.h in Headers */,
 				EE832F8115D006D100E7FFF1 /* SMLoginViewController.h in Headers */,
+				EE5144FE15DAF60B00DA9BA2 /* SMDemographics.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -568,6 +575,7 @@
 				EEE82D8615D008510017EA0B /* IndivoActionView.m in Sources */,
 				EE249A4415D59F04001A63D7 /* SMDocument.m in Sources */,
 				EE249A4915D59F4B001A63D7 /* SMMedication.m in Sources */,
+				EE5144FF15DAF60B00DA9BA2 /* SMDemographics.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -625,7 +633,10 @@
 				DSTROOT = /tmp/SMARTFramework_ios.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Classes/SMARTFramework-Prefix.pch";
-				HEADER_SEARCH_PATHS = "$(SDK_DIR)/usr/include/libxml2";
+				HEADER_SEARCH_PATHS = (
+					"$(SDK_DIR)/usr/include/libxml2",
+					"$(BUILT_PRODUCTS_DIR)/**",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(BUILT_PRODUCTS_DIR)\"/**",
@@ -647,6 +658,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Classes/SMARTFramework-Prefix.pch";
 				INFOPLIST_FILE = "SMARTFrameworkTests/SMARTFrameworkTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(BUILT_PRODUCTS_DIR)/**",
@@ -708,7 +720,10 @@
 				DSTROOT = /tmp/SMARTFramework_ios.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Classes/SMARTFramework-Prefix.pch";
-				HEADER_SEARCH_PATHS = "$(SDK_DIR)/usr/include/libxml2";
+				HEADER_SEARCH_PATHS = (
+					"$(SDK_DIR)/usr/include/libxml2",
+					"$(BUILT_PRODUCTS_DIR)/**",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(BUILT_PRODUCTS_DIR)\"/**",
@@ -726,7 +741,10 @@
 				DSTROOT = /tmp/SMARTFramework_ios.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Classes/SMARTFramework-Prefix.pch";
-				HEADER_SEARCH_PATHS = "$(SDK_DIR)/usr/include/libxml2";
+				HEADER_SEARCH_PATHS = (
+					"$(SDK_DIR)/usr/include/libxml2",
+					"$(BUILT_PRODUCTS_DIR)/**",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(BUILT_PRODUCTS_DIR)\"/**",
@@ -748,6 +766,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Classes/SMARTFramework-Prefix.pch";
 				INFOPLIST_FILE = "SMARTFrameworkTests/SMARTFrameworkTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(BUILT_PRODUCTS_DIR)/**",
@@ -767,6 +786,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Classes/SMARTFramework-Prefix.pch";
 				INFOPLIST_FILE = "SMARTFrameworkTests/SMARTFrameworkTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(BUILT_PRODUCTS_DIR)/**",

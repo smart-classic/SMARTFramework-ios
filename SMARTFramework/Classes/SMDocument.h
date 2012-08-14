@@ -24,6 +24,7 @@
 #import "SMART.h"
 
 @class SMRecord;
+@class RedlandModel;
 
 
 /**
@@ -31,8 +32,13 @@
  */
 @interface SMDocument : NSObject
 
-@property (nonatomic, copy) NSString *uuid;				///< This document's ID on the server
-@property (nonatomic, weak) SMRecord *record;			///< The record this document belongs to
+@property (nonatomic, copy) NSString *uuid;								///< This document's ID on the server
+@property (nonatomic, weak) SMRecord *record;							///< The record this document belongs to
+
+@property (nonatomic, readonly, strong) RedlandModel *model;			///< The redland model represented by this object
+
++ (id)newWithRDF:(NSString *)rdfString;
+- (id)initWithRDF:(NSString *)rdfString;
 
 // performing server calls
 - (void)get:(NSString *)aMethod callback:(INSuccessRetvalueBlock)callback;

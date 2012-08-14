@@ -24,6 +24,7 @@
 #import "SMART.h"
 
 @class SMServer;
+@class SMDemographics;
 
 
 /**
@@ -31,21 +32,26 @@
  */
 @interface SMRecord : NSObject
 
-@property (nonatomic, copy) NSString *uuid;							///< The record id
+@property (nonatomic, copy) NSString *record_id;							///< The record id
 
-@property (nonatomic, weak) SMServer *server;						///< The server this record lives on
-@property (nonatomic, copy) NSString *accessToken;					///< The OAuth token tied to this record and its server
-@property (nonatomic, copy) NSString *accessTokenSecret;			///< The OAuth secret
+@property (nonatomic, weak) SMServer *server;								///< The server this record lives on
+@property (nonatomic, copy) NSString *accessToken;							///< The OAuth token tied to this record and its server
+@property (nonatomic, copy) NSString *accessTokenSecret;					///< The OAuth secret
 
-@property (nonatomic, copy) NSString *name;							///< Composed name from givenName and familyName
-@property (nonatomic, copy) NSString *givenName;					///< The patient's given name
-@property (nonatomic, copy) NSString *familyName;					///< The patient's family name
+@property (nonatomic, readonly, strong) SMDemographics *demographics;		///< The demographics document for this record
+@property (nonatomic, copy) NSString *name;									///< Composed name from givenName and familyName
+@property (nonatomic, copy) NSString *givenName;							///< The patient's given name
+@property (nonatomic, copy) NSString *familyName;							///< The patient's family name
+@property (nonatomic, copy) NSString *additionalName;						///< The patient's additional name
 
 - (id)initWithId:(NSString *)anId onServer:(SMServer *)aServer;
 
+// data fetching
 - (void)fetchRecordInfoWithCallback:(INCancelErrorBlock)callback;
 
-// Utilities
+- (void)performMethod:(NSString *)aMethod withBody:(NSString *)body orParameters:(NSArray *)parameters httpMethod:(NSString *)httpMethod callback:(INSuccessRetvalueBlock)callback;
+
+// utilities
 - (BOOL)is:(NSString *)anId;
 
 

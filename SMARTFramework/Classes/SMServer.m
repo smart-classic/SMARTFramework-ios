@@ -248,7 +248,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 - (SMRecord *)recordWithId:(NSString *)recordId
 {
 	for (SMRecord *record in knownRecords) {
-		if ([record.uuid isEqualToString:recordId]) {
+		if ([record.record_id isEqualToString:recordId]) {
 			return record;
 		}
 	}
@@ -764,7 +764,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
  */
 - (NSString *)activeRecordId
 {
-	return activeRecord.uuid;
+	return activeRecord.record_id;
 }
 
 /**

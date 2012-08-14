@@ -23,6 +23,15 @@
 
 #import "SMRecord.h"
 #import "SMServer.h"
+#import "SMDemographics.h"
+
+
+@interface SMRecord ()
+
+@property (nonatomic, readwrite, strong) SMDemographics *demographics;
+
+@end
+
 
 @implementation SMRecord
 
@@ -35,7 +44,7 @@
 - (id)initWithId:(NSString *)anId onServer:(SMServer *)aServer
 {
 	if ((self = [super init])) {
-		self.uuid = anId;
+		self.record_id = anId;
 		self.server = aServer;
 	}
 	return self;
@@ -51,7 +60,66 @@
 - (void)fetchRecordInfoWithCallback:(INCancelErrorBlock)callback
 {
 	self.name = nil;			// to clear the composed name
-	CANCEL_ERROR_CALLBACK_OR_LOG_ERR_STRING(callback, NO, @"Not implemented");
+	
+	NSString *demoPath = [NSString stringWithFormat:@"/records/%@/demographics", _record_id];
+	[self performMethod:demoPath withBody:nil orParameters:nil httpMethod:@"GET" callback:^(BOOL success, NSDictionary *userInfo) {
+		NSString *errorMessage = nil;
+		
+		// error?
+		if (!success) {
+			errorMessage = [[userInfo objectForKey:INErrorKey] localizedDescription];
+			if ([errorMessage length] < 1) {
+				errorMessage = @"An unknown error happened when fetching this record's demographics document";
+			}
+		}
+		
+		// success, create a demographics document
+		else {
+			NSString *rdf = [userInfo objectForKey:INResponseStringKey];
+			if ([rdf length] > 0) {
+				self.demographics = [SMDemographics newWithRDF:rdf];
+				self.givenName = _demographics.givenName;
+				self.additionalName = _demographics.additionalName;
+				self.familyName = _demographics.familyName;
+			}
+			else {
+				errorMessage = @"No RDF was returned for this record's demographics";
+			}
+		}
+		
+		CANCEL_ERROR_CALLBACK_OR_LOG_ERR_STRING(callback, NO, errorMessage)
+	}];
+}
+
+
+/**
+ *	The basic method to perform REST methods on the server with App credentials.
+ *	Uses a INServerCall instance to handle the loading; INServerCall only allows a body string or parameters, but not both, with
+ *	the body string taking precedence.
+ *	@param aMethod The path to call on the server
+ *	@param body The body string
+ *	@param parameters An array full of strings in the form "key=value"
+ *	@param httpMethod The http method, for now GET, PUT or POST
+ *	@param callback A block to execute when the call has finished
+ */
+- (void)performMethod:(NSString *)aMethod withBody:(NSString *)body orParameters:(NSArray *)parameters httpMethod:(NSString *)httpMethod callback:(INSuccessRetvalueBlock)callback
+{
+	if (!_server) {
+		NSString *errStr = [NSString stringWithFormat:@"Fatal Error: I have no server! %@", self];
+		SUCCESS_RETVAL_CALLBACK_OR_LOG_ERR_STRING(callback, errStr, 2000)
+		return;
+	}
+	
+	// create the desired INServerCall instance
+	INServerCall *call = [INServerCall new];
+	call.method = aMethod;
+	call.body = body;
+	call.parameters = parameters;
+	call.HTTPMethod = httpMethod;
+	call.myCallback = callback;
+	
+	// let the server do the work
+	[_server performCall:call];
 }
 
 
@@ -60,8 +128,19 @@
 - (NSString *)name
 {
 	if (!_name) {
-		if ([_givenName length] > 0 || [_familyName length] > 0) {
-			/// @todo concat names into one name
+		NSMutableArray *names = [NSMutableArray arrayWithCapacity:3];
+		if ([_givenName length] > 0) {
+			[names addObject:_givenName];
+		}
+		if ([_additionalName length] > 0) {
+			[names addObject:_additionalName];
+		}
+		if ([_familyName length] > 0) {
+			[names addObject:_familyName];
+		}
+		
+		if ([names count] > 0) {
+			self.name = [names componentsJoinedByString:@" "];
 		}
 		else {
 			self.name = @"Anonymous";
@@ -78,7 +157,7 @@
  */
 - (BOOL)is:(NSString *)anId
 {
-	return [self.uuid isEqualToString:anId];
+	return [self.record_id isEqualToString:anId];
 }
 
 
