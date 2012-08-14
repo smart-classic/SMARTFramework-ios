@@ -6,7 +6,7 @@ These are the developer instructions on how to use [SMARTFramework][self], an iO
 ### Requirements ###
 
 - #### Objective-C ####
-The SMART Framework is an Objective-C framework using **ARC** ([Automatic Reference Counting][arc]), requiring **iOS 5.0 or greater**. You can use it as a static library (or directly import the code files into your App project) as documented below.  
+The SMART Framework is an Objective-C framework using **ARC** ([Automatic Reference Counting][arc]), requiring **iOS 5.0 or greater**. It also uses some of the new Objective-C language features which means you must use **Xcode 4.4** or later. You can use it as a static library (or directly import the code files into your App project) as documented below.  
 The framework utilizes a fork of [MPOAuth][], an OAuth framework by Karl Adam (matrixPointer), and an Objective-C wrapper around [Redland][], an RDF library, originally created by Rene Puls.
 
 - #### SMART Container ####

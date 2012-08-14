@@ -67,7 +67,7 @@
 #pragma mark - View lifecycle
 - (void)loadView
 {
-	self.title = @"IndivoHealth";
+	self.title = @"SMART EMR";
 	
 	CGRect appFrame = [[UIScreen mainScreen] applicationFrame];
 	appFrame.origin = CGPointZero;
@@ -87,7 +87,7 @@
 	CGRect barFrame = CGRectMake(0.f, 0.f, appFrame.size.width, 44.f);
 	UINavigationBar *navBar = [[UINavigationBar alloc] initWithFrame:barFrame];
 	navBar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
-	navBar.tintColor = [UIColor colorWithRed:0.7f green:0.57f blue:0.28f alpha:1.f];
+	navBar.tintColor = [UIColor colorWithRed:0.42f green:0.69f blue:0.83f alpha:1.f];
 	[navBar setItems:[NSArray arrayWithObject:titleItem] animated:NO];
 	self.titleBar = navBar;
 	
@@ -121,12 +121,20 @@
 	self.cancelButton = nil;
 }
 
+/**
+ *	If the view appears and has never loaded a URL, load the startURL or show a hint if there is none.
+ */
 - (void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
 	
-	if ([history count] < 1 && self.startURL) {
-		[self loadURL:self.startURL];
+	if ([history count] < 1) {
+		if (self.startURL) {
+			[self loadURL:self.startURL];
+		}
+		else {
+			[self.webView loadHTMLString:@"No URL" baseURL:nil];
+		}
 	}
 }
 

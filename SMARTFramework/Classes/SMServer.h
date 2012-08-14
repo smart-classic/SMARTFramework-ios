@@ -91,6 +91,11 @@
 
 @property (nonatomic, copy) NSString *consumerKey;								///< The consumer key for the app
 @property (nonatomic, copy) NSString *consumerSecret;							///< The consumer secret for the app
+
+@property (nonatomic, strong) NSURL *startURL;									///< The URL to load to display the login screen and record selection
+@property (nonatomic, strong) NSURL *tokenRequestURL;							///< Endpoint to request an OAuth request token
+@property (nonatomic, strong) NSURL *tokenAuthorizeURL;							///< Endpoint to authorize an OAuth request token
+@property (nonatomic, strong) NSURL *tokenExchangeURL;							///< Endpoint to trade the request for an OAuth access token
 @property (nonatomic, copy) NSString *callbackScheme;							///< Defaults to "smart-app", but you can use your own
 
 @property (nonatomic, strong) SMRecord *activeRecord;							///< The currently active record
@@ -107,11 +112,12 @@
 - (void)authenticate:(INCancelErrorBlock)callback;
 
 // authentication
-- (void)prepareToConnect:(INCancelErrorBlock)callback;
+- (void)performWhenReadyToConnect:(INCancelErrorBlock)callback;
 - (void)fetchServerManifest:(INCancelErrorBlock)callback;
 - (void)fetchAppManifest:(INCancelErrorBlock)callback;
 - (BOOL)shouldAutomaticallyAuthenticateFrom:(NSURL *)authURL;
 - (NSURL *)authorizeCallbackURL;
+- (NSDictionary *)additionalRequestTokenParameters;
 
 // records
 - (SMRecord *)recordWithId:(NSString *)recordId;

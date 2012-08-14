@@ -297,18 +297,12 @@
  */
 - (NSString *)oauthVerifierForCompletedUserAuthorization
 {
-	return server.lastOAuthVerifier;
+	return [server lastOAuthVerifier];
 }
 
-/**
- *	Indivo needs to associate a token with a given record id, so we provide that when performing the request token request
- */
 - (NSDictionary *)additionalRequestTokenParameters
 {
-	if (server.activeRecordId) {
-		return [NSDictionary dictionaryWithObject:server.activeRecordId forKey:@"indivo_record_id"];
-	}
-	return nil;
+	return [server additionalRequestTokenParameters];
 }
 
 /**

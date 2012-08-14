@@ -26,9 +26,6 @@
 
 @implementation SMRecord
 
-@synthesize uuid = _uuid;
-@synthesize server = _server;
-@synthesize accessToken = _accessToken, accessTokenSecret = _accessTokenSecret;
 
 #pragma mark -
 
@@ -47,9 +44,30 @@
 
 
 #pragma mark - Fetching
+/**
+ *	Fetches the record's demographics document from /records/{record_id}/demographics
+ *	@param callback The block to be executed after the call returns from the server
+ */
 - (void)fetchRecordInfoWithCallback:(INCancelErrorBlock)callback
 {
-	CANCEL_ERROR_CALLBACK_OR_LOG_ERR_STRING(callback, YES, @"Not implemented");
+	self.name = nil;			// to clear the composed name
+	CANCEL_ERROR_CALLBACK_OR_LOG_ERR_STRING(callback, NO, @"Not implemented");
+}
+
+
+
+#pragma mark - KVC
+- (NSString *)name
+{
+	if (!_name) {
+		if ([_givenName length] > 0 || [_familyName length] > 0) {
+			/// @todo concat names into one name
+		}
+		else {
+			self.name = @"Anonymous";
+		}
+	}
+	return _name;
 }
 
 

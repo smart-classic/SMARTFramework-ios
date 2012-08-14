@@ -37,6 +37,10 @@
 @property (nonatomic, copy) NSString *accessToken;					///< The OAuth token tied to this record and its server
 @property (nonatomic, copy) NSString *accessTokenSecret;			///< The OAuth secret
 
+@property (nonatomic, copy) NSString *name;							///< Composed name from givenName and familyName
+@property (nonatomic, copy) NSString *givenName;					///< The patient's given name
+@property (nonatomic, copy) NSString *familyName;					///< The patient's family name
+
 - (id)initWithId:(NSString *)anId onServer:(SMServer *)aServer;
 
 - (void)fetchRecordInfoWithCallback:(INCancelErrorBlock)callback;

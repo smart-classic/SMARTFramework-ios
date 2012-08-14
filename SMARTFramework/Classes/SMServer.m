@@ -35,9 +35,6 @@
 
 @interface SMServer ()
 
-@property (nonatomic, strong) NSURL *startURL;									///< The start URL of the app, usually leads to a web screen where the user can select a record to use
-@property (nonatomic, strong) NSURL *authorizeURL;								///< The URL where the user can authorize the app
-
 @property (nonatomic, readwrite, strong) NSMutableArray *knownRecords;
 
 @property (nonatomic, strong) MPOAuthAPI *oauth;								///< Handle to our MPOAuth instance with App credentials
@@ -45,10 +42,11 @@
 @property (nonatomic, strong) NSMutableArray *suspendedCalls;					///< Calls that were dequeued, we need to hold on to them to not deallocate them
 @property (nonatomic, strong) INServerCall *currentCall;						///< Only one call at a time, this is the current one
 
-@property (nonatomic, strong) SMLoginViewController *loginVC;				///< A handle to the currently shown login view controller
+@property (nonatomic, strong) SMLoginViewController *loginVC;					///< A handle to the currently shown login view controller
 @property (nonatomic, readwrite, copy) NSString *lastOAuthVerifier;
 
 - (void)_presentLoginScreenAtURL:(NSURL *)loginURL;
+- (void)_dismissLoginScreenAnimated:(BOOL)animated;
 
 - (MPOAuthAPI *)getOAuthOutError:(NSError * __autoreleasing *)error;
 
@@ -69,13 +67,11 @@ NSString *const SMARTOAuthRecordIDKey = @"smart_record_id";
 NSString *const SMARTRecordDocumentsDidChangeNotification = @"SMARTRecordDocumentsDidChangeNotification";
 NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 
-@synthesize delegate;
-@synthesize manifest, appManifest;
 @synthesize activeRecord, knownRecords;
-@synthesize appId, callbackScheme, url, startURL, authorizeURL;
+@synthesize appId, callbackScheme, url;
 @dynamic activeRecordId;
 @synthesize oauth, callQueue, suspendedCalls, currentCall;
-@synthesize loginVC, lastOAuthVerifier;
+@synthesize lastOAuthVerifier;
 @synthesize consumerKey, consumerSecret, storeCredentials;
 
 
@@ -125,7 +121,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
  *	Fetches the server and app manifests, if needed, then executes the block.
  *	Authentication calls are wrapped into this method since we need to know our endpoints before we can authenticate.
  */
-- (void)prepareToConnect:(INCancelErrorBlock)callback
+- (void)performWhenReadyToConnect:(INCancelErrorBlock)callback
 {
 	if ([[url absoluteString] length] < 5) {
 		CANCEL_ERROR_CALLBACK_OR_LOG_ERR_STRING(callback, NO, L_(@"No server URL provided"))		// Error 1001
@@ -137,8 +133,11 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 	}
 	
 	// need to fetch the manifest first?
-	if (!manifest || !appManifest) {
-		
+	if (!_manifest) {
+//	if (!_manifest || !_appManifest) {
+		[self fetchServerManifest:^(BOOL userDidCancel, NSString *errorMessage) {
+			CANCEL_ERROR_CALLBACK_OR_LOG_ERR_STRING(callback, userDidCancel, errorMessage);
+		}];
 	}
 	
 	// all good, execute callback
@@ -216,33 +215,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 
 
 /**
-  *	startURL is the start URL of the app, usually leads to a webpage where the user can choose a record.
-  *	It is extracted from the app manifest found at "https://smart-server.com/apps/app@id/manifest"
-  */
-- (NSURL *)startURL
-{
-	if (!startURL) {
-		if ([appId length] < 1) {
-			ALog(@"appId is not set, startURL will most likely be invalid!");
-		}
-		//self.startURL = [[[ui_url URLByAppendingPathComponent:@"apps"] URLByAppendingPathComponent:self.appId] URLByAppendingPathComponent:@"launch"];
-	}
-	return startURL;
-}
-
-/**
- *	authorizeURL is extracted from the server manifest
- */
-- (NSURL *)authorizeURL
-{
-	if (!authorizeURL) {
-		//self.authorizeURL = [self.ui_url URLByAppendingPathComponent:@"oauth/authorize"];
-	}
-	return authorizeURL;
-}
-
-/**
- *	The callback to feed to authorizeURL
+ *	The callback to feed to tokenAuthorizeURL
  */
 - (NSURL *)authorizeCallbackURL
 {
@@ -253,6 +226,18 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 {
 	return callbackScheme ? callbackScheme : SMARTInternalScheme;
 }
+
+/**
+ *	We need to associate a token with a given record id, so we provide that when performing the request token request
+ */
+- (NSDictionary *)additionalRequestTokenParameters
+{
+	if ([self activeRecordId]) {
+		return [NSDictionary dictionaryWithObject:[self activeRecordId] forKey:SMARTOAuthRecordIDKey];
+	}
+	return nil;
+}
+
 
 
 
@@ -279,60 +264,61 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
  */
 - (void)selectRecord:(INCancelErrorBlock)callback
 {
-	NSError *error = nil;
-	
-	// check whether we are ready
-#warning WRAP IN prepareToConnect
 	// dequeue current call
 	if (currentCall) {
 		[self suspendCall:currentCall];
 	}
 	
-	// construct the call
+	// we use a INServerCall object to capture the callback block and fire it automatically when the OAuth process has completed
 	__unsafe_unretained SMServer *this = self;
-	self.currentCall = [INServerCall newForServer:self];
-	currentCall.HTTPMethod = @"POST";
-	currentCall.finishIfAuthenticated = YES;
-	
-	// here's the callback once record selection has finished
-	currentCall.myCallback = ^(BOOL success, NSDictionary *userInfo) {
-		BOOL didCancel = NO;
+	[self performWhenReadyToConnect:^(BOOL userDidCancel, NSString * errorMessage) {
+		this.currentCall = [INServerCall newForServer:this];
+		this.currentCall.HTTPMethod = @"POST";
+		this.currentCall.finishIfAuthenticated = YES;
 		
-		// successfully selected a record
-		if (success) {
-			NSString *forRecordId = [userInfo objectForKey:INRecordIDKey];
-			if (forRecordId && [this.activeRecord is:forRecordId]) {
-				this.activeRecord.accessToken = [userInfo objectForKey:@"oauth_token"];
-				this.activeRecord.accessTokenSecret = [userInfo objectForKey:@"oauth_token_secret"];
+		// here's the callback once record selection has finished
+		this.currentCall.myCallback = ^(BOOL success, NSDictionary *userInfo) {
+			BOOL didCancel = NO;
+			
+			// successfully selected a record
+			if (success) {
+				NSString *forRecordId = [userInfo objectForKey:INRecordIDKey];
+				if (forRecordId && [this.activeRecord is:forRecordId]) {
+					this.activeRecord.accessToken = [userInfo objectForKey:@"oauth_token"];
+					this.activeRecord.accessTokenSecret = [userInfo objectForKey:@"oauth_token_secret"];
+				}
+				
+				// fetch record info to get the record label (this non-authentication call will make the login view controller disappear, don't forget that if you remove it)
+				if (this.activeRecord) {
+					[this.activeRecord fetchRecordInfoWithCallback:^(BOOL userDidCancel2, NSString * errorMessage2) {
+						
+						// errors will only be logged, not passed on to the callback as the record was still selected successfully
+						if (errorMessage2) {
+							DLog(@"Error fetching contact document: %@", errorMessage2);
+						}
+						
+						CANCEL_ERROR_CALLBACK_OR_LOG_ERR_STRING(callback, NO, nil)
+						[this _dismissLoginScreenAnimated:YES];
+					}];
+				}
+				else {
+					DLog(@"There is no active record!");
+					CANCEL_ERROR_CALLBACK_OR_LOG_ERR_STRING(callback, NO, @"No active record")
+					[this _dismissLoginScreenAnimated:YES];
+				}
 			}
 			
-			// fetch record info to get the record label (this non-authentication call will make the login view controller disappear, don't forget that if you remove it)
-			if (this.activeRecord) {
-				[this.activeRecord fetchRecordInfoWithCallback:^(BOOL userDidCancel, NSString *__autoreleasing errorMessage) {
-					
-					// we ignore errors fetching the contact document. Errors will only be logged, not passed on to the callback as the record was still selected successfully
-					if (errorMessage) {
-						DLog(@"Error fetching contact document: %@", errorMessage);
-					}
-					
-					CANCEL_ERROR_CALLBACK_OR_LOG_ERR_STRING(callback, NO, nil)
-				}];
-			}
+			// failed: Cancelled or other failure
 			else {
-				DLog(@"There is no active record!");
-				CANCEL_ERROR_CALLBACK_OR_LOG_ERR_STRING(callback, NO, @"No active record")
+				didCancel = (nil == [userInfo objectForKey:INErrorKey]);
+				CANCEL_ERROR_CALLBACK_OR_LOG_USER_INFO(callback, didCancel, userInfo)
+				[this _dismissLoginScreenAnimated:YES];
 			}
-		}
+		};
 		
-		// failed: Cancelled or other failure
-		else {
-			didCancel = (nil == [userInfo objectForKey:INErrorKey]);
-			CANCEL_ERROR_CALLBACK_OR_LOG_USER_INFO(callback, didCancel, userInfo)
-		}
-	};
-	
-	// present selection screen
-	[self _presentLoginScreenAtURL:self.startURL];
+		// show the login screen
+		[this _presentLoginScreenAtURL:this.startURL];
+	}];
 }
 
 
@@ -345,9 +331,6 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 {
 	NSError *error = nil;
 	
-	// check whether we are ready
-#warning WRAP IN prepareToConnect
-	
 	// dequeue current call
 	if (!currentCall) {
 		NSString *errorStr = error ? [error localizedDescription] : @"No current call";
@@ -358,36 +341,38 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 	
 	// construct the call
 	__unsafe_unretained SMServer *this = self;
-	self.currentCall = [INServerCall newForServer:self];
-	currentCall.HTTPMethod = @"POST";
-	currentCall.finishIfAuthenticated = YES;
-	
-	// here's the callback once authentication has finished
-	currentCall.myCallback = ^(BOOL success, NSDictionary *userInfo) {
-		BOOL didCancel = NO;
+	[self performWhenReadyToConnect:^(BOOL userDidCancel, NSString *__autoreleasing errorMessage) {
+		this.currentCall = [INServerCall newForServer:this];
+		this.currentCall.HTTPMethod = @"POST";
+		this.currentCall.finishIfAuthenticated = YES;
 		
-		// successfully authenticated
-		if (success) {
-			NSString *forRecordId = [userInfo objectForKey:INRecordIDKey];
-			if (forRecordId && [this.activeRecord is:forRecordId]) {
-				this.activeRecord.accessToken = [userInfo objectForKey:@"oauth_token"];
-				this.activeRecord.accessTokenSecret = [userInfo objectForKey:@"oauth_token_secret"];
+		// here's the callback once authentication has finished
+		this.currentCall.myCallback = ^(BOOL success, NSDictionary *userInfo) {
+			BOOL didCancel = NO;
+			
+			// successfully authenticated
+			if (success) {
+				NSString *forRecordId = [userInfo objectForKey:INRecordIDKey];
+				if (forRecordId && [this.activeRecord is:forRecordId]) {
+					this.activeRecord.accessToken = [userInfo objectForKey:@"oauth_token"];
+					this.activeRecord.accessTokenSecret = [userInfo objectForKey:@"oauth_token_secret"];
+				}
+				
+				userInfo = nil;
+			}
+			else if (![userInfo objectForKey:INErrorKey]) {
+				didCancel = YES;
 			}
 			
-			userInfo = nil;
-		}
-		else if (![userInfo objectForKey:INErrorKey]) {
-			didCancel = YES;
-		}
+			CANCEL_ERROR_CALLBACK_OR_LOG_USER_INFO(callback, didCancel, userInfo)
+		};
 		
-		CANCEL_ERROR_CALLBACK_OR_LOG_USER_INFO(callback, didCancel, userInfo)
-	};
-	
-	// force authentication by wiping current credentials
-	currentCall.oauth = [self getOAuthOutError:nil];
-	[currentCall.oauth discardCredentials];
-	
-	[self performCall:currentCall];
+		// force authentication by wiping current credentials
+		this.currentCall.oauth = [this getOAuthOutError:nil];
+		[this.currentCall.oauth discardCredentials];
+		
+		[this performCall:this.currentCall];
+	}];
 }
 
 
@@ -400,27 +385,38 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 - (void)_presentLoginScreenAtURL:(NSURL *)loginURL
 {
 	// already showing a login screen, just load the URL
-	if (loginVC) {
-		[loginVC loadURL:loginURL];
+	if (_loginVC) {
+		[_loginVC loadURL:loginURL];
 		return;
 	}
 	
 	// newly display a login screen
 	SMLoginViewController *vc = [SMLoginViewController new];
-	UIViewController *pvc = [delegate viewControllerToPresentLoginViewController:vc];
+	UIViewController *pvc = [_delegate viewControllerToPresentLoginViewController:vc];
 	if (pvc) {
 		vc.delegate = self;
 		vc.startURL = loginURL;
 		self.loginVC = vc;
 		if ([pvc respondsToSelector:@selector(presentViewController:animated:completion:)]) {		// iOS 5+ only
-			[pvc presentViewController:loginVC animated:YES completion:NULL];
+			[pvc presentViewController:_loginVC animated:YES completion:NULL];
 		}
 		else {
-			[pvc presentModalViewController:loginVC animated:YES];
+			[pvc presentModalViewController:_loginVC animated:YES];
 		}
 	}
 	else {
 		DLog(@"Delegate did not provide a view controller, cannot present login screen");
+	}
+}
+
+/**
+ *	Dismisses the login screen, if present
+ */
+- (void)_dismissLoginScreenAnimated:(BOOL)animated
+{
+	if (_loginVC) {
+		[_loginVC dismissAnimated:animated];
+		self.loginVC = nil;
 	}
 }
 
@@ -433,15 +429,6 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 - (void)loginView:(SMLoginViewController *)aLoginController didSelectRecordId:(NSString *)recordId
 {
 	NSError *error = nil;
-	
-	/*--
-	NSURL *testURL = [self.url URLByAppendingPathComponent:@"version"];
-	DLog(@"TESTING: %@", testURL);
-	INURLLoader *loader = [INURLLoader loaderWithURL:testURL];
-	[loader getWithCallback:^(BOOL userDidCancel, NSString *__autoreleasing errorMessage) {
-		DLog(@"GOT:  %@", loader.responseString);
-	}];
-	//--	*/
 	
 	// got a record
 	if ([recordId length] > 0) {
@@ -473,7 +460,6 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 	// failed to select a record
 	else {
 		ERR(&error, @"Did not receive a record", 0)
-		[currentCall abortWithError:error];
 	}
 }
 
@@ -493,8 +479,8 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 	}
 	
 	// continue the auth call by firing it again
-	if (loginVC) {
-		[loginVC showLoadingIndicator:nil];
+	if (_loginVC) {
+		[_loginVC showLoadingIndicator:nil];
 	}
 	[self performCall:currentCall];
 }
@@ -509,7 +495,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 	}
 	
 	// dismiss login view controller
-	if (loginController != loginVC) {
+	if (loginController != _loginVC) {
 		DLog(@"Very strange, an unknown login controller did just cancel...");
 	}
 	[loginController dismissAnimated:YES];
@@ -523,10 +509,10 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 {
 	self.activeRecord = nil;
 	[currentCall cancel];
-	[delegate userDidLogout:self];
+	[_delegate userDidLogout:self];
 	
-	if (loginVC) {
-		[loginVC dismissAnimated:YES];
+	if (_loginVC) {
+		[_loginVC dismissAnimated:YES];
 		self.loginVC = nil;
 	}
 }
@@ -589,8 +575,8 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 	}
 	
 	// performing an arbitrary call, we can dismiss any login view controller
-	if (loginVC && ![aCall isAuthenticationCall]) {
-		[loginVC dismissAnimated:YES];
+	if (_loginVC && ![aCall isAuthenticationCall]) {
+		[_loginVC dismissAnimated:YES];
 		self.loginVC = nil;
 	}
 	
@@ -722,10 +708,10 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 	// create our instance with credentials and configured with the correct URLs
 	else {
 		NSMutableDictionary *config = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-									   [[url URLByAppendingPathComponent:@"oauth/request_token"] absoluteString], MPOAuthRequestTokenURLKey,
-									   [self.authorizeURL absoluteString], MPOAuthUserAuthorizationURLKey,
-									   [[url URLByAppendingPathComponent:@"oauth/access_token"] absoluteString], MPOAuthAccessTokenURLKey,
-									   self.authorizeURL, MPOAuthAuthenticationURLKey,
+									   [self.tokenRequestURL absoluteString], MPOAuthRequestTokenURLKey,
+									   [self.tokenAuthorizeURL absoluteString], MPOAuthUserAuthorizationURLKey,
+									   [self.tokenExchangeURL absoluteString], MPOAuthAccessTokenURLKey,
+									   self.tokenAuthorizeURL, MPOAuthAuthenticationURLKey,
 									   url, MPOAuthBaseURLKey,
 									   nil];
 		
@@ -779,6 +765,42 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 - (NSString *)activeRecordId
 {
 	return activeRecord.uuid;
+}
+
+/**
+ *	Setting the server manifest automatically updates the endpoint URLs
+ */
+- (void)setManifest:(NSDictionary *)manifest
+{
+	if (_manifest != manifest) {
+		_manifest = [manifest copy];
+		
+		// extract data
+		if (_manifest) {
+			NSDictionary *endpoints = [_manifest objectForKey:@"launch_urls"];
+			if ([endpoints isKindOfClass:[NSDictionary class]]) {
+				NSString *start = [endpoints objectForKey:@"app_launch"];
+				NSString *tokenRequest = [endpoints objectForKey:@"request_token"];
+				NSString *tokenAuthorize = [endpoints objectForKey:@"authorize_token"];
+				NSString *tokenExchange = [endpoints objectForKey:@"exchange_token"];
+				
+				// set endpoint URLs
+				if ([start length] > 0) {
+					start = [start stringByReplacingOccurrencesOfString:@"{{app_id}}" withString:self.appId];
+					self.startURL = [NSURL URLWithString:start];
+				}
+				if ([tokenRequest length] > 0) {
+					self.tokenRequestURL = [NSURL URLWithString:tokenRequest];
+				}
+				if ([tokenAuthorize length] > 0) {
+					self.tokenAuthorizeURL = [NSURL URLWithString:tokenAuthorize];
+				}
+				if ([tokenExchange length] > 0) {
+					self.tokenExchangeURL = [NSURL URLWithString:tokenExchange];
+				}
+			}
+		}
+	}
 }
 
 
