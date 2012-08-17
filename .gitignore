@@ -1,12 +1,15 @@
 .DS_Store
 
-# Don't version the Doxygen Docs directory
+# don't version the Docs directory
 Docs
 
 # Xcode user data
 !*.xcodeproj/project.pbxproj
 xcuserdata
 
-# Ignore config
+# ignore config
 Config.h
+
+# ignore smart.owl that we use when generating the classes
+smart.owl
 

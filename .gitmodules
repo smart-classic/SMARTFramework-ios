@@ -9,3 +9,6 @@
 [submodule "SMARTMedSample-ios"]
 	path = SMARTMedSample-ios
 	url = git://github.com/p2/SMARTMedSample-ios.git
+[submodule "smart_client_python"]
+	path = smart_client_python
+	url = git@github.com:chb/smart_client_python.git

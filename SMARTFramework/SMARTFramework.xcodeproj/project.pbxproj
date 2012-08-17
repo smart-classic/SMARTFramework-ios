@@ -135,6 +135,8 @@
 		EE832F7F15D006D100E7FFF1 /* SMLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMLoginViewController.h; sourceTree = "<group>"; };
 		EE832F8015D006D100E7FFF1 /* SMLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMLoginViewController.m; sourceTree = "<group>"; };
 		EEC146F815DED1D0006B8798 /* AppledocSettings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = AppledocSettings.plist; path = ../AppledocSettings.plist; sourceTree = "<group>"; };
+		EEC1470015DEE01A006B8798 /* ClassTemplate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClassTemplate.h; sourceTree = "<group>"; };
+		EEC1470115DEE01A006B8798 /* ClassTemplate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassTemplate.m; sourceTree = "<group>"; };
 		EEC9C59515CB2EA800B7C568 /* libSMART.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSMART.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEC9C59815CB2EA800B7C568 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EEC9C59C15CB2EA800B7C568 /* SMARTFramework-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SMARTFramework-Prefix.pch"; sourceTree = "<group>"; };
@@ -236,6 +238,8 @@
 		EEC9C58815CB2EA800B7C568 = {
 			isa = PBXGroup;
 			children = (
+				EEC1470015DEE01A006B8798 /* ClassTemplate.h */,
+				EEC1470115DEE01A006B8798 /* ClassTemplate.m */,
 				EE249A5815D5A19D001A63D7 /* ErrorCodes.md */,
 				EEF0192915CB447100FFD480 /* Config.h */,
 				EEF0192B15CB447900FFD480 /* Config-default.h */,
