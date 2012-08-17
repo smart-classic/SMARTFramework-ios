@@ -26,49 +26,8 @@
 #import "SMRecord.h"
 #import "INServerCall.h"
 
-#import <RedlandParser.h>
-#import <RedlandURI.h>
-
-
-@interface SMDocument ()
-
-@property (nonatomic, readwrite, strong) RedlandModel *model;
-
-@end
-
 
 @implementation SMDocument
-
-
-+ (id)newWithRDF:(NSString *)rdfString;
-{
-	return [[self alloc] initWithRDF:rdfString];
-}
-
-/**
- *	@return An instance containing a model initialized from the given RDF+XML string
- */
-- (id)initWithRDF:(NSString *)rdfString
-{
-	if ((self = [super init])) {
-		if ([rdfString length] > 0) {
-			RedlandParser *parser = [RedlandParser parserWithName:RedlandRDFXMLParserName];
-			RedlandURI *uri = [RedlandURI URIWithString:@"http://www.smartplatforms.org/terms#"];
-			self.model = [RedlandModel new];
-			
-			// parse
-			@try {
-				[parser parseString:rdfString intoModel:_model withBaseURI:uri];
-			}
-			@catch (NSException *exception) {
-				DLog(@"Failed to parse RDF: %@", [exception reason]);
-				return nil;
-			}
-		}
-	}
-	return self;
-}
-
 
 
 #pragma mark - Data Fetching

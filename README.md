@@ -63,7 +63,22 @@ You now have the latest source code of the framework as well as the subprojects 
 Server Side Setup
 -----------------
 
-[to come]
+Here is an example app manifest which would be the one you want to use with the Medications Sample App:
+
+    {
+      "name" : "Medications Sample",
+      "description" : "A sample iOS app showing a list of medications",
+      "author" : "Pascal Pfiffner, Harvard Medical School",
+      "id" : "medsample@apps.smartplatforms.org",
+      "version" : "0.1",
+      "smart_version": "0.5",
+      
+      "mode" : "ui",
+      "scope" : "record",
+      
+      "index" :  "smart-app:///did_select_record",
+      "icon" :  "http://apiverifier.smartplatforms.org/static/images/icon.png"
+    }
 
 
 Framework Setup

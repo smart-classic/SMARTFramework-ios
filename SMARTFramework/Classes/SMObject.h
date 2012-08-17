@@ -1,8 +1,8 @@
 /*
- SMDocument.h
+ SMObject.h
  SMARTFramework
  
- Created by Pascal Pfiffner on 8/10/12.
+ Created by Pascal Pfiffner on 8/15/12.
  Copyright (c) 2012 CHIP, Boston Children's Hospital. All rights reserved.
  
  This library is free software; you can redistribute it and/or
@@ -21,22 +21,24 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "SMObject.h"
+#import "SMART.h"
+
+@class SMRecord;
+@class RedlandModel;
 
 
 /**
- *	The base class for all our documents
+ *	An abstract base class for objects being represented in an RDF graph
  */
-@interface SMDocument : SMObject
+@interface SMObject : NSObject
 
-@property (nonatomic, copy) NSString *uuid;								///< This document's ID on the server
-@property (nonatomic, weak) SMRecord *record;							///< The record this document belongs to
+@property (nonatomic, readonly, strong) RedlandModel *model;			///< The redland model represented by this object
 
-// performing server calls
-- (void)get:(NSString *)aMethod callback:(INSuccessRetvalueBlock)callback;
-- (void)get:(NSString *)aMethod parameters:(NSArray *)paramArray callback:(INSuccessRetvalueBlock)callback;
++ (id)newWithModel:(RedlandModel *)aModel;
++ (id)newWithRDFXML:(NSString *)rdfString;
 
-- (void)performMethod:(NSString *)aMethod withBody:(NSString *)body orParameters:(NSArray *)parameters httpMethod:(NSString *)httpMethod callback:(INSuccessRetvalueBlock)callback;
+- (id)initWithModel:(RedlandModel *)aModel;
+- (id)initWithRDFXML:(NSString *)rdfString;
 
 
 @end

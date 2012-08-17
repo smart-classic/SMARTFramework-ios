@@ -23,7 +23,7 @@
 
 #import "SMRecord.h"
 #import "SMServer.h"
-#import "SMDemographics.h"
+#import "SMARTDocuments.h"
 
 
 @interface SMRecord ()
@@ -77,10 +77,7 @@
 		else {
 			NSString *rdf = [userInfo objectForKey:INResponseStringKey];
 			if ([rdf length] > 0) {
-				self.demographics = [SMDemographics newWithRDF:rdf];
-				self.givenName = _demographics.givenName;
-				self.additionalName = _demographics.additionalName;
-				self.familyName = _demographics.familyName;
+				self.demographics = [SMDemographics newWithRDFXML:rdf];
 			}
 			else {
 				errorMessage = @"No RDF was returned for this record's demographics";
@@ -128,15 +125,14 @@
 - (NSString *)name
 {
 	if (!_name) {
-		NSMutableArray *names = [NSMutableArray arrayWithCapacity:3];
-		if ([_givenName length] > 0) {
-			[names addObject:_givenName];
+		NSMutableArray *names = [NSMutableArray arrayWithCapacity:2];
+		NSString *givenName = _demographics.n.givenName;
+		NSString *familyName = _demographics.n.familyName;
+		if ([givenName length] > 0) {
+			[names addObject:givenName];
 		}
-		if ([_additionalName length] > 0) {
-			[names addObject:_additionalName];
-		}
-		if ([_familyName length] > 0) {
-			[names addObject:_familyName];
+		if ([familyName length] > 0) {
+			[names addObject:familyName];
 		}
 		
 		if ([names count] > 0) {

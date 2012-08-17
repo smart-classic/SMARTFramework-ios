@@ -22,14 +22,15 @@
 
 #import "SMDocument.h"
 
+@class SMName;
+
 
 /**
  *	Representing the record's demographics document
  */
 @interface SMDemographics : SMDocument
 
-@property (nonatomic, copy) NSString *givenName;
-@property (nonatomic, copy) NSString *familyName;
-@property (nonatomic, copy) NSString *additionalName;
+@property (nonatomic, strong) SMName *n;		///< The name document: http://www.w3.org/2006/vcard/ns#n
+
 
 @end

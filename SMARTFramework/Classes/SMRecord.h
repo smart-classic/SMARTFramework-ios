@@ -39,10 +39,7 @@
 @property (nonatomic, copy) NSString *accessTokenSecret;					///< The OAuth secret
 
 @property (nonatomic, readonly, strong) SMDemographics *demographics;		///< The demographics document for this record
-@property (nonatomic, copy) NSString *name;									///< Composed name from givenName and familyName
-@property (nonatomic, copy) NSString *givenName;							///< The patient's given name
-@property (nonatomic, copy) NSString *familyName;							///< The patient's family name
-@property (nonatomic, copy) NSString *additionalName;						///< The patient's additional name
+@property (nonatomic, copy) NSString *name;									///< Composed name from givenName and familyName, taken from the demographics document
 
 - (id)initWithId:(NSString *)anId onServer:(SMServer *)aServer;
 

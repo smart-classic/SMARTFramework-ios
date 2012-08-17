@@ -6,6 +6,14 @@
 	#import <Foundation/Foundation.h>
 #endif
 
+// Make loggin easy
+#ifdef DEBUG
+#   define DLog(fmt, ...) NSLog((@"%s (line %d) " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+#   define DLog(...)
+#endif
+#define ALog(fmt, ...) NSLog((@"%s (line %d) " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+
 // Make localization easy
 #define L_(s) NSLocalizedString(s, nil)
 #define L_2(s, c) NSLocalizedString(s, c)

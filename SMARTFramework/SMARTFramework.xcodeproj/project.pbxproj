@@ -16,6 +16,10 @@
 		EE249AB715D5CBB6001A63D7 /* librdf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE249AB615D5CBB6001A63D7 /* librdf.a */; };
 		EE5144FE15DAF60B00DA9BA2 /* SMDemographics.h in Headers */ = {isa = PBXBuildFile; fileRef = EE5144FC15DAF60A00DA9BA2 /* SMDemographics.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EE5144FF15DAF60B00DA9BA2 /* SMDemographics.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5144FD15DAF60A00DA9BA2 /* SMDemographics.m */; };
+		EE68EB5C15DC54CC006B149E /* SMObject.h in Headers */ = {isa = PBXBuildFile; fileRef = EE68EB5A15DC54CC006B149E /* SMObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EE68EB5D15DC54CC006B149E /* SMObject.m in Sources */ = {isa = PBXBuildFile; fileRef = EE68EB5B15DC54CC006B149E /* SMObject.m */; };
+		EE68EB6115DC55E9006B149E /* SMName.h in Headers */ = {isa = PBXBuildFile; fileRef = EE68EB5F15DC55E9006B149E /* SMName.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EE68EB6215DC55E9006B149E /* SMName.m in Sources */ = {isa = PBXBuildFile; fileRef = EE68EB6015DC55E9006B149E /* SMName.m */; };
 		EE6A5A7E15CC723500DD0F68 /* libredland-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE6A5A7D15CC723500DD0F68 /* libredland-ios.a */; };
 		EE6A5A8215CC72D500DD0F68 /* TestServer.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6A5A8115CC72D500DD0F68 /* TestServer.m */; };
 		EE6A5A8515CC731200DD0F68 /* TestServerCalls.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6A5A8415CC731200DD0F68 /* TestServerCalls.m */; };
@@ -113,6 +117,10 @@
 		EE249AB615D5CBB6001A63D7 /* librdf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = librdf.a; path = "../Redland-ObjC/Redland-source/Universal/librdf.a"; sourceTree = "<group>"; };
 		EE5144FC15DAF60A00DA9BA2 /* SMDemographics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDemographics.h; sourceTree = "<group>"; };
 		EE5144FD15DAF60A00DA9BA2 /* SMDemographics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDemographics.m; sourceTree = "<group>"; };
+		EE68EB5A15DC54CC006B149E /* SMObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMObject.h; sourceTree = "<group>"; };
+		EE68EB5B15DC54CC006B149E /* SMObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMObject.m; sourceTree = "<group>"; };
+		EE68EB5F15DC55E9006B149E /* SMName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMName.h; sourceTree = "<group>"; };
+		EE68EB6015DC55E9006B149E /* SMName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMName.m; sourceTree = "<group>"; };
 		EE6A5A7D15CC723500DD0F68 /* libredland-ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libredland-ios.a"; path = "../Redland-ObjC/build/Development-iphoneos/libredland-ios.a"; sourceTree = "<group>"; };
 		EE6A5A8015CC72D500DD0F68 /* TestServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestServer.h; sourceTree = "<group>"; };
 		EE6A5A8115CC72D500DD0F68 /* TestServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestServer.m; sourceTree = "<group>"; };
@@ -273,12 +281,16 @@
 				EE6A5A9415CC753800DD0F68 /* SMRecord.h */,
 				EE6A5A9515CC753800DD0F68 /* SMRecord.m */,
 				EEE82D8C15D00D810017EA0B /* SMARTDocuments.h */,
+				EE68EB5A15DC54CC006B149E /* SMObject.h */,
+				EE68EB5B15DC54CC006B149E /* SMObject.m */,
 				EE249A4115D59F04001A63D7 /* SMDocument.h */,
 				EE249A4215D59F04001A63D7 /* SMDocument.m */,
 				EE249A4615D59F4B001A63D7 /* SMMedication.h */,
 				EE249A4715D59F4B001A63D7 /* SMMedication.m */,
 				EE5144FC15DAF60A00DA9BA2 /* SMDemographics.h */,
 				EE5144FD15DAF60A00DA9BA2 /* SMDemographics.m */,
+				EE68EB5F15DC55E9006B149E /* SMName.h */,
+				EE68EB6015DC55E9006B149E /* SMName.m */,
 				EEE82D8215D008330017EA0B /* View Controller */,
 				EEF0199F15CB489E00FFD480 /* Server Calls */,
 			);
@@ -445,6 +457,8 @@
 				EEF0199D15CB489A00FFD480 /* INURLLoader.h in Headers */,
 				EE832F8115D006D100E7FFF1 /* SMLoginViewController.h in Headers */,
 				EE5144FE15DAF60B00DA9BA2 /* SMDemographics.h in Headers */,
+				EE68EB5C15DC54CC006B149E /* SMObject.h in Headers */,
+				EE68EB6115DC55E9006B149E /* SMName.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -576,6 +590,8 @@
 				EE249A4415D59F04001A63D7 /* SMDocument.m in Sources */,
 				EE249A4915D59F4B001A63D7 /* SMMedication.m in Sources */,
 				EE5144FF15DAF60B00DA9BA2 /* SMDemographics.m in Sources */,
+				EE68EB5D15DC54CC006B149E /* SMObject.m in Sources */,
+				EE68EB6215DC55E9006B149E /* SMName.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -642,6 +658,7 @@
 					"\"$(BUILT_PRODUCTS_DIR)\"/**",
 					"\"$(SRCROOT)/../Redland-ObjC/Redland-source/Universal\"",
 				);
+				OTHER_CFLAGS = "-DDEBUG";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -729,6 +746,7 @@
 					"\"$(BUILT_PRODUCTS_DIR)\"/**",
 					"\"$(SRCROOT)/../Redland-ObjC/Redland-source/Universal\"",
 				);
+				OTHER_CFLAGS = "-DDEBUG";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

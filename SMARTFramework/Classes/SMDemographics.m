@@ -22,6 +22,7 @@
 
 
 #import "SMDemographics.h"
+#import "SMARTDocuments.h"
 
 #import <RedlandModel-Convenience.h>
 #import <RedlandNode-Convenience.h>
@@ -33,46 +34,35 @@
 
 
 #pragma mark - Names
-- (NSString *)givenName
+- (SMName *)n
 {
-	if (!_givenName) {
-		RedlandNode *subject = nil;
-		RedlandNode *predicate = [RedlandNode nodeWithURIString:@"http://www.w3.org/2006/vcard/ns#given-name"];
-		RedlandStatement *statement = [RedlandStatement statementWithSubject:subject predicate:predicate object:nil];
-		RedlandStreamEnumerator *query = [self.model enumeratorOfStatementsLike:statement];
+	if (!_n) {
 		
-		RedlandStatement *rslt = [query nextObject];
-		self.givenName = [rslt.object literalValue];
-	}
-	return _givenName;
-}
-
-- (NSString *)familyName
-{
-	if (!_familyName) {
-		RedlandNode *subject = nil;
-		RedlandNode *predicate = [RedlandNode nodeWithURIString:@"http://www.w3.org/2006/vcard/ns#family-name"];
-		RedlandStatement *statement = [RedlandStatement statementWithSubject:subject predicate:predicate object:nil];
+		// get the "n" element
+		RedlandNode *predicate = [RedlandNode nodeWithURIString:@"http://www.w3.org/2006/vcard/ns#n"];
+		RedlandStatement *statement = [RedlandStatement statementWithSubject:nil predicate:predicate object:nil];
 		RedlandStreamEnumerator *query = [self.model enumeratorOfStatementsLike:statement];
-		
 		RedlandStatement *rslt = [query nextObject];
-		self.familyName = [rslt.object literalValue];
-	}
-	return _familyName;
-}
-
-- (NSString *)additionalName
-{
-	if (!_additionalName) {
-		RedlandNode *subject = nil;
-		RedlandNode *predicate = [RedlandNode nodeWithURIString:@"http://www.w3.org/2006/vcard/ns#additional-name"];
-		RedlandStatement *statement = [RedlandStatement statementWithSubject:subject predicate:predicate object:nil];
-		RedlandStreamEnumerator *query = [self.model enumeratorOfStatementsLike:statement];
 		
-		RedlandStatement *rslt = [query nextObject];
-		self.additionalName = [rslt.object literalValue];
+		// create a model containing the name statements
+		RedlandModel *nameModel = [[RedlandModel alloc] initWithStorage:self.model.storage];
+		RedlandStatement *nameStmt = [RedlandStatement statementWithSubject:rslt.object predicate:nil object:nil];
+		RedlandStreamEnumerator *nameStream = [self.model enumeratorOfStatementsLike:nameStmt];
+		
+		// add statements to name model
+		@try {
+			for (RedlandStatement *stmt in nameStream) {
+				[nameModel addStatement:stmt];
+			}
+		}
+		@catch (NSException *e) {
+			DLog(@"xx>  %@\n%@", [e reason], [e userInfo]);
+			[self.model print];
+		}
+		
+		self.n = [SMName newWithModel:nameModel];
 	}
-	return _additionalName;
+	return _n;
 }
 
 

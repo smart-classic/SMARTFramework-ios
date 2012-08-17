@@ -1,8 +1,8 @@
 /*
- SMDocument.h
+ SMName.h
  SMARTFramework
  
- Created by Pascal Pfiffner on 8/10/12.
+ Created by Pascal Pfiffner on 8/15/12.
  Copyright (c) 2012 CHIP, Boston Children's Hospital. All rights reserved.
  
  This library is free software; you can redistribute it and/or
@@ -20,23 +20,19 @@
  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#import <Foundation/Foundation.h>
 #import "SMObject.h"
 
 
 /**
- *	The base class for all our documents
+ *	Representing a "Name" data type: http://www.w3.org/2006/vcard/ns#Name
+ *	Documentation at http://dev.smartplatforms.org/reference/data_model/#Name
  */
-@interface SMDocument : SMObject
+@interface SMName : SMObject
 
-@property (nonatomic, copy) NSString *uuid;								///< This document's ID on the server
-@property (nonatomic, weak) SMRecord *record;							///< The record this document belongs to
-
-// performing server calls
-- (void)get:(NSString *)aMethod callback:(INSuccessRetvalueBlock)callback;
-- (void)get:(NSString *)aMethod parameters:(NSArray *)paramArray callback:(INSuccessRetvalueBlock)callback;
-
-- (void)performMethod:(NSString *)aMethod withBody:(NSString *)body orParameters:(NSArray *)parameters httpMethod:(NSString *)httpMethod callback:(INSuccessRetvalueBlock)callback;
-
+@property (nonatomic, copy) NSString *givenName;
+@property (nonatomic, copy) NSString *familyName;
+@property (nonatomic, copy) NSString *additionalName;
+@property (nonatomic, copy) NSString *honorificPrefix;
+@property (nonatomic, copy) NSString *honorificSuffix;
 
 @end
