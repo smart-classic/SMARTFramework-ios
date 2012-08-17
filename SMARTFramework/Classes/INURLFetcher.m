@@ -47,11 +47,11 @@
 
 
 /**
- *	Fetches all URLs sequentially and calls callback when finished.
- *	The calls are put on a queue and, depending on their exit status, are put in the "successfulLoads" and "failedLoads" arrays, respectively. Be
- *	sure to check these properties when the callback is called, as even if an error is reported, some URLs might have loaded successfully.
- *	@param anURLArray An NSArray full of NSURL instances
- *	@param aCallback The callback block to be executed when the call has finished
+ *  Fetches all URLs sequentially and calls callback when finished.
+ *  The calls are put on a queue and, depending on their exit status, are put in the "successfulLoads" and "failedLoads" arrays, respectively. Be
+ *  sure to check these properties when the callback is called, as even if an error is reported, some URLs might have loaded successfully.
+ *  @param anURLArray An NSArray full of NSURL instances
+ *  @param aCallback The callback block to be executed when the call has finished
  */
 - (void)getURLs:(NSArray *)anURLArray callback:(INCancelErrorBlock)aCallback
 {
@@ -96,7 +96,7 @@
 }
 
 /**
- *	Callback when a loader finished
+ *  Callback when a loader finished
  */
 - (void)loaderDidFinish:(INURLLoader *)aLoader withErrorMessage:(NSString *)errorMessage
 {
@@ -142,7 +142,7 @@
 
 
 /**
- *	Abort loading
+ *  Abort loading
  */
 - (void)cancel
 {
@@ -150,7 +150,7 @@
 }
 
 /**
- *	Loading was cancelled
+ *  Loading was cancelled
  */
 - (void)didCancel
 {
@@ -165,7 +165,7 @@
 
 
 /**
- *	Returns YES if the queue is empty, which is true before loading has begun and after it has completed
+ *  Returns YES if the queue is empty, which is true before loading has begun and after it has completed
  */
 - (BOOL)isIdle
 {

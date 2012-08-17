@@ -21,8 +21,8 @@
  */
 
 /**
- *	@file SMARTDocuments.h
- *	This header file includes all our document subclasses. Include this header where you use these classes.
+ *  @file SMARTDocuments.h
+ *  This header file includes all our document subclasses. Include this header where you use these classes.
  */
 
 #import "SMDemographics.h"

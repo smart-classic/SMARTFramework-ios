@@ -55,7 +55,7 @@
 
 #pragma mark - Main Actions
 /**
- *	Adds the view displaying a spinner
+ *  Adds the view displaying a spinner
  */
 - (void)showActivityIn:(UIView *)aParent animated:(BOOL)animated
 {
@@ -78,7 +78,7 @@
 }
 
 /**
- *	Adds the view with given main and hint text (both are optional)
+ *  Adds the view with given main and hint text (both are optional)
  */
 - (void)showIn:(UIView *)aParent mainText:(NSString *)mainText hintText:(NSString *)hintText animated:(BOOL)animated;
 {

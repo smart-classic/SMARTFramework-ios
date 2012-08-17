@@ -132,5 +132,24 @@ You are now ready to go!
 Using the Framework
 -------------------
 
-...
+[...]
+
+
+Building the Documentation
+--------------------------
+
+The code is documented using [appledoc]. If you want to compile the documentation it's best if you grab appledoc from GitHub, build and install it and then run it against the code:
+
+    $ cd SMARTFramework-ios/
+    $ git clone git://github.com/tomaz/appledoc.git
+    $ cd appledoc
+    $ ./install-appledoc.sh -b /usr/local/bin -t ~/Library/Application\ Support/appledoc
+    $ cd ../SMARTFramework/
+    $ appledoc .
+
+Note that this assumes that you have write permissions for `/usr/local`, if not you may need to issue this command as root with `sudo`. The documentation is now available from within Xcode.
+
+
+[appledoc]: http://gentlebytes.com/appledoc/
+
 

@@ -24,7 +24,7 @@
 
 
 /**
- *	A semi-transparent view that can be overlaid over existing views and display text, a hint or a spinner
+ *  A semi-transparent view that can be overlaid over existing views and display text, a hint or a spinner
  */
 @interface IndivoActionView : UIControl {
 	BOOL animateNextLayout;

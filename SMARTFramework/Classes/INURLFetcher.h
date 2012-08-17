@@ -25,8 +25,8 @@
 
 
 /**
- *	The fetcher is an accessor-class to INURLLoader objects; for example if you want to queue up loading multiple URLs you
- *	can use one fetcher instead of handling multiple INURLLoader instances yourself.
+ *  The fetcher is an accessor-class to INURLLoader objects; for example if you want to queue up loading multiple URLs you
+ *  can use one fetcher instead of handling multiple INURLLoader instances yourself.
  */
 @interface INURLFetcher : NSObject
 

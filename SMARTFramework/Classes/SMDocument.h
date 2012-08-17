@@ -25,7 +25,7 @@
 
 
 /**
- *	The base class for all our documents
+ *  The base class for all our documents
  */
 @interface SMDocument : SMObject
 

@@ -45,7 +45,7 @@
 }
 
 /**
- *	We return an SMRecord object with a constructed ID that will match paths in mock-callbacks.plist
+ *  We return an SMRecord object with a constructed ID that will match paths in mock-callbacks.plist
  */
 - (SMRecord *)activeRecord
 {
@@ -57,9 +57,9 @@
 
 
 /**
- *	We override perform call, which originally manages the call queue and supplies the OAuth object to server calls. The OAuth object is then responsible for
- *	performing the OAuth dance, if necessary, and then performing the actual call. We bypass this by just returning XML for all paths that are understood (as
- *	declared in mock-callbacks.plist)
+ *  We override perform call, which originally manages the call queue and supplies the OAuth object to server calls. The OAuth object is then responsible for
+ *  performing the OAuth dance, if necessary, and then performing the actual call. We bypass this by just returning XML for all paths that are understood (as
+ *  declared in mock-callbacks.plist)
  */
 - (void)performCall:(INServerCall *)aCall
 {

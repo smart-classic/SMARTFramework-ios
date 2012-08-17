@@ -29,7 +29,7 @@
 
 
 /**
- *	Our internal class to handle a call to the server, signed with OAuth credentials,
+ *  Our internal class to handle a call to the server, signed with OAuth credentials,
  */
 @interface INServerCall : NSObject <MPOAuthAPIAuthDelegate, MPOAuthAPILoadDelegate>
 

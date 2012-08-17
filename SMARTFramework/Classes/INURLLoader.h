@@ -27,7 +27,7 @@
 
 
 /**
- *	This class simplifies loading data from a URL
+ *  This class simplifies loading data from a URL
  */
 @interface INURLLoader : NSObject
 

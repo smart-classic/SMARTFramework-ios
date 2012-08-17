@@ -48,7 +48,7 @@
 
 
 /**
- *	@return An instance wrapping the given RDF model
+ *  @return An instance wrapping the given RDF model
  */
 - (id)initWithModel:(RedlandModel *)aModel
 {
@@ -59,7 +59,7 @@
 }
 
 /**
- *	@return An instance containing a model initialized from the given RDF+XML string
+ *  @return An instance containing a model initialized from the given RDF+XML string
  */
 - (id)initWithRDFXML:(NSString *)rdfString
 {

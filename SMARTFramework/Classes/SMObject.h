@@ -28,7 +28,7 @@
 
 
 /**
- *	An abstract base class for objects being represented in an RDF graph
+ *  An abstract base class for objects being represented in an RDF graph
  */
 @interface SMObject : NSObject
 

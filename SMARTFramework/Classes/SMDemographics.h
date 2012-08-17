@@ -26,7 +26,7 @@
 
 
 /**
- *	Representing the record's demographics document
+ *  Representing the record's demographics document
  */
 @interface SMDemographics : SMDocument
 

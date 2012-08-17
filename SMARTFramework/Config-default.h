@@ -22,7 +22,7 @@
 
 
 /**
- *	This file should be named "Config.h" and added to your project. It contains the information necessary so the framework can connect to your server.
+ *  This file should be named "Config.h" and added to your project. It contains the information necessary so the framework can connect to your server.
  */
 
 /// The URL to your server, with port number

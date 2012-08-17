@@ -24,8 +24,8 @@
 
 
 /**
- *	Representing a "Name" data type: http://www.w3.org/2006/vcard/ns#Name
- *	Documentation at http://dev.smartplatforms.org/reference/data_model/#Name
+ *  Representing a "Name" data type: http://www.w3.org/2006/vcard/ns#Name
+ *  Documentation at http://dev.smartplatforms.org/reference/data_model/#Name
  */
 @interface SMName : SMObject
 

@@ -32,14 +32,14 @@
 
 #pragma mark - Data Fetching
 /**
- *	The basic method to perform REST methods on the server with App credentials.
- *	Uses a INServerCall instance to handle the loading; INServerCall only allows a body string or parameters, but not both, with
- *	the body string taking precedence.
- *	@param aMethod The path to call on the server
- *	@param body The body string
- *	@param parameters An array full of strings in the form "key=value"
- *	@param httpMethod The http method, for now GET, PUT or POST
- *	@param callback A block to execute when the call has finished
+ *  The basic method to perform REST methods on the server with App credentials.
+ *  Uses a INServerCall instance to handle the loading; INServerCall only allows a body string or parameters, but not both, with
+ *  the body string taking precedence.
+ *  @param aMethod The path to call on the server
+ *  @param body The body string
+ *  @param parameters An array full of strings in the form "key=value"
+ *  @param httpMethod The http method, for now GET, PUT or POST
+ *  @param callback A block to execute when the call has finished
  */
 - (void)performMethod:(NSString *)aMethod withBody:(NSString *)body orParameters:(NSArray *)parameters httpMethod:(NSString *)httpMethod callback:(INSuccessRetvalueBlock)callback
 {
@@ -63,10 +63,10 @@
 
 
 /**
- *	Shortcut for GETting data.
- *	Calls "performMethod:withBody:orParameters:httpMethod:callback:" internally.
- *	@param aMethod The method to perform, e.g. "/records/id/documents/"
- *	@param callback The callback block to execute when the call has finished
+ *  Shortcut for GETting data.
+ *  Calls "performMethod:withBody:orParameters:httpMethod:callback:" internally.
+ *  @param aMethod The method to perform, e.g. "/records/id/documents/"
+ *  @param callback The callback block to execute when the call has finished
  */
 - (void)get:(NSString *)aMethod callback:(INSuccessRetvalueBlock)callback
 {
@@ -74,11 +74,11 @@
 }
 
 /**
- *	Shortcut for GETting data with parameters.
- *	Calls "performMethod:withBody:orParameters:httpMethod:callback:" internally.
- *	@param aMethod The method to perform, e.g. "/records/id/documents/"
- *	@param paramArray An array of NSString parameters in the form @"key=value"; will be URL-encoded automatically
- *	@param callback The callback block to execute when the call has finished
+ *  Shortcut for GETting data with parameters.
+ *  Calls "performMethod:withBody:orParameters:httpMethod:callback:" internally.
+ *  @param aMethod The method to perform, e.g. "/records/id/documents/"
+ *  @param paramArray An array of NSString parameters in the form @"key=value"; will be URL-encoded automatically
+ *  @param callback The callback block to execute when the call has finished
  */
 - (void)get:(NSString *)aMethod parameters:(NSArray *)paramArray callback:(INSuccessRetvalueBlock)callback
 {

@@ -37,12 +37,12 @@
 
 @property (nonatomic, readwrite, strong) NSMutableArray *knownRecords;
 
-@property (nonatomic, strong) MPOAuthAPI *oauth;								///< Handle to our MPOAuth instance with App credentials
-@property (nonatomic, strong) NSMutableArray *callQueue;						///< Calls are queued instead of performed in parallel to avoid getting inconsistent results
-@property (nonatomic, strong) NSMutableArray *suspendedCalls;					///< Calls that were dequeued, we need to hold on to them to not deallocate them
-@property (nonatomic, strong) INServerCall *currentCall;						///< Only one call at a time, this is the current one
+@property (nonatomic, strong) MPOAuthAPI *oauth;								/// Handle to our MPOAuth instance with App credentials
+@property (nonatomic, strong) NSMutableArray *callQueue;						/// Calls are queued instead of performed in parallel to avoid getting inconsistent results
+@property (nonatomic, strong) NSMutableArray *suspendedCalls;					/// Calls that were dequeued, we need to hold on to them to not deallocate them
+@property (nonatomic, strong) INServerCall *currentCall;						/// Only one call at a time, this is the current one
 
-@property (nonatomic, strong) SMLoginViewController *loginVC;					///< A handle to the currently shown login view controller
+@property (nonatomic, strong) SMLoginViewController *loginVC;					/// A handle to the currently shown login view controller
 @property (nonatomic, readwrite, copy) NSString *lastOAuthVerifier;
 
 - (void)_presentLoginScreenAtURL:(NSURL *)loginURL;
@@ -78,7 +78,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 
 #pragma mark - Initialization
 /**
- *	A convenience constructor creating the server for the given delegate. Configuration is automatically read from "Config.h"
+ *  A convenience constructor creating the server for the given delegate. Configuration is automatically read from "Config.h"
  */
 + (id)serverWithDelegate:(id<SMARTServerDelegate>)aDelegate
 {
@@ -118,8 +118,8 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 
 #pragma mark - Endpoint Locations/Manifests
 /**
- *	Fetches the server and app manifests, if needed, then executes the block.
- *	Authentication calls are wrapped into this method since we need to know our endpoints before we can authenticate.
+ *  Fetches the server and app manifests, if needed, then executes the block.
+ *  Authentication calls are wrapped into this method since we need to know our endpoints before we can authenticate.
  */
 - (void)performWhenReadyToConnect:(INCancelErrorBlock)callback
 {
@@ -147,8 +147,8 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 }
 
 /**
- *	Fetches the server manifest.
- *	@attention You usually don't call this method manually, use "prepareToConnect:" and access the server manifest in "manifest" afterwards.
+ *  Fetches the server manifest.
+ *  @warning You usually don't call this method manually, use "prepareToConnect:" and access the server manifest in "manifest" afterwards.
  */
 - (void)fetchServerManifest:(INCancelErrorBlock)callback
 {
@@ -179,8 +179,8 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 }
 
 /**
- *	Fetches the app manifest.
- *	@attention You usually don't call this method, use "prepareToConnect:" which performs this method. Afterwards, "appManifest" contains the manifest.
+ *  Fetches the app manifest.
+ *  @warning You usually don't call this method, use "prepareToConnect:" which performs this method. Afterwards, "appManifest" contains the manifest.
  */
 - (void)fetchAppManifest:(INCancelErrorBlock)callback
 {
@@ -215,7 +215,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 
 
 /**
- *	The callback to feed to tokenAuthorizeURL
+ *  The callback to feed to tokenAuthorizeURL
  */
 - (NSURL *)authorizeCallbackURL
 {
@@ -228,7 +228,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 }
 
 /**
- *	We need to associate a token with a given record id, so we provide that when performing the request token request
+ *  We need to associate a token with a given record id, so we provide that when performing the request token request
  */
 - (NSDictionary *)additionalRequestTokenParameters
 {
@@ -243,7 +243,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 
 #pragma mark - Record Selection
 /**
- *	@return The record with the given id, nil if it is not found
+ *  @return The record with the given id, nil if it is not found
  */
 - (SMRecord *)recordWithId:(NSString *)recordId
 {
@@ -257,10 +257,10 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 
 
 /**
- *	This is the main authentication entry point, this method will ask the delegate where to present a login view controller, if authentication is necessary, and
- *	handle all user interactions until login was successful or the user cancels the login operation.
- *	@param callback A block with a first BOOL argument, which will be YES if the user cancelled the action, and an error string argument, which will be nil if
- *	authentication was successful. By the time this callback is called, the "activeRecord" property will be set (if the call was successful).
+ *  This is the main authentication entry point, this method will ask the delegate where to present a login view controller, if authentication is necessary, and
+ *  handle all user interactions until login was successful or the user cancels the login operation.
+ *  @param callback A block with a first BOOL argument, which will be YES if the user cancelled the action, and an error string argument, which will be nil if
+ *  authentication was successful. By the time this callback is called, the "activeRecord" property will be set (if the call was successful).
  */
 - (void)selectRecord:(INCancelErrorBlock)callback
 {
@@ -323,9 +323,9 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 
 
 /**
- *	Strips current credentials and then does the OAuth dance again. The authorize screen is automatically shown if necessary.
- *	@attention This call is only useful if a call is in progress (but has hit an invalid access token), so it will not do anything without a current call.
- *	@param callback An INCancelErrorBlock callback
+ *  Strips current credentials and then does the OAuth dance again. The authorize screen is automatically shown if necessary.
+ *  @warning This call is only useful if a call is in progress (but has hit an invalid access token), so it will not do anything without a current call.
+ *  @param callback An INCancelErrorBlock callback
  */
 - (void)authenticate:(INCancelErrorBlock)callback
 {
@@ -377,10 +377,10 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 
 
 /**
- *	Asks our delegate where to place the login screen, then shows the login screen and loads the given URL
- *	@param loginURL The URL to load to show a login interface
- *	@param callbackURL The URL to load after successful authentication
- *	@return Returns NO if the login screen could not be presented, YES if it's being shown
+ *  Asks our delegate where to place the login screen, then shows the login screen and loads the given URL
+ *  @param loginURL The URL to load to show a login interface
+ *  @param callbackURL The URL to load after successful authentication
+ *  @return Returns NO if the login screen could not be presented, YES if it's being shown
  */
 - (void)_presentLoginScreenAtURL:(NSURL *)loginURL
 {
@@ -410,7 +410,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 }
 
 /**
- *	Dismisses the login screen, if present
+ *  Dismisses the login screen, if present
  */
 - (void)_dismissLoginScreenAnimated:(BOOL)animated
 {
@@ -424,7 +424,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 
 #pragma mark - Login View Controller Delegate
 /**
- *	Called when the user selected a record
+ *  Called when the user selected a record
  */
 - (void)loginView:(SMLoginViewController *)aLoginController didSelectRecordId:(NSString *)recordId
 {
@@ -464,7 +464,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 }
 
 /**
- *	A delegate method which gets called when the callback is received
+ *  A delegate method which gets called when the callback is received
  */
 - (void)loginView:(SMLoginViewController *)aLoginController didReceiveVerifier:(NSString *)aVerifier
 {
@@ -486,7 +486,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 }
 
 /**
- *	Delegate method called when the user dismisses the login screen, i.e. cancels the record selection process
+ *  Delegate method called when the user dismisses the login screen, i.e. cancels the record selection process
  */
 - (void)loginViewDidCancel:(SMLoginViewController *)loginController
 {
@@ -503,7 +503,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 }
 
 /**
- *	The user logged out
+ *  The user logged out
  */
 - (void)loginViewDidLogout:(SMLoginViewController *)aLoginController
 {
@@ -518,7 +518,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 }
 
 /**
- *	The scheme for URL that we treat differently internally (by default this is "smart-app")
+ *  The scheme for URL that we treat differently internally (by default this is "smart-app")
  */
 - (NSString *)callbackSchemeForLoginView:(SMLoginViewController *)aLoginController
 {
@@ -529,8 +529,8 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 
 #pragma mark - App Specific Documents
 /**
- *	Fetches global, app-specific documents.
- *	GETs documents from /apps/{app id}/documents/ with a two-legged OAuth call.
+ *  Fetches global, app-specific documents.
+ *  GETs documents from /apps/{app id}/documents/ with a two-legged OAuth call.
  */
 - (void)fetchAppSpecificDocumentsWithCallback:(INSuccessRetvalueBlock)callback
 {
@@ -563,9 +563,9 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 
 #pragma mark - Call Handling
 /**
- *	Perform a method on our server
- *	This method is usally called by INServerObject subclasses, but you can use it bare if you wish
- *	@param aCall The call to perform
+ *  Perform a method on our server
+ *  This method is usally called by INServerObject subclasses, but you can use it bare if you wish
+ *  @param aCall The call to perform
  */
 - (void)performCall:(INServerCall *)aCall
 {
@@ -607,8 +607,8 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 }
 
 /**
- *	Callback to let us know a call has finished.
- *	The call will have called the callback by now, no need for us to do any further handling
+ *  Callback to let us know a call has finished.
+ *  The call will have called the callback by now, no need for us to do any further handling
  */
 - (void)callDidFinish:(INServerCall *)aCall
 {
@@ -632,10 +632,10 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 }
 
 /**
- *	Dequeues a call without finishing it. This is useful for calls that need to be re-performed after another call has been made, e.g. if the token was
- *	rejected and we'll be retrying the call after obtaining a new token. In this case, we don't want the call to finish, but we can't leave it in the queue
- *	because it would block subsequent calls.
- *	@attention Do NOT use this to cancel a call because the callback will not be called!
+ *  Dequeues a call without finishing it. This is useful for calls that need to be re-performed after another call has been made, e.g. if the token was
+ *  rejected and we'll be retrying the call after obtaining a new token. In this case, we don't want the call to finish, but we can't leave it in the queue
+ *  because it would block subsequent calls.
+ *  @warning Do NOT use this to cancel a call because the callback will not be called!
  */
 - (void)suspendCall:(INServerCall *)aCall
 {
@@ -648,8 +648,8 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 }
 
 /**
- *	Callback when the call is stuck at user authorization
- *	@return We always return NO here, but display the login screen ourselves, loaded from the provided URL
+ *  Callback when the call is stuck at user authorization
+ *  @return We always return NO here, but display the login screen ourselves, loaded from the provided URL
  */
 - (BOOL)shouldAutomaticallyAuthenticateFrom:(NSURL *)authURL
 {
@@ -661,9 +661,9 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 
 #pragma mark - MPOAuth Creation
 /**
- *	Returns our standard oauth instance or fills the error, if it couldn't be created
- *	@param error An error pointer to be filled if OAuth creation fails
- *	@return self.oauth
+ *  Returns our standard oauth instance or fills the error, if it couldn't be created
+ *  @param error An error pointer to be filled if OAuth creation fails
+ *  @return self.oauth
  */
 - (MPOAuthAPI *)getOAuthOutError:(NSError *__autoreleasing *)error
 {
@@ -675,9 +675,9 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 
 
 /**
- *	Creates a new MPOAuthAPI instance with our current settings.
- *	@param authClass An MPOAuthAuthenticationMethod class name. If nil picks three-legged oauth.
- *	@param error A pointer to an error object, which will be filled if the method returns null
+ *  Creates a new MPOAuthAPI instance with our current settings.
+ *  @param authClass An MPOAuthAuthenticationMethod class name. If nil picks three-legged oauth.
+ *  @param error A pointer to an error object, which will be filled if the method returns null
  */
 - (MPOAuthAPI *)createOAuthWithAuthMethodClass:(NSString *)authClass error:(NSError *__autoreleasing *)error;
 {
@@ -746,7 +746,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 
 #pragma mark - KVC
 /**
- *	Sets the active record and resets the oauth instance upon logout
+ *  Sets the active record and resets the oauth instance upon logout
  */
 - (void)setActiveRecord:(SMRecord *)aRecord
 {
@@ -760,7 +760,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 }
 
 /**
- *	Shortcut to the active record id
+ *  Shortcut to the active record id
  */
 - (NSString *)activeRecordId
 {
@@ -768,7 +768,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 }
 
 /**
- *	Setting the server manifest automatically updates the endpoint URLs
+ *  Setting the server manifest automatically updates the endpoint URLs
  */
 - (void)setManifest:(NSDictionary *)manifest
 {

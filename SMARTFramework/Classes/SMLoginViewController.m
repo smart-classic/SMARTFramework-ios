@@ -37,8 +37,8 @@
 
 @property (nonatomic, assign) BOOL userDidLogout;
 
-@property (nonatomic, strong) NSMutableArray *history;					///< Holds NSURLs (currently only used to reload the last page when an error occurred)
-@property (nonatomic, strong) IndivoActionView *loadingView;			///< A private view overlaid during loading activity
+@property (nonatomic, strong) NSMutableArray *history;					/// Holds NSURLs (currently only used to reload the last page when an error occurred)
+@property (nonatomic, strong) IndivoActionView *loadingView;			/// A private view overlaid during loading activity
 
 - (void)showHideBackButton;
 - (void)showStillLoadingHint;
@@ -55,7 +55,7 @@
 
 
 /**
- *	The designated initializer
+ *  The designated initializer
  */
 - (id)init
 {
@@ -122,7 +122,7 @@
 }
 
 /**
- *	If the view appears and has never loaded a URL, load the startURL or show a hint if there is none.
+ *  If the view appears and has never loaded a URL, load the startURL or show a hint if there is none.
  */
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -147,7 +147,7 @@
 
 #pragma mark - Loading and Web View Delegate
 /**
- *	Loads a given URL
+ *  Loads a given URL
  */
 - (void)loadURL:(NSURL *)aURL
 {
@@ -156,7 +156,7 @@
 }
 
 /**
- *	Reloads current URL
+ *  Reloads current URL
  */
 - (void)reload:(id)sender
 {
@@ -168,8 +168,8 @@
 }
 
 /**
- *	Reloads after a delay of half a second. This is needed to update the loading view so that the user sees that something happened, even if an error
- *	occurs immediately after reloading.
+ *  Reloads after a delay of half a second. This is needed to update the loading view so that the user sees that something happened, even if an error
+ *  occurs immediately after reloading.
  */
 - (void)reloadDelayed:(id)sender
 {
@@ -182,7 +182,7 @@
 
 
 /**
- *	Intercept requests here
+ *  Intercept requests here
  */
 - (BOOL)webView:(UIWebView *)aWebView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
@@ -284,7 +284,7 @@
 
 #pragma mark - Dismissal
 /**
- *	Dismisses the login view as a cancel operation
+ *  Dismisses the login view as a cancel operation
  */
 - (void)cancel:(id)sender
 {
@@ -292,8 +292,8 @@
 }
 
 /**
- *	Dismisses the view.
- *	The dismissal will be animated if sender is not nil.
+ *  Dismisses the view.
+ *  The dismissal will be animated if sender is not nil.
  */
 - (void)dismiss:(id)sender
 {
@@ -301,7 +301,7 @@
 }
 
 /**
- *	Dismisses the view
+ *  Dismisses the view
  */
 - (void)dismissAnimated:(BOOL)animated
 {
@@ -320,7 +320,7 @@
 
 #pragma mark - History
 /**
- *	Go back in time
+ *  Go back in time
  */
 - (void)goBack:(id)sender
 {
@@ -332,7 +332,7 @@
 }
 
 /**
- *	Show or hide the back button based on whether we have history URLs or not
+ *  Show or hide the back button based on whether we have history URLs or not
  */
 - (void)showHideBackButton
 {
@@ -348,7 +348,7 @@
 
 #pragma mark - KVC
 /**
- *	Setting the startURL when the view is already loaded loads that URL, if nothing else has been loaded
+ *  Setting the startURL when the view is already loaded loads that URL, if nothing else has been loaded
  */
 - (void)setStartURL:(NSURL *)newURL
 {

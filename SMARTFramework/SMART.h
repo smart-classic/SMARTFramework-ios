@@ -22,34 +22,34 @@
 
 
 /**
- *	@file SMART Header file with constants, blocks and typedefs
+ *  SMART Header file with constants, blocks and typedefs
  */
 
 
 // Dictionary keys
-extern NSString *const INErrorKey;							///< Dictionaries return an NSError for this key
-extern NSString *const INRecordIDKey;						///< Dictionaries return an NSString for this key. The key reflects the oauth URL param name.
-extern NSString *const INResponseStringKey;					///< Dictionaries return the server's response as an NSString for this key
-extern NSString *const INResponseArrayKey;					///< Dictionaries return an NSArray for this key
-extern NSString *const INResponseDocumentKey;				///< Dictionaries return an IndivoDocument for this key
+extern NSString *const INErrorKey;							/// Dictionaries return an NSError for this key
+extern NSString *const INRecordIDKey;						/// Dictionaries return an NSString for this key. The key reflects the oauth URL param name.
+extern NSString *const INResponseStringKey;					/// Dictionaries return the server's response as an NSString for this key
+extern NSString *const INResponseArrayKey;					/// Dictionaries return an NSArray for this key
+extern NSString *const INResponseDocumentKey;				/// Dictionaries return an IndivoDocument for this key
 
 // Other globals
-extern NSString *const SMARTInternalScheme;					///< The URL scheme we use to identify when the framework should intercept a request
-extern NSString *const SMARTOAuthRecordIDKey;				///< The name of the OAuth parameter carrying the record_id when we request a token
+extern NSString *const SMARTInternalScheme;					/// The URL scheme we use to identify when the framework should intercept a request
+extern NSString *const SMARTOAuthRecordIDKey;				/// The name of the OAuth parameter carrying the record_id when we request a token
 
 // Notifications
-extern NSString *const SMARTRecordDocumentsDidChangeNotification;	///< Notifications with this name will be posted if documents did change, right AFTER the callback has been called
-extern NSString *const SMARTRecordUserInfoKey;						///< For SMARTRecordDocumentsDidChangeNotification notifications, use this key on the userInfo to find the record object
+extern NSString *const SMARTRecordDocumentsDidChangeNotification;	/// Notifications with this name will be posted if documents did change, right AFTER the callback has been called
+extern NSString *const SMARTRecordUserInfoKey;						/// For SMARTRecordDocumentsDidChangeNotification notifications, use this key on the userInfo to find the record object
 
 /**
- *	A block returning a success flag and a user info dictionary.
- *	If success is NO, you might find an NSError object in userInfo with key "INErrorKey". If no error is present, the operation was cancelled.
+ *  A block returning a success flag and a user info dictionary.
+ *  If success is NO, you might find an NSError object in userInfo with key "INErrorKey". If no error is present, the operation was cancelled.
  */
 typedef void (^INSuccessRetvalueBlock)(BOOL success, NSDictionary * __autoreleasing userInfo);
 
 /**
- *	A block returning a flag whether the user cancelled and an error message on failure, nil otherwise.
- *	If userDidCancel is NO and errorMessage is nil, the operation completed successfully.
+ *  A block returning a flag whether the user cancelled and an error message on failure, nil otherwise.
+ *  If userDidCancel is NO and errorMessage is nil, the operation completed successfully.
  */
 typedef void (^INCancelErrorBlock)(BOOL userDidCancel, NSString * __autoreleasing errorMessage);
 

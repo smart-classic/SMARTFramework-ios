@@ -24,7 +24,7 @@
 
 
 /**
- *	Represents a medication object
+ *  Represents a medication object
  */
 @interface SMMedication : SMDocument
 

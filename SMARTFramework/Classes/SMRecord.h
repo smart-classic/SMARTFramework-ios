@@ -28,7 +28,7 @@
 
 
 /**
- *	Represents a SMART record on a SMART server
+ *  Represents a SMART record on a SMART server
  */
 @interface SMRecord : NSObject
 

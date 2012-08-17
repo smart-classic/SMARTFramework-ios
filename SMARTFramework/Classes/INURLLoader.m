@@ -67,7 +67,7 @@
 
 #pragma mark - URL Loading
 /**
- *	Praparations before beginning to load
+ *  Praparations before beginning to load
  */
 - (void)prepareWithCallback:(INCancelErrorBlock)aCallback
 {
@@ -83,7 +83,7 @@
 }
 
 /**
- *	Start loading data from an URL
+ *  Start loading data from an URL
  */
 - (void)getWithCallback:(INCancelErrorBlock)aCallback
 {
@@ -99,7 +99,7 @@
 }
 
 /**
- *	POST body values to our URL
+ *  POST body values to our URL
  */
 - (void)post:(NSString *)postBody withCallback:(INCancelErrorBlock)aCallback
 {
@@ -117,7 +117,7 @@
 }
 
 /**
- *	Perform an NSURLRequest asynchronically. This method is internally used as the endpoint of all convenience methods, all load operations start here.
+ *  Perform an NSURLRequest asynchronically. This method is internally used as the endpoint of all convenience methods, all load operations start here.
  */
 - (void)performRequest:(NSURLRequest *)aRequest withCallback:(INCancelErrorBlock)aCallback
 {
@@ -139,7 +139,7 @@
 
 
 /**
- *	This finishing method creates an NSString from any loaded data and calls the callback, if one was given
+ *  This finishing method creates an NSString from any loaded data and calls the callback, if one was given
  */
 - (void)didFinishWithError:(NSError *)anError wasCancelled:(BOOL)didCancel
 {
@@ -168,7 +168,7 @@
 
 
 /**
- *	Our timer calls this method when the time is up
+ *  Our timer calls this method when the time is up
  */
 - (void)didTimeout:(NSTimer *)timer
 {
@@ -180,7 +180,7 @@
 
 
 /**
- *	Aborting the loader
+ *  Aborting the loader
  */
 - (void)cancel
 {
@@ -218,8 +218,8 @@
 
 #pragma mark - Parsing URL Requests
 /**
- *	Parses arguments from a request
- *	@return An NSDictionary containing all arguments found in the request
+ *  Parses arguments from a request
+ *  @return An NSDictionary containing all arguments found in the request
  */
 + (NSDictionary *)queryFromRequest:(NSURLRequest *)aRequest
 {
@@ -232,8 +232,8 @@
 
 
 /**
- *	Parses arguments from a request URL string
- *	@return An NSDictionary containing all arguments found in the request string
+ *  Parses arguments from a request URL string
+ *  @return An NSDictionary containing all arguments found in the request string
  */
 + (NSDictionary *)queryFromRequestString:(NSString *)aString
 {

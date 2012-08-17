@@ -24,9 +24,9 @@
 
 
 /**
- *	Mock Server to replace SMServer for unit testing.
- *	When performing a call it parses the request URL and immediately calls the "didFinishSuccessfully:returnObject:" method, supplying data of the respective
- *	call if the request URL was understood by the mock server.
+ *  Mock Server to replace SMServer for unit testing.
+ *  When performing a call it parses the request URL and immediately calls the "didFinishSuccessfully:returnObject:" method, supplying data of the respective
+ *  call if the request URL was understood by the mock server.
  */
 @interface SMMockServer : SMServer
 

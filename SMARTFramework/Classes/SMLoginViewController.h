@@ -27,31 +27,31 @@
 
 
 /**
- *	A protocol to receive notifications from an SMLoginViewController
+ *  A protocol to receive notifications from an SMLoginViewController
  */
 @protocol SMLoginViewControllerDelegate <NSObject>
 
-- (void)loginView:(SMLoginViewController *)aLoginController didSelectRecordId:(NSString *)recordId;			///< Called when a record was selected
-- (void)loginView:(SMLoginViewController *)aLoginController didReceiveVerifier:(NSString *)aVerifier;		///< Called when the login screen gets called with our verifier callback URL
-- (void)loginViewDidCancel:(SMLoginViewController *)aLoginController;										///< The user dismissed the login screen without loggin in successfully
-- (void)loginViewDidLogout:(SMLoginViewController *)aLoginController;										///< If the user logged out, we want to discard cached data
-- (NSString *)callbackSchemeForLoginView:(SMLoginViewController *)aLoginController;							///< Before loading a URL that URL is checked whether the scheme corresponds to the internal scheme, and if it does a different action may be performed than loading the URL in the webView
+- (void)loginView:(SMLoginViewController *)aLoginController didSelectRecordId:(NSString *)recordId;			/// Called when a record was selected
+- (void)loginView:(SMLoginViewController *)aLoginController didReceiveVerifier:(NSString *)aVerifier;		/// Called when the login screen gets called with our verifier callback URL
+- (void)loginViewDidCancel:(SMLoginViewController *)aLoginController;										/// The user dismissed the login screen without loggin in successfully
+- (void)loginViewDidLogout:(SMLoginViewController *)aLoginController;										/// If the user logged out, we want to discard cached data
+- (NSString *)callbackSchemeForLoginView:(SMLoginViewController *)aLoginController;							/// Before loading a URL that URL is checked whether the scheme corresponds to the internal scheme, and if it does a different action may be performed than loading the URL in the webView
 
 @end
 
 
 /**
- *	This class provides the view controller to log the user in
+ *  This class provides the view controller to log the user in
  */
 @interface SMLoginViewController : UIViewController <UIWebViewDelegate>
 
-@property (nonatomic, assign) id <SMLoginViewControllerDelegate> delegate;					///< The delegate to receive callbacks
-@property (nonatomic, strong) NSURL *startURL;												///< The URL to load initially
+@property (nonatomic, assign) id <SMLoginViewControllerDelegate> delegate;					/// The delegate to receive callbacks
+@property (nonatomic, strong) NSURL *startURL;												/// The URL to load initially
 
-@property (nonatomic, readonly, assign) UIWebView *webView;									///< The web view to present HTML
-@property (nonatomic, readonly, assign) UINavigationBar *titleBar;							///< A handle to the title bar being displayed
-@property (nonatomic, readonly, assign) UIBarButtonItem *backButton;						///< To navigate back
-@property (nonatomic, readonly, assign) UIBarButtonItem *cancelButton;						///< The cancel button which dismisses the login view
+@property (nonatomic, readonly, assign) UIWebView *webView;									/// The web view to present HTML
+@property (nonatomic, readonly, assign) UINavigationBar *titleBar;							/// A handle to the title bar being displayed
+@property (nonatomic, readonly, assign) UIBarButtonItem *backButton;						/// To navigate back
+@property (nonatomic, readonly, assign) UIBarButtonItem *cancelButton;						/// The cancel button which dismisses the login view
 
 - (void)loadURL:(NSURL *)aURL;
 - (void)reload:(id)sender;

@@ -45,9 +45,9 @@
 
 
 /**
- *	Convenience constructor, sets the server
- *	@param aServer An indivo server instance
- *	@return an autoreleased INServerCall instance
+ *  Convenience constructor, sets the server
+ *  @param aServer An indivo server instance
+ *  @return an autoreleased INServerCall instance
  */
 + (INServerCall *)newForServer:(id)aServer
 {
@@ -55,7 +55,7 @@
 }
 
 /**
- *	The designated initializer
+ *  The designated initializer
  */
 - (id)initWithServer:(id)aServer
 {
@@ -109,11 +109,11 @@
 
 #pragma mark - Connection Fire Methods
 /**
- *	Sends off as a GET request
- *	@param inMethod The method to use, i.e. the REST path
- *	@param inParameters An array full of @"key=value" NSString objects, can be nil
- *	@param inOAuth The MPOAuthAPI instance to use for the call
- *	@param inCallback The callback block to call when the method has finished
+ *  Sends off as a GET request
+ *  @param inMethod The method to use, i.e. the REST path
+ *  @param inParameters An array full of @"key=value" NSString objects, can be nil
+ *  @param inOAuth The MPOAuthAPI instance to use for the call
+ *  @param inCallback The callback block to call when the method has finished
  */
 - (void)get:(NSString *)inMethod withParameters:(NSArray *)inParameters oauth:(MPOAuthAPI *)inOAuth callback:(INSuccessRetvalueBlock)inCallback
 {
@@ -127,11 +127,11 @@
 }
 
 /**
- *	Sends off as a POST request
- *	@param inMethod The method to use, i.e. the REST path
- *	@param inParameters An array full of @"key=value" NSString objects, can be nil
- *	@param inOAuth The MPOAuthAPI instance to use for the call
- *	@param inCallback The callback block to call when the method has finished
+ *  Sends off as a POST request
+ *  @param inMethod The method to use, i.e. the REST path
+ *  @param inParameters An array full of @"key=value" NSString objects, can be nil
+ *  @param inOAuth The MPOAuthAPI instance to use for the call
+ *  @param inCallback The callback block to call when the method has finished
  */
 - (void)post:(NSString *)inMethod withParameters:(NSArray *)inParameters oauth:(MPOAuthAPI *)inOAuth callback:(INSuccessRetvalueBlock)inCallback
 {
@@ -145,11 +145,11 @@
 }
 
 /**
- *	Sends off a POST request with the given body
- *	@param inMethod The method to use, i.e. the REST path
- *	@param bodyString The body string to POST
- *	@param inOAuth The MPOAuthAPI instance to use for the call
- *	@param inCallback The callback block to call when the method has finished
+ *  Sends off a POST request with the given body
+ *  @param inMethod The method to use, i.e. the REST path
+ *  @param bodyString The body string to POST
+ *  @param inOAuth The MPOAuthAPI instance to use for the call
+ *  @param inCallback The callback block to call when the method has finished
  */
 - (void)post:(NSString *)inMethod body:(NSString *)bodyString oauth:(MPOAuthAPI *)inOAuth callback:(INSuccessRetvalueBlock)inCallback
 {
@@ -163,12 +163,12 @@
 }
 
 /**
- *	Most versatile fire method, used internally from the get: and post: methods.
- *	@param inMethod The method to use, i.e. the REST path
- *	@param inParameters An array full of @"key=value" NSString objects, can be nil
- *	@param httpMethod The HTTP-method (GET, PUT, POST) to use
- *	@param inOAuth The MPOAuthAPI instance to use for the call
- *	@param inCallback The callback block to call when the method has finished
+ *  Most versatile fire method, used internally from the get: and post: methods.
+ *  @param inMethod The method to use, i.e. the REST path
+ *  @param inParameters An array full of @"key=value" NSString objects, can be nil
+ *  @param httpMethod The HTTP-method (GET, PUT, POST) to use
+ *  @param inOAuth The MPOAuthAPI instance to use for the call
+ *  @param inCallback The callback block to call when the method has finished
  */
 - (void)fire:(NSString *)inMethod withParameters:(NSArray *)inParameters httpMethod:(NSString *)httpMethod oauth:(MPOAuthAPI *)inOAuth callback:(INSuccessRetvalueBlock)inCallback
 {
@@ -182,8 +182,8 @@
 }
 
 /**
- *	Fires the request as currently prepared.
- *	All get, post and fire methods go through this method in their last step.
+ *  Fires the request as currently prepared.
+ *  All get, post and fire methods go through this method in their last step.
  */
 - (void)fire
 {
@@ -235,9 +235,9 @@
 
 #pragma mark - Finishing and Aborting
 /**
- *	A method to finish the call early, but successfully.
- *	Use abortWithError: to finish a call early and unsuccessfully. This method provokes the same actions as if it was fired
- *	and returned successfully. This method is NOT being called when the URL connection finishes.
+ *  A method to finish the call early, but successfully.
+ *  Use abortWithError: to finish a call early and unsuccessfully. This method provokes the same actions as if it was fired
+ *  and returned successfully. This method is NOT being called when the URL connection finishes.
  */
 - (void)finishWith:(NSDictionary *)returnObject
 {
@@ -245,7 +245,7 @@
 }
 
 /**
- *	Cancels the call, calling "abortWithError:nil" has the same effect
+ *  Cancels the call, calling "abortWithError:nil" has the same effect
  */
 - (void)cancel
 {
@@ -253,8 +253,8 @@
 }
 
 /**
- *	This method can be called to abort a call and have it send the provided error with its callback
- *	@param error An NSError object to be delivered through the callback
+ *  This method can be called to abort a call and have it send the provided error with its callback
+ *  @param error An NSError object to be delivered through the callback
  */
 - (void)abortWithError:(NSError *)error
 {
@@ -263,7 +263,7 @@
 }
 
 /**
- *	Internal finishing method. Calls the callback, if there is one, and informs the server that the call has finished.
+ *  Internal finishing method. Calls the callback, if there is one, and informs the server that the call has finished.
  */
 - (void)didFinishSuccessfully:(BOOL)success returnObject:(NSDictionary *)returnObject
 {
@@ -283,7 +283,7 @@
 
 #pragma mark - OAuth Delegate Methods -- Asking us for information
 /**
- *	MPOAuth will call this method to know where to redirect after successfull authentication
+ *  MPOAuth will call this method to know where to redirect after successfull authentication
  */
 - (NSURL *)callbackURLForCompletedUserAuthorization
 {
@@ -291,9 +291,9 @@
 }
 
 /**
- *	MPOAuth will call this method to get ahold of the oAuth verifier.
- *	We must extract the verifier from the callback URL (specified in "- (NSURL *)callbackURLForCompletedUserAuthorization" and
- *	called on the App Delegate) and return it from this method
+ *  MPOAuth will call this method to get ahold of the oAuth verifier.
+ *  We must extract the verifier from the callback URL (specified in "- (NSURL *)callbackURLForCompletedUserAuthorization" and
+ *  called on the App Delegate) and return it from this method
  */
 - (NSString *)oauthVerifierForCompletedUserAuthorization
 {
@@ -306,7 +306,7 @@
 }
 
 /**
- *	If the server is our delegate, we return NO here and the server loads the login page
+ *  If the server is our delegate, we return NO here and the server loads the login page
  */
 - (BOOL)automaticallyRequestAuthenticationFromURL:(NSURL *)inAuthURL withCallbackURL:(NSURL *)inCallbackURL
 {
@@ -317,7 +317,7 @@
 
 #pragma mark - OAuth Auth Delegate Methods -- Final Responses
 /**
- *	Delegate method after successful authentication
+ *  Delegate method after successful authentication
  */
 - (void)authenticationDidSucceed
 {
@@ -325,7 +325,7 @@
 }
 
 /**
- *	Delegate method that gets called after failure to receive an access_token
+ *  Delegate method that gets called after failure to receive an access_token
  */
 - (void)authenticationDidFailWithError:(NSError *)error
 {
@@ -340,9 +340,9 @@
 
 #pragma mark - Receiving OAuth Notifications
 /**
- *	One method to intercept all MPOAuth notifications.
- *	We only subscribe to receive notifications from "our" MPOAuthAPI object. The notifications will be delivered before the finishing
- *	authDelegate methods will be called.
+ *  One method to intercept all MPOAuth notifications.
+ *  We only subscribe to receive notifications from "our" MPOAuthAPI object. The notifications will be delivered before the finishing
+ *  authDelegate methods will be called.
  */
 - (void)oauthNotificationReceived:(NSNotification *)aNotification
 {
