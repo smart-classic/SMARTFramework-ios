@@ -399,7 +399,7 @@
 	if ([inData length] > 0) {
 		retString = [[NSString alloc] initWithData:inData encoding:NSUTF8StringEncoding];
 	}
-	DLog(@"%@ %@ %@  -----  %@", HTTPMethod, method, [aResponse MIMEType], retString);
+	//DLog(@"%@ %@ %@  -----  %@", HTTPMethod, method, [aResponse MIMEType], retString);
 	
 	// compose the response
 	if ([retString length] > 0) {

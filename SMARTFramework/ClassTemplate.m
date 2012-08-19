@@ -21,6 +21,12 @@
  */
 
 #import "{{ CLASS_NAME }}.h"
+#import "SMARTDocuments.h"
+
+#import <RedlandModel-Convenience.h>
+#import <RedlandNode-Convenience.h>
+#import <RedlandStatement.h>
+#import <RedlandStreamEnumerator.h>
 
 
 @implementation {{ CLASS_NAME }}

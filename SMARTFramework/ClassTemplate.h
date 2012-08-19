@@ -21,8 +21,9 @@
  */
 
 #import "{{ CLASS_SUPERCLASS }}.h"
-#import "SMARTDocuments.h"
-	
+
+{{ CLASS_FORWARDS }}
+
 
 /**
  *	A class representing "{{ RDF_TYPE }}" objects, generated from {{ ONTOLOGY_PATH }}.

@@ -3,13 +3,146 @@
 #
 
 ### config ###
+_overwrite = True
 _obj_c_class_prefix = 'SM'
 _generated_classes_dir = 'SMARTFramework/GeneratedClasses'
 _smart_ontology_uri = 'https://raw.github.com/chb/smart_common/adding-0.5-models/schema/smart.owl'
 
-
 ### there's probably no need to edit anything beyond this line ###
 ### ---------------------------------------------------------- ###
+
+_classes_to_ignore = [
+	'AnyURI',
+	'AppManifest',
+	'Call',
+	'Cell',
+	'Component',
+	'ContainerManifest',
+	'Filter',
+	'Home',
+	'Literal',
+	'Ontology',
+	'Parameter',
+	'ParameterSet',
+	'Pref',
+	'SMARTAPI',
+	'UserPreferences',
+	'VCardLabel',
+	'Work',
+]
+
+_property_template = """/// Representing {{ uri }}
+@property (nonatomic, {{ strength }}) {{ useClass }} *{{ name }};"""
+
+_literal_getter_template = """- ({{ itemClass }} *){{ name }}
+{
+	if (!_{{ name }}) {
+		RedlandNode *predicate = [RedlandNode nodeWithURIString:@"{{ uri }}"];
+		RedlandStatement *statement = [RedlandStatement statementWithSubject:nil predicate:predicate object:nil];
+		RedlandStreamEnumerator *query = [self.model enumeratorOfStatementsLike:statement];
+		
+		RedlandStatement *rslt = [query nextObject];
+		self.{{ name }} = [rslt.object literalValue];
+	}
+	return _{{ name }};
+}"""
+
+_multi_literal_getter_template = """- (NSArray *){{ name }}
+{
+	if (!_{{ name }}) {
+		RedlandNode *predicate = [RedlandNode nodeWithURIString:@"{{ uri }}"];
+		RedlandStatement *statement = [RedlandStatement statementWithSubject:nil predicate:predicate object:nil];
+		RedlandStreamEnumerator *query = [self.model enumeratorOfStatementsLike:statement];
+		
+		// loop results
+		NSMutableArray *arr = [NSMutableArray array];
+		RedlandStatement *rslt = nil;
+		while ((rslt = [query nextObject])) {
+			{{ itemClass }} *newItem = [rslt.object literalValue];		// only works for NSString for now
+			if (newItem) {
+				[arr addObject:newItem];
+			}
+		}
+		self.{{ name }} = arr;
+	}
+	return _{{ name }};
+}"""
+
+_model_getter_template = """- ({{ itemClass }} *){{ name }}
+{
+	if (!_{{ name }}) {
+		
+		// get the "{{ name }}" element
+		RedlandNode *predicate = [RedlandNode nodeWithURIString:@"{{ uri }}"];
+		RedlandStatement *statement = [RedlandStatement statementWithSubject:nil predicate:predicate object:nil];
+		RedlandStreamEnumerator *query = [self.model enumeratorOfStatementsLike:statement];
+		RedlandStatement *rslt = [query nextObject];
+		
+		// create a model containing the statements
+		RedlandModel *newModel = [[RedlandModel alloc] initWithStorage:self.model.storage];
+		RedlandStatement *newStmt = [RedlandStatement statementWithSubject:rslt.object predicate:nil object:nil];
+		RedlandStreamEnumerator *newStream = [self.model enumeratorOfStatementsLike:newStmt];
+		
+		// add statements to the new model
+		@try {
+			for (RedlandStatement *stmt in newStream) {
+				[newModel addStatement:stmt];
+			}
+		}
+		@catch (NSException *e) {
+			DLog(@"xx>  %@ -- %@", [e reason], [e userInfo]);
+			[self.model print];
+		}
+		
+		self.{{ name }} = [{{ itemClass }} newWithModel:newModel];
+	}
+	return _{{ name }};
+}"""
+
+_multi_model_getter_template = """- (NSArray *){{ name }}
+{
+	if (!_{{ name }}) {
+		
+		// get the "{{ name }}" elements
+		RedlandNode *predicate = [RedlandNode nodeWithURIString:@"{{ uri }}"];
+		RedlandStatement *statement = [RedlandStatement statementWithSubject:nil predicate:predicate object:nil];
+		RedlandStreamEnumerator *query = [self.model enumeratorOfStatementsLike:statement];
+		
+		// loop through the results
+		NSMutableArray *arr = [NSMutableArray array];
+		RedlandStatement *rslt = nil;
+		while ((rslt = [query nextObject])) {
+			
+			// create a model containing the statements
+			RedlandModel *newModel = [[RedlandModel alloc] initWithStorage:self.model.storage];
+			RedlandStatement *newStmt = [RedlandStatement statementWithSubject:rslt.object predicate:nil object:nil];
+			RedlandStreamEnumerator *newStream = [self.model enumeratorOfStatementsLike:newStmt];
+			
+			// add statements to the new model
+			@try {
+				for (RedlandStatement *stmt in newStream) {
+					[newModel addStatement:stmt];
+				}
+			}
+			@catch (NSException *e) {
+				DLog(@"xx>  %@ -- %@", [e reason], [e userInfo]);
+				[self.model print];
+			}
+			
+			{{ itemClass }} *newItem = [{{ itemClass }} newWithModel:newModel];
+			if (newItem) {
+				[arr addObject:newItem];
+			}
+		}
+		self.{{ name }} = arr;
+	}
+	return _{{ name }};
+}"""
+
+
+### ---------------------------------------------------------- ###
+
+
 import os
 import re
 import urllib2
@@ -55,6 +188,7 @@ def handle_class(a_class, known_classes, ontology_file_name='smart.owl'):
 	template files:
 	- CLASS_NAME
 	- CLASS_SUPERCLASS
+	- CLASS_FORWARDS
 	- CLASS_PROPERTIES
 	- CLASS_GETTERS
 	- RDF_TYPE
@@ -66,7 +200,7 @@ def handle_class(a_class, known_classes, ontology_file_name='smart.owl'):
 	
 	# do we already have this class?
 	if a_class.name in known_classes:
-		print 'xx>	%s is already known, skipping' % a_class.name
+		print 'xx>  %s is already known, skipping' % a_class.name
 		return None
 	
 	# start the dictionary
@@ -82,19 +216,29 @@ def handle_class(a_class, known_classes, ontology_file_name='smart.owl'):
 	}
 	
 	# get properties that represent other classes (OWL_ObjectProperty instances)
-	properties = []
+	c_forwards = set()
+	prop_statements = []
+	prop_getter = []
 	for o_prop in a_class.object_properties:
 		# o_prop.multiple_cardinality   ->  Bool whether the property can have multiple items
 		# o_prop.to_class			    ->  SMART_Class represented by the property
 		# o_prop.to_class.uri   	  	->  Class URI
+		itemClass = toObjCClassName(o_prop.to_class.name)
+		c_forwards.add(itemClass)
 		prop = {
 			'name': toObjCPropertyName(o_prop.name),
 			'uri': o_prop.uri,
-			'multi': o_prop.multiple_cardinality,
-			'itemClass': toObjCClassName(o_prop.to_class.name),
-			'strength': 'strong',
+			'itemClass': itemClass,
+			'useClass': 'NSArray' if o_prop.multiple_cardinality else itemClass,
+			'strength': 'copy' if o_prop.multiple_cardinality else 'strong',
 		}
-		properties.append(prop)
+		
+		stmt = apply_template(_property_template, prop)
+		prop_statements.append(stmt)
+		
+		getter_template = _multi_model_getter_template if o_prop.multiple_cardinality else _model_getter_template
+		getter = apply_template(getter_template, prop)
+		prop_getter.append(getter)
 	
 	# get data properties (OWL_DataProperty instances)
 	for d_prop in a_class.data_properties:
@@ -102,27 +246,22 @@ def handle_class(a_class, known_classes, ontology_file_name='smart.owl'):
 		prop = {
 			'name': toObjCPropertyName(d_prop.name),
 			'uri': d_prop.uri,
-			'multi': d_prop.multiple_cardinality,
 			'itemClass': primitive,
+			'useClass': 'NSArray' if d_prop.multiple_cardinality else primitive,
 			'strength': 'copy',
 		}
-		properties.append(prop)
-	
-	# loop properties to create their statements and getter
-	prop_statements = []
-	prop_getter = []
-	for p in properties:
-		strength = 'copy' if p['multi'] else p['strength']
-		cls = 'NSArray' if p['multi'] else p['itemClass']
 		
-		# the property statement
-		stmt = '/// Representing %s\n@property (nonatomic, %s) %s *%s;'
-		prop_statements.append(stmt % (p['uri'], strength, cls, p['name']))
+		stmt = apply_template(_property_template, prop)
+		prop_statements.append(stmt)
 		
-		# TODO: create the getter
-		# ...
+		getter_template = _multi_literal_getter_template if d_prop.multiple_cardinality else _literal_getter_template
+		getter = apply_template(getter_template, prop)
+		prop_getter.append(getter)
 	
+	# apply to dict
+	myDict['CLASS_FORWARDS'] = '@class %s;' % ', '.join(c_forwards) if len(c_forwards) > 0 else ''
 	myDict['CLASS_PROPERTIES'] = "\n\n".join(prop_statements)
+	myDict['CLASS_GETTERS'] = "\n\n".join(prop_getter)
 	
 	# add it to the known classes dict
 	known_classes[a_class.name] = myDict
@@ -242,34 +381,34 @@ if __name__ == "__main__":
 	
 	# loop all SMART_Class instances
 	for o_class in rdf_ontology.api_types:
+		if o_class.name in _classes_to_ignore:
+			continue
 		
-		# testing with "Demographics" and "Name"
-		if 'Demographics' == o_class.name \
-			or 'Name' == o_class.name:
-			d = handle_class(o_class, known_classes)
+		d = handle_class(o_class, known_classes)
+		if d:
+			filename_h = '%s.h' % d['CLASS_NAME']
+			path_h = os.path.join(_generated_classes_dir, filename_h)
+			if not _overwrite and os.path.exists(path_h):
+				print 'xx>  Class %s already exists at %s, skipping' % (d['CLASS_NAME'], path_h)
+				continue
 			
-			if d:
-				filename_h = '%s.h' % d['CLASS_NAME']
-				path_h = os.path.join(_generated_classes_dir, filename_h)
-				if os.path.exists(path_h):
-					print 'xx>  Class %s already exists at %s, skipping' % (d['CLASS_NAME'], path_h)
-					continue
-				
-				filename_m = '%s.m' % d['CLASS_NAME']
-				path_m = os.path.join(_generated_classes_dir, filename_m)
-				if os.path.exists(path_m):
-					print 'xx>  Implementatino for %s already exists at %s, skipping' % (d['CLASS_NAME'], path_m)
-					continue
-				
-				# finish the header
-				header = apply_template(template_h, d)
-				print header
-				
-				# finish the implementation
-				implem = apply_template(template_m, d)
-				print implem
-				
-				num_generated += 1
+			filename_m = '%s.m' % d['CLASS_NAME']
+			path_m = os.path.join(_generated_classes_dir, filename_m)
+			if not _overwrite and os.path.exists(path_m):
+				print 'xx>  Implementatino for %s already exists at %s, skipping' % (d['CLASS_NAME'], path_m)
+				continue
+			
+			# finish the header
+			header = apply_template(template_h, d)
+			handle = open(path_h, 'w')
+			handle.write(header)
+			
+			# finish the implementation
+			implem = apply_template(template_m, d)
+			handle = open(path_m, 'w')
+			handle.write(implem)
+			
+			num_generated += 1
 	
 	# all done
 	print '-->  Done. %d classes written.' % num_generated
