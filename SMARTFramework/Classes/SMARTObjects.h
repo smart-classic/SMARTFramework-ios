@@ -1,5 +1,5 @@
 /*
- SMARTDocuments.h
+ SMARTObjects.h
  SMARTFramework
 
  Created by Pascal Pfiffner on 8/6/12.
@@ -21,12 +21,10 @@
  */
 
 /**
- *  @file SMARTDocuments.h
+ *  @file SMARTObjects.h
  *  This header file includes all our document subclasses. Include this header where you use these classes.
  */
 #import "SMAddress.h"
-#import "SMAlert.h"
-#import "SMAlertLevel.h"
 #import "SMAllergy.h"
 #import "SMAllergyCategory.h"
 #import "SMAllergyExclusion.h"
@@ -64,8 +62,6 @@
 #import "SMName.h"
 #import "SMNarrativeResult.h"
 #import "SMNDFRT.h"
-#import "SMNominalResult.h"
-#import "SMOrdinalResult.h"
 #import "SMOrganization.h"
 #import "SMPanel.h"
 #import "SMParticipant.h"
@@ -93,5 +89,4 @@
 #import "SMVCard.h"
 #import "SMVitalSign.h"
 #import "SMVitalSignSet.h"
-#import "SMWork.h"
 

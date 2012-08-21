@@ -86,4 +86,32 @@
 }
 
 
+
+#pragma mark - Server Path
+/**
+ *	Uses the class basePath and substitutes the placeholders with instance properties by default.
+ *	TODO: Use a nice text substitution method
+ */
+- (NSString *)basePath
+{
+	if (!_basePath) {
+		NSString *foo = [[isa basePath] stringByReplacingOccurrencesOfString:@"{record_id}" withString:_record.record_id];
+		self.basePath = [foo stringByReplacingOccurrencesOfString:@"{uuid}" withString:_uuid];
+	}
+	return _basePath;
+}
+
+/**
+ *	Path template for instances of this class.
+ *	Subclasses must override this method, supported placeholders are:
+ *
+ *	- {record_id}
+ *	- {uuid}
+ */
++ (NSString *)basePath
+{
+	return nil;
+}
+
+
 @end

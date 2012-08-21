@@ -23,7 +23,7 @@
 #import "SMART.h"
 #import "SMServer.h"
 #import "SMRecord.h"
-#import "SMARTDocuments.h"
+#import "SMARTObjects.h"
 #import "INURLLoader.h"
 #import "INServerCall.h"
 #import "MPOAuthAPI.h"

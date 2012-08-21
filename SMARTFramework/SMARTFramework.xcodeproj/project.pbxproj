@@ -13,6 +13,8 @@
 		EE249AB515D5CBB4001A63D7 /* librasqal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE249AB415D5CBB4001A63D7 /* librasqal.a */; };
 		EE249AB715D5CBB6001A63D7 /* librdf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE249AB615D5CBB6001A63D7 /* librdf.a */; };
 		EE42D04C15DEB4C900F03EB0 /* SMART.h in Headers */ = {isa = PBXBuildFile; fileRef = EE42D04B15DEB4C900F03EB0 /* SMART.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EE59AC1615E34D4F00F4D738 /* SMRecord+Calls.h in Headers */ = {isa = PBXBuildFile; fileRef = EE59AC1415E34D4F00F4D738 /* SMRecord+Calls.h */; };
+		EE59AC1715E34D4F00F4D738 /* SMRecord+Calls.m in Sources */ = {isa = PBXBuildFile; fileRef = EE59AC1515E34D4F00F4D738 /* SMRecord+Calls.m */; };
 		EE68EB5C15DC54CC006B149E /* SMObject.h in Headers */ = {isa = PBXBuildFile; fileRef = EE68EB5A15DC54CC006B149E /* SMObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EE68EB5D15DC54CC006B149E /* SMObject.m in Sources */ = {isa = PBXBuildFile; fileRef = EE68EB5B15DC54CC006B149E /* SMObject.m */; };
 		EE6A5A7E15CC723500DD0F68 /* libredland-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE6A5A7D15CC723500DD0F68 /* libredland-ios.a */; };
@@ -30,10 +32,6 @@
 		EEC1470A15DFE790006B8798 /* SMName.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1470615DFE790006B8798 /* SMName.m */; };
 		EEC147B315E076AD006B8798 /* SMAddress.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1470B15E076AB006B8798 /* SMAddress.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EEC147B415E076AD006B8798 /* SMAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1470C15E076AB006B8798 /* SMAddress.m */; };
-		EEC147B515E076AD006B8798 /* SMAlert.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1470D15E076AB006B8798 /* SMAlert.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EEC147B615E076AD006B8798 /* SMAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1470E15E076AB006B8798 /* SMAlert.m */; };
-		EEC147B715E076AD006B8798 /* SMAlertLevel.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1470F15E076AB006B8798 /* SMAlertLevel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EEC147B815E076AD006B8798 /* SMAlertLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1471015E076AB006B8798 /* SMAlertLevel.m */; };
 		EEC147B915E076AD006B8798 /* SMAllergy.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1471115E076AB006B8798 /* SMAllergy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EEC147BA15E076AD006B8798 /* SMAllergy.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1471215E076AB006B8798 /* SMAllergy.m */; };
 		EEC147BB15E076AD006B8798 /* SMAllergyCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1471315E076AB006B8798 /* SMAllergyCategory.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -104,10 +102,6 @@
 		EEC1480E15E076AD006B8798 /* SMNarrativeResult.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1476615E076AC006B8798 /* SMNarrativeResult.m */; };
 		EEC1480F15E076AD006B8798 /* SMNDFRT.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1476715E076AC006B8798 /* SMNDFRT.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EEC1481015E076AD006B8798 /* SMNDFRT.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1476815E076AC006B8798 /* SMNDFRT.m */; };
-		EEC1481115E076AD006B8798 /* SMNominalResult.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1476915E076AC006B8798 /* SMNominalResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EEC1481215E076AD006B8798 /* SMNominalResult.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1476A15E076AC006B8798 /* SMNominalResult.m */; };
-		EEC1481515E076AD006B8798 /* SMOrdinalResult.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1476D15E076AC006B8798 /* SMOrdinalResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EEC1481615E076AD006B8798 /* SMOrdinalResult.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1476E15E076AC006B8798 /* SMOrdinalResult.m */; };
 		EEC1481715E076AD006B8798 /* SMOrganization.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1476F15E076AC006B8798 /* SMOrganization.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EEC1481815E076AD006B8798 /* SMOrganization.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1477015E076AC006B8798 /* SMOrganization.m */; };
 		EEC1481915E076AD006B8798 /* SMPanel.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1477115E076AC006B8798 /* SMPanel.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -162,15 +156,13 @@
 		EEC1485615E076AD006B8798 /* SMVitalSign.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC147AE15E076AD006B8798 /* SMVitalSign.m */; };
 		EEC1485715E076AD006B8798 /* SMVitalSignSet.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC147AF15E076AD006B8798 /* SMVitalSignSet.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EEC1485815E076AD006B8798 /* SMVitalSignSet.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC147B015E076AD006B8798 /* SMVitalSignSet.m */; };
-		EEC1485915E076AD006B8798 /* SMWork.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC147B115E076AD006B8798 /* SMWork.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EEC1485A15E076AD006B8798 /* SMWork.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC147B215E076AD006B8798 /* SMWork.m */; };
 		EEC9C59915CB2EA800B7C568 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEC9C59815CB2EA800B7C568 /* Foundation.framework */; };
 		EEC9C5A715CB2EA900B7C568 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEC9C5A615CB2EA900B7C568 /* SenTestingKit.framework */; };
 		EEC9C5AA15CB2EA900B7C568 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEC9C59815CB2EA800B7C568 /* Foundation.framework */; };
 		EEC9C5AD15CB2EA900B7C568 /* libSMART.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EEC9C59515CB2EA800B7C568 /* libSMART.a */; };
 		EEE82D8515D008510017EA0B /* IndivoActionView.h in Headers */ = {isa = PBXBuildFile; fileRef = EEE82D8315D008500017EA0B /* IndivoActionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EEE82D8615D008510017EA0B /* IndivoActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = EEE82D8415D008500017EA0B /* IndivoActionView.m */; };
-		EEE82D8D15D00D810017EA0B /* SMARTDocuments.h in Headers */ = {isa = PBXBuildFile; fileRef = EEE82D8C15D00D810017EA0B /* SMARTDocuments.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EEE82D8D15D00D810017EA0B /* SMARTObjects.h in Headers */ = {isa = PBXBuildFile; fileRef = EEE82D8C15D00D810017EA0B /* SMARTObjects.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EEE82D9015D01E780017EA0B /* libredland-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE6A5A7D15CC723500DD0F68 /* libredland-ios.a */; };
 		EEE82D9215D02F4A0017EA0B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE82D9115D02F4A0017EA0B /* UIKit.framework */; };
 		EEE82D9615D02FD80017EA0B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE82D9415D02F970017EA0B /* CoreGraphics.framework */; };
@@ -248,6 +240,10 @@
 		EE249AB415D5CBB4001A63D7 /* librasqal.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = librasqal.a; path = "../Redland-ObjC/Redland-source/Universal/librasqal.a"; sourceTree = "<group>"; };
 		EE249AB615D5CBB6001A63D7 /* librdf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = librdf.a; path = "../Redland-ObjC/Redland-source/Universal/librdf.a"; sourceTree = "<group>"; };
 		EE42D04B15DEB4C900F03EB0 /* SMART.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMART.h; sourceTree = "<group>"; };
+		EE59AC1215E342CC00F4D738 /* CategoryTemplate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoryTemplate.h; sourceTree = "<group>"; };
+		EE59AC1315E342CC00F4D738 /* CategoryTemplate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryTemplate.m; sourceTree = "<group>"; };
+		EE59AC1415E34D4F00F4D738 /* SMRecord+Calls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SMRecord+Calls.h"; sourceTree = "<group>"; };
+		EE59AC1515E34D4F00F4D738 /* SMRecord+Calls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SMRecord+Calls.m"; sourceTree = "<group>"; };
 		EE68EB5A15DC54CC006B149E /* SMObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMObject.h; sourceTree = "<group>"; };
 		EE68EB5B15DC54CC006B149E /* SMObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMObject.m; sourceTree = "<group>"; };
 		EE6A5A7D15CC723500DD0F68 /* libredland-ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libredland-ios.a"; path = "../Redland-ObjC/build/Development-iphoneos/libredland-ios.a"; sourceTree = "<group>"; };
@@ -271,10 +267,6 @@
 		EEC1470615DFE790006B8798 /* SMName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMName.m; sourceTree = "<group>"; };
 		EEC1470B15E076AB006B8798 /* SMAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAddress.h; sourceTree = "<group>"; };
 		EEC1470C15E076AB006B8798 /* SMAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAddress.m; sourceTree = "<group>"; };
-		EEC1470D15E076AB006B8798 /* SMAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAlert.h; sourceTree = "<group>"; };
-		EEC1470E15E076AB006B8798 /* SMAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAlert.m; sourceTree = "<group>"; };
-		EEC1470F15E076AB006B8798 /* SMAlertLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAlertLevel.h; sourceTree = "<group>"; };
-		EEC1471015E076AB006B8798 /* SMAlertLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAlertLevel.m; sourceTree = "<group>"; };
 		EEC1471115E076AB006B8798 /* SMAllergy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAllergy.h; sourceTree = "<group>"; };
 		EEC1471215E076AB006B8798 /* SMAllergy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAllergy.m; sourceTree = "<group>"; };
 		EEC1471315E076AB006B8798 /* SMAllergyCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAllergyCategory.h; sourceTree = "<group>"; };
@@ -345,10 +337,6 @@
 		EEC1476615E076AC006B8798 /* SMNarrativeResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMNarrativeResult.m; sourceTree = "<group>"; };
 		EEC1476715E076AC006B8798 /* SMNDFRT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMNDFRT.h; sourceTree = "<group>"; };
 		EEC1476815E076AC006B8798 /* SMNDFRT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMNDFRT.m; sourceTree = "<group>"; };
-		EEC1476915E076AC006B8798 /* SMNominalResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMNominalResult.h; sourceTree = "<group>"; };
-		EEC1476A15E076AC006B8798 /* SMNominalResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMNominalResult.m; sourceTree = "<group>"; };
-		EEC1476D15E076AC006B8798 /* SMOrdinalResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMOrdinalResult.h; sourceTree = "<group>"; };
-		EEC1476E15E076AC006B8798 /* SMOrdinalResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMOrdinalResult.m; sourceTree = "<group>"; };
 		EEC1476F15E076AC006B8798 /* SMOrganization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMOrganization.h; sourceTree = "<group>"; };
 		EEC1477015E076AC006B8798 /* SMOrganization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMOrganization.m; sourceTree = "<group>"; };
 		EEC1477115E076AC006B8798 /* SMPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMPanel.h; sourceTree = "<group>"; };
@@ -403,8 +391,6 @@
 		EEC147AE15E076AD006B8798 /* SMVitalSign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMVitalSign.m; sourceTree = "<group>"; };
 		EEC147AF15E076AD006B8798 /* SMVitalSignSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMVitalSignSet.h; sourceTree = "<group>"; };
 		EEC147B015E076AD006B8798 /* SMVitalSignSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMVitalSignSet.m; sourceTree = "<group>"; };
-		EEC147B115E076AD006B8798 /* SMWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMWork.h; sourceTree = "<group>"; };
-		EEC147B215E076AD006B8798 /* SMWork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMWork.m; sourceTree = "<group>"; };
 		EEC9C59515CB2EA800B7C568 /* libSMART.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSMART.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEC9C59815CB2EA800B7C568 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EEC9C59C15CB2EA800B7C568 /* SMARTFramework-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SMARTFramework-Prefix.pch"; sourceTree = "<group>"; };
@@ -413,7 +399,7 @@
 		EEC9C5B015CB2EA900B7C568 /* SMARTFrameworkTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SMARTFrameworkTests-Info.plist"; sourceTree = "<group>"; };
 		EEE82D8315D008500017EA0B /* IndivoActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndivoActionView.h; sourceTree = "<group>"; };
 		EEE82D8415D008500017EA0B /* IndivoActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndivoActionView.m; sourceTree = "<group>"; };
-		EEE82D8C15D00D810017EA0B /* SMARTDocuments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMARTDocuments.h; sourceTree = "<group>"; };
+		EEE82D8C15D00D810017EA0B /* SMARTObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMARTObjects.h; sourceTree = "<group>"; };
 		EEE82D9115D02F4A0017EA0B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EEE82D9415D02F970017EA0B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		EEF0192915CB447100FFD480 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
@@ -506,12 +492,10 @@
 		EEC1470215DFE790006B8798 /* GeneratedClasses */ = {
 			isa = PBXGroup;
 			children = (
+				EE59AC1415E34D4F00F4D738 /* SMRecord+Calls.h */,
+				EE59AC1515E34D4F00F4D738 /* SMRecord+Calls.m */,
 				EEC1470B15E076AB006B8798 /* SMAddress.h */,
 				EEC1470C15E076AB006B8798 /* SMAddress.m */,
-				EEC1470D15E076AB006B8798 /* SMAlert.h */,
-				EEC1470E15E076AB006B8798 /* SMAlert.m */,
-				EEC1470F15E076AB006B8798 /* SMAlertLevel.h */,
-				EEC1471015E076AB006B8798 /* SMAlertLevel.m */,
 				EEC1471115E076AB006B8798 /* SMAllergy.h */,
 				EEC1471215E076AB006B8798 /* SMAllergy.m */,
 				EEC1471315E076AB006B8798 /* SMAllergyCategory.h */,
@@ -586,10 +570,6 @@
 				EEC1476615E076AC006B8798 /* SMNarrativeResult.m */,
 				EEC1476715E076AC006B8798 /* SMNDFRT.h */,
 				EEC1476815E076AC006B8798 /* SMNDFRT.m */,
-				EEC1476915E076AC006B8798 /* SMNominalResult.h */,
-				EEC1476A15E076AC006B8798 /* SMNominalResult.m */,
-				EEC1476D15E076AC006B8798 /* SMOrdinalResult.h */,
-				EEC1476E15E076AC006B8798 /* SMOrdinalResult.m */,
 				EEC1476F15E076AC006B8798 /* SMOrganization.h */,
 				EEC1477015E076AC006B8798 /* SMOrganization.m */,
 				EEC1477115E076AC006B8798 /* SMPanel.h */,
@@ -644,8 +624,6 @@
 				EEC147AE15E076AD006B8798 /* SMVitalSign.m */,
 				EEC147AF15E076AD006B8798 /* SMVitalSignSet.h */,
 				EEC147B015E076AD006B8798 /* SMVitalSignSet.m */,
-				EEC147B115E076AD006B8798 /* SMWork.h */,
-				EEC147B215E076AD006B8798 /* SMWork.m */,
 			);
 			path = GeneratedClasses;
 			sourceTree = "<group>";
@@ -655,6 +633,8 @@
 			children = (
 				EEC1470015DEE01A006B8798 /* ClassTemplate.h */,
 				EEC1470115DEE01A006B8798 /* ClassTemplate.m */,
+				EE59AC1215E342CC00F4D738 /* CategoryTemplate.h */,
+				EE59AC1315E342CC00F4D738 /* CategoryTemplate.m */,
 				EE249A5815D5A19D001A63D7 /* ErrorCodes.md */,
 				EEF0192915CB447100FFD480 /* Config.h */,
 				EEF0192B15CB447900FFD480 /* Config-default.h */,
@@ -701,7 +681,7 @@
 				EEF0192F15CB448700FFD480 /* SMServer.m */,
 				EE6A5A9415CC753800DD0F68 /* SMRecord.h */,
 				EE6A5A9515CC753800DD0F68 /* SMRecord.m */,
-				EEE82D8C15D00D810017EA0B /* SMARTDocuments.h */,
+				EEE82D8C15D00D810017EA0B /* SMARTObjects.h */,
 				EE68EB5A15DC54CC006B149E /* SMObject.h */,
 				EE68EB5B15DC54CC006B149E /* SMObject.m */,
 				EE249A4115D59F04001A63D7 /* SMDocument.h */,
@@ -839,7 +819,7 @@
 				EEF0192A15CB447100FFD480 /* Config.h in Headers */,
 				EEF0193315CB448700FFD480 /* SMServer.h in Headers */,
 				EE6A5A9615CC753800DD0F68 /* SMRecord.h in Headers */,
-				EEE82D8D15D00D810017EA0B /* SMARTDocuments.h in Headers */,
+				EEE82D8D15D00D810017EA0B /* SMARTObjects.h in Headers */,
 				EE249A4315D59F04001A63D7 /* SMDocument.h in Headers */,
 				EEF0196915CB453400FFD480 /* MPOAuth.h in Headers */,
 				EEF0196A15CB453400FFD480 /* MPOAuthAPI.h in Headers */,
@@ -875,8 +855,6 @@
 				EEC1470715DFE790006B8798 /* SMDemographics.h in Headers */,
 				EEC1470915DFE790006B8798 /* SMName.h in Headers */,
 				EEC147B315E076AD006B8798 /* SMAddress.h in Headers */,
-				EEC147B515E076AD006B8798 /* SMAlert.h in Headers */,
-				EEC147B715E076AD006B8798 /* SMAlertLevel.h in Headers */,
 				EEC147B915E076AD006B8798 /* SMAllergy.h in Headers */,
 				EEC147BB15E076AD006B8798 /* SMAllergyCategory.h in Headers */,
 				EEC147BD15E076AD006B8798 /* SMAllergyExclusion.h in Headers */,
@@ -912,8 +890,6 @@
 				EEC1480B15E076AD006B8798 /* SMMedication.h in Headers */,
 				EEC1480D15E076AD006B8798 /* SMNarrativeResult.h in Headers */,
 				EEC1480F15E076AD006B8798 /* SMNDFRT.h in Headers */,
-				EEC1481115E076AD006B8798 /* SMNominalResult.h in Headers */,
-				EEC1481515E076AD006B8798 /* SMOrdinalResult.h in Headers */,
 				EEC1481715E076AD006B8798 /* SMOrganization.h in Headers */,
 				EEC1481915E076AD006B8798 /* SMPanel.h in Headers */,
 				EEC1481F15E076AD006B8798 /* SMParticipant.h in Headers */,
@@ -941,7 +917,7 @@
 				EEC1485115E076AD006B8798 /* SMVCard.h in Headers */,
 				EEC1485515E076AD006B8798 /* SMVitalSign.h in Headers */,
 				EEC1485715E076AD006B8798 /* SMVitalSignSet.h in Headers */,
-				EEC1485915E076AD006B8798 /* SMWork.h in Headers */,
+				EE59AC1615E34D4F00F4D738 /* SMRecord+Calls.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1075,8 +1051,6 @@
 				EEC1470815DFE790006B8798 /* SMDemographics.m in Sources */,
 				EEC1470A15DFE790006B8798 /* SMName.m in Sources */,
 				EEC147B415E076AD006B8798 /* SMAddress.m in Sources */,
-				EEC147B615E076AD006B8798 /* SMAlert.m in Sources */,
-				EEC147B815E076AD006B8798 /* SMAlertLevel.m in Sources */,
 				EEC147BA15E076AD006B8798 /* SMAllergy.m in Sources */,
 				EEC147BC15E076AD006B8798 /* SMAllergyCategory.m in Sources */,
 				EEC147BE15E076AD006B8798 /* SMAllergyExclusion.m in Sources */,
@@ -1112,8 +1086,6 @@
 				EEC1480C15E076AD006B8798 /* SMMedication.m in Sources */,
 				EEC1480E15E076AD006B8798 /* SMNarrativeResult.m in Sources */,
 				EEC1481015E076AD006B8798 /* SMNDFRT.m in Sources */,
-				EEC1481215E076AD006B8798 /* SMNominalResult.m in Sources */,
-				EEC1481615E076AD006B8798 /* SMOrdinalResult.m in Sources */,
 				EEC1481815E076AD006B8798 /* SMOrganization.m in Sources */,
 				EEC1481A15E076AD006B8798 /* SMPanel.m in Sources */,
 				EEC1482015E076AD006B8798 /* SMParticipant.m in Sources */,
@@ -1141,7 +1113,7 @@
 				EEC1485215E076AD006B8798 /* SMVCard.m in Sources */,
 				EEC1485615E076AD006B8798 /* SMVitalSign.m in Sources */,
 				EEC1485815E076AD006B8798 /* SMVitalSignSet.m in Sources */,
-				EEC1485A15E076AD006B8798 /* SMWork.m in Sources */,
+				EE59AC1715E34D4F00F4D738 /* SMRecord+Calls.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -3,7 +3,7 @@
 #
 
 ### config ###
-_overwrite = True
+_overwrite = False
 _obj_c_class_prefix = 'SM'
 _generated_classes_dir = 'SMARTFramework/GeneratedClasses'
 _smart_ontology_uri = 'https://raw.github.com/chb/smart_common/adding-0.5-models/schema/smart.owl'
@@ -139,11 +139,33 @@ _multi_model_getter_template = """- (NSArray *){{ name }}
 	return _{{ name }};
 }"""
 
+_class_base_path_getter_template = """+ (NSString *)basePath
+{
+	return @"{{ base_path }}";
+}"""
+
+_record_method_template = """/**
+ *	{{ description }}.
+ *	Makes a call to {{ path }}, originally named {{ orig_name }}.
+ */
+{{ method_signature }}
+{
+	NSString *path = [NSString stringWithFormat:@"{{ nsstring_path }}", self.record_id];
+	[self performMethod:path
+			   withBody:nil
+		   orParameters:nil
+			 httpMethod:@"GET"
+			   callback:callback];
+}"""
+
+
+
 
 ### ---------------------------------------------------------- ###
 
 
 import os
+import sys
 import re
 import urllib2
 import datetime
@@ -158,7 +180,12 @@ def toObjCClassName(name):
 	basename = None
 	if name and len(name) > 1:
 		parts = re.split(r'[-_\W]', name)
-		basename = ''.join(['%s%s' % (p[0].upper(), p[1:]) for p in parts])
+		real_parts = []
+		for p in parts:
+			if p and len(p) > 1:
+				real_parts.append(p)
+		
+		basename = ''.join(['%s%s' % (p[0].upper(), p[1:]) for p in real_parts])
 	elif name:
 		basename = name.upper()
 	
@@ -174,7 +201,12 @@ def toObjCPropertyName(name):
 	
 	if name and len(name) > 1:
 		parts = re.split(r'[-_\W]', name)
-		cap = ''.join(['%s%s' % (p[0].upper(), p[1:]) for p in parts])
+		real_parts = []
+		for p in parts:
+			if p and len(p) > 1:
+				real_parts.append(p)
+		
+		cap = ''.join(['%s%s' % (p[0].upper(), p[1:]) for p in real_parts])
 		return '%s%s' % (cap[0].lower(), cap[1:])
 	return name.lower() if name else None
 
@@ -198,27 +230,31 @@ def handle_class(a_class, known_classes, ontology_file_name='smart.owl'):
 	- YEAR
 	"""
 	
-	# do we already have this class?
+	# do we already know this class?
 	if a_class.name in known_classes:
 		print 'xx>  %s is already known, skipping' % a_class.name
 		return None
 	
 	# start the dictionary
-	d = datetime.date.today()
+	now = datetime.date.today()
+	base_path = o_class.base_path
 	myDict = {
 		'CLASS_NAME': toObjCClassName(a_class.name),
-		'CLASS_SUPERCLASS': 'SMDocument' if True else 'SMObject',	# TODO: Figure out which to use
+		'CLASS_SUPERCLASS': 'SMDocument' if base_path else 'SMObject',
+		'BASE_PATH': None,
 		'RDF_TYPE': unicode(a_class.uri),
 		'ONTOLOGY_PATH': ontology_file_name,
 		'AUTHOR': __file__,
-		'DATE': str(d),
-		'YEAR': str(d.year),
+		'DATE': str(now),
+		'YEAR': str(now.year),
 	}
 	
-	# get properties that represent other classes (OWL_ObjectProperty instances)
 	c_forwards = set()
 	prop_statements = []
 	prop_getter = []
+	
+	# get properties that represent other classes (OWL_ObjectProperty instances)
+	prop_objects = []
 	for o_prop in a_class.object_properties:
 		# o_prop.multiple_cardinality   ->  Bool whether the property can have multiple items
 		# o_prop.to_class			    ->  SMART_Class represented by the property
@@ -232,7 +268,10 @@ def handle_class(a_class, known_classes, ontology_file_name='smart.owl'):
 			'useClass': 'NSArray' if o_prop.multiple_cardinality else itemClass,
 			'strength': 'copy' if o_prop.multiple_cardinality else 'strong',
 		}
-		
+		prop_objects.append(prop)
+	
+	prop_objects = sorted(prop_objects, key=lambda k: k['name'])
+	for prop in prop_objects:
 		stmt = apply_template(_property_template, prop)
 		prop_statements.append(stmt)
 		
@@ -241,6 +280,7 @@ def handle_class(a_class, known_classes, ontology_file_name='smart.owl'):
 		prop_getter.append(getter)
 	
 	# get data properties (OWL_DataProperty instances)
+	prop_data = []
 	for d_prop in a_class.data_properties:
 		primitive = 'NSString'			# TODO: When to use NSNumber or NSDate?
 		prop = {
@@ -250,7 +290,10 @@ def handle_class(a_class, known_classes, ontology_file_name='smart.owl'):
 			'useClass': 'NSArray' if d_prop.multiple_cardinality else primitive,
 			'strength': 'copy',
 		}
-		
+		prop_data.append(prop)
+	
+	prop_data = sorted(prop_data, key=lambda k: k['name'])
+	for prop in prop_data:
 		stmt = apply_template(_property_template, prop)
 		prop_statements.append(stmt)
 		
@@ -258,10 +301,52 @@ def handle_class(a_class, known_classes, ontology_file_name='smart.owl'):
 		getter = apply_template(getter_template, prop)
 		prop_getter.append(getter)
 	
-	# apply to dict
+	# base path
+	if base_path:
+		# we need to convert "allergy_id", "medication_id" and the like to "uuid"
+		base_path = re.sub(r'(\{record_id\}/\w+/\{\s*)[a-z]+_id(\})', '\g<1>uuid\g<2>', base_path)
+		t_base = apply_template(_class_base_path_getter_template, {'base_path': base_path})
+		myDict['BASE_PATH'] = t_base
+	
+	# add properties to our dict
 	myDict['CLASS_FORWARDS'] = '@class %s;' % ', '.join(c_forwards) if len(c_forwards) > 0 else ''
 	myDict['CLASS_PROPERTIES'] = "\n\n".join(prop_statements)
 	myDict['CLASS_GETTERS'] = "\n\n".join(prop_getter)
+		
+	# calls for this class (SMART_API_Call instances)
+	if a_class.calls and len(a_class.calls) > 0:
+		for api in a_class.calls:
+			
+			# we can only use record-scoped calls
+			if 'record' == api.category:
+				orig_name = api.guess_name()
+				cDict = {
+					'orig_name': orig_name,
+					'path': str(api.path),
+					'description': str(api.description),
+				}
+				
+				# synthesize the method name:
+				#    getX:(block)callback
+				#    getXForY:(NSString *)y callback:(block)callback
+				endarg = '(INSuccessRetvalueBlock)callback'
+				usable = []
+				
+				placeholders = re.findall(r'\{\s*(\w+)\s*\}', api.path)
+				for p in placeholders:
+					if 'record_id' != p:
+						argname = toObjCPropertyName(p)
+						pname = argname if len(usable) > 0 else toObjCPropertyName('%s_for_%s' % (orig_name, p))
+						usable.append('%s:(NSString *)%s' % (pname, argname))
+				
+				if len(usable) > 0:
+					usable.append('callback:%s' % endarg)
+					cDict['method_name'] = ' '.join(usable)
+				else:
+					cDict['method_name'] = '%s:%s' % (toObjCPropertyName(orig_name), endarg)
+				
+				# TODO: Implement these methods
+				#print '     %s: %s' % (a_class.name, cDict)
 	
 	# add it to the known classes dict
 	known_classes[a_class.name] = myDict
@@ -329,6 +414,17 @@ def download(url, directory=None, filename=None, force=False, nostatus=False):
 	return path
 
 
+def read_template(template_name):
+	"""Looks for a template with the given filename and returns its contents"""
+	
+	template_path = 'SMARTFramework/%s' % template_name
+	if not os.path.exists(template_path):
+		print 'xx>  No template could be found at %s' % template_path
+		return None
+	
+	return open(template_path).read()
+
+
 def apply_template(template, subst):
 	"""Substitutes all values of the "subst" dictionary in the template with its
 	values
@@ -336,7 +432,7 @@ def apply_template(template, subst):
 	
 	applied = template
 	for k, v in subst.iteritems():
-		applied = re.sub('\{\{\s*' + k + '\s*\}\}', v, applied)
+		applied = re.sub('\{\{\s*' + k + '\s*\}\}', v if v else '', applied)
 	
 	return applied
 
@@ -349,20 +445,16 @@ if __name__ == "__main__":
 	owl = download(_smart_ontology_uri, '.', 'smart.owl', False, True)
 	if owl is None:
 		print 'xx>  Error downloading %s' % _smart_ontology_uri
-		os.exit(1)
+		sys.exit(1)
 	
 	# grab the template files
-	template_h_path = 'SMARTFramework/ClassTemplate.h'
-	if not os.path.exists(template_h_path):
-		print 'xx>  The .h template could not be found at %s' % template_h_path
-		os.exit(1)
-	template_m_path = 'SMARTFramework/ClassTemplate.m'
-	if not os.path.exists(template_m_path):
-		print 'xx>  The .m template could not be found at %s' % template_m_path
-		os.exit(1)
-	
-	template_h = open(template_h_path).read()
-	template_m = open(template_m_path).read()
+	templates = {}
+	for f in ['ClassTemplate.h', 'ClassTemplate.m', 'CategoryTemplate.h', 'CategoryTemplate.m']:
+		template = read_template(f)
+		if template is None:
+			sys.exit(1)
+		
+		templates[f] = template
 	
 	# parse the ontology
 	print '-->  Parsing ontology'
@@ -376,8 +468,9 @@ if __name__ == "__main__":
 		raise Exception("Can't write to %s" % _generated_classes_dir)
 	
 	print '-->  Processing classes'
-	known_classes = {}			# will be name: URIRef
-	num_generated = 0
+	known_classes = {}			# will be name: property-dictionary
+	num_classes = 0
+	num_calls = 0
 	
 	# loop all SMART_Class instances
 	for o_class in rdf_ontology.api_types:
@@ -395,21 +488,84 @@ if __name__ == "__main__":
 			filename_m = '%s.m' % d['CLASS_NAME']
 			path_m = os.path.join(_generated_classes_dir, filename_m)
 			if not _overwrite and os.path.exists(path_m):
-				print 'xx>  Implementatino for %s already exists at %s, skipping' % (d['CLASS_NAME'], path_m)
+				print 'xx>  Implementation for %s already exists at %s, skipping' % (d['CLASS_NAME'], path_m)
 				continue
 			
 			# finish the header
-			header = apply_template(template_h, d)
+			header = apply_template(templates['ClassTemplate.h'], d)
 			handle = open(path_h, 'w')
 			handle.write(header)
 			
 			# finish the implementation
-			implem = apply_template(template_m, d)
+			implem = apply_template(templates['ClassTemplate.m'], d)
 			handle = open(path_m, 'w')
 			handle.write(implem)
 			
-			num_generated += 1
+			num_classes += 1
+	
+	# find record-scoped calls to put into the record class
+	record_sigs = []
+	record_calls = []
+	prefix = '- (void)'
+	block_arg = '(INSuccessRetvalueBlock)callback'
+	for api in rdf_ontology.api_calls:
+		if 'record' == api.category:
+			
+			# we only use the calls that have one '{record_id}' placeholder
+			placeholders = re.findall(r'\{\s*(\w+)\s*\}', api.path)
+			if 1 == len(placeholders) and 'record_id' == placeholders[0]:
+				orig_name = api.guess_name()
+				method_name = toObjCPropertyName(orig_name)
+				cDict = {
+					'orig_name': orig_name,
+					'method_signature': '%s%s:%s' % (prefix, method_name, block_arg),
+					'path': str(api.path),
+					'nsstring_path': str(re.sub(r'(\{\s*\w+\s*\})', '%@', api.path)),
+					'description': str(api.description),
+				}
+				
+				record_sigs.append('%s;' % cDict['method_signature'])
+				call = apply_template(_record_method_template, cDict)
+				record_calls.append(call)
+	
+	record_sigs = sorted(record_sigs)
+	
+	# write to SMRecord category
+	if len(record_sigs) > 0:
+		now = datetime.date.today()
+		d = {
+			'CATEGORY_CLASS': 'SMRecord',
+			'CATEGORY_NAME': 'Calls',
+			'ONTOLOGY_PATH': 'smart.owl',
+			'METHOD_SIGNATURES': "\n".join(record_sigs),
+			'FULL_METHODS': "\n\n".join(record_calls),
+			'AUTHOR': __file__,
+			'DATE': str(now),
+			'YEAR': str(now.year),
+		}
+		
+		# write the header
+		filename_h = '%s+%s.h' % (d['CATEGORY_CLASS'], d['CATEGORY_NAME'])
+		path_h = os.path.join(_generated_classes_dir, filename_h)
+		if not _overwrite and os.path.exists(path_h):
+			print 'xx>  Category %s on %s already exists at %s, skipping' % (d['CATEGORY_NAME'], d['CATEGORY_CLASS'], path_h)
+		else:
+			header = apply_template(templates['CategoryTemplate.h'], d)
+			handle = open(path_h, 'w')
+			handle.write(header)
+		
+		# finish the implementation
+		filename_m = '%s+%s.m' % (d['CATEGORY_CLASS'], d['CATEGORY_NAME'])
+		path_m = os.path.join(_generated_classes_dir, filename_m)
+		if not _overwrite and os.path.exists(path_m):
+			print 'xx>  Category %s on %s implementation already exists at %s, skipping' % (d['CATEGORY_NAME'], d['CATEGORY_CLASS'], path_m)
+		else:
+			implem = apply_template(templates['CategoryTemplate.m'], d)
+			handle = open(path_m, 'w')
+			handle.write(implem)
+			
+			num_calls += 1
 	
 	# all done
-	print '-->  Done. %d classes written.' % num_generated
+	print '-->  Done. %d classes and %d categories written.' % (num_classes, num_calls)
 

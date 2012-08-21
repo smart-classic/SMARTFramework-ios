@@ -28,14 +28,17 @@
  */
 @interface SMDocument : SMObject
 
-@property (nonatomic, copy) NSString *uuid;								///< This document's ID on the server
-@property (nonatomic, weak) SMRecord *record;							///< The record this document belongs to
+@property (nonatomic, copy) NSString *uuid;						///< This document's ID on the server
+@property (nonatomic, weak) SMRecord *record;					///< The record this document belongs to
+
+@property (nonatomic, copy) NSString *basePath;					///< Uses the class basePath and substitutes the placeholders with instance properties by default
 
 // performing server calls
 - (void)get:(NSString *)aMethod callback:(INSuccessRetvalueBlock)callback;
 - (void)get:(NSString *)aMethod parameters:(NSArray *)paramArray callback:(INSuccessRetvalueBlock)callback;
-
 - (void)performMethod:(NSString *)aMethod withBody:(NSString *)body orParameters:(NSArray *)parameters httpMethod:(NSString *)httpMethod callback:(INSuccessRetvalueBlock)callback;
+
++ (NSString *)basePath;
 
 
 @end

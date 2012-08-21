@@ -23,7 +23,7 @@
 
 #import "SMRecord.h"
 #import "SMServer.h"
-#import "SMARTDocuments.h"
+#import "SMARTObjects.h"
 
 
 @interface SMRecord ()

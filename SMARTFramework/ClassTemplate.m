@@ -21,7 +21,7 @@
  */
 
 #import "{{ CLASS_NAME }}.h"
-#import "SMARTDocuments.h"
+#import "SMARTObjects.h"
 
 #import <RedlandModel-Convenience.h>
 #import <RedlandNode-Convenience.h>
@@ -34,6 +34,8 @@
 
 #pragma mark - Synthesized Lazy Getter
 {{ CLASS_GETTERS }}
+
+{{ BASE_PATH }}
 
 
 @end
