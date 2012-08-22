@@ -28,6 +28,7 @@
 
 @interface SMObject ()
 
+@property (nonatomic, readwrite, strong) RedlandNode *subject;
 @property (nonatomic, readwrite, strong) RedlandModel *model;
 
 @end
@@ -36,9 +37,9 @@
 @implementation SMObject
 
 
-+ (id)newWithModel:(RedlandModel *)aModel
++ (id)newWithSubject:(RedlandNode *)aSubject inModel:(RedlandModel *)aModel
 {
-	return [[self alloc] initWithModel:aModel];
+	return [[self alloc] initWithSubject:aSubject inModel:aModel];
 }
 
 + (id)newWithRDFXML:(NSString *)rdfString;
@@ -50,9 +51,10 @@
 /**
  *  @return An instance wrapping the given RDF model
  */
-- (id)initWithModel:(RedlandModel *)aModel
+- (id)initWithSubject:(RedlandNode *)aSubject inModel:(RedlandModel *)aModel
 {
 	if ((self = [super init])) {
+		self.subject = aSubject;
 		self.model = aModel;
 	}
 	return self;
@@ -80,6 +82,29 @@
 		}
 	}
 	return self;
+}
+
+
+
+#pragma mark - RDF Properties
+/**
+ *  The rdf:type getter for this class gets the class-wide type if it is not specifically set for this instance; there is no need to specifically set the rdf-
+ *  type for a single instance as the instance should always represent the same type of objects, but it is still possible.
+ */
+- (NSString *)rdfType
+{
+	if (!_rdfType) {
+		self.rdfType = [isa rdfType];
+	}
+	return _rdfType	;
+}
+
+/**
+ *  The standard rdf:type represented by instances of this class
+ */
++ (NSString *)rdfType
+{
+	return nil;
 }
 
 

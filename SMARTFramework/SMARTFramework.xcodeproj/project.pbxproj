@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		EE8CD2BC15E5622C00663A15 /* SMART iOS Documentation */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = EE8CD2BD15E5622C00663A15 /* Build configuration list for PBXAggregateTarget "SMART iOS Documentation" */;
+			buildPhases = (
+				EE8CD2C115E5623200663A15 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "SMART iOS Documentation";
+			productName = "SMART iOS Documentation";
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		EE249A4315D59F04001A63D7 /* SMDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = EE249A4115D59F04001A63D7 /* SMDocument.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EE249A4415D59F04001A63D7 /* SMDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = EE249A4215D59F04001A63D7 /* SMDocument.m */; };
@@ -13,7 +27,7 @@
 		EE249AB515D5CBB4001A63D7 /* librasqal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE249AB415D5CBB4001A63D7 /* librasqal.a */; };
 		EE249AB715D5CBB6001A63D7 /* librdf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE249AB615D5CBB6001A63D7 /* librdf.a */; };
 		EE42D04C15DEB4C900F03EB0 /* SMART.h in Headers */ = {isa = PBXBuildFile; fileRef = EE42D04B15DEB4C900F03EB0 /* SMART.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EE59AC1615E34D4F00F4D738 /* SMRecord+Calls.h in Headers */ = {isa = PBXBuildFile; fileRef = EE59AC1415E34D4F00F4D738 /* SMRecord+Calls.h */; };
+		EE59AC1615E34D4F00F4D738 /* SMRecord+Calls.h in Headers */ = {isa = PBXBuildFile; fileRef = EE59AC1415E34D4F00F4D738 /* SMRecord+Calls.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EE59AC1715E34D4F00F4D738 /* SMRecord+Calls.m in Sources */ = {isa = PBXBuildFile; fileRef = EE59AC1515E34D4F00F4D738 /* SMRecord+Calls.m */; };
 		EE68EB5C15DC54CC006B149E /* SMObject.h in Headers */ = {isa = PBXBuildFile; fileRef = EE68EB5A15DC54CC006B149E /* SMObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EE68EB5D15DC54CC006B149E /* SMObject.m in Sources */ = {isa = PBXBuildFile; fileRef = EE68EB5B15DC54CC006B149E /* SMObject.m */; };
@@ -489,6 +503,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EE9977BF15E565E60027886F /* Generator Templates */ = {
+			isa = PBXGroup;
+			children = (
+				EEC1470015DEE01A006B8798 /* ClassTemplate.h */,
+				EEC1470115DEE01A006B8798 /* ClassTemplate.m */,
+				EE59AC1215E342CC00F4D738 /* CategoryTemplate.h */,
+				EE59AC1315E342CC00F4D738 /* CategoryTemplate.m */,
+			);
+			name = "Generator Templates";
+			path = ../Generator;
+			sourceTree = "<group>";
+		};
 		EEC1470215DFE790006B8798 /* GeneratedClasses */ = {
 			isa = PBXGroup;
 			children = (
@@ -631,16 +657,13 @@
 		EEC9C58815CB2EA800B7C568 = {
 			isa = PBXGroup;
 			children = (
-				EEC1470015DEE01A006B8798 /* ClassTemplate.h */,
-				EEC1470115DEE01A006B8798 /* ClassTemplate.m */,
-				EE59AC1215E342CC00F4D738 /* CategoryTemplate.h */,
-				EE59AC1315E342CC00F4D738 /* CategoryTemplate.m */,
 				EE249A5815D5A19D001A63D7 /* ErrorCodes.md */,
 				EEF0192915CB447100FFD480 /* Config.h */,
 				EEF0192B15CB447900FFD480 /* Config-default.h */,
 				EE42D04B15DEB4C900F03EB0 /* SMART.h */,
 				EEC9C59A15CB2EA800B7C568 /* Classes */,
 				EEC1470215DFE790006B8798 /* GeneratedClasses */,
+				EE9977BF15E565E60027886F /* Generator Templates */,
 				EEF0193715CB453400FFD480 /* MPOAuth Framework */,
 				EEC9C59B15CB2EA800B7C568 /* Supporting Files */,
 				EEC9C5AE15CB2EA900B7C568 /* SMARTFrameworkTests */,
@@ -983,6 +1006,7 @@
 			targets = (
 				EEC9C59415CB2EA800B7C568 /* SMART */,
 				EEC9C5A415CB2EA900B7C568 /* SMARTFrameworkTests */,
+				EE8CD2BC15E5622C00663A15 /* SMART iOS Documentation */,
 			);
 		};
 /* End PBXProject section */
@@ -998,6 +1022,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		EE8CD2C115E5623200663A15 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "PATH=/bin:/usr/bin:/usr/local/bin\nDOX=$(which appledoc)\nif [[ 'x' == ${DOX}x ]]; then\n    echo \"I can't find appledoc, check the README on how to install it or adjust the PATH variable in this script\"\n    exit 1\nfi\n\nappledoc AppledocSettings.plist Classes GeneratedClasses";
+		};
 		EEC9C5A315CB2EA900B7C568 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1207,6 +1244,27 @@
 			};
 			name = "Debug+Static";
 		};
+		EE8CD2BE15E5622C00663A15 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		EE8CD2BF15E5622C00663A15 /* Debug+Static */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = "Debug+Static";
+		};
+		EE8CD2C015E5622C00663A15 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		EEC9C5B715CB2EA900B7C568 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1339,6 +1397,16 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		EE8CD2BD15E5622C00663A15 /* Build configuration list for PBXAggregateTarget "SMART iOS Documentation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE8CD2BE15E5622C00663A15 /* Debug */,
+				EE8CD2BF15E5622C00663A15 /* Debug+Static */,
+				EE8CD2C015E5622C00663A15 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		EEC9C58D15CB2EA800B7C568 /* Build configuration list for PBXProject "SMARTFramework" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

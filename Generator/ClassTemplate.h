@@ -26,7 +26,7 @@
 
 
 /**
- *	A class representing "{{ RDF_TYPE }}" objects, generated from {{ ONTOLOGY_PATH }}.
+ *  A class representing "{{ RDF_TYPE }}" objects, generated from {{ ONTOLOGY_PATH }}.
  */
 @interface {{ CLASS_NAME }} : {{ CLASS_SUPERCLASS }}
 

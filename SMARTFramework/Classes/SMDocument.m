@@ -89,8 +89,8 @@
 
 #pragma mark - Server Path
 /**
- *	Uses the class basePath and substitutes the placeholders with instance properties by default.
- *	TODO: Use a nice text substitution method
+ *  Uses the class basePath and substitutes the placeholders with instance properties by default.
+ *  TODO: Use a nice text substitution method
  */
 - (NSString *)basePath
 {
@@ -102,11 +102,11 @@
 }
 
 /**
- *	Path template for instances of this class.
- *	Subclasses must override this method, supported placeholders are:
+ *  Path template for instances of this class.
+ *  Subclasses must override this method, supported placeholders are:
  *
- *	- {record_id}
- *	- {uuid}
+ *  - {record_id}
+ *  - {uuid}
  */
 + (NSString *)basePath
 {

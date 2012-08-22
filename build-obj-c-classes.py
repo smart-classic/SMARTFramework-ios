@@ -1,10 +1,12 @@
 #
 #	Creates Objective-C classes from our ontology.
 #
+#	Pass in the "-f" flag if you want to overwrite existing classes
+#
 
 ### config ###
-_overwrite = False
 _obj_c_class_prefix = 'SM'
+_template_dir = 'Generator'
 _generated_classes_dir = 'SMARTFramework/GeneratedClasses'
 _smart_ontology_uri = 'https://raw.github.com/chb/smart_common/adding-0.5-models/schema/smart.owl'
 
@@ -38,7 +40,7 @@ _literal_getter_template = """- ({{ itemClass }} *){{ name }}
 {
 	if (!_{{ name }}) {
 		RedlandNode *predicate = [RedlandNode nodeWithURIString:@"{{ uri }}"];
-		RedlandStatement *statement = [RedlandStatement statementWithSubject:nil predicate:predicate object:nil];
+		RedlandStatement *statement = [RedlandStatement statementWithSubject:self.subject predicate:predicate object:nil];
 		RedlandStreamEnumerator *query = [self.model enumeratorOfStatementsLike:statement];
 		
 		RedlandStatement *rslt = [query nextObject];
@@ -51,7 +53,7 @@ _multi_literal_getter_template = """- (NSArray *){{ name }}
 {
 	if (!_{{ name }}) {
 		RedlandNode *predicate = [RedlandNode nodeWithURIString:@"{{ uri }}"];
-		RedlandStatement *statement = [RedlandStatement statementWithSubject:nil predicate:predicate object:nil];
+		RedlandStatement *statement = [RedlandStatement statementWithSubject:self.subject predicate:predicate object:nil];
 		RedlandStreamEnumerator *query = [self.model enumeratorOfStatementsLike:statement];
 		
 		// loop results
@@ -74,27 +76,12 @@ _model_getter_template = """- ({{ itemClass }} *){{ name }}
 		
 		// get the "{{ name }}" element
 		RedlandNode *predicate = [RedlandNode nodeWithURIString:@"{{ uri }}"];
-		RedlandStatement *statement = [RedlandStatement statementWithSubject:nil predicate:predicate object:nil];
+		RedlandStatement *statement = [RedlandStatement statementWithSubject:self.subject predicate:predicate object:nil];
 		RedlandStreamEnumerator *query = [self.model enumeratorOfStatementsLike:statement];
 		RedlandStatement *rslt = [query nextObject];
 		
-		// create a model containing the statements
-		RedlandModel *newModel = [[RedlandModel alloc] initWithStorage:self.model.storage];
-		RedlandStatement *newStmt = [RedlandStatement statementWithSubject:rslt.object predicate:nil object:nil];
-		RedlandStreamEnumerator *newStream = [self.model enumeratorOfStatementsLike:newStmt];
-		
-		// add statements to the new model
-		@try {
-			for (RedlandStatement *stmt in newStream) {
-				[newModel addStatement:stmt];
-			}
-		}
-		@catch (NSException *e) {
-			DLog(@"xx>  %@ -- %@", [e reason], [e userInfo]);
-			[self.model print];
-		}
-		
-		self.{{ name }} = [{{ itemClass }} newWithModel:newModel];
+		// create an item for this object
+		self.{{ name }} = [{{ itemClass }} newWithSubject:rslt.object inModel:self.model];
 	}
 	return _{{ name }};
 }"""
@@ -105,7 +92,7 @@ _multi_model_getter_template = """- (NSArray *){{ name }}
 		
 		// get the "{{ name }}" elements
 		RedlandNode *predicate = [RedlandNode nodeWithURIString:@"{{ uri }}"];
-		RedlandStatement *statement = [RedlandStatement statementWithSubject:nil predicate:predicate object:nil];
+		RedlandStatement *statement = [RedlandStatement statementWithSubject:self.subject predicate:predicate object:nil];
 		RedlandStreamEnumerator *query = [self.model enumeratorOfStatementsLike:statement];
 		
 		// loop through the results
@@ -113,23 +100,8 @@ _multi_model_getter_template = """- (NSArray *){{ name }}
 		RedlandStatement *rslt = nil;
 		while ((rslt = [query nextObject])) {
 			
-			// create a model containing the statements
-			RedlandModel *newModel = [[RedlandModel alloc] initWithStorage:self.model.storage];
-			RedlandStatement *newStmt = [RedlandStatement statementWithSubject:rslt.object predicate:nil object:nil];
-			RedlandStreamEnumerator *newStream = [self.model enumeratorOfStatementsLike:newStmt];
-			
-			// add statements to the new model
-			@try {
-				for (RedlandStatement *stmt in newStream) {
-					[newModel addStatement:stmt];
-				}
-			}
-			@catch (NSException *e) {
-				DLog(@"xx>  %@ -- %@", [e reason], [e userInfo]);
-				[self.model print];
-			}
-			
-			{{ itemClass }} *newItem = [{{ itemClass }} newWithModel:newModel];
+			// instantiate an item for each object
+			SMFulfillment *newItem = [SMFulfillment newWithSubject:rslt.object inModel:self.model];
 			if (newItem) {
 				[arr addObject:newItem];
 			}
@@ -144,18 +116,15 @@ _class_base_path_getter_template = """+ (NSString *)basePath
 	return @"{{ base_path }}";
 }"""
 
-_record_method_template = """/**
- *	{{ description }}.
- *	Makes a call to {{ path }}, originally named {{ orig_name }}.
+_record_multi_item_getter_template = """/**
+ *  {{ description }}.
+ *  Makes a call to {{ path }}, originally named {{ orig_name }}.
+ *  @param callback A INSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: INResponseArrayKey) if successful.
  */
 {{ method_signature }}
 {
 	NSString *path = [NSString stringWithFormat:@"{{ nsstring_path }}", self.record_id];
-	[self performMethod:path
-			   withBody:nil
-		   orParameters:nil
-			 httpMethod:@"GET"
-			   callback:callback];
+	[self getObjectsOfClass:[{{ item_class }} class] from:path callback:callback];
 }"""
 
 
@@ -170,6 +139,11 @@ import re
 import urllib2
 import datetime
 from smart_client_python.common import rdf_ontology
+
+_arguments = sys.argv[1:] if len(sys.argv) > 1 else []
+_overwrite = '-f' in _arguments
+
+_record_calls = []
 
 
 def toObjCClassName(name):
@@ -238,8 +212,9 @@ def handle_class(a_class, known_classes, ontology_file_name='smart.owl'):
 	# start the dictionary
 	now = datetime.date.today()
 	base_path = o_class.base_path
+	class_name = toObjCClassName(a_class.name)
 	myDict = {
-		'CLASS_NAME': toObjCClassName(a_class.name),
+		'CLASS_NAME': class_name,
 		'CLASS_SUPERCLASS': 'SMDocument' if base_path else 'SMObject',
 		'BASE_PATH': None,
 		'RDF_TYPE': unicode(a_class.uri),
@@ -254,7 +229,7 @@ def handle_class(a_class, known_classes, ontology_file_name='smart.owl'):
 	prop_getter = []
 	
 	# get properties that represent other classes (OWL_ObjectProperty instances)
-	prop_objects = []
+	my_properties = []
 	for o_prop in a_class.object_properties:
 		# o_prop.multiple_cardinality   ->  Bool whether the property can have multiple items
 		# o_prop.to_class			    ->  SMART_Class represented by the property
@@ -267,20 +242,11 @@ def handle_class(a_class, known_classes, ontology_file_name='smart.owl'):
 			'itemClass': itemClass,
 			'useClass': 'NSArray' if o_prop.multiple_cardinality else itemClass,
 			'strength': 'copy' if o_prop.multiple_cardinality else 'strong',
+			'_template': _multi_model_getter_template if o_prop.multiple_cardinality else _model_getter_template
 		}
-		prop_objects.append(prop)
-	
-	prop_objects = sorted(prop_objects, key=lambda k: k['name'])
-	for prop in prop_objects:
-		stmt = apply_template(_property_template, prop)
-		prop_statements.append(stmt)
-		
-		getter_template = _multi_model_getter_template if o_prop.multiple_cardinality else _model_getter_template
-		getter = apply_template(getter_template, prop)
-		prop_getter.append(getter)
+		my_properties.append(prop)
 	
 	# get data properties (OWL_DataProperty instances)
-	prop_data = []
 	for d_prop in a_class.data_properties:
 		primitive = 'NSString'			# TODO: When to use NSNumber or NSDate?
 		prop = {
@@ -289,16 +255,17 @@ def handle_class(a_class, known_classes, ontology_file_name='smart.owl'):
 			'itemClass': primitive,
 			'useClass': 'NSArray' if d_prop.multiple_cardinality else primitive,
 			'strength': 'copy',
+			'_template': _multi_literal_getter_template if d_prop.multiple_cardinality else _literal_getter_template
 		}
-		prop_data.append(prop)
+		my_properties.append(prop)
 	
-	prop_data = sorted(prop_data, key=lambda k: k['name'])
-	for prop in prop_data:
+	# sort and apply property dicts to the templates
+	my_properties = sorted(my_properties, key=lambda k: k['name'])
+	for prop in my_properties:
 		stmt = apply_template(_property_template, prop)
 		prop_statements.append(stmt)
 		
-		getter_template = _multi_literal_getter_template if d_prop.multiple_cardinality else _literal_getter_template
-		getter = apply_template(getter_template, prop)
+		getter = apply_template(prop['_template'], prop)
 		prop_getter.append(getter)
 	
 	# base path
@@ -314,39 +281,53 @@ def handle_class(a_class, known_classes, ontology_file_name='smart.owl'):
 	myDict['CLASS_GETTERS'] = "\n\n".join(prop_getter)
 		
 	# calls for this class (SMART_API_Call instances)
+	global _record_calls
+	prefix = '- (void)'
+	block_arg = '(INSuccessRetvalueBlock)callback'
 	if a_class.calls and len(a_class.calls) > 0:
 		for api in a_class.calls:
 			
 			# we can only use record-scoped calls
 			if 'record' == api.category:
 				orig_name = api.guess_name()
+				method_name = toObjCPropertyName(orig_name)
 				cDict = {
 					'orig_name': orig_name,
+					'item_class': class_name,
 					'path': str(api.path),
+					'nsstring_path': str(re.sub(r'(\{\s*\w+\s*\})', '%@', api.path)),
 					'description': str(api.description),
 				}
 				
 				# synthesize the method name:
 				#    getX:(block)callback
 				#    getXForY:(NSString *)y callback:(block)callback
-				endarg = '(INSuccessRetvalueBlock)callback'
 				usable = []
 				
+				# extract placeholders from the path
 				placeholders = re.findall(r'\{\s*(\w+)\s*\}', api.path)
-				for p in placeholders:
-					if 'record_id' != p:
-						argname = toObjCPropertyName(p)
-						pname = argname if len(usable) > 0 else toObjCPropertyName('%s_for_%s' % (orig_name, p))
-						usable.append('%s:(NSString *)%s' % (pname, argname))
 				
-				if len(usable) > 0:
-					usable.append('callback:%s' % endarg)
-					cDict['method_name'] = ' '.join(usable)
+				# put record-level getters in the array
+				if 1 == len(placeholders) and 'record_id' == placeholders[0]:
+					cDict['method_signature'] = '%s%s:%s' % (prefix, method_name, block_arg)
+					_record_calls.append(cDict)
+				
+				# TODO: other class related calls
 				else:
-					cDict['method_name'] = '%s:%s' % (toObjCPropertyName(orig_name), endarg)
-				
-				# TODO: Implement these methods
-				#print '     %s: %s' % (a_class.name, cDict)
+					for p in placeholders:
+						if 'record_id' != p:
+							argname = toObjCPropertyName(p)
+							pname = argname if len(usable) > 0 else toObjCPropertyName('%s_for_%s' % (orig_name, p))
+							usable.append('%s:(NSString *)%s' % (pname, argname))
+					
+					if len(usable) > 0:
+						usable.append('callback:%s' % block_arg)
+						cDict['method_name'] = ' '.join(usable)
+					else:
+						cDict['method_name'] = '%s:%s' % (toObjCPropertyName(orig_name), block_arg)
+					
+					# TODO: Implement these methods
+					#print '     %s: %s' % (a_class.name, cDict)
 	
 	# add it to the known classes dict
 	known_classes[a_class.name] = myDict
@@ -417,7 +398,7 @@ def download(url, directory=None, filename=None, force=False, nostatus=False):
 def read_template(template_name):
 	"""Looks for a template with the given filename and returns its contents"""
 	
-	template_path = 'SMARTFramework/%s' % template_name
+	template_path = '%s/%s' % (_template_dir, template_name)
 	if not os.path.exists(template_path):
 		print 'xx>  No template could be found at %s' % template_path
 		return None
@@ -503,35 +484,26 @@ if __name__ == "__main__":
 			
 			num_classes += 1
 	
-	# find record-scoped calls to put into the record class
+	# put record-scoped calls into a record category
+	used_call_names = []
 	record_sigs = []
 	record_calls = []
-	prefix = '- (void)'
-	block_arg = '(INSuccessRetvalueBlock)callback'
-	for api in rdf_ontology.api_calls:
-		if 'record' == api.category:
-			
-			# we only use the calls that have one '{record_id}' placeholder
-			placeholders = re.findall(r'\{\s*(\w+)\s*\}', api.path)
-			if 1 == len(placeholders) and 'record_id' == placeholders[0]:
-				orig_name = api.guess_name()
-				method_name = toObjCPropertyName(orig_name)
-				cDict = {
-					'orig_name': orig_name,
-					'method_signature': '%s%s:%s' % (prefix, method_name, block_arg),
-					'path': str(api.path),
-					'nsstring_path': str(re.sub(r'(\{\s*\w+\s*\})', '%@', api.path)),
-					'description': str(api.description),
-				}
-				
-				record_sigs.append('%s;' % cDict['method_signature'])
-				call = apply_template(_record_method_template, cDict)
-				record_calls.append(call)
+	for api in _record_calls:
+		used_call_names.append(api['orig_name'])
+		call = apply_template(_record_multi_item_getter_template, api)
+		
+		record_sigs.append('%s;' % api['method_signature'])
+		record_calls.append(call)
 	
-	record_sigs = sorted(record_sigs)
+	# war about the api calls that we did ignore
+	for api in rdf_ontology.api_calls:
+		orig_name = api.guess_name()
+		if orig_name not in used_call_names:
+			print 'xx>  Ignored API call: %s (level: %s)' % (orig_name, api.category)
 	
 	# write to SMRecord category
 	if len(record_sigs) > 0:
+		record_sigs = sorted(record_sigs)
 		now = datetime.date.today()
 		d = {
 			'CATEGORY_CLASS': 'SMRecord',

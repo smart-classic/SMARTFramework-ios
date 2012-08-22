@@ -24,7 +24,7 @@
 #import "SMART.h"
 
 @class SMRecord;
-@class RedlandModel;
+@class RedlandNode, RedlandModel;
 
 
 /**
@@ -32,13 +32,17 @@
  */
 @interface SMObject : NSObject
 
+@property (nonatomic, readonly, strong) RedlandNode *subject;			///< The subject this class is describing
 @property (nonatomic, readonly, strong) RedlandModel *model;			///< The redland model represented by this object
+@property (nonatomic, copy) NSString *rdfType;							///< The rdf:type instances of this class represent
 
-+ (id)newWithModel:(RedlandModel *)aModel;
++ (id)newWithSubject:(RedlandNode *)aSubject inModel:(RedlandModel *)aModel;
 + (id)newWithRDFXML:(NSString *)rdfString;
 
-- (id)initWithModel:(RedlandModel *)aModel;
+- (id)initWithSubject:(RedlandNode *)aSubject inModel:(RedlandModel *)aModel;
 - (id)initWithRDFXML:(NSString *)rdfString;
+
++ (NSString *)rdfType;
 
 
 @end

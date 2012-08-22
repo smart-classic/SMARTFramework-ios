@@ -35,6 +35,14 @@
 #pragma mark - Synthesized Lazy Getter
 {{ CLASS_GETTERS }}
 
+
+
+#pragma mark - Class Properties
++ (NSString *)rdfType
+{
+	return @"{{ RDF_TYPE }}";
+}
+
 {{ BASE_PATH }}
 
 

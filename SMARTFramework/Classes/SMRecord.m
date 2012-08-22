@@ -25,6 +25,13 @@
 #import "SMServer.h"
 #import "SMARTObjects.h"
 
+#import <RedlandParser.h>
+#import <RedlandURI.h>
+#import <RedlandModel-Convenience.h>
+#import <RedlandNode-Convenience.h>
+#import <RedlandStatement.h>
+#import <RedlandStreamEnumerator.h>
+
 
 @interface SMRecord ()
 
@@ -86,6 +93,79 @@
 		
 		CANCEL_ERROR_CALLBACK_OR_LOG_ERR_STRING(callback, NO, errorMessage)
 	}];
+}
+
+/**
+ *  Performs a GET request to the given path and tries to instantiate objects of the given class from the returned data.
+ *  @param aClass An SMDocument subclass that can represent objects returned from aPath
+ *  @param aPath The path to call on the server
+ *  @param callback A block to execute when the call has finished, passing a success flag and a user dictionary containing the fetched objects
+ */
+- (void)getObjectsOfClass:(Class)aClass from:(NSString *)aPath callback:(INSuccessRetvalueBlock)callback
+{
+	if (![aClass isSubclassOfClass:[SMObject class]]) {
+		NSString *errMessage = [NSString stringWithFormat:@"Class %@ is not a subclass of SMObject, it cannot be used with this method", NSStringFromClass(aClass)];
+		NSError *err = nil;
+		ERR(&err, errMessage, 0)
+		SUCCESS_RETVAL_CALLBACK_OR_LOG_USER_INFO(callback, NO, @{INErrorKey: err})
+	}
+	
+	// fetch
+	[self performMethod:aPath
+			   withBody:nil
+		   orParameters:nil
+			 httpMethod:@"GET"
+			   callback:^(BOOL success, NSDictionary * __autoreleasing userInfo) {
+				   if (success) {
+					   NSString *rdf = [userInfo objectForKey:INResponseStringKey];
+					   if ([rdf length] > 0) {
+						   RedlandParser *parser = [RedlandParser parserWithName:RedlandRDFXMLParserName];
+						   RedlandURI *uri = [RedlandURI URIWithString:@"http://www.smartplatforms.org/terms#"];
+						   RedlandModel *model = [RedlandModel new];
+						   
+						   // parse RDF+XML
+						   @try {
+							   [parser parseString:rdf intoModel:model withBaseURI:uri];
+						   }
+						   @catch (NSException *exception) {
+							   NSString *errMessage = [NSString stringWithFormat:@"Failed to parse RDF: %@", [exception reason]];
+							   NSError *err = nil;
+							   ERR(&err, errMessage, 0)
+							   NSMutableDictionary *usrInf = [userInfo mutableCopy];
+							   [usrInf setObject:err forKey:INErrorKey];
+							   SUCCESS_RETVAL_CALLBACK_OR_LOG_USER_INFO(callback, NO, usrInf)
+							   return;
+						   }
+						   
+						   // get the desired sub-models
+						   RedlandNode *predicate = [RedlandNode nodeWithURIString:@"http://www.w3.org/1999/02/22-rdf-syntax-ns#type"];
+						   RedlandNode *object = [RedlandNode nodeWithURIString:[aClass rdfType]];
+						   RedlandStatement *statement = [RedlandStatement statementWithSubject:nil predicate:predicate object:object];
+						   RedlandStreamEnumerator *query = [model enumeratorOfStatementsLike:statement];
+						   
+						   // create our objects wrapping those sub-models
+						   NSMutableArray *array = [NSMutableArray array];
+						   RedlandStatement *rslt = nil;
+						   while ((rslt = [query nextObject])) {
+							   id item = [aClass newWithSubject:rslt.subject inModel:model];
+							   if (item) {
+								   [array addObject:item];
+							   }
+						   }
+						   
+						   // complete the user-info dictionary and call the callback
+						   NSMutableDictionary *usrInf = [userInfo mutableCopy];
+						   [usrInf setObject:array forKey:INResponseArrayKey];
+						   SUCCESS_RETVAL_CALLBACK_OR_LOG_USER_INFO(callback, YES, usrInf)
+						   return;
+					   }
+					   else {
+						   DLog(@"Response is empty for GET call to %@", aPath);
+					   }
+				   }
+				   
+				   SUCCESS_RETVAL_CALLBACK_OR_LOG_USER_INFO(callback, success, userInfo)
+			   }];
 }
 
 
