@@ -26,7 +26,7 @@
  */
 
 /// The URL to your server, with port number
-#define kSMARTAPIBaseURL @"https://www.chip.org:7000"
+#define kSMARTAPIBaseURL @"http://sandbox.smartplatforms.org:7000"
 
 /// Your App's id, consumer key and -secret
 #define kSMARTAppId @"medsample@apps.smartplatforms.org"

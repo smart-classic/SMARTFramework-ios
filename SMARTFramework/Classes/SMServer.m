@@ -140,7 +140,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 		}];
 	}
 	
-	// all good, execute callback
+	// all good, execute callback straight away
 	else {
 		CANCEL_ERROR_CALLBACK_OR_LOG_ERR_STRING(callback, NO, nil)
 	}
@@ -272,15 +272,19 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 	// we use a INServerCall object to capture the callback block and fire it automatically when the OAuth process has completed
 	__unsafe_unretained SMServer *this = self;
 	[self performWhenReadyToConnect:^(BOOL userDidCancel, NSString * errorMessage) {
-		if (errorMessage) {
-			DLog(@"Error getting ready to connect: %@", errorMessage)
+		if (errorMessage || userDidCancel) {
+			if (userDidCancel) {
+				// will also end up here on timeout
+				DLog(@"Cancelled, can't select record");
+			}
+			else {
+				DLog(@"Error getting ready to connect: %@", errorMessage)
+			}
 			CANCEL_ERROR_CALLBACK_OR_LOG_ERR_STRING(callback, userDidCancel, errorMessage)
 			return;
 		}
-		else if (userDidCancel) {
-			DLog(@"User did cancel, should I stop?")
-		}
 		
+		// all good
 		this.currentCall = [INServerCall newForServer:this];
 		this.currentCall.HTTPMethod = @"POST";
 		this.currentCall.finishIfAuthenticated = YES;
@@ -351,15 +355,19 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 	// construct the call
 	__unsafe_unretained SMServer *this = self;
 	[self performWhenReadyToConnect:^(BOOL userDidCancel, NSString *__autoreleasing errorMessage) {
-		if (errorMessage) {
-			DLog(@"Error getting ready to connect: %@", errorMessage)
+		if (errorMessage || userDidCancel) {
+			if (userDidCancel) {
+				// will also end up here on timeout
+				DLog(@"Cancelled, can't select record");
+			}
+			else {
+				DLog(@"Error getting ready to connect: %@", errorMessage)
+			}
 			CANCEL_ERROR_CALLBACK_OR_LOG_ERR_STRING(callback, userDidCancel, errorMessage)
 			return;
 		}
-		else if (userDidCancel) {
-			DLog(@"User did cancel, should I stop?")
-		}
 		
+		// all good
 		this.currentCall = [INServerCall newForServer:this];
 		this.currentCall.HTTPMethod = @"POST";
 		this.currentCall.finishIfAuthenticated = YES;
@@ -513,11 +521,15 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 	}
 	
 	// dismiss login view controller
-	if (loginController != _loginVC) {
-		DLog(@"Very strange, an unknown login controller did just cancel...");
+	if (!loginController.isBeingDismissed) {
+		[loginController dismissAnimated:YES];
+		if (_loginVC != loginController) {
+			DLog(@"Very strange, an unknown login controller did just cancel...");
+		}
+		else {
+			self.loginVC = nil;
+		}
 	}
-	[loginController dismissAnimated:YES];
-	self.loginVC = nil;
 }
 
 /**

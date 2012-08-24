@@ -29,6 +29,7 @@
 
 @interface SMLoginViewController ()
 
+@property (nonatomic, readwrite, assign) BOOL isBeingDismissed;
 @property (nonatomic, readwrite, assign) UIWebView *webView;
 @property (nonatomic, readwrite, assign) UINavigationBar *titleBar;
 @property (nonatomic, readwrite, assign) UINavigationItem *titleItem;
@@ -47,11 +48,6 @@
 
 
 @implementation SMLoginViewController
-
-@synthesize delegate, startURL;
-@synthesize webView, titleBar, titleItem, backButton, cancelButton;
-@synthesize userDidLogout;
-@synthesize history, loadingView;
 
 
 /**
@@ -88,7 +84,7 @@
 	UINavigationBar *navBar = [[UINavigationBar alloc] initWithFrame:barFrame];
 	navBar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
 	navBar.tintColor = [UIColor colorWithRed:0.42f green:0.69f blue:0.83f alpha:1.f];
-	[navBar setItems:[NSArray arrayWithObject:titleItem] animated:NO];
+	[navBar setItems:[NSArray arrayWithObject:_titleItem] animated:NO];
 	self.titleBar = navBar;
 	
 	//** the web view
@@ -101,8 +97,8 @@
 	self.webView = wv;
 	
 	// compose
-	[v addSubview:webView];
-	[v addSubview:titleBar];
+	[v addSubview:_webView];
+	[v addSubview:_titleBar];
 	self.view = v;
 }
 
@@ -110,9 +106,9 @@
 {
     [super viewDidUnload];
 	
-	webView.delegate = nil;
+	_webView.delegate = nil;
 	self.webView = nil;
-	[loadingView removeFromSuperview];
+	[_loadingView removeFromSuperview];
 	self.loadingView = nil;
 	
 	self.titleBar = nil;
@@ -127,8 +123,9 @@
 - (void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
+	_isBeingDismissed = NO;
 	
-	if ([history count] < 1) {
+	if ([_history count] < 1) {
 		if (self.startURL) {
 			[self loadURL:self.startURL];
 		}
@@ -160,11 +157,11 @@
  */
 - (void)reload:(id)sender
 {
-	if (loadingView) {
-		[loadingView showSpinnerAnimated:YES];
-		[loadingView hideHintTextAnimated:YES];
+	if (_loadingView) {
+		[_loadingView showSpinnerAnimated:YES];
+		[_loadingView hideHintTextAnimated:YES];
 	}
-	[self loadURL:[history lastObject]];
+	[self loadURL:[_history lastObject]];
 }
 
 /**
@@ -173,9 +170,9 @@
  */
 - (void)reloadDelayed:(id)sender
 {
-	if (loadingView) {
-		[loadingView showSpinnerAnimated:YES];
-		[loadingView hideHintTextAnimated:YES];
+	if (_loadingView) {
+		[_loadingView showSpinnerAnimated:YES];
+		[_loadingView hideHintTextAnimated:YES];
 	}
 	[self performSelector:@selector(reload:) withObject:sender afterDelay:0.5];
 }
@@ -186,17 +183,17 @@
  */
 - (BOOL)webView:(UIWebView *)aWebView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
-	if (aWebView != webView) {
+	if (aWebView != _webView) {
 		return NO;
 	}
 	
 	// intercept internal callbacks
-	if ([[request.URL scheme] isEqualToString:[delegate callbackSchemeForLoginView:self]]) {
+	if ([[request.URL scheme] isEqualToString:[_delegate callbackSchemeForLoginView:self]]) {
 		NSArray *urlComponents = [request.URL pathComponents];
 		
 		// ** callbacks are also called after logout - intercept here
-		if (userDidLogout) {
-			[delegate loginViewDidLogout:self];
+		if (_userDidLogout) {
+			[_delegate loginViewDidLogout:self];
 			return NO;
 		}
 		
@@ -204,7 +201,7 @@
 		if ([@"did_select_record" isEqualToString:[urlComponents lastObject]]) {
 			NSDictionary *args = [INURLLoader queryFromRequest:request];
 			//DLog(@"DID RECEIVE: %@", args);
-			[delegate loginView:self didSelectRecordId:[args objectForKey:@"record_id"]];
+			[_delegate loginView:self didSelectRecordId:[args objectForKey:@"record_id"]];
 			// extract carenet_id here once supported
 			return NO;
 		}
@@ -213,7 +210,7 @@
 		if ([@"did_receive_verifier" isEqualToString:[urlComponents lastObject]]) {
 			NSDictionary *args = [INURLLoader queryFromRequest:request];
 			//DLog(@"DID RECEIVE: %@", args);
-			[delegate loginView:self didReceiveVerifier:[args objectForKey:@"oauth_verifier"]];
+			[_delegate loginView:self didReceiveVerifier:[args objectForKey:@"oauth_verifier"]];
 			return NO;
 		}
 	}
@@ -225,7 +222,7 @@
 	
 	// intercept logout
 	if ([@"logout" isEqualToString:[[request.URL pathComponents] lastObject]]) {
-		userDidLogout = YES;
+		_userDidLogout = YES;
 	}
 	
 	// handle history
@@ -234,7 +231,7 @@
 	}
 	
 	// we're at the initial page
-	else if ([history count] < 1) {
+	else if ([_history count] < 1) {
 		[self.history addObject:request.URL];
 		
 		/* delete old cookies for our URL, they might interfere
@@ -252,8 +249,8 @@
 - (void)webViewDidFinishLoad:(UIWebView *)aWebView
 {
 	// did we logout?
-	if (userDidLogout) {
-		[delegate loginViewDidLogout:self];
+	if (_userDidLogout) {
+		[_delegate loginViewDidLogout:self];
 	}
 	
 	[self hideLoadingIndicator:nil];
@@ -272,8 +269,8 @@
 	}
 	
 	// show error
-	if (loadingView && error) {
-		[loadingView showIn:webView mainText:[error localizedDescription] hintText:@"Tap to try again" animated:YES];
+	if (_loadingView && error) {
+		[_loadingView showIn:_webView mainText:[error localizedDescription] hintText:@"Tap to try again" animated:YES];
 	}
 	else {
 		DLog(@"Failed loading URL: %@", [error localizedDescription]);
@@ -288,7 +285,7 @@
  */
 - (void)cancel:(id)sender
 {
-	[delegate loginViewDidCancel:self];		// this will also dismiss the view controller
+	[_delegate loginViewDidCancel:self];		// this will also dismiss the view controller
 }
 
 /**
@@ -305,7 +302,8 @@
  */
 - (void)dismissAnimated:(BOOL)animated
 {
-	[webView stopLoading];
+	_isBeingDismissed = YES;
+	[_webView stopLoading];
 	[self hideLoadingIndicator:nil];
 	
 	if ([self respondsToSelector:@selector(presentingViewController)]) {			// iOS 5+ only
@@ -324,10 +322,10 @@
  */
 - (void)goBack:(id)sender
 {
-	[webView stopLoading];
-	if ([history count] > 1) {
-		[history removeLastObject];
-		[self loadURL:[history lastObject]];
+	[_webView stopLoading];
+	if ([_history count] > 1) {
+		[_history removeLastObject];
+		[self loadURL:[_history lastObject]];
 	}
 }
 
@@ -336,11 +334,11 @@
  */
 - (void)showHideBackButton
 {
-	if ([history count] > 1) {
-		titleItem.leftBarButtonItem = self.backButton;
+	if ([_history count] > 1) {
+		_titleItem.leftBarButtonItem = self.backButton;
 	}
 	else {
-		titleItem.leftBarButtonItem = nil;
+		_titleItem.leftBarButtonItem = nil;
 	}
 }
 
@@ -352,10 +350,10 @@
  */
 - (void)setStartURL:(NSURL *)newURL
 {
-	if (newURL != startURL) {
-		startURL = newURL;
+	if (newURL != _startURL) {
+		_startURL = newURL;
 		
-		if (startURL && [self isViewLoaded] && [history count] < 1) {
+		if (_startURL && [self isViewLoaded] && [_history count] < 1) {
 			[self loadURL:self.startURL];
 		}
 	}
@@ -363,25 +361,25 @@
 
 - (NSMutableArray *)history
 {
-	if (!history) {
+	if (!_history) {
 		self.history = [NSMutableArray array];
 	}
-	return history;
+	return _history;
 }
 
 - (void)setTitle:(NSString *)newTitle
 {
-	titleItem.title = newTitle;
+	_titleItem.title = newTitle;
 	[super setTitle:newTitle];
 }
 
 - (UIBarButtonItem *)backButton
 {
-	if (!backButton) {
+	if (!_backButton) {
 		UIBarButtonItem *bb = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRewind target:self action:@selector(goBack:)];
 		self.backButton = bb;
 	}
-	return backButton;
+	return _backButton;
 }
 
 
@@ -389,11 +387,11 @@
 #pragma mark - Progress Indicator
 - (void)showLoadingIndicator:(id)sender
 {
-	if (!loadingView) {
-		self.loadingView = [[IndivoActionView alloc] initWithFrame:webView.bounds];
-		[loadingView addTarget:self action:@selector(reloadDelayed:) forControlEvents:UIControlEventTouchUpInside];
+	if (!_loadingView) {
+		self.loadingView = [[IndivoActionView alloc] initWithFrame:_webView.bounds];
+		[_loadingView addTarget:self action:@selector(reloadDelayed:) forControlEvents:UIControlEventTouchUpInside];
 	}
-	[loadingView showActivityIn:webView animated:YES];
+	[_loadingView showActivityIn:_webView animated:YES];
 	
 	// timer to show loading details if it takes long
 	[self performSelector:@selector(showStillLoadingHint) withObject:nil afterDelay:8.0];
@@ -401,15 +399,15 @@
 
 - (void)showStillLoadingHint
 {
-	if (webView.loading && webView == [loadingView superview]) {
-		NSString *hintText = [NSString stringWithFormat:@"Still contacting %@", ([history count] > 0) ? ((NSURL *)[history lastObject]).host : @"server"];
-		[loadingView showHintText:hintText animated:YES];
+	if (_webView.loading && _webView == [_loadingView superview]) {
+		NSString *hintText = [NSString stringWithFormat:@"Still contacting %@", ([_history count] > 0) ? ((NSURL *)[_history lastObject]).host : @"server"];
+		[_loadingView showHintText:hintText animated:YES];
 	}
 }
 
 - (void)hideLoadingIndicator:(id)sender
 {
-	[loadingView removeFromSuperview];
+	[_loadingView removeFromSuperview];
 	self.loadingView = nil;
 }
 
