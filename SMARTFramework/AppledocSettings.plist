@@ -23,6 +23,8 @@
 	<true/>
 	<key>--logformat</key>
 	<string>xcode</string>
+	<key>--exit-threshold</key>
+	<integer>2</integer>
 	<key>--merge-categories</key>
 	<true/>
 	<key>--warn-missing-arg</key>

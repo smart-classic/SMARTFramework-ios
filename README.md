@@ -10,15 +10,14 @@ The SMART Framework is an Objective-C framework using **ARC** ([Automatic Refere
 The framework utilizes a fork of [MPOAuth][], an OAuth framework by Karl Adam (matrixPointer), and an Objective-C wrapper around [Redland][], an RDF library, originally created by Rene Puls.
 
 - #### SMART Container ####
-For most operations the framework talks to the [Indivo Server][] directly, however for login and record selection needs to talk to the corresponding [Indivo UI Server][]. Indivo X 1.0 will support Apps running the framework out of the box.
+You need a [SMART container] running version 0.5 or above
 
 [self]: https://github.com/chb/SMARTFramework-ios
 [smart]: http://www.smartplatforms.org/
 [arc]: http://clang.llvm.org/docs/AutomaticReferenceCounting.html
 [mpoauth]: https://github.com/chb/MPOAuth
 [redland]: https://github.com/p2/Redland-ObjC
-[indivo server]: https://github.com/chb/indivo_server
-[indivo ui server]: https://github.com/chb/indivo_ui_server
+[smart container]: https://github.com/chb/smart_server
 
 
 Technical Documentation
@@ -124,7 +123,7 @@ Framework Setup
 8. In your code, include the header files (where needed) as user header files:
 
 		import "SMServer.h"
-		import "SMARTDocuments.h"
+		import "SMARTObjects.h"
 
 You are now ready to go!
 
@@ -132,22 +131,75 @@ You are now ready to go!
 Using the Framework
 -------------------
 
-[...]
+
+
+### Instantiating a server handle ###
+
+Make your app delegate (or some other class) the server delegate and instantiate a `SMServer` object:  
+
+	SMServer *smart = [SMServer serverWithDelegate:<# your server delegate #>];
+	
+Make sure you implement the required delegate methods in your server delegate! This **smart** instance is now your connection to the SMART container.
+
+
+### Selecting a record ###
+	
+Add a button to your app which calls `SMServer`'s `selectRecord:` method when tapped. Like all server methods in the framework, this method receives a callback once the operation completed. If record selection was successful, the `activeRecord` property on your server instance will be set (an object of class `SMRecord`) and you can use the activeRecord object to fetch documents for this record.
+
+Here's an example that makes the app display the record-selection page with the login screen delivered by your server and, upon completion, alerts an error (if there is one) and does nothing otherwise:
+
+    [self.smart selectRecord:^(BOOL userDidCancel, NSString *errorMessage) {
+    
+    	// there was an error selecting the record
+    	if (errorMessage) {
+    		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed to connect"
+    											    		message:errorMessage
+    													   delegate:nil
+    											  cancelButtonTitle:@"OK"
+    											  otherButtonTitles:nil];
+    		[alert show];
+    	}
+    
+    	// did successfully select a record
+    	else if (!userDidCancel) {
+    		// do something useful!
+    	}
+    }];
+
+
+### Retrieving items ###
+
+There are several calls available for the `SMRecord` instance, for example to get all medications of a record (assuming the user has already selected a record as shown above):
+
+    [self.smart.activeRecord getMedications:^(BOOL success, NSDictionary *userInfo) {
+    	if (!success) {
+    		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed to connect"
+    											    		message:[[userInfo objectForKey:INErrorKey] localizedDescription]
+    													   delegate:nil
+    											  cancelButtonTitle:@"OK"
+    											  otherButtonTitles:nil];
+    		[alert show];
+    	}
+    	else {
+    		NSArray *meds = [userInfo objectForKey:INResponseArrayKey];
+    		// You have now got SMMedication objects in that array
+    	}
+    }];
 
 
 Building the Documentation
 --------------------------
 
-The code is documented using [appledoc]. If you want to compile the documentation it's best if you grab appledoc from GitHub, build and install it and then run it against the code:
+The code is documented using [appledoc]. If you want to compile the documentation it's best if you grab appledoc from GitHub, build and install it and then run the `SMART iOS Documentation` target right from within Xcode:
 
     $ cd SMARTFramework-ios/
     $ git clone git://github.com/tomaz/appledoc.git
     $ cd appledoc
     $ ./install-appledoc.sh -b /usr/local/bin -t ~/Library/Application\ Support/appledoc
-    $ cd ../SMARTFramework/
-    $ appledoc .
 
-Note that this assumes that you have write permissions for `/usr/local`, if not you may need to issue this command as root with `sudo`. The documentation is now available from within Xcode.
+Note that this assumes that you have write permissions for `/usr/local`, if not you may need to issue this command as root with `sudo`.
+
+After that, the documentation is available from within Xcode, just ALT+click any keyword like you would do with standard Cocoa keywords.
 
 
 [appledoc]: http://gentlebytes.com/appledoc/

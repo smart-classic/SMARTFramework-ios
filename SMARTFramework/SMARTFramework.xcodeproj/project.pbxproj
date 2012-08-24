@@ -244,6 +244,41 @@
 			remoteGlobalIDString = EEC9C59415CB2EA800B7C568;
 			remoteInfo = SMARTFramework;
 		};
+		EEE4620215E80F2000CCF120 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEE461F515E80F2000CCF120 /* Redland.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
+			remoteInfo = Redland;
+		};
+		EEE4620415E80F2000CCF120 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEE461F515E80F2000CCF120 /* Redland.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = ED48EB5008BB557A00ACF14F;
+			remoteInfo = Tests;
+		};
+		EEE4620615E80F2000CCF120 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEE461F515E80F2000CCF120 /* Redland.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EEE7B44E15C84978004D5A68;
+			remoteInfo = "redland-ios";
+		};
+		EEE4620815E80F2000CCF120 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEE461F515E80F2000CCF120 /* Redland.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EEE7B45E15C84978004D5A68;
+			remoteInfo = "Redland Tests iOS";
+		};
+		EEE4620A15E80F6700CCF120 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEE461F515E80F2000CCF120 /* Redland.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = EEE7B44D15C84978004D5A68;
+			remoteInfo = "redland-ios";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -411,6 +446,7 @@
 		EEC9C5A515CB2EA900B7C568 /* SMARTFrameworkTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SMARTFrameworkTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEC9C5A615CB2EA900B7C568 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		EEC9C5B015CB2EA900B7C568 /* SMARTFrameworkTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SMARTFrameworkTests-Info.plist"; sourceTree = "<group>"; };
+		EEE461F515E80F2000CCF120 /* Redland.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Redland.xcodeproj; path = "Redland-ObjC/Redland.xcodeproj"; sourceTree = "<group>"; };
 		EEE82D8315D008500017EA0B /* IndivoActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndivoActionView.h; sourceTree = "<group>"; };
 		EEE82D8415D008500017EA0B /* IndivoActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndivoActionView.m; sourceTree = "<group>"; };
 		EEE82D8C15D00D810017EA0B /* SMARTObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMARTObjects.h; sourceTree = "<group>"; };
@@ -669,6 +705,7 @@
 				EEC9C5AE15CB2EA900B7C568 /* SMARTFrameworkTests */,
 				EEC9C59715CB2EA800B7C568 /* Frameworks */,
 				EEC9C59615CB2EA800B7C568 /* Products */,
+				EEE461F515E80F2000CCF120 /* Redland.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -747,6 +784,17 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		EEE461F615E80F2000CCF120 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EEE4620315E80F2000CCF120 /* Redland.framework */,
+				EEE4620515E80F2000CCF120 /* Tests.octest */,
+				EEE4620715E80F2000CCF120 /* libredland-ios.a */,
+				EEE4620915E80F2000CCF120 /* Tests iOS.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		EEE82D8215D008330017EA0B /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -807,7 +855,7 @@
 				EEF0196515CB453400FFD480 /* NSURLResponse+Encoding.m */,
 			);
 			name = "MPOAuth Framework";
-			path = ../MPOAuth/Source/Framework;
+			path = MPOAuth/Source/Framework;
 			sourceTree = "<group>";
 		};
 		EEF0193815CB453400FFD480 /* Crypto */ = {
@@ -958,6 +1006,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				EEE4620B15E80F6700CCF120 /* PBXTargetDependency */,
 			);
 			name = SMART;
 			productName = SMARTFramework;
@@ -1002,6 +1051,12 @@
 			mainGroup = EEC9C58815CB2EA800B7C568;
 			productRefGroup = EEC9C59615CB2EA800B7C568 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = EEE461F615E80F2000CCF120 /* Products */;
+					ProjectRef = EEE461F515E80F2000CCF120 /* Redland.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				EEC9C59415CB2EA800B7C568 /* SMART */,
@@ -1010,6 +1065,38 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		EEE4620315E80F2000CCF120 /* Redland.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Redland.framework;
+			remoteRef = EEE4620215E80F2000CCF120 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EEE4620515E80F2000CCF120 /* Tests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = Tests.octest;
+			remoteRef = EEE4620415E80F2000CCF120 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EEE4620715E80F2000CCF120 /* libredland-ios.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libredland-ios.a";
+			remoteRef = EEE4620615E80F2000CCF120 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EEE4620915E80F2000CCF120 /* Tests iOS.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			name = "Tests iOS.octest";
+			path = "Redland Tests iOS.octest";
+			remoteRef = EEE4620815E80F2000CCF120 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		EEC9C5A215CB2EA900B7C568 /* Resources */ = {
@@ -1172,6 +1259,11 @@
 			target = EEC9C59415CB2EA800B7C568 /* SMART */;
 			targetProxy = EEC9C5AB15CB2EA900B7C568 /* PBXContainerItemProxy */;
 		};
+		EEE4620B15E80F6700CCF120 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "redland-ios";
+			targetProxy = EEE4620A15E80F6700CCF120 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
@@ -1215,7 +1307,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(BUILT_PRODUCTS_DIR)\"/**",
-					"\"$(SRCROOT)/../Redland-ObjC/Redland-source/Universal\"",
+					"\"$(SRCROOT)/Redland-ObjC/Redland-source/Universal\"",
 				);
 				OTHER_CFLAGS = "-DDEBUG";
 				OTHER_LDFLAGS = "-ObjC";
@@ -1324,7 +1416,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(BUILT_PRODUCTS_DIR)\"/**",
-					"\"$(SRCROOT)/../Redland-ObjC/Redland-source/Universal\"",
+					"\"$(SRCROOT)/Redland-ObjC/Redland-source/Universal\"",
 				);
 				OTHER_CFLAGS = "-DDEBUG";
 				OTHER_LDFLAGS = "-ObjC";
@@ -1346,7 +1438,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(BUILT_PRODUCTS_DIR)\"/**",
-					"\"$(SRCROOT)/../Redland-ObjC/Redland-source/Universal\"",
+					"\"$(SRCROOT)/Redland-ObjC/Redland-source/Universal\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";

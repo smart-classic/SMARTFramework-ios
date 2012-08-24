@@ -1,9 +1,9 @@
-[submodule "Redland-ObjC"]
-	path = Redland-ObjC
+[submodule "SMARTFramework/Redland-ObjC"]
+	path = SMARTFramework/Redland-ObjC
 	url = git://github.com/p2/Redland-ObjC.git
 	pushURL = git@github.com:p2/Redland-ObjC.git
-[submodule "MPOAuth"]
-	path = MPOAuth
+[submodule "SMARTFramework/MPOAuth"]
+	path = SMARTFramework/MPOAuth
 	url = git://github.com/chb/MPOAuth.git
 	pushURL = git@github.com:chb/MPOAuth.git
 [submodule "SMARTMedSample-ios"]

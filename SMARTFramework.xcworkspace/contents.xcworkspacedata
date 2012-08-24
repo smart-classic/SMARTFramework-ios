@@ -10,7 +10,4 @@
    <FileRef
       location = "container:SMARTFramework/SMARTFramework.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "container:Redland-ObjC/Redland.xcodeproj">
-   </FileRef>
 </Workspace>
