@@ -29,7 +29,6 @@
 
 @interface SMLoginViewController ()
 
-@property (nonatomic, readwrite, assign) BOOL isBeingDismissed;
 @property (nonatomic, readwrite, assign) UIWebView *webView;
 @property (nonatomic, readwrite, assign) UINavigationBar *titleBar;
 @property (nonatomic, readwrite, assign) UINavigationItem *titleItem;
@@ -123,7 +122,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
-	_isBeingDismissed = NO;
 	
 	if ([_history count] < 1) {
 		if (self.startURL) {
@@ -302,7 +300,6 @@
  */
 - (void)dismissAnimated:(BOOL)animated
 {
-	_isBeingDismissed = YES;
 	[_webView stopLoading];
 	[self hideLoadingIndicator:nil];
 	

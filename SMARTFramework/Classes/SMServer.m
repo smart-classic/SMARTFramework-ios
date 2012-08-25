@@ -521,12 +521,12 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 	}
 	
 	// dismiss login view controller
-	if (!loginController.isBeingDismissed) {
-		[loginController dismissAnimated:YES];
+	if (_loginVC) {
 		if (_loginVC != loginController) {
 			DLog(@"Very strange, an unknown login controller did just cancel...");
 		}
 		else {
+			[_loginVC dismissAnimated:YES];
 			self.loginVC = nil;
 		}
 	}
