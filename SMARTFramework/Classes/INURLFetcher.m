@@ -97,6 +97,9 @@
 
 /**
  *  Callback when a loader finished
+ *  @param aLoader The loader that did finish
+ *  @param errorMessage An error message if loading was not successful, otherwise the loader's response status is checked and if it's < 400 the loading is
+ *  deemed successful
  */
 - (void)loaderDidFinish:(INURLLoader *)aLoader withErrorMessage:(NSString *)errorMessage
 {

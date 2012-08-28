@@ -67,7 +67,9 @@
 
 #pragma mark - URL Loading
 /**
- *  Praparations before beginning to load
+ *  Praparations before beginning to load.
+ *  This method is automatically called in performRequest:withCallback:, you most likely do not need to call it manually.
+ *  @param aCallback The callback block to execute after loading has finished
  */
 - (void)prepareWithCallback:(INCancelErrorBlock)aCallback
 {
@@ -84,6 +86,7 @@
 
 /**
  *  Start loading data from an URL
+ *  @param aCallback The callback block to execute after loading has finished
  */
 - (void)getWithCallback:(INCancelErrorBlock)aCallback
 {
@@ -100,6 +103,8 @@
 
 /**
  *  POST body values to our URL
+ *  @param postBody The HTTP-body to post
+ *  @param aCallback The callback block to execute after loading has finished
  */
 - (void)post:(NSString *)postBody withCallback:(INCancelErrorBlock)aCallback
 {
@@ -117,7 +122,10 @@
 }
 
 /**
- *  Perform an NSURLRequest asynchronically. This method is internally used as the endpoint of all convenience methods, all load operations start here.
+ *  Perform an NSURLRequest asynchronically.
+ *  This method is internally used as the endpoint of all convenience methods, all load operations start here.
+ *  @param aRequest The request to be performed
+ *  @param aCallback The callback block to execute after loading has finished
  */
 - (void)performRequest:(NSURLRequest *)aRequest withCallback:(INCancelErrorBlock)aCallback
 {
@@ -140,6 +148,8 @@
 
 /**
  *  This finishing method creates an NSString from any loaded data and calls the callback, if one was given
+ *  @param anError The error that was encountered, if any
+ *  @param didCancel Is set to YES if the call was cancelled
  */
 - (void)didFinishWithError:(NSError *)anError wasCancelled:(BOOL)didCancel
 {
@@ -169,6 +179,7 @@
 
 /**
  *  Our timer calls this method when the time is up
+ *  @param timer The timer that timed out
  */
 - (void)didTimeout:(NSTimer *)timer
 {
@@ -219,6 +230,7 @@
 #pragma mark - Parsing URL Requests
 /**
  *  Parses arguments from a request
+ *  @param aRequest The request to search for arguments/parameter
  *  @return An NSDictionary containing all arguments found in the request
  */
 + (NSDictionary *)queryFromRequest:(NSURLRequest *)aRequest
@@ -233,6 +245,7 @@
 
 /**
  *  Parses arguments from a request URL string
+ *  @param aString A string in the form "key=value&foo=bar" that should be parsed into a dictionary
  *  @return An NSDictionary containing all arguments found in the request string
  */
 + (NSDictionary *)queryFromRequestString:(NSString *)aString

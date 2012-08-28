@@ -31,20 +31,36 @@
  */
 @protocol SMLoginViewControllerDelegate <NSObject>
 
-/** Called when a record was selected. */
+/**
+ *  Called when the user selected a record.
+ *  @param aLoginController The login controller from which the user did select the record
+ *  @param recordId The id for the record
+ */
 - (void)loginView:(SMLoginViewController *)aLoginController didSelectRecordId:(NSString *)recordId;
 
-/** Called when the login screen gets called with our verifier callback URL. */
+/**
+ *  Called when the login screen gets called with our verifier callback URL.
+ *  @param aLoginController The login controller that received the verifier
+ *  @param aVerifier The verifier
+ */
 - (void)loginView:(SMLoginViewController *)aLoginController didReceiveVerifier:(NSString *)aVerifier;
 
-/** The user dismissed the login screen without loggin in successfully. */
+/**
+ *  Called when the user dismisses the login screen, i.e. cancels the record selection process.
+ *  @param aLoginController The login controller that did cancel
+ */
 - (void)loginViewDidCancel:(SMLoginViewController *)aLoginController;
 
-/** If the user logged out, we want to discard cached data. */
+/**
+ *  Called when the user logged out.
+ *  This is your chance to discard cached data
+ *  @param aLoginController The login controller from which the user logged out
+ */
 - (void)loginViewDidLogout:(SMLoginViewController *)aLoginController;
 
-/** Before loading a URL that URL is checked whether the scheme corresponds to the internal scheme, and if it does a different action may be performed than
- *  loading the URL in the webView.
+/**
+ *  The scheme for URL that we catch internally (by default this is "smart-app").
+ *  @param aLoginController The login controller that asks for the scheme
  */
 - (NSString *)callbackSchemeForLoginView:(SMLoginViewController *)aLoginController;
 

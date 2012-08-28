@@ -21,22 +21,14 @@
  */
 
 /**
- *  @mainpage
- *  Welcome to the API documentation of SMARTFramework for iOS.
+ *  SMARTFramework-ios
+ *  ==================
+ *  Welcome to the API documentation of the SMART framework for iOS.
  *  
- *  @section Instructions
- *  Instructions an how to setup the framework can be found in the README also provided with the framework, which
- *  can be viewed nicely formatted on our github page: https://github.com/chb/SMARTFramework-ios
- *  
- *  @section Creating an Xcode Docset
- *  You can use Doxygen to create a documentation. The easiest way to do this is to open the Doxyfile with DoxyWizard and press "Run". This
- *  will create an HTML documentation in `Docs/html` and a ready-to-build LaTeX documentation in `Docs/latex`.
- *  
- *  After building the documentation like mentioned above, you just need to install it:<br>
- *  	$ cd SMARTFramework-ios/Docs/html<br>
- *  	$ make install<br>
- *  After you relaunch Xcode, the documentation should be available in the Organizer and can be accessed like the standard Cocoa documentation
- *  by `ALT`-clicking code parts.
+ *  Instructions
+ *  ------------
+ *  Instructions an how to setup the framework can be found in README.md also provided with the project, which can be viewed nicely formatted on our github
+ *  page: https://github.com/chb/SMARTFramework-ios
  */
 
 #import <Foundation/Foundation.h>
@@ -57,16 +49,16 @@
 /**
  *  Return a view controller from which you want to present the login view controller.
  *  The login view controller will be passed into this method so you can customize its chrome.
- *  @remark The delegate MUST respond to this method.
+ *  @warning The delegate MUST respond to this method.
  *  @param loginViewController The login view controller about to load the login screen
  *  @return A view controller from which to present the login view controller
  */
 - (UIViewController *)viewControllerToPresentLoginViewController:(SMLoginViewController *)loginViewController;
 
 /**
- *  This delegate method is called when the user logs out. You must implement this method in your delegate, and ideally
- *  unload all record data once the user logs out.
- *  @remark The delegate MUST respond to this method.
+ *  This delegate method is called when the user logs out. You must implement this method in your delegate, and ideally unload all record data once the user
+ *  logs out.
+ *  @warning The delegate MUST respond to this method.
  *  @param fromServer The server from which the user disconnected
  */
 - (void)userDidLogout:(SMServer *)fromServer;
@@ -77,6 +69,7 @@
 
 /**
  *  A class to represent the server you want to connect to.
+ *
  *  This is the main interaction point of the framework with your targeted SMART Server.
  */
 @interface SMServer : NSObject <SMLoginViewControllerDelegate>

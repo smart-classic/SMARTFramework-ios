@@ -56,6 +56,7 @@
 
 /**
  *  The designated initializer
+ *  @param aServer The server against which we'll run
  */
 - (id)initWithServer:(id)aServer
 {
@@ -236,8 +237,9 @@
 #pragma mark - Finishing and Aborting
 /**
  *  A method to finish the call early, but successfully.
- *  Use abortWithError: to finish a call early and unsuccessfully. This method provokes the same actions as if it was fired
- *  and returned successfully. This method is NOT being called when the URL connection finishes.
+ *  Use abortWithError: to finish a call early and unsuccessfully. This method provokes the same actions as if it was fired and returned successfully. This
+ *  method is NOT being called when the URL connection finishes.
+ *  @param returnObject The dictionary that we will return as userInfo with the callback
  */
 - (void)finishWith:(NSDictionary *)returnObject
 {
@@ -245,7 +247,7 @@
 }
 
 /**
- *  Cancels the call, calling "abortWithError:nil" has the same effect
+ *  Cancels the call; calling "abortWithError:nil" has the same effect
  */
 - (void)cancel
 {
@@ -263,7 +265,10 @@
 }
 
 /**
- *  Internal finishing method. Calls the callback, if there is one, and informs the server that the call has finished.
+ *  Internal finishing method.
+ *  Calls the callback, if there is one, and informs the server that the call has finished.
+ *  @param success A BOOL indicating whether the call was successful
+ *  @param returnObject The dictionary that we will return as userInfo with the callback
  */
 - (void)didFinishSuccessfully:(BOOL)success returnObject:(NSDictionary *)returnObject
 {
@@ -305,7 +310,7 @@
 	return [server additionalRequestTokenParameters];
 }
 
-/**
+/*
  *  If the server is our delegate, we return NO here and the server loads the login page
  */
 - (BOOL)automaticallyRequestAuthenticationFromURL:(NSURL *)inAuthURL withCallbackURL:(NSURL *)inCallbackURL
@@ -316,7 +321,7 @@
 
 
 #pragma mark - OAuth Auth Delegate Methods -- Final Responses
-/**
+/*
  *  Delegate method after successful authentication
  */
 - (void)authenticationDidSucceed
@@ -324,7 +329,7 @@
 	[self fire];			// will finish immediately if the call has "finishIfAuthenticated" set
 }
 
-/**
+/*
  *  Delegate method that gets called after failure to receive an access_token
  */
 - (void)authenticationDidFailWithError:(NSError *)error
@@ -339,7 +344,7 @@
 
 
 #pragma mark - Receiving OAuth Notifications
-/**
+/*
  *  One method to intercept all MPOAuth notifications.
  *  We only subscribe to receive notifications from "our" MPOAuthAPI object. The notifications will be delivered before the finishing
  *  authDelegate methods will be called.

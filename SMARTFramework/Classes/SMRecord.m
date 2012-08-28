@@ -46,7 +46,9 @@
 #pragma mark -
 
 /**
- *  Initializes a record from given parameters
+ *  The designated initializer, initializes a record from given parameters
+ *  @param anId The id to use for this record
+ *  @param aServer The server on which this record lives
  */
 - (id)initWithId:(NSString *)anId onServer:(SMServer *)aServer
 {
@@ -230,6 +232,7 @@
 #pragma mark - Utilities
 /**
  *  Shortcut method to test if the document has the given ID
+ *  @param anId The id to test
  */
 - (BOOL)is:(NSString *)anId
 {

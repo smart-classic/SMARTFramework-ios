@@ -79,6 +79,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 #pragma mark - Initialization
 /**
  *  A convenience constructor creating the server for the given delegate. Configuration is automatically read from "Config.h"
+ *  @param aDelegate The server delegate
  */
 + (id)serverWithDelegate:(id<SMARTServerDelegate>)aDelegate
 {
@@ -120,6 +121,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 /**
  *  Fetches the server and app manifests, if needed, then executes the block.
  *  Authentication calls are wrapped into this method since we need to know our endpoints before we can authenticate.
+ *  @param callback The callback to perform when ready
  */
 - (void)performWhenReadyToConnect:(INCancelErrorBlock)callback
 {
@@ -148,6 +150,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 
 /**
  *  Fetches the server manifest.
+ *  @param callback The callback to perform once the manifest has been fetched
  *  @warning You usually don't call this method manually, use "prepareToConnect:" and access the server manifest in "manifest" afterwards.
  */
 - (void)fetchServerManifest:(INCancelErrorBlock)callback
@@ -180,37 +183,12 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 
 /**
  *  Fetches the app manifest.
- *  @warning You usually don't call this method, use "prepareToConnect:" which performs this method. Afterwards, "appManifest" contains the manifest.
+ *  @param callback The callback to perform when the manifest has been fetched
+ *  TODO: Implement
  */
 - (void)fetchAppManifest:(INCancelErrorBlock)callback
 {
-	if (!YES) {
-	}
-	
-	NSURL *manifestURL = [url URLByAppendingPathComponent:@"manifest"];
-	INURLLoader *loader = [INURLLoader loaderWithURL:manifestURL];
-	
-	// fetch
-	[loader getWithCallback:^(BOOL userDidCancel, NSString *errorMessage) {
-		
-		// upon success, parse the response into the manifest dictionary
-		if (!errorMessage && !userDidCancel) {
-			NSError *jsonError = nil;
-			id resDict = [NSJSONSerialization JSONObjectWithData:loader.responseData options:0 error:&jsonError];
-			if (!resDict) {
-				errorMessage = [jsonError localizedDescription];
-			}
-			else if ([resDict isKindOfClass:[NSDictionary class]]) {
-				self.manifest = (NSDictionary *)resDict;
-			}
-			else {
-				errorMessage = [NSString stringWithFormat:@"Did not receive a dictionary for the manifest, but a %@:  %@", NSStringFromClass([resDict class]), resDict];
-			}
-		}
-		
-		// pass it all to the main callback
-		CANCEL_ERROR_CALLBACK_OR_LOG_ERR_STRING(callback, userDidCancel, errorMessage);
-	}];
+	CANCEL_ERROR_CALLBACK_OR_LOG_ERR_STRING(callback, YES, nil);
 }
 
 
@@ -243,6 +221,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 
 #pragma mark - Record Selection
 /**
+ *  @param recordId The id of the record that we want
  *  @return The record with the given id, nil if it is not found
  */
 - (SMRecord *)recordWithId:(NSString *)recordId
@@ -437,6 +416,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 
 /**
  *  Dismisses the login screen, if present
+ *  @param animated BOOL indicating whether the dismissal should be animated
  */
 - (void)_dismissLoginScreenAnimated:(BOOL)animated
 {
@@ -449,9 +429,6 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 
 
 #pragma mark - Login View Controller Delegate
-/**
- *  Called when the user selected a record
- */
 - (void)loginView:(SMLoginViewController *)aLoginController didSelectRecordId:(NSString *)recordId
 {
 	NSError *error = nil;
@@ -489,9 +466,6 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 	}
 }
 
-/**
- *  A delegate method which gets called when the callback is received
- */
 - (void)loginView:(SMLoginViewController *)aLoginController didReceiveVerifier:(NSString *)aVerifier
 {
 	self.lastOAuthVerifier = aVerifier;
@@ -511,9 +485,6 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 	[self performCall:currentCall];
 }
 
-/**
- *  Delegate method called when the user dismisses the login screen, i.e. cancels the record selection process
- */
 - (void)loginViewDidCancel:(SMLoginViewController *)loginController
 {
 	if (currentCall) {
@@ -532,10 +503,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 	}
 }
 
-/**
- *  The user logged out
- */
-- (void)loginViewDidLogout:(SMLoginViewController *)aLoginController
+- (void)loginViewDidLogout:(SMLoginViewController *)loginController
 {
 	self.activeRecord = nil;
 	[currentCall cancel];
@@ -547,10 +515,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 	}
 }
 
-/**
- *  The scheme for URL that we treat differently internally (by default this is "smart-app")
- */
-- (NSString *)callbackSchemeForLoginView:(SMLoginViewController *)aLoginController
+- (NSString *)callbackSchemeForLoginView:(SMLoginViewController *)loginController
 {
 	return self.callbackScheme;
 }
@@ -561,6 +526,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 /**
  *  Fetches global, app-specific documents.
  *  GETs documents from /apps/{app id}/documents/ with a two-legged OAuth call.
+ *  @param callback The callback to execute once the call has finished
  */
 - (void)fetchAppSpecificDocumentsWithCallback:(INSuccessRetvalueBlock)callback
 {
@@ -639,6 +605,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 /**
  *  Callback to let us know a call has finished.
  *  The call will have called the callback by now, no need for us to do any further handling
+ *  @param aCall The call that finished
  */
 - (void)callDidFinish:(INServerCall *)aCall
 {
@@ -662,10 +629,11 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 }
 
 /**
- *  Dequeues a call without finishing it. This is useful for calls that need to be re-performed after another call has been made, e.g. if the token was
- *  rejected and we'll be retrying the call after obtaining a new token. In this case, we don't want the call to finish, but we can't leave it in the queue
- *  because it would block subsequent calls.
+ *  Dequeues a call without finishing it.
+ *  This is useful for calls that need to be re-performed after another call has been made, e.g. if the token was rejected and we'll be retrying the call after
+ *  obtaining a new token. In this case, we don't want the call to finish, but we can't leave it in the queue because it would block subsequent calls.
  *  @warning Do NOT use this to cancel a call because the callback will not be called!
+ *  @param aCall The call to suspend
  */
 - (void)suspendCall:(INServerCall *)aCall
 {
@@ -679,6 +647,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 
 /**
  *  Callback when the call is stuck at user authorization
+ *  @param authURL The URL that the call wants to authorize against
  *  @return We always return NO here, but display the login screen ourselves, loaded from the provided URL
  */
 - (BOOL)shouldAutomaticallyAuthenticateFrom:(NSURL *)authURL
@@ -777,6 +746,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 #pragma mark - KVC
 /**
  *  Sets the active record and resets the oauth instance upon logout
+ *  @param aRecord The record that should be active
  */
 - (void)setActiveRecord:(SMRecord *)aRecord
 {
@@ -798,7 +768,16 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 }
 
 /**
- *  Setting the server manifest automatically updates the endpoint URLs
+ *  Setting the server manifest automatically updates the endpoint URLs.
+ *
+ *  The following `launch_urls` -items are extracted from the manifest:
+ *
+ *  - app_launch
+ *  - request_token
+ *  - authorize_token
+ *  - exchange_token
+ *
+ *  @param manifest The dictionary the server returned
  */
 - (void)setManifest:(NSDictionary *)manifest
 {

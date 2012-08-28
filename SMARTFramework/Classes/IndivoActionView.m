@@ -55,7 +55,9 @@
 
 #pragma mark - Main Actions
 /**
- *  Adds the view displaying a spinner
+ *  Adds the view displaying a spinner to the given view
+ *  @param aParent The view in which to display the spinner
+ *  @param animated Whether the spinner should fade in
  */
 - (void)showActivityIn:(UIView *)aParent animated:(BOOL)animated
 {
@@ -78,7 +80,11 @@
 }
 
 /**
- *  Adds the view with given main and hint text (both are optional)
+ *  Adds the view with given main and hint text
+ *  @param aParent The view in which to display the spinner
+ *  @param mainText The text to display (can be nil)
+ *  @param hintText The hint to display (can be nil); this is displayed smaller and faded when compared to mainText
+ *  @param animated Whether the spinner should fade in
  */
 - (void)showIn:(UIView *)aParent mainText:(NSString *)mainText hintText:(NSString *)hintText animated:(BOOL)animated;
 {
@@ -105,6 +111,10 @@
 
 
 #pragma mark - Changing Content
+/**
+ *  Display the spinner
+ *  @param animated Whether to animated the action
+ */
 - (void)showSpinnerAnimated:(BOOL)animated
 {
 	if (self == [activityView superview]) {
@@ -120,6 +130,10 @@
 	[self setNeedsLayout];
 }
 
+/**
+ *  Hides the spinner
+ *  @param animated Whether to animated the action
+ */
 - (void)hideSpinnerAnimated:(BOOL)animated
 {
 	[activityView stopAnimating];
@@ -129,6 +143,11 @@
 	[self setNeedsLayout];
 }
 
+/**
+ *  Change the main text to the given string
+ *  @param mainText The text to show (can be nil)
+ *  @param animated Whether to animated the action
+ */
 - (void)showMainText:(NSString *)mainText animated:(BOOL)animated
 {
 	if (self == [mainLabel superview]) {
@@ -145,6 +164,10 @@
 	[self setNeedsLayout];
 }
 
+/**
+ *  Hides the main text
+ *  @param animated Whether to animated the action
+ */
 - (void)hideMainTextAnimated:(BOOL)animated
 {
 	[mainLabel removeFromSuperview];
@@ -153,6 +176,11 @@
 	[self setNeedsLayout];
 }
 
+/**
+ *  Show the given hint (smaller and faded when compared to the main text)
+ *  @param hintText The text to show as hint
+ *  @param animated Whether to animated the action
+ */
 - (void)showHintText:(NSString *)hintText animated:(BOOL)animated
 {
 	if (self == [hintLabel superview]) {

@@ -49,6 +49,9 @@
 
 
 /**
+ *  Designated initializer
+ *  @param aSubject The node that represents the subject being wrapped by this class
+ *  @param aModel The complete model from which to pull properties for the instance
  *  @return An instance wrapping the given RDF model
  */
 - (id)initWithSubject:(RedlandNode *)aSubject inModel:(RedlandModel *)aModel
@@ -61,6 +64,8 @@
 }
 
 /**
+ *  Method to initialize an instance from an RDF+XML string
+ *  @param rdfString An RDF+XML string that should be parsed
  *  @return An instance containing a model initialized from the given RDF+XML string
  */
 - (id)initWithRDFXML:(NSString *)rdfString
