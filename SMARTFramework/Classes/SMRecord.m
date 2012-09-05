@@ -66,7 +66,7 @@
  *  Fetches the record's demographics document from /records/{record_id}/demographics
  *  @param callback The block to be executed after the call returns from the server
  */
-- (void)fetchRecordInfoWithCallback:(INCancelErrorBlock)callback
+- (void)getDemographicsWithCallback:(INCancelErrorBlock)callback
 {
 	self.name = nil;			// to clear the composed name
 	

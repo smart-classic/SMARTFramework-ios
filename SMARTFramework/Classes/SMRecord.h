@@ -44,7 +44,7 @@
 - (id)initWithId:(NSString *)anId onServer:(SMServer *)aServer;
 
 // data fetching
-- (void)fetchRecordInfoWithCallback:(INCancelErrorBlock)callback;
+- (void)getDemographicsWithCallback:(INCancelErrorBlock)callback;
 - (void)getObjectsOfClass:(Class)aClass from:(NSString *)aPath callback:(INSuccessRetvalueBlock)callback;
 - (void)performMethod:(NSString *)aMethod withBody:(NSString *)body orParameters:(NSArray *)parameters httpMethod:(NSString *)httpMethod callback:(INSuccessRetvalueBlock)callback;
 

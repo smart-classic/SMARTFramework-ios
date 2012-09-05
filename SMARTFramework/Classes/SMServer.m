@@ -282,7 +282,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 				
 				// fetch record info to get the record label (this non-authentication call will make the login view controller disappear, don't forget that if you remove it)
 				if (this.activeRecord) {
-					[this.activeRecord fetchRecordInfoWithCallback:^(BOOL userDidCancel2, NSString * errorMessage2) {
+					[this.activeRecord getDemographicsWithCallback:^(BOOL userDidCancel2, NSString * errorMessage2) {
 						
 						// errors will only be logged, not passed on to the callback as the record was still selected successfully
 						if (errorMessage2) {
