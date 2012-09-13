@@ -30,6 +30,24 @@
 @implementation SMDocument
 
 
+#pragma mark - Handling Instances
+/**
+ *  Performs a GET for the receiver against the server.
+ *
+ */
+- (void)get:(INSuccessRetvalueBlock)callback
+{
+	NSString *basePath = [self basePath];
+	if (!basePath) {
+		SUCCESS_RETVAL_CALLBACK_OR_LOG_ERR_STRING(callback, @"I don't have a basePath, cannot GET the object. Does it have a record and a uuid?", 0)
+		return;
+	}
+	
+	[self get:basePath callback:callback];
+}
+
+
+
 #pragma mark - Data Fetching
 /**
  *  The basic method to perform REST methods on the server with App credentials.
@@ -94,7 +112,7 @@
  */
 - (NSString *)basePath
 {
-	if (!_basePath) {
+	if (!_basePath && _record.record_id && _uuid) {
 		NSString *foo = [[isa basePath] stringByReplacingOccurrencesOfString:@"{record_id}" withString:_record.record_id];
 		self.basePath = [foo stringByReplacingOccurrencesOfString:@"{uuid}" withString:_uuid];
 	}
