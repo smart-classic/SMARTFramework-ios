@@ -34,7 +34,7 @@
 @property (nonatomic, copy) NSString *basePath;					///< Uses the class basePath and substitutes the placeholders with instance properties by default
 
 // performing server calls
-- (void)get:(INSuccessRetvalueBlock)callback;
+- (void)get:(INCancelErrorBlock)callback;
 - (void)get:(NSString *)aMethod callback:(INSuccessRetvalueBlock)callback;
 - (void)get:(NSString *)aMethod parameters:(NSArray *)paramArray callback:(INSuccessRetvalueBlock)callback;
 - (void)performMethod:(NSString *)aMethod withBody:(NSString *)body orParameters:(NSArray *)parameters httpMethod:(NSString *)httpMethod callback:(INSuccessRetvalueBlock)callback;

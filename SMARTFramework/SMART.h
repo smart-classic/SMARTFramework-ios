@@ -85,12 +85,12 @@ typedef void (^INCancelErrorBlock)(BOOL userDidCancel, NSString * __autoreleasin
 /// Make callback or logging easy
 #ifndef CANCEL_ERROR_CALLBACK_OR_LOG_USER_INFO
 # define CANCEL_ERROR_CALLBACK_OR_LOG_USER_INFO(cb, didCancel, userInfo)\
-	NSError *error = [userInfo objectForKey:INErrorKey];\
+	NSError *errorFromUserInfoInBlock = [userInfo objectForKey:INErrorKey];\
 	if (cb) {\
-		cb(didCancel, [error localizedDescription]);\
+		cb(didCancel, [errorFromUserInfoInBlock localizedDescription]);\
 	}\
 	else if (!didCancel) {\
-		DLog(@"No callback on this method, logging to debug. Error: %@", [error localizedDescription]);\
+		DLog(@"No callback on this method, logging to debug. Error: %@", [errorFromUserInfoInBlock localizedDescription]);\
 	}
 #endif
 #ifndef CANCEL_ERROR_CALLBACK_OR_LOG_ERR_STRING
@@ -114,11 +114,11 @@ typedef void (^INCancelErrorBlock)(BOOL userDidCancel, NSString * __autoreleasin
 #ifndef SUCCESS_RETVAL_CALLBACK_OR_LOG_ERR_STRING
 # define SUCCESS_RETVAL_CALLBACK_OR_LOG_ERR_STRING(cb, errStr, errCode)\
 	if (cb) {\
-		NSError *error = nil;\
+		NSError *errorFromErrStrInBlock = nil;\
 		if (errStr) {\
-			error = [NSError errorWithDomain:NSCocoaErrorDomain code:(errCode ? errCode : 0) userInfo:[NSDictionary dictionaryWithObject:errStr forKey:NSLocalizedDescriptionKey]];\
+			errorFromErrStrInBlock = [NSError errorWithDomain:NSCocoaErrorDomain code:(errCode ? errCode : 0) userInfo:[NSDictionary dictionaryWithObject:errStr forKey:NSLocalizedDescriptionKey]];\
 		}\
-		cb((nil == error), error ? [NSDictionary dictionaryWithObject:error forKey:INErrorKey] : nil);\
+		cb((nil == errorFromErrStrInBlock), errorFromErrStrInBlock ? [NSDictionary dictionaryWithObject:errorFromErrStrInBlock forKey:INErrorKey] : nil);\
 	}\
 	else if (errStr) {\
 		DLog(@"No callback on this method, logging to debug. Error %d: %@", errCode, errStr);\

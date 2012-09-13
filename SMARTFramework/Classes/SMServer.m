@@ -188,7 +188,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
  */
 - (void)fetchAppManifest:(INCancelErrorBlock)callback
 {
-	CANCEL_ERROR_CALLBACK_OR_LOG_ERR_STRING(callback, YES, nil);
+	CANCEL_ERROR_CALLBACK_OR_LOG_ERR_STRING(callback, NO, @"Not implemented");
 }
 
 
@@ -382,7 +382,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 
 
 /**
- *  Asks our delegate where to place the login screen, then shows the login screen and loads the given URL
+ *  Asks our delegate where to place the login screen, then shows the login screen and loads the given URL.
  *  @param loginURL The URL to load to show a login interface
  *  @param callbackURL The URL to load after successful authentication
  *  @return Returns NO if the login screen could not be presented, YES if it's being shown
@@ -525,6 +525,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 #pragma mark - App Specific Documents
 /**
  *  Fetches global, app-specific documents.
+ *
  *  GETs documents from /apps/{app id}/documents/ with a two-legged OAuth call.
  *  @param callback The callback to execute once the call has finished
  */
@@ -559,7 +560,8 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 
 #pragma mark - Call Handling
 /**
- *  Perform a method on our server
+ *  Perform a method on our server.
+ *
  *  This method is usally called by INServerObject subclasses, but you can use it bare if you wish
  *  @param aCall The call to perform
  */
@@ -604,6 +606,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 
 /**
  *  Callback to let us know a call has finished.
+ *
  *  The call will have called the callback by now, no need for us to do any further handling
  *  @param aCall The call that finished
  */
@@ -630,6 +633,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 
 /**
  *  Dequeues a call without finishing it.
+ *
  *  This is useful for calls that need to be re-performed after another call has been made, e.g. if the token was rejected and we'll be retrying the call after
  *  obtaining a new token. In this case, we don't want the call to finish, but we can't leave it in the queue because it would block subsequent calls.
  *  @warning Do NOT use this to cancel a call because the callback will not be called!
@@ -745,7 +749,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 
 #pragma mark - KVC
 /**
- *  Sets the active record and resets the oauth instance upon logout
+ *  Sets the active record and resets the oauth instance upon logout.
  *  @param aRecord The record that should be active
  */
 - (void)setActiveRecord:(SMRecord *)aRecord

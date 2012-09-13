@@ -34,16 +34,21 @@
 /**
  *  Performs a GET for the receiver against the server.
  *
+ *  The method determines the REST path describing the receiver and passes that path as first parameter to our "get:callback:" method.
+ *  @param callback An INCancelErrorBlock to be called when the operation finishes
  */
-- (void)get:(INSuccessRetvalueBlock)callback
+- (void)get:(INCancelErrorBlock)callback
 {
 	NSString *basePath = [self basePath];
 	if (!basePath) {
-		SUCCESS_RETVAL_CALLBACK_OR_LOG_ERR_STRING(callback, @"I don't have a basePath, cannot GET the object. Does it have a record and a uuid?", 0)
+		CANCEL_ERROR_CALLBACK_OR_LOG_ERR_STRING(callback, NO, @"I don't have a basePath, cannot GET the object. Does it have a record and a uuid?")
 		return;
 	}
 	
-	[self get:basePath callback:callback];
+	[self get:basePath callback:^(BOOL success, NSDictionary *__autoreleasing userInfo) {
+		NSError *anError = [userInfo objectForKey:INErrorKey];
+		CANCEL_ERROR_CALLBACK_OR_LOG_USER_INFO(callback, (!success && !anError), userInfo)
+	}];
 }
 
 
@@ -51,6 +56,7 @@
 #pragma mark - Data Fetching
 /**
  *  The basic method to perform REST methods on the server with App credentials.
+ *
  *  Uses a INServerCall instance to handle the loading; INServerCall only allows a body string or parameters, but not both, with
  *  the body string taking precedence.
  *  @param aMethod The path to call on the server
@@ -82,6 +88,7 @@
 
 /**
  *  Shortcut for GETting data.
+ *
  *  Calls "performMethod:withBody:orParameters:httpMethod:callback:" internally.
  *  @param aMethod The method to perform, e.g. "/records/id/documents/"
  *  @param callback The callback block to execute when the call has finished
@@ -93,6 +100,7 @@
 
 /**
  *  Shortcut for GETting data with parameters.
+ *
  *  Calls "performMethod:withBody:orParameters:httpMethod:callback:" internally.
  *  @param aMethod The method to perform, e.g. "/records/id/documents/"
  *  @param paramArray An array of NSString parameters in the form @"key=value"; will be URL-encoded automatically
@@ -108,6 +116,7 @@
 #pragma mark - Server Path
 /**
  *  Uses the class basePath and substitutes the placeholders with instance properties by default.
+ *
  *  TODO: Use a nice text substitution method
  */
 - (NSString *)basePath
@@ -121,6 +130,7 @@
 
 /**
  *  Path template for instances of this class.
+ *
  *  Subclasses must override this method, supported placeholders are:
  *
  *  - {record_id}
