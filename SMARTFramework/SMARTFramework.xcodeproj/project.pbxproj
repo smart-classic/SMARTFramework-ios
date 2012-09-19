@@ -790,7 +790,7 @@
 				EEE4620315E80F2000CCF120 /* Redland.framework */,
 				EEE4620515E80F2000CCF120 /* Tests.octest */,
 				EEE4620715E80F2000CCF120 /* libredland-ios.a */,
-				EEE4620915E80F2000CCF120 /* Tests iOS.octest */,
+				EEE4620915E80F2000CCF120 /* Tests-iOS.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1088,11 +1088,10 @@
 			remoteRef = EEE4620615E80F2000CCF120 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		EEE4620915E80F2000CCF120 /* Tests iOS.octest */ = {
+		EEE4620915E80F2000CCF120 /* Tests-iOS.octest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			name = "Tests iOS.octest";
-			path = "Redland Tests iOS.octest";
+			path = "Tests-iOS.octest";
 			remoteRef = EEE4620815E80F2000CCF120 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};

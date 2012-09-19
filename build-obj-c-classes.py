@@ -8,7 +8,6 @@
 _obj_c_class_prefix = 'SM'
 _template_dir = 'Generator'
 _generated_classes_dir = 'SMARTFramework/GeneratedClasses'
-_smart_ontology_uri = 'https://raw.github.com/chb/smart_common/dev/schema/smart.owl'
 
 ### there's probably no need to edit anything beyond this line ###
 ### ---------------------------------------------------------- ###
@@ -138,7 +137,9 @@ import sys
 import re
 import urllib2
 import datetime
-from smart_client_python.common import rdf_ontology
+
+print '-->  Parsing ontology'
+from smart_common.rdf_tools import rdf_ontology
 
 _arguments = sys.argv[1:] if len(sys.argv) > 1 else []
 _overwrite = '-f' in _arguments
@@ -337,67 +338,6 @@ def handle_class(a_class, ontology_file_name='smart.owl'):
 	return myDict
 
 
-def download(url, directory=None, filename=None, force=False, nostatus=False):
-	"""Downloads a URL to a file with the same name, unless overridden
-	
-	Returns the path to the file downloaded
-	
-	Will NOT download the file if it exists at target directory and filename,
-	unless force is True
-	"""
-	
-	# can we write te the directory?
-	if directory is None:
-		abspath = os.path.abspath(__file__)
-		directory = os.path.dirname(abspath)
-
-	if not os.access(directory, os.W_OK):
-		raise Exception("Can't write to %s" % directory)
-	
-	if filename is None:
-		filename = os.path.basename(url)
-	
-	# if it already exists, we're not going to do anything
-	path = os.path.join(directory, filename)
-	if os.path.exists(path):
-		if force:
-			os.remove(path)
-		else:
-			print "-->  %s has already been downloaded" % filename
-			return path
-	
-	# create url and file handles
-	urlhandle = urllib2.urlopen(url)
-	filehandle = open(path, 'wb')
-	meta = urlhandle.info()
-	
-	# start
-	filesize = int(meta.getheaders("Content-Length")[0])
-	print "-->  Downloading %s (%s KB)" % (filename, filesize / 1000)
-	
-	loaded = 0
-	blocksize = 8192
-	while True:
-		buffer = urlhandle.read(blocksize)
-		if not buffer:
-			break
-		
-		loaded += len(buffer)
-		filehandle.write(buffer)
-		
-		if not nostatus:
-			status = r"%10d	 [%3.2f%%]" % (loaded, loaded * 100.0 / filesize)
-			status = status + chr(8) * (len(status) + 1)
-			print status,
-	
-	if not nostatus:
-		print
-	
-	# return filename
-	filehandle.close()
-	return path
-
-
 def read_template(template_name):
 	"""Looks for a template with the given filename and returns its contents"""
 	
@@ -425,18 +365,6 @@ if __name__ == "__main__":
 	"""Outputs Objective-C classes to be used in our iOS framework
 	"""
 	
-	# the ontology file is not included in the python client, so we download it
-	owl = None
-	try:
-		owl = download(_smart_ontology_uri, '.', 'smart.owl', False, True)
-	except Exception, e:
-		print 'xx>  Error downloading %s: %s' % (_smart_ontology_uri, e)
-		sys.exit(1)
-	
-	if owl is None:
-		print 'xx>  Error downloading %s' % _smart_ontology_uri
-		sys.exit(1)
-	
 	# grab the template files
 	templates = {}
 	for f in ['ClassTemplate.h', 'ClassTemplate.m', 'CategoryTemplate.h', 'CategoryTemplate.m']:
@@ -446,11 +374,6 @@ if __name__ == "__main__":
 			sys.exit(1)
 		
 		templates[f] = template
-	
-	# parse the ontology
-	print '-->  Parsing ontology'
-	f = open(owl).read()
-	rdf_ontology.parse_ontology(f)
 	
 	# prepare to grab classes
 	if not os.path.exists(_generated_classes_dir):
