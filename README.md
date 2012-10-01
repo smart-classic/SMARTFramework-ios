@@ -10,7 +10,7 @@ The SMART Framework is an Objective-C framework using **ARC** ([Automatic Refere
 The framework utilizes a fork of [MPOAuth], an OAuth framework by Karl Adam (matrixPointer), and an Objective-C wrapper around [Redland], an RDF library, originally created by Rene Puls.
 
 - #### SMART Container ####
-You need a [SMART container] running version 0.5 or above
+You need a [SMART container] running version 0.6 or above
 
 [smartframework]: https://github.com/chb/SMARTFramework-ios
 [smart]: http://www.smartplatforms.org/
@@ -34,9 +34,9 @@ Building and installing appledoc yourself:
 
 Note that this assumes that you have write permissions for `/usr/local`, if not you may need to issue this command as root with `sudo`.
 
-As of this writing I'm still waiting for appledoc 3.0 to be released. It will add support for the `///<` property documentation style used throughout the framework, version 2.0 will not document the properties I'm afraid.
+As of this writing I'm still waiting for appledoc 3.0 to be released. It will add support for the `///<` property documentation style used in core parts of the framework, version 2.0 will therefore not document some of the properties I'm afraid.
 
-Afterwards the documentation is available from within Xcode, just ALT+click any keyword like you would do with standard Cocoa keywords.
+After installing and running the documentation target the documentation is available from within Xcode, just `ALT`-click any keyword like you would do with standard Cocoa keywords.
 
 [appledoc]: http://gentlebytes.com/appledoc/
 [homebrew]: http://mxcl.github.com/homebrew/
@@ -67,7 +67,7 @@ Here is an example app manifest which would be the one you want to use with the 
 Getting the Framework
 ---------------------
 
-I'll be assuming that you want to add the framework to your own project. The best way to get the framework is to check out the project via [git][], if your own project is also git-controlled, add it as a submodule using `git submodule add ...` instead of git clone. Open Terminal, navigate to the desired directory, and execute:
+I'll be assuming that you want to add the framework to your own project. The best way to get the framework is to check out the project via [git], if your own project is also git-controlled, add it as a submodule using `git submodule add ...` instead of git clone. Open Terminal, navigate to the desired directory, and execute:
 
     $ git clone git://github.com/chb/SMARTFramework-ios.git
     $ cd SMARTFramework-ios
@@ -109,7 +109,7 @@ Now that you have the source it's time to add it to your Xcode project:
 3. Make sure the compiler finds the header files:  
 	Open your project's build settings, look for **User Header Search Paths** (USER_HEADER_SEARCH_PATHS), and add:
 	
-	`$(BUILT_PRODUCTS_DIR)`, with *recursive* checked
+	`$(BUILT_PRODUCTS_DIR)`, with _recursive_ checked
 
 4. The linker needs an additional flag:  
 	Still in your project's build settings, look for **Other Linker Flags** (OTHER_LDFLAGS), and add:
@@ -141,14 +141,13 @@ Using the Framework
 -------------------
 
 
-
 ### Instantiating a server handle ###
 
 Make your app delegate (or some other class) the server delegate and instantiate a `SMServer` object:  
 
 	SMServer *smart = [SMServer serverWithDelegate:<# your server delegate #>];
 	
-Make sure you implement the required delegate methods in your server delegate! This **smart** instance is now your connection to the SMART container.
+Make sure you implement the required delegate methods in your server delegate! This **smart** instance is now your handle to the SMART container.
 
 
 ### Selecting a record ###
