@@ -122,7 +122,7 @@
 - (NSString *)basePath
 {
 	if (!_basePath && _record.record_id && _uuid) {
-		NSString *foo = [[isa basePath] stringByReplacingOccurrencesOfString:@"{record_id}" withString:_record.record_id];
+		NSString *foo = [[[self class] basePath] stringByReplacingOccurrencesOfString:@"{record_id}" withString:_record.record_id];
 		self.basePath = [foo stringByReplacingOccurrencesOfString:@"{uuid}" withString:_uuid];
 	}
 	return _basePath;

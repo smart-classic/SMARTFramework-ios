@@ -99,7 +99,7 @@
 - (NSString *)rdfType
 {
 	if (!_rdfType) {
-		self.rdfType = [isa rdfType];
+		self.rdfType = [[self class] rdfType];
 	}
 	return _rdfType	;
 }
