@@ -23,10 +23,7 @@
 #import "{{ CLASS_NAME }}.h"
 #import "SMARTObjects.h"
 
-#import <RedlandModel-Convenience.h>
-#import <RedlandNode-Convenience.h>
-#import <RedlandStatement.h>
-#import <RedlandStreamEnumerator.h>
+#import <Redland-ObjC.h>
 
 
 @implementation {{ CLASS_NAME }}

@@ -25,12 +25,7 @@
 #import "SMServer.h"
 #import "SMARTObjects.h"
 
-#import <RedlandParser.h>
-#import <RedlandURI.h>
-#import <RedlandModel-Convenience.h>
-#import <RedlandNode-Convenience.h>
-#import <RedlandStatement.h>
-#import <RedlandStreamEnumerator.h>
+#import <Redland-ObjC.h>
 
 
 @interface SMRecord ()
