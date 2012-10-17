@@ -55,6 +55,7 @@
 
 @implementation SMServer
 
+
 NSString *const INErrorKey = @"SMARTError";
 NSString *const INRecordIDKey = @"record_id";
 NSString *const INResponseStringKey = @"SMARTServerCallResponseText";
@@ -67,12 +68,7 @@ NSString *const SMARTOAuthRecordIDKey = @"smart_record_id";
 NSString *const SMARTRecordDocumentsDidChangeNotification = @"SMARTRecordDocumentsDidChangeNotification";
 NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 
-@synthesize activeRecord, knownRecords;
-@synthesize appId, callbackScheme, url;
 @dynamic activeRecordId;
-@synthesize oauth, callQueue, suspendedCalls, currentCall;
-@synthesize lastOAuthVerifier;
-@synthesize consumerKey, consumerSecret, storeCredentials;
 
 
 
@@ -125,11 +121,11 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
  */
 - (void)performWhenReadyToConnect:(INCancelErrorBlock)callback
 {
-	if ([[url absoluteString] length] < 5) {
+	if ([[_url absoluteString] length] < 5) {
 		CANCEL_ERROR_CALLBACK_OR_LOG_ERR_STRING(callback, NO, L_(@"No server URL provided"))		// Error 1001
 		return;
 	}
-	if ([appId length] < 1) {
+	if ([_appId length] < 1) {
 		CANCEL_ERROR_CALLBACK_OR_LOG_ERR_STRING(callback, NO, L_(@"No App id provided"))			// Error 1003
 		return;
 	}
@@ -155,7 +151,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
  */
 - (void)fetchServerManifest:(INCancelErrorBlock)callback
 {
-	NSURL *manifestURL = [url URLByAppendingPathComponent:@"manifest"];
+	NSURL *manifestURL = [_url URLByAppendingPathComponent:@"manifest"];
 	INURLLoader *loader = [INURLLoader loaderWithURL:manifestURL];
 	
 	// fetch
@@ -202,7 +198,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 
 - (NSString *)callbackScheme
 {
-	return callbackScheme ? callbackScheme : SMARTInternalScheme;
+	return _callbackScheme ? _callbackScheme : SMARTInternalScheme;
 }
 
 /**
@@ -226,7 +222,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
  */
 - (SMRecord *)recordWithId:(NSString *)recordId
 {
-	for (SMRecord *record in knownRecords) {
+	for (SMRecord *record in _knownRecords) {
 		if ([record.record_id isEqualToString:recordId]) {
 			return record;
 		}
@@ -244,8 +240,8 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 - (void)selectRecord:(INCancelErrorBlock)callback
 {
 	// dequeue current call
-	if (currentCall) {
-		[self suspendCall:currentCall];
+	if (_currentCall) {
+		[self suspendCall:_currentCall];
 	}
 	
 	// we use a INServerCall object to capture the callback block and fire it automatically when the OAuth process has completed
@@ -324,12 +320,12 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 	NSError *error = nil;
 	
 	// dequeue current call
-	if (!currentCall) {
+	if (!_currentCall) {
 		NSString *errorStr = error ? [error localizedDescription] : @"No current call";
 		CANCEL_ERROR_CALLBACK_OR_LOG_ERR_STRING(callback, NO, errorStr)
 		return;
 	}
-	[self suspendCall:currentCall];
+	[self suspendCall:_currentCall];
 	
 	// construct the call
 	__unsafe_unretained SMServer *this = self;
@@ -449,15 +445,15 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 		// instantiate new record
 		else {
 			selectedRecord = [[SMRecord alloc] initWithId:recordId onServer:self];
-			if (!knownRecords) {
+			if (!_knownRecords) {
 				self.knownRecords = [NSMutableArray array];
 			}
-			[knownRecords addObject:selectedRecord];
+			[_knownRecords addObject:selectedRecord];
 		}
 		self.activeRecord = selectedRecord;
 		
 		// finish the record selection process
-		[self performCall:currentCall];
+		[self performCall:_currentCall];
 	}
 	
 	// failed to select a record
@@ -471,7 +467,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 	self.lastOAuthVerifier = aVerifier;
 	
 	// we should have an active call and an active record here, warn if not
-	if (!currentCall) {
+	if (!_currentCall) {
 		DLog(@"WARNING -- did receive verifier, but no call is in place! Verifier: %@", aVerifier);
 	}
 	if (!self.activeRecord) {
@@ -482,13 +478,13 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 	if (_loginVC) {
 		[_loginVC showLoadingIndicator:nil];
 	}
-	[self performCall:currentCall];
+	[self performCall:_currentCall];
 }
 
 - (void)loginViewDidCancel:(SMLoginViewController *)loginController
 {
-	if (currentCall) {
-		[currentCall cancel];
+	if (_currentCall) {
+		[_currentCall cancel];
 	}
 	
 	// dismiss login view controller
@@ -506,7 +502,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 - (void)loginViewDidLogout:(SMLoginViewController *)loginController
 {
 	self.activeRecord = nil;
-	[currentCall cancel];
+	[_currentCall cancel];
 	[_delegate userDidLogout:self];
 	
 	if (_loginVC) {
@@ -579,11 +575,11 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 	}
 	
 	// maybe this call was suspended, remove it from the store
-	[suspendedCalls removeObject:aCall];
+	[_suspendedCalls removeObject:aCall];
 	
 	// there already is a call in progress
-	if (aCall != currentCall && [currentCall hasBeenFired]) {
-		[callQueue addObject:aCall];
+	if (aCall != _currentCall && [_currentCall hasBeenFired]) {
+		[_callQueue addObject:aCall];
 		return;
 	}
 	
@@ -612,18 +608,18 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
  */
 - (void)callDidFinish:(INServerCall *)aCall
 {
-	[callQueue removeObject:aCall];
-	if (aCall == currentCall) {
+	[_callQueue removeObject:aCall];
+	if (aCall == _currentCall) {
 		self.currentCall = nil;
 	}
 	
 	// move on
 	INServerCall *nextCall = nil;
-	if ([callQueue count] > 0) {
-		nextCall = [callQueue objectAtIndex:0];
+	if ([_callQueue count] > 0) {
+		nextCall = [_callQueue objectAtIndex:0];
 	}
-	else if ([suspendedCalls count] > 0) {
-		nextCall = [suspendedCalls objectAtIndex:0];
+	else if ([_suspendedCalls count] > 0) {
+		nextCall = [_suspendedCalls objectAtIndex:0];
 	}
 	
 	if (nextCall) {
@@ -641,10 +637,10 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
  */
 - (void)suspendCall:(INServerCall *)aCall
 {
-	[suspendedCalls addObject:aCall];
-	[callQueue removeObject:aCall];
+	[_suspendedCalls addObject:aCall];
+	[_callQueue removeObject:aCall];
 	
-	if (aCall == currentCall) {
+	if (aCall == _currentCall) {
 		self.currentCall = nil;
 	}
 }
@@ -670,10 +666,10 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
  */
 - (MPOAuthAPI *)getOAuthOutError:(NSError *__autoreleasing *)error
 {
-	if (!oauth) {
+	if (!_oauth) {
 		self.oauth = [self createOAuthWithAuthMethodClass:nil error:error];
 	}
-	return oauth;
+	return _oauth;
 }
 
 
@@ -693,7 +689,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 								 nil];
 	
 	// we need a URL
-	if (!url) {
+	if (!_url) {
 		errStr = @"Cannot create our oauth instance: No URL set";
 		errCode = 1001;
 	}
@@ -715,7 +711,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 									   [self.tokenAuthorizeURL absoluteString], MPOAuthUserAuthorizationURLKey,
 									   [self.tokenExchangeURL absoluteString], MPOAuthAccessTokenURLKey,
 									   self.tokenAuthorizeURL, MPOAuthAuthenticationURLKey,
-									   url, MPOAuthBaseURLKey,
+									   _url, MPOAuthBaseURLKey,
 									   nil];
 		
 		// specify authentication method
@@ -754,10 +750,10 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
  */
 - (void)setActiveRecord:(SMRecord *)aRecord
 {
-	if (aRecord != activeRecord) {
-		activeRecord = aRecord;
+	if (aRecord != _activeRecord) {
+		_activeRecord = aRecord;
 		
-		if (!activeRecord) {
+		if (!_activeRecord) {
 			self.oauth = nil;
 		}
 	}
@@ -768,7 +764,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
  */
 - (NSString *)activeRecordId
 {
-	return activeRecord.record_id;
+	return _activeRecord.record_id;
 }
 
 /**
@@ -802,16 +798,34 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 					start = [start stringByReplacingOccurrencesOfString:@"{{app_id}}" withString:self.appId];
 					self.startURL = [NSURL URLWithString:start];
 				}
+                else {
+                    DLog(@"The \"app_launch\" URL was not found in the manifest");
+                }
+                
 				if ([tokenRequest length] > 0) {
 					self.tokenRequestURL = [NSURL URLWithString:tokenRequest];
 				}
+                else {
+                    DLog(@"The \"request_token\" URL was not found in the manifest");
+                }
+                
 				if ([tokenAuthorize length] > 0) {
 					self.tokenAuthorizeURL = [NSURL URLWithString:tokenAuthorize];
 				}
+                else {
+                    DLog(@"The \"authorize_token\" URL was not found in the manifest");
+                }
+                
 				if ([tokenExchange length] > 0) {
 					self.tokenExchangeURL = [NSURL URLWithString:tokenExchange];
 				}
+                else {
+                    DLog(@"The \"exchange_token\" URL was not found in the manifest");
+                }
 			}
+            else {
+                DLog(@"The manifest did not correctly represent the \"launch_urls\" dictionary");
+            }
 		}
 	}
 }
@@ -821,7 +835,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 #pragma mark - Utilities
 - (NSString *)description
 {
-	return [NSString stringWithFormat:@"%@ <%p> Server at %@", NSStringFromClass([self class]), self, url];
+	return [NSString stringWithFormat:@"%@ <%p> Server at %@", NSStringFromClass([self class]), self, _url];
 }
 
 

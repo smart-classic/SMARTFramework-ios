@@ -1300,14 +1300,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Classes/SMARTFramework-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
-					"$(SDK_DIR)/usr/include/libxml2",
-					"$(BUILT_PRODUCTS_DIR)/**",
+					"\"$(BUILT_PRODUCTS_DIR)\"/**",
+					"\"$(SDK_DIR)/usr/include/libxml2\"",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = (
-					"\"$(BUILT_PRODUCTS_DIR)\"/**",
-					"\"$(SRCROOT)/Redland-ObjC/Redland-source/Universal\"",
-				);
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/Redland-ObjC/Redland-source/Universal\"";
 				OTHER_CFLAGS = "-DDEBUG";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1409,14 +1406,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Classes/SMARTFramework-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
-					"$(SDK_DIR)/usr/include/libxml2",
-					"$(BUILT_PRODUCTS_DIR)/**",
+					"\"$(BUILT_PRODUCTS_DIR)\"/**",
+					"\"$(SDK_DIR)/usr/include/libxml2\"",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = (
-					"\"$(BUILT_PRODUCTS_DIR)\"/**",
-					"\"$(SRCROOT)/Redland-ObjC/Redland-source/Universal\"",
-				);
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/Redland-ObjC/Redland-source/Universal\"";
 				OTHER_CFLAGS = "-DDEBUG";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1431,14 +1425,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Classes/SMARTFramework-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
-					"$(SDK_DIR)/usr/include/libxml2",
-					"$(BUILT_PRODUCTS_DIR)/**",
+					"\"$(BUILT_PRODUCTS_DIR)\"/**",
+					"\"$(SDK_DIR)/usr/include/libxml2\"",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = (
-					"\"$(BUILT_PRODUCTS_DIR)\"/**",
-					"\"$(SRCROOT)/Redland-ObjC/Redland-source/Universal\"",
-				);
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/Redland-ObjC/Redland-source/Universal\"";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
