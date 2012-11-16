@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:sp="http://smartplatforms.org/terms#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:v="http://www.w3.org/2006/vcard/ns#"
+  xmlns:spcode="http://smartplatforms.org/terms/codes/"> 
+      <sp:Encounter rdf:about="http://sandbox-api.smartplatforms.org/records/2169591/encounters/252352">
+      <sp:belongsTo  rdf:resource="http://sandbox-api.smartplatforms.org/records/2169591" />
+      <sp:startDate>2010-05-12T04:00:00Z</sp:startDate>
+      <sp:endDate>2010-05-12T04:20:00Z</sp:endDate>
+      <sp:encounterType>
+       <sp:CodedValue>
+         <dcterms:title>Ambulatory encounter</dcterms:title>
+         <sp:code>
+          <spcode:EncounterType rdf:about="http://smartplatforms.org/terms/codes/EncounterType#ambulatory">
+            <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" /> 
+            <dcterms:title>Ambulatory encounter</dcterms:title>
+            <sp:system>http://smartplatforms.org/terms/codes/EncounterType#</sp:system>
+            <dcterms:identifier>ambulatory</dcterms:identifier> 
+          </spcode:EncounterType>       
+         </sp:code>
+       </sp:CodedValue>
+
+      </sp:encounterType>
+    </sp:Encounter>
+</rdf:RDF>

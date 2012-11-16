@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:sp="http://smartplatforms.org/terms#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:spcode="http://smartplatforms.org/terms/codes/"
+  xmlns:v="http://www.w3.org/2006/vcard/ns#">
+ <sp:Procedure  rdf:about="http://sandbox-api.smartplatforms.org/records/2169591/procedures/5897235">
+    <sp:belongsTo rdf:resource="http://sandbox-api.smartplatforms.org/records/2169591" />
+    <dcterms:date>2011-02-15</dcterms:date>
+    <sp:procedureName>
+      <sp:CodedValue>
+          <dcterms:title></dcterms:title>
+          <sp:code>
+            <spcode:Procedure rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/80146002">
+              <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" /> 
+              <sp:system>http://purl.bioontology.org/ontology/SNOMEDCT/</sp:system>
+              <dcterms:identifier>80146002</dcterms:identifier>
+              <dcterms:title>Appendectomy</dcterms:title>
+            </spcode:Procedure>    
+          </sp:code>
+      </sp:CodedValue>
+    </sp:procedureName>
+    <sp:provider>
+      <sp:Provider>
+        <v:n>
+          <v:Name>
+           <v:given-name>Joshua</v:given-name>
+           <v:family-name>Mandel</v:family-name>
+          </v:Name>
+        </v:n>
+      </sp:Provider>
+    </sp:provider>
+ </sp:Procedure>
+</rdf:RDF>

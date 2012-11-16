@@ -290,7 +290,7 @@
 /**
  *  MPOAuth will call this method to know where to redirect after successfull authentication
  */
-- (NSURL *)callbackURLForCompletedUserAuthorization
+- (NSURL *)callbackURLForCompletedUserAuthorizationDISABLED
 {
 	return [server authorizeCallbackURL];
 }

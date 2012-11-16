@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:sp="http://smartplatforms.org/terms#"
+  xmlns:spcode="http://smartplatforms.org/terms/codes/"> 
+    <sp:Problem  rdf:about="http://sandbox-api.smartplatforms.org/records/2169591/problems/961237">
+      <sp:belongsTo rdf:resource="http://sandbox-api.smartplatforms.org/records/2169591" />
+      <sp:problemName>
+      <sp:CodedValue>
+          <dcterms:title>Backache (finding)</dcterms:title>      
+          <sp:code>
+            <spcode:SNOMED rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/161891005">
+              <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" /> 
+              <dcterms:title>Backache (finding)</dcterms:title>      
+              <sp:system>http://purl.bioontology.org/ontology/SNOMEDCT/</sp:system>
+              <dcterms:identifier>161891005</dcterms:identifier> 
+            </spcode:SNOMED>
+          </sp:code>
+      </sp:CodedValue>
+      </sp:problemName>
+      <sp:startDate>2007-06-12</sp:startDate>
+      <sp:endDate>2007-08-01</sp:endDate>
+    </sp:Problem>
+</rdf:RDF>

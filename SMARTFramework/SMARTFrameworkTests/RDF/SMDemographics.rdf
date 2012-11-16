@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:sp="http://smartplatforms.org/terms#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:v="http://www.w3.org/2006/vcard/ns#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/">
+   <sp:Demographics rdf:about="http://sandbox-api.smartplatforms.org/records/2169591/demographics">
+     <sp:belongsTo rdf:resource="http://sandbox-api.smartplatforms.org/records/2169591" />
+     <v:n>
+        <v:Name>
+            <v:given-name>Bob</v:given-name>
+            <v:additional-name>J</v:additional-name>
+            <v:family-name>Odenkirk</v:family-name>
+        </v:Name>
+     </v:n>
+
+     <v:adr>
+        <v:Address>
+          <rdf:type rdf:resource="http://www.w3.org/2006/vcard/ns#Home" />
+          <rdf:type rdf:resource="http://www.w3.org/2006/vcard/ns#Pref" />
+
+          <v:street-address>15 Main St</v:street-address>
+          <v:extended-address>Apt 2</v:extended-address>
+          <v:locality>Wonderland</v:locality>
+          <v:region>OZ</v:region>
+          <v:postal-code>54321</v:postal-code>
+          <v:country>USA</v:country>
+        </v:Address>
+     </v:adr>
+
+     <v:tel>
+        <v:Tel>
+          <rdf:type rdf:resource="http://www.w3.org/2006/vcard/ns#Home" />
+          <rdf:type rdf:resource="http://www.w3.org/2006/vcard/ns#Pref" />
+          <rdf:value>800-555-1212</rdf:value>
+        </v:Tel>
+     </v:tel>
+
+     <v:tel>
+        <v:Tel>
+          <rdf:type rdf:resource="http://www.w3.org/2006/vcard/ns#Cell" />
+          <rdf:value>800-555-1515</rdf:value>
+        </v:Tel>
+     </v:tel>
+
+     <foaf:gender>male</foaf:gender>
+     <v:bday>1959-12-25</v:bday>
+     <v:email>bob.odenkirk@example.com</v:email>
+
+     <sp:medicalRecordNumber>
+       <sp:Code>
+        <dcterms:title>My Hospital Record 2304575</dcterms:title> 
+        <dcterms:identifier>2304575</dcterms:identifier> 
+        <sp:system>My Hospital Record</sp:system> 
+       </sp:Code>
+     </sp:medicalRecordNumber>
+
+   </sp:Demographics>
+</rdf:RDF>

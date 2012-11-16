@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:sp="http://smartplatforms.org/terms#" 
+  xmlns:dcterms="http://purl.org/dc/terms/" 
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:v="http://www.w3.org/2006/vcard/ns#"
+  xmlns:spcode="http://smartplatforms.org/terms/codes/">
+
+  <sp:LabResult  rdf:about="http://sandbox-api.smartplatforms.org/records/2169591/lab_results/2891724">
+      <sp:belongsTo rdf:resource="http://sandbox-api.smartplatforms.org/records/2169591" />
+      <sp:labName>
+    <sp:CodedValue>
+            <dcterms:title>Serum sodium</dcterms:title>
+            <sp:provenance>
+              <sp:CodeProvenance>
+                <sp:sourceCode rdf:resource="http://my.local.coding.system/01234" />
+                <dcterms:title>Random blood sodium level</dcterms:title>
+                <sp:translationFidelity rdf:resource="http://smartplatforms.org/terms/codes/TranslationFidelity#verified"/>
+              </sp:CodeProvenance>
+            </sp:provenance>
+        <sp:code>
+              <spcode:LOINC rdf:about="http://purl.bioontology.org/ontology/LNC/2951-2">
+                <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" /> 
+                <dcterms:title>Serum sodium</dcterms:title>
+                <sp:system>http://purl.bioontology.org/ontology/LNC/</sp:system>
+                <dcterms:identifier>2951-2</dcterms:identifier> 
+              </spcode:LOINC>    
+          </sp:code>
+        </sp:CodedValue>
+      </sp:labName>
+
+      <sp:quantitativeResult>
+        <sp:QuantitativeResult>
+          <sp:valueAndUnit>
+            <sp:ValueAndUnit>
+              <sp:value>140</sp:value>
+              <sp:unit>mEq/L</sp:unit>
+            </sp:ValueAndUnit>
+          </sp:valueAndUnit>
+          <sp:normalRange>
+             <sp:ValueRange>
+              <sp:minimum>
+                <sp:ValueAndUnit>
+                   <sp:value>135</sp:value>
+                   <sp:unit>mEq/L</sp:unit>
+                </sp:ValueAndUnit>
+              </sp:minimum>
+              <sp:maximum>
+                <sp:ValueAndUnit>
+                   <sp:value>145</sp:value>
+                   <sp:unit>mEq/L</sp:unit>
+                </sp:ValueAndUnit>
+              </sp:maximum>
+             </sp:ValueRange>
+          </sp:normalRange>
+          <sp:nonCriticalRange>
+             <sp:ValueRange>
+              <sp:minimum>
+                <sp:ValueAndUnit>
+                   <sp:value>120</sp:value>
+                   <sp:unit>mEq/L</sp:unit>
+                </sp:ValueAndUnit>
+              </sp:minimum>
+              <sp:maximum>
+                <sp:ValueAndUnit>
+                   <sp:value>155</sp:value>
+                   <sp:unit>mEq/L</sp:unit>
+                </sp:ValueAndUnit>
+              </sp:maximum>
+             </sp:ValueRange>
+          </sp:nonCriticalRange>
+        </sp:QuantitativeResult>
+      </sp:quantitativeResult>
+      <sp:accessionNumber>AC09205823577</sp:accessionNumber>
+      <sp:labStatus>
+    <sp:CodedValue>
+      <dcterms:title>Final results: complete and verified</dcterms:title>      
+      <sp:code>
+        <spcode:LabResultStatus rdf:about="http://smartplatforms.org/terms/codes/LabStatus#final">
+          <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" /> 
+          <dcterms:title>Final</dcterms:title>      
+          <sp:system>http://smartplatforms.org/terms/codes/LabStatus#</sp:system>
+          <dcterms:identifier>final</dcterms:identifier> 
+        </spcode:LabResultStatus>    
+      </sp:code>
+    </sp:CodedValue>
+
+      </sp:labStatus>
+      <sp:abnormalInterpretation>
+    <sp:CodedValue>
+      <dcterms:title>Normal</dcterms:title>      
+      <sp:code>
+        <spcode:LabResultInterpretation rdf:about="http://smartplatforms.org/terms/codes/LabResultInterpretation#normal">
+          <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" /> 
+          <dcterms:title>Normal</dcterms:title>      
+          <sp:system>http://smartplatforms.org/terms/codes/LabResultInterpretation#</sp:system>
+          <dcterms:identifier>normal</dcterms:identifier> 
+        </spcode:LabResultInterpretation>    
+      </sp:code>
+    </sp:CodedValue>
+      </sp:abnormalInterpretation>
+      <dcterms:date>2010-12-27T17:00:00</dcterms:date>
+      <sp:notes>Blood sample appears to have hemolyzed</sp:notes>
+   </sp:LabResult>
+</rdf:RDF>

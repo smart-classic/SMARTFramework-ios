@@ -25,7 +25,7 @@
 
 
 /**
- *  A category on {{ CATEGORY_CLASS }}, generated from {{ ONTOLOGY_PATH }}.
+ *  A category on {{ CATEGORY_CLASS }}, generated from the SMART ontology.
  */
 @interface {{ CATEGORY_CLASS }}({{ CATEGORY_NAME }})
 

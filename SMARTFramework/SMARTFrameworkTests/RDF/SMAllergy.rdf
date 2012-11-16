@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:sp="http://smartplatforms.org/terms#"
+  xmlns:spcode="http://smartplatforms.org/terms/codes/"> 
+      <sp:Allergy rdf:about="http://sandbox-api.smartplatforms.org/records/2169591/allergies/873252">
+      <sp:belongsTo rdf:resource="http://sandbox-api.smartplatforms.org/records/2169591" />
+      <sp:drugClassAllergen>
+      <sp:CodedValue>
+        <dcterms:title>Sulfonamide Antibacterial</dcterms:title>
+        <sp:code>
+        <spcode:NDFRT rdf:about="http://purl.bioontology.org/ontology/NDFRT/N0000175503">
+          <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" /> 
+          <dcterms:title>Sulfonamide Antibacterial</dcterms:title>
+          <sp:system>http://purl.bioontology.org/ontology/NDFRT/</sp:system>
+          <dcterms:identifier>N0000175503</dcterms:identifier>
+        </spcode:NDFRT>
+        </sp:code>
+      </sp:CodedValue>
+
+      </sp:drugClassAllergen>
+      <sp:severity>
+      <sp:CodedValue>
+          <dcterms:title>Severe</dcterms:title>
+        <sp:code>
+        <spcode:AllergySeverity rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/24484000">
+          <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" /> 
+          <dcterms:title>Severe</dcterms:title>
+          <sp:system>http://purl.bioontology.org/ontology/SNOMEDCT/</sp:system>
+          <dcterms:identifier>24484000</dcterms:identifier>
+        </spcode:AllergySeverity>
+        </sp:code>
+      </sp:CodedValue>
+      </sp:severity>
+      <sp:allergicReaction>
+      <sp:CodedValue>
+          <dcterms:title>Anaphylaxis</dcterms:title>
+        <sp:code>
+        <spcode:SNOMED rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/39579001">
+          <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" /> 
+          <dcterms:title>Anaphylaxis</dcterms:title>
+          <sp:system>http://purl.bioontology.org/ontology/SNOMEDCT/</sp:system>
+          <dcterms:identifier>39579001</dcterms:identifier>
+        </spcode:SNOMED>
+        </sp:code>
+      </sp:CodedValue>
+
+      </sp:allergicReaction>
+      <sp:category>
+      <sp:CodedValue>
+          <dcterms:title>Drug allergy</dcterms:title>   
+        <sp:code>
+        <spcode:AllergyCategory rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/416098002">
+          <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" /> 
+          <dcterms:title>Drug allergy</dcterms:title>   
+          <sp:system>http://purl.bioontology.org/ontology/SNOMEDCT/</sp:system>
+          <dcterms:identifier>416098002</dcterms:identifier>
+        </spcode:AllergyCategory>
+        </sp:code>
+      </sp:CodedValue>
+
+      </sp:category>
+   </sp:Allergy>
+
+  <sp:Allergy>
+      <sp:belongsTo rdf:resource="http://sandbox-api.smartplatforms.org/records/2169591" />
+      <sp:drugAllergen>
+      <sp:CodedValue>
+          <dcterms:title>Cephalexin</dcterms:title>
+        <sp:code>
+        <spcode:RxNorm_Ingredient rdf:about="http://purl.bioontology.org/ontology/RXNORM/2231">
+          <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" /> 
+          <dcterms:title>Cephalexin</dcterms:title>
+          <sp:system>http://purl.bioontology.org/ontology/RXNORM/</sp:system>
+          <dcterms:identifier>2231</dcterms:identifier>
+        </spcode:RxNorm_Ingredient>
+        </sp:code>
+      </sp:CodedValue>
+
+      </sp:drugAllergen>
+      <sp:severity>
+      <sp:CodedValue>
+          <dcterms:title>Severe</dcterms:title>
+        <sp:code>
+        <spcode:AllergySeverity rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/24484000">
+          <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" /> 
+          <dcterms:title>Severe</dcterms:title>
+          <sp:system>http://purl.bioontology.org/ontology/SNOMEDCT/</sp:system>
+          <dcterms:identifier>24484000</dcterms:identifier>
+        </spcode:AllergySeverity>
+        </sp:code>
+      </sp:CodedValue>
+
+      </sp:severity>
+      <sp:allergicReaction>
+      <sp:CodedValue>
+          <dcterms:title>Anaphylaxis</dcterms:title>
+        <sp:code>
+        <spcode:SNOMED rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/39579001">
+          <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" /> 
+          <dcterms:title>Anaphylaxis</dcterms:title>
+          <sp:system>http://purl.bioontology.org/ontology/SNOMEDCT/</sp:system>
+          <dcterms:identifier>39579001</dcterms:identifier>
+        </spcode:SNOMED>
+        </sp:code>
+      </sp:CodedValue>
+
+      </sp:allergicReaction>
+      <sp:category>
+      <sp:CodedValue>
+          <dcterms:title>Drug allergy</dcterms:title>   
+        <sp:code>
+        <spcode:AllergyCategory rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/416098002">
+          <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" /> 
+          <dcterms:title>Drug allergy</dcterms:title>   
+          <sp:system>http://purl.bioontology.org/ontology/SNOMEDCT/</sp:system>
+          <dcterms:identifier>416098002</dcterms:identifier>
+        </spcode:AllergyCategory>
+        </sp:code>
+      </sp:CodedValue>
+
+      </sp:category>
+   </sp:Allergy>
+</rdf:RDF>

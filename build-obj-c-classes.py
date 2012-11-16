@@ -8,6 +8,7 @@
 _obj_c_class_prefix = 'SM'
 _template_dir = 'Generator'
 _generated_classes_dir = 'SMARTFramework/GeneratedClasses'
+_class_examples_dir = 'SMARTFramework/SMARTFrameworkTests/RDF'
 
 ### there's probably no need to edit anything beyond this line ###
 ### ---------------------------------------------------------- ###
@@ -116,9 +117,9 @@ _class_base_path_getter_template = """+ (NSString *)basePath
 }"""
 
 _record_multi_item_getter_template = """/**
- *  {{ description }}.
- *  Makes a call to {{ path }}, originally named "{{ orig_name }}".
- *  @param callback A INSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: INResponseArrayKey) if successful.
+ *	{{ description }}.
+ *	Makes a call to {{ path }}, originally named "{{ orig_name }}".
+ *	@param callback A INSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: INResponseArrayKey) if successful.
  */
 {{ method_signature }}
 {
@@ -138,7 +139,7 @@ import re
 import urllib2
 import datetime
 
-print '-->  Parsing ontology'
+print '-->	Parsing ontology'
 from smart_common.rdf_tools import rdf_ontology
 
 _arguments = sys.argv[1:] if len(sys.argv) > 1 else []
@@ -187,7 +188,7 @@ def toObjCPropertyName(name):
 	return name.lower() if name else None
 
 
-def handle_class(a_class, ontology_file_name='smart.owl'):
+def handle_class(a_class):
 	"""Returns a dictionary with substitutions to fill the class template files.
 	
 	Feed it a SMART_Class that it should create an Objective-C class for, this
@@ -201,10 +202,10 @@ def handle_class(a_class, ontology_file_name='smart.owl'):
 	- CLASS_GETTERS
 	- BASE_PATH
 	- RDF_TYPE
-	- ONTOLOGY_PATH
 	- AUTHOR
 	- DATE
 	- YEAR
+	- EXAMPLE
 	"""
 	
 	# start the dictionary
@@ -216,10 +217,10 @@ def handle_class(a_class, ontology_file_name='smart.owl'):
 		'CLASS_SUPERCLASS': 'SMDocument' if base_path else 'SMObject',
 		'BASE_PATH': None,
 		'RDF_TYPE': unicode(a_class.uri),
-		'ONTOLOGY_PATH': ontology_file_name,
 		'AUTHOR': __file__,
 		'DATE': str(now),
 		'YEAR': str(now.year),
+		'EXAMPLE': a_class.example,
 	}
 	
 	c_forwards = set()
@@ -229,9 +230,9 @@ def handle_class(a_class, ontology_file_name='smart.owl'):
 	# get properties that represent other classes (OWL_ObjectProperty instances)
 	my_properties = []
 	for o_prop in a_class.object_properties:
-		# o_prop.multiple_cardinality   ->  Bool whether the property can have multiple items
-		# o_prop.to_class			    ->  SMART_Class represented by the property
-		# o_prop.to_class.uri   	  	->  Class URI
+		# o_prop.multiple_cardinality	  ->  Bool whether the property can have multiple items
+		# o_prop.to_class				  ->  SMART_Class represented by the property
+		# o_prop.to_class.uri	  		 	->  Class URI
 		itemClass = toObjCClassName(o_prop.to_class.name)
 		c_forwards.add(itemClass)
 		prop = {
@@ -299,8 +300,8 @@ def handle_class(a_class, ontology_file_name='smart.owl'):
 				}
 				
 				# synthesize the method name:
-				#    getX:(block)callback
-				#    getXForY:(NSString *)y callback:(block)callback
+				#	 getX:(block)callback
+				#	 getXForY:(NSString *)y callback:(block)callback
 				usable = []
 				
 				# extract placeholders from the path
@@ -331,7 +332,7 @@ def handle_class(a_class, ontology_file_name='smart.owl'):
 					else:
 						cDict['method_name'] = '%s:%s' % (toObjCPropertyName(orig_name), block_arg)
 					
-					#print '     %s: %s' % (a_class.name, cDict)
+					#print '	  %s: %s' % (a_class.name, cDict)
 	
 	# add it to the known classes dict
 	known_classes[a_class.name] = myDict
@@ -379,10 +380,16 @@ if __name__ == "__main__":
 	if not os.path.exists(_generated_classes_dir):
 		os.mkdir(_generated_classes_dir)
 	if not os.access(_generated_classes_dir, os.W_OK):
-		print "xx>  Can't write to %s" % _generated_classes_dir
+		print "xx>  Can't write classes to %s" % _generated_classes_dir
 		sys.exit(1)
 	
-	print '-->  Processing classes'
+	if not os.path.exists(_class_examples_dir):
+		os.mkdir(_class_examples_dir)
+	if not os.access(_class_examples_dir, os.W_OK):
+		print "xx>  Can't write test RDF to %s" % _class_examples_dir
+		sys.exit(1)
+	
+	print '-->	 Processing classes'
 	known_classes = {}			# will be name: property-dictionary
 	num_classes = 0
 	num_calls = 0
@@ -397,6 +404,13 @@ if __name__ == "__main__":
 		d = handle_class(o_class)
 		if d:
 			written = False
+			
+			# output the RDF example for the class
+			if 'EXAMPLE' in d and d['EXAMPLE'] and len(d['EXAMPLE']) > 0:
+				path_e = os.path.join(_class_examples_dir, '%s.%s' % (d['CLASS_NAME'], 'rdf'))
+				if _overwrite or not os.path.exists(path_e):
+					handle = open(path_e, 'w')
+					handle.write(d['EXAMPLE'])
 			
 			# finish the header
 			filename_h = '%s.h' % d['CLASS_NAME']
@@ -417,7 +431,7 @@ if __name__ == "__main__":
 				written = True
 			
 			if written:
-				print '-->  Wrote class %s' % d['CLASS_NAME']
+				print '-->	Wrote class %s' % d['CLASS_NAME']
 				num_classes += 1
 	
 	# put record-scoped calls into a record category
@@ -446,7 +460,6 @@ if __name__ == "__main__":
 		d = {
 			'CATEGORY_CLASS': 'SMRecord',
 			'CATEGORY_NAME': 'Calls',
-			'ONTOLOGY_PATH': 'smart.owl',
 			'METHOD_SIGNATURES': "\n".join(record_sigs),
 			'FULL_METHODS': "\n\n".join(record_calls),
 			'AUTHOR': __file__,
@@ -477,5 +490,5 @@ if __name__ == "__main__":
 			num_calls += 1
 	
 	# all done
-	print '-->  Done. %d classes and %d categories written.' % (num_classes, num_calls)
+	print '-->	 Done. %d classes and %d categories written.' % (num_classes, num_calls)
 

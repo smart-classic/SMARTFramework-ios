@@ -53,13 +53,14 @@ Here is an example app manifest which would be the one you want to use with the 
   "description" : "A sample iOS app showing a list of medications",
   "author" : "Pascal Pfiffner, Harvard Medical School",
   "id" : "medsample@apps.smartplatforms.org",
-  "version" : "0.1",
-  "smart_version": "0.5",
+  "version" : "1.0",
+  "smart_version": "0.6",
   
   "mode" : "ui",
   "scope" : "record",
   
   "index" :  "smart-app:///did_select_record",
+  "oauth_callback": "smart-app:///did_receive_verifier",
   "icon" :  "http://apiverifier.smartplatforms.org/static/images/icon.png"
 }
 ```
