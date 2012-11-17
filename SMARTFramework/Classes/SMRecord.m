@@ -79,7 +79,8 @@
 		
 		// success, create a demographics document
 		else {
-			NSString *rdf = [userInfo objectForKey:INResponseStringKey];
+			NSData *rdfData = [userInfo objectForKey:INResponseDataKey];
+			NSString *rdf = [[NSString alloc] initWithData:rdfData encoding:NSUTF8StringEncoding];
 			if ([rdf length] > 0) {
 				self.demographics = [SMDemographics newWithRDFXML:rdf];
 			}
@@ -114,7 +115,8 @@
 			 httpMethod:@"GET"
 			   callback:^(BOOL success, NSDictionary * __autoreleasing userInfo) {
 				   if (success) {
-					   NSString *rdf = [userInfo objectForKey:INResponseStringKey];
+					   NSData *rdfData = [userInfo objectForKey:INResponseDataKey];
+					   NSString *rdf = [[NSString alloc] initWithData:rdfData encoding:NSUTF8StringEncoding];
 					   if ([rdf length] > 0) {
 						   RedlandParser *parser = [RedlandParser parserWithName:RedlandRDFXMLParserName];
 						   RedlandURI *uri = [RedlandURI URIWithString:@"http://www.smartplatforms.org/terms#"];

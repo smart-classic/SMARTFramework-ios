@@ -58,7 +58,7 @@
 
 NSString *const INErrorKey = @"SMARTError";
 NSString *const INRecordIDKey = @"record_id";
-NSString *const INResponseStringKey = @"SMARTServerCallResponseText";
+NSString *const INResponseDataKey = @"SMARTServerCallResponseData";
 NSString *const INResponseArrayKey = @"SMARTResponseArray";
 NSString *const INResponseDocumentKey = @"SMARTResponseDocument";
 
@@ -115,6 +115,31 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 
 #pragma mark - Endpoint Locations/Manifests
 /**
+ *  The callback to feed to tokenAuthorizeURL
+ */
+- (NSURL *)authorizeCallbackURL
+{
+	return [NSURL URLWithString:[NSString stringWithFormat:@"%@:///did_receive_verifier/", SMARTInternalScheme]];
+}
+
+- (NSString *)callbackScheme
+{
+	return _callbackScheme ? _callbackScheme : SMARTInternalScheme;
+}
+
+/**
+ *  We need to associate a token with a given record id, so we provide that when performing the request token request
+ */
+- (NSDictionary *)additionalRequestTokenParameters
+{
+	if ([self activeRecordId]) {
+		return [NSDictionary dictionaryWithObject:[self activeRecordId] forKey:SMARTOAuthRecordIDKey];
+	}
+	return nil;
+}
+
+
+/**
  *  Fetches the server and app manifests, if needed, then executes the block.
  *  Authentication calls are wrapped into this method since we need to know our endpoints before we can authenticate.
  *  @param callback The callback to perform when ready
@@ -151,30 +176,40 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
  */
 - (void)fetchServerManifest:(INCancelErrorBlock)callback
 {
-	NSURL *manifestURL = [_url URLByAppendingPathComponent:@"manifest"];
-	INURLLoader *loader = [INURLLoader loaderWithURL:manifestURL];
-	
-	// fetch
-	[loader getWithCallback:^(BOOL userDidCancel, NSString *errorMessage) {
+	INServerCall *call = [INServerCall newForServer:self];
+	call.method = @"manifest";
+	call.myCallback = ^(BOOL success, NSDictionary *userInfo) {
+		NSError *error = nil;
 		
 		// upon success, parse the response into the manifest dictionary
-		if (!errorMessage && !userDidCancel) {
+		if (success) {
+			NSData *jsonData = [userInfo objectForKey:INResponseDataKey];
 			NSError *jsonError = nil;
-			id resDict = [NSJSONSerialization JSONObjectWithData:loader.responseData options:0 error:&jsonError];
+			id resDict = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&jsonError];
 			if (!resDict) {
-				errorMessage = [jsonError localizedDescription];
+				ERR(&error, [jsonError localizedDescription], 0)
 			}
 			else if ([resDict isKindOfClass:[NSDictionary class]]) {
 				self.manifest = (NSDictionary *)resDict;
 			}
 			else {
-				errorMessage = [NSString stringWithFormat:@"Did not receive a dictionary for the manifest, but a %@:  %@", NSStringFromClass([resDict class]), resDict];
+				NSString *errorMessage = [NSString stringWithFormat:@"Did not receive a dictionary for the manifest, but a %@:  %@", NSStringFromClass([resDict class]), resDict];
+				ERR(&error, errorMessage, 0)
 			}
 		}
 		
+		// did we err?
+		if (error) {
+			NSMutableDictionary *muteInfo = userInfo ? [userInfo mutableCopy] : [NSMutableDictionary new];
+			[muteInfo setObject:error forKey:INErrorKey];
+			userInfo = [muteInfo copy];
+		}
+		
 		// pass it all to the main callback
-		CANCEL_ERROR_CALLBACK_OR_LOG_ERR_STRING(callback, userDidCancel, errorMessage);
-	}];
+		CANCEL_ERROR_CALLBACK_OR_LOG_USER_INFO(callback, NO, userInfo);
+	};
+	
+	[self performCall:call];
 }
 
 /**
@@ -186,32 +221,6 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 {
 	CANCEL_ERROR_CALLBACK_OR_LOG_ERR_STRING(callback, NO, @"Not implemented");
 }
-
-
-/**
- *  The callback to feed to tokenAuthorizeURL
- */
-- (NSURL *)authorizeCallbackURL
-{
-	return [NSURL URLWithString:[NSString stringWithFormat:@"%@:///did_receive_verifier/", SMARTInternalScheme]];
-}
-
-- (NSString *)callbackScheme
-{
-	return _callbackScheme ? _callbackScheme : SMARTInternalScheme;
-}
-
-/**
- *  We need to associate a token with a given record id, so we provide that when performing the request token request
- */
-- (NSDictionary *)additionalRequestTokenParameters
-{
-	if ([self activeRecordId]) {
-		return [NSDictionary dictionaryWithObject:[self activeRecordId] forKey:SMARTOAuthRecordIDKey];
-	}
-	return nil;
-}
-
 
 
 
@@ -377,6 +386,44 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 }
 
 
+
+#pragma mark - App Specific Documents
+/**
+ *  Fetches global, app-specific documents.
+ *
+ *  GETs documents from /apps/{app id}/documents/ with a two-legged OAuth call.
+ *  @param callback The callback to execute once the call has finished
+ */
+- (void)fetchAppSpecificDocumentsWithCallback:(INSuccessRetvalueBlock)callback
+{
+	// create the desired INServerCall instance
+	INServerCall *call = [INServerCall new];
+	call.method = [NSString stringWithFormat:@"/apps/%@/documents/", self.appId];
+	call.HTTPMethod = @"GET";
+	
+	// create callback
+	call.myCallback = ^(BOOL success, NSDictionary *__autoreleasing userInfo) {
+		NSDictionary *usrIfo = nil;
+		
+		// fetched successfully...
+		if (success) {
+			DLog(@"Incoming DATA: %@", [userInfo objectForKey:INResponseDataKey]);
+			//usrIfo = [NSDictionary dictionaryWithObject:appDocArr forKey:INResponseArrayKey];
+		}
+		else {
+			usrIfo = userInfo;
+		}
+		
+		SUCCESS_RETVAL_CALLBACK_OR_LOG_USER_INFO(callback, success, usrIfo)
+	};
+	
+	// shoot!
+	[self performCall:call];
+}
+
+
+
+#pragma mark - Login Screen
 /**
  *  Asks our delegate where to place the login screen, then shows the login screen and loads the given URL.
  *  @param loginURL The URL to load to show a login interface
@@ -514,42 +561,6 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 - (NSString *)callbackSchemeForLoginView:(SMLoginViewController *)loginController
 {
 	return self.callbackScheme;
-}
-
-
-
-#pragma mark - App Specific Documents
-/**
- *  Fetches global, app-specific documents.
- *
- *  GETs documents from /apps/{app id}/documents/ with a two-legged OAuth call.
- *  @param callback The callback to execute once the call has finished
- */
-- (void)fetchAppSpecificDocumentsWithCallback:(INSuccessRetvalueBlock)callback
-{
-	// create the desired INServerCall instance
-	INServerCall *call = [INServerCall new];
-	call.method = [NSString stringWithFormat:@"/apps/%@/documents/", self.appId];
-	call.HTTPMethod = @"GET";
-	
-	// create callback
-	call.myCallback = ^(BOOL success, NSDictionary *__autoreleasing userInfo) {
-		NSDictionary *usrIfo = nil;
-		
-		// fetched successfully...
-		if (success) {
-			DLog(@"Incoming: %@", [userInfo objectForKey:INResponseStringKey]);
-			//usrIfo = [NSDictionary dictionaryWithObject:appDocArr forKey:INResponseArrayKey];
-		}
-		else {
-			usrIfo = userInfo;
-		}
-		
-		SUCCESS_RETVAL_CALLBACK_OR_LOG_USER_INFO(callback, success, usrIfo)
-	};
-	
-	// shoot!
-	[self performCall:call];
 }
 
 
@@ -824,7 +835,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
                 }
 			}
             else {
-                DLog(@"The manifest did not correctly represent the \"launch_urls\" dictionary");
+                DLog(@"The server manifest did not have a \"launch_urls\" dictionary");
             }
 		}
 	}

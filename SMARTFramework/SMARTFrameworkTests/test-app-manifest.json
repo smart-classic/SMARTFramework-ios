@@ -1,0 +1,12 @@
+{
+    "author": "pascal.pfiffner@childrens.harvard.edu", 
+    "description": "Sample medications iOS app", 
+    "icon": "http://paulbutlerfitness.com/wp-content/uploads/2011/09/blue_red_pill3.jpg", 
+    "id": "medsample@apps.smartplatforms.org", 
+    "index": "smart-app:///did_select_record", 
+    "oauth_callback": "smart-app:///did_receive_verifier", 
+    "mode": "ui", 
+    "name": "Medications Sample", 
+    "scope": "record", 
+    "version": "0.1"
+}

@@ -22,6 +22,13 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 
+@class SMServer;
+@class SMRecord;
+
+
 @interface TestServerCalls : SenTestCase
+
+@property (nonatomic, strong) SMServer *server;
+@property (nonatomic, strong) SMRecord *record;
 
 @end

@@ -28,12 +28,14 @@
 
 - (void)testManifests
 {
-	SMServer *realServer = [SMServer serverWithDelegate:nil];
-	realServer.url = [NSURL URLWithString:@"http://coruscant.local:7000"];
-	realServer.appId = @"medsample@apps.indivo.org";
+	SMMockServer *server = [SMMockServer serverWithDelegate:nil];
 	
-	[realServer fetchServerManifest:^(BOOL userDidCancel, NSString *__autoreleasing errorMessage) {
-		NSLog(@"manifest: %@", realServer.manifest);
+	[server fetchServerManifest:^(BOOL userDidCancel, NSString *__autoreleasing errorMessage) {
+		STAssertEqualObjects(@"pascal.pfiffner@childrens.harvard.edu", [server.manifest objectForKey:@"admin"], @"Admin Email");
+		STAssertEqualObjects(@"http://chip.org:7001/apps/unit-test/launch", [server.startURL absoluteString], @"Server's startURL");
+		STAssertEqualObjects(@"http://chip.org:7000/oauth/request_token", [server.tokenRequestURL absoluteString], @"Server's tokenRequestURL");
+		STAssertEqualObjects(@"http://chip.org:7001/oauth/authorize", [server.tokenAuthorizeURL absoluteString], @"Server's tokenAuthorizeURL");
+		STAssertEqualObjects(@"http://chip.org:7000/oauth/access_token", [server.tokenExchangeURL absoluteString], @"Server's tokenExchangeURL");
 	}];
 }
 

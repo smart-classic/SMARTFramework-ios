@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>GET</key>
+	<dict>
+		<key>manifest</key>
+		<string>test-server-manifest.json</string>
+		<key>/records/mock-record-id/allergies/</key>
+		<string>SMAllergy.rdf</string>
+	</dict>
+</dict>
+</plist>

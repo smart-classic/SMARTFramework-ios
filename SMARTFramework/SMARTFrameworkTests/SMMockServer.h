@@ -22,9 +22,16 @@
 
 #import "SMServer.h"
 
+#define kSMARTAPIBaseURL @"http://chip.org:7000"			// not used anyway
+#define kSMARTAppId @"unit-test"
+#define kSMARTConsumerKey @"unit-test-key"
+#define kSMARTConsumerSecret @"unit-test-secret"
+#define kPillboxAPIKey @""
+
 
 /**
  *  Mock Server to replace SMServer for unit testing.
+ *
  *  When performing a call it parses the request URL and immediately calls the "didFinishSuccessfully:returnObject:" method, supplying data of the respective
  *  call if the request URL was understood by the mock server.
  */
@@ -33,7 +40,7 @@
 @property (nonatomic, strong) SMRecord *mockRecord;
 @property (nonatomic, copy) NSDictionary *mockMappings;				///< Two dimensional, first level is the method (GET, POST, ...), second a mapping path -> fixture.xml
 
-- (NSString *)readFixture:(NSString *)fileName;
+- (NSData *)readFixture:(NSString *)fileName;
 
 
 @end

@@ -1,0 +1,107 @@
+{
+    "admin": "pascal.pfiffner@childrens.harvard.edu", 
+    "api_base": "http://chip.org:7000", 
+    "capabilities": {
+        "http://smartplatforms.org/terms#Allergy": {
+            "methods": [
+                "GET"
+            ]
+        }, 
+        "http://smartplatforms.org/terms#AppManifest": {
+            "methods": [
+                "GET"
+            ]
+        }, 
+        "http://smartplatforms.org/terms#ClinicalNote": {
+            "methods": [
+                "GET"
+            ]
+        }, 
+        "http://smartplatforms.org/terms#ContainerManifest": {
+            "methods": [
+                "GET"
+            ]
+        }, 
+        "http://smartplatforms.org/terms#Demographics": {
+            "methods": [
+                "GET"
+            ]
+        }, 
+        "http://smartplatforms.org/terms#Encounter": {
+            "methods": [
+                "GET"
+            ]
+        }, 
+        "http://smartplatforms.org/terms#Fulfillment": {
+            "methods": [
+                "GET"
+            ]
+        }, 
+        "http://smartplatforms.org/terms#Immunization": {
+            "methods": [
+                "GET"
+            ]
+        }, 
+        "http://smartplatforms.org/terms#LabPanel": {
+            "methods": [
+                "GET"
+            ]
+        }, 
+        "http://smartplatforms.org/terms#LabResult": {
+            "methods": [
+                "GET"
+            ]
+        }, 
+        "http://smartplatforms.org/terms#Medication": {
+            "methods": [
+                "GET"
+            ]
+        }, 
+        "http://smartplatforms.org/terms#Ontology": {
+            "methods": [
+                "GET"
+            ]
+        }, 
+        "http://smartplatforms.org/terms#Problem": {
+            "methods": [
+                "GET"
+            ]
+        }, 
+        "http://smartplatforms.org/terms#Procedure": {
+            "methods": [
+                "GET"
+            ]
+        }, 
+        "http://smartplatforms.org/terms#SocialHistory": {
+            "methods": [
+                "GET"
+            ]
+        }, 
+        "http://smartplatforms.org/terms#User": {
+            "methods": [
+                "GET"
+            ]
+        }, 
+        "http://smartplatforms.org/terms#UserPreferences": {
+            "methods": [
+                "GET", 
+                "DELETE", 
+                "PUT"
+            ]
+        }, 
+        "http://smartplatforms.org/terms#VitalSignSet": {
+            "methods": [
+                "GET"
+            ]
+        }
+    }, 
+    "description": "iOS Unit Test Manifest", 
+    "launch_urls": {
+        "app_launch": "http://chip.org:7001/apps/{{app_id}}/launch",
+        "request_token": "http://chip.org:7000/oauth/request_token",
+        "authorize_token": "http://chip.org:7001/oauth/authorize",
+        "exchange_token": "http://chip.org:7000/oauth/access_token"
+    },
+    "name": "Local SMARTBox", 
+    "smart_version": "0.6"
+}

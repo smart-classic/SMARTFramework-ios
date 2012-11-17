@@ -22,17 +22,22 @@
 
 #import "SMMockServer.h"
 #import "SMRecord.h"
-//#import "INXMLParser.h"
 
 
 @implementation SMMockServer
-
-@synthesize mockRecord, mockMappings;
 
 
 - (id)init
 {
 	if ((self = [super init])) {
+		
+		// override the defines from Config.h
+		self.url = [NSURL URLWithString:@"http://chip.org:7000"];
+		self.appId = @"unit-test";
+		self.consumerKey = @"unit-test-key";
+		self.consumerSecret = @"unit-test-secret";
+		
+		// load the mappings
 		NSString *path = [[NSBundle bundleForClass:[self class]] pathForResource:@"mock-callbacks" ofType:@"plist"];
 		if (!path) {
 			NSException *e = [NSException exceptionWithName:@"File not found" reason:@"mock-callbacks.plist was not found" userInfo:nil];
@@ -49,10 +54,10 @@
  */
 - (SMRecord *)activeRecord
 {
-	if (!mockRecord) {
-		self.mockRecord = [[SMRecord alloc] initWithId:@"abc" onServer:self];
+	if (!_mockRecord) {
+		self.mockRecord = [[SMRecord alloc] initWithId:@"mock-record-id" onServer:self];
 	}
-	return mockRecord;
+	return _mockRecord;
 }
 
 
@@ -64,7 +69,7 @@
 - (void)performCall:(INServerCall *)aCall
 {
 	// which fixture did we want?
-	NSDictionary *methodPaths = [mockMappings objectForKey:aCall.HTTPMethod];
+	NSDictionary *methodPaths = [_mockMappings objectForKey:aCall.HTTPMethod];
 	if (!methodPaths) {
 		NSString *errorString = [NSString stringWithFormat:@"The HTTP method \"%@\" is not defined in mock-callbacks, cannot test call", aCall.HTTPMethod];
 		NSException *e = [NSException exceptionWithName:@"Fixture not defined" reason:errorString userInfo:nil];
@@ -81,8 +86,8 @@
 	/// @todo Also take arguments into consideration
 	
 	// ok, we know about this path, read the fixture...
-	NSString *mockResponse = [self readFixture:fixturePath];
-	NSMutableDictionary *response = [NSMutableDictionary dictionaryWithObject:mockResponse forKey:INResponseStringKey];
+	NSData *mockResponse = [self readFixture:fixturePath];
+	NSMutableDictionary *response = [NSMutableDictionary dictionaryWithObject:mockResponse forKey:INResponseDataKey];
 	
 	/* ...parse it...
 	NSError *error = nil;
@@ -99,15 +104,19 @@
 
 
 #pragma mark - Utilities
-- (NSString *)readFixture:(NSString *)fileName
+- (NSData *)readFixture:(NSString *)fileName
 {
-	NSString *path = [[NSBundle bundleForClass:[self class]] pathForResource:fileName ofType:@"xml"];
-	if (!path) {
-		NSException *e = [NSException exceptionWithName:@"File not found" reason:[NSString stringWithFormat:@"The fixture \"%@.xml\" was not found", fileName] userInfo:nil];
+	NSString *base = [[fileName lastPathComponent] stringByDeletingPathExtension];
+	NSString *extension = [[fileName lastPathComponent] pathExtension];
+	NSURL *url = [[NSBundle bundleForClass:[self class]] URLForResource:base withExtension:extension];
+	if (!url) {
+		NSException *e = [NSException exceptionWithName:@"File not found"
+												 reason:[NSString stringWithFormat:@"The fixture \"%@.%@\" was not found for file name: %@", base, extension, fileName]
+											   userInfo:nil];
 		@throw e;
 	}
 	
-	return [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+	return [NSData dataWithContentsOfURL:url];
 }
 
 

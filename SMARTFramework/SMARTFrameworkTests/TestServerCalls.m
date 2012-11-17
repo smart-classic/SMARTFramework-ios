@@ -22,7 +22,37 @@
 
 #import "TestServerCalls.h"
 #import "SMMockServer.h"
+#import "SMRecord+Calls.h"
+#import "SMARTObjects.h"
 
 @implementation TestServerCalls
+
+
+- (void)setUp
+{
+	self.server = [SMMockServer serverWithDelegate:nil];
+	self.record = [_server activeRecord];
+}
+
+- (void)tearDown
+{
+	self.server = nil;
+}
+
+
+/**
+ *  Test Allergies
+ */
+- (void)testAllergy
+{
+	[_record getAllergies:^(BOOL success, NSDictionary *__autoreleasing userInfo) {
+		NSArray *response = [userInfo objectForKey:INResponseArrayKey];
+		STAssertTrue(2 == [response count], @"Should have gotten 2 allergies");
+		
+		SMAllergy *allergy1 = [response objectAtIndex:0];
+		STAssertEqualObjects(@"Anaphylaxis", allergy1.allergicReaction.title, @"allergicReaction.title");
+	}];
+}
+
 
 @end

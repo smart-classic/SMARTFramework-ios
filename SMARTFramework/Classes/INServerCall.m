@@ -398,30 +398,10 @@
 #pragma mark - OAuth Load Delegate
 - (void)connectionFinishedWithResponse:(NSURLResponse *)aResponse data:(NSData *)inData
 {
-	NSString *retString = nil;
+	NSMutableDictionary *retDict = responseObject ? [responseObject mutableCopy] : [NSMutableDictionary dictionary];
+	[retDict setObject:inData forKey:INResponseDataKey];
 	
-	// we always assume string data, so just create a string when we have response data
-	if ([inData length] > 0) {
-		retString = [[NSString alloc] initWithData:inData encoding:NSUTF8StringEncoding];
-	}
-	//DLog(@"%@ %@ %@  -----  %@", HTTPMethod, method, [aResponse MIMEType], retString);
-	
-	// compose the response
-	if ([retString length] > 0) {
-		
-		// there is the possibility that we already got an OAuth notification in responseObject, don't discard that one
-		NSMutableDictionary *retDict = responseObject ? [responseObject mutableCopy] : [NSMutableDictionary dictionary];
-		[retDict setObject:retString forKey:INResponseStringKey];
-		
-		// parse XML if we got XML and if we can parse XML (implemented in a category)
-		if ([@"application/xml" isEqualToString:[aResponse MIMEType]]) {
-			if ([self respondsToSelector:@selector(parseXML:intoResponseDictionary:)]) {
-				[self performSelector:@selector(parseXML:intoResponseDictionary:) withObject:retString withObject:retDict];
-			}
-		}
-		
-		self.responseObject = retDict;
-	}
+	self.responseObject = retDict;
 	[self didFinishSuccessfully:YES returnObject:responseObject];
 }
 

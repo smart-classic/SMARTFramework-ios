@@ -29,7 +29,7 @@
 // Dictionary keys
 extern NSString *const INErrorKey;							/// Dictionaries return an NSError for this key
 extern NSString *const INRecordIDKey;						/// Dictionaries return an NSString for this key. The key reflects the oauth URL param name.
-extern NSString *const INResponseStringKey;					/// Dictionaries return the server's response as an NSString for this key
+extern NSString *const INResponseDataKey;					/// Dictionaries return the server's response as NSData for this key
 extern NSString *const INResponseArrayKey;					/// Dictionaries return an NSArray for this key
 extern NSString *const INResponseDocumentKey;				/// Dictionaries return an IndivoDocument for this key
 

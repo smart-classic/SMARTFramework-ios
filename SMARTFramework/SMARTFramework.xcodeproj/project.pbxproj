@@ -28,7 +28,25 @@
 		EE249AB715D5CBB6001A63D7 /* librdf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE249AB615D5CBB6001A63D7 /* librdf.a */; };
 		EE42D04C15DEB4C900F03EB0 /* SMART.h in Headers */ = {isa = PBXBuildFile; fileRef = EE42D04B15DEB4C900F03EB0 /* SMART.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EE59AC1615E34D4F00F4D738 /* SMRecord+Calls.h in Headers */ = {isa = PBXBuildFile; fileRef = EE59AC1415E34D4F00F4D738 /* SMRecord+Calls.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EE59AC1715E34D4F00F4D738 /* SMRecord+Calls.m in Sources */ = {isa = PBXBuildFile; fileRef = EE59AC1515E34D4F00F4D738 /* SMRecord+Calls.m */; };
+		EE5D69751656F4C9001741E2 /* SMAllergy.rdf in Resources */ = {isa = PBXBuildFile; fileRef = EE5D69681656F4C9001741E2 /* SMAllergy.rdf */; };
+		EE5D69761656F4C9001741E2 /* SMAllergyExclusion.rdf in Resources */ = {isa = PBXBuildFile; fileRef = EE5D69691656F4C9001741E2 /* SMAllergyExclusion.rdf */; };
+		EE5D69771656F4C9001741E2 /* SMClinicalNote.rdf in Resources */ = {isa = PBXBuildFile; fileRef = EE5D696A1656F4C9001741E2 /* SMClinicalNote.rdf */; };
+		EE5D69781656F4C9001741E2 /* SMDemographics.rdf in Resources */ = {isa = PBXBuildFile; fileRef = EE5D696B1656F4C9001741E2 /* SMDemographics.rdf */; };
+		EE5D69791656F4C9001741E2 /* SMEncounter.rdf in Resources */ = {isa = PBXBuildFile; fileRef = EE5D696C1656F4C9001741E2 /* SMEncounter.rdf */; };
+		EE5D697A1656F4C9001741E2 /* SMFulfillment.rdf in Resources */ = {isa = PBXBuildFile; fileRef = EE5D696D1656F4C9001741E2 /* SMFulfillment.rdf */; };
+		EE5D697B1656F4C9001741E2 /* SMImmunization.rdf in Resources */ = {isa = PBXBuildFile; fileRef = EE5D696E1656F4C9001741E2 /* SMImmunization.rdf */; };
+		EE5D697C1656F4C9001741E2 /* SMLabResult.rdf in Resources */ = {isa = PBXBuildFile; fileRef = EE5D696F1656F4C9001741E2 /* SMLabResult.rdf */; };
+		EE5D697D1656F4C9001741E2 /* SMMedication.rdf in Resources */ = {isa = PBXBuildFile; fileRef = EE5D69701656F4C9001741E2 /* SMMedication.rdf */; };
+		EE5D697E1656F4C9001741E2 /* SMProblem.rdf in Resources */ = {isa = PBXBuildFile; fileRef = EE5D69711656F4C9001741E2 /* SMProblem.rdf */; };
+		EE5D697F1656F4C9001741E2 /* SMProcedure.rdf in Resources */ = {isa = PBXBuildFile; fileRef = EE5D69721656F4C9001741E2 /* SMProcedure.rdf */; };
+		EE5D69801656F4C9001741E2 /* SMSocialHistory.rdf in Resources */ = {isa = PBXBuildFile; fileRef = EE5D69731656F4C9001741E2 /* SMSocialHistory.rdf */; };
+		EE5D69811656F4C9001741E2 /* SMVitalSignSet.rdf in Resources */ = {isa = PBXBuildFile; fileRef = EE5D69741656F4C9001741E2 /* SMVitalSignSet.rdf */; };
+		EE5D69831656F514001741E2 /* mock-callbacks.plist in Resources */ = {isa = PBXBuildFile; fileRef = EE5D69821656F514001741E2 /* mock-callbacks.plist */; };
+		EE5D69851656F57E001741E2 /* test-app-manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = EE5D69841656F57E001741E2 /* test-app-manifest.json */; };
+		EE5D69861656F695001741E2 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EE832F7C15D004A500E7FFF1 /* libxml2.dylib */; };
+		EE5D69881656FDF2001741E2 /* test-server-manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = EE5D69871656FDF2001741E2 /* test-server-manifest.json */; };
+		EE5D698C16570CCC001741E2 /* SMRecord+Calls.m in Sources */ = {isa = PBXBuildFile; fileRef = EE59AC1515E34D4F00F4D738 /* SMRecord+Calls.m */; };
+		EE5D698E16570D7D001741E2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE5D698D16570D7C001741E2 /* Security.framework */; };
 		EE68EB5C15DC54CC006B149E /* SMObject.h in Headers */ = {isa = PBXBuildFile; fileRef = EE68EB5A15DC54CC006B149E /* SMObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EE68EB5D15DC54CC006B149E /* SMObject.m in Sources */ = {isa = PBXBuildFile; fileRef = EE68EB5B15DC54CC006B149E /* SMObject.m */; };
 		EE6A5A7E15CC723500DD0F68 /* libredland-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE6A5A7D15CC723500DD0F68 /* libredland-ios.a */; };
@@ -177,7 +195,6 @@
 		EEE82D8515D008510017EA0B /* IndivoActionView.h in Headers */ = {isa = PBXBuildFile; fileRef = EEE82D8315D008500017EA0B /* IndivoActionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EEE82D8615D008510017EA0B /* IndivoActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = EEE82D8415D008500017EA0B /* IndivoActionView.m */; };
 		EEE82D8D15D00D810017EA0B /* SMARTObjects.h in Headers */ = {isa = PBXBuildFile; fileRef = EEE82D8C15D00D810017EA0B /* SMARTObjects.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EEE82D9015D01E780017EA0B /* libredland-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE6A5A7D15CC723500DD0F68 /* libredland-ios.a */; };
 		EEE82D9215D02F4A0017EA0B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE82D9115D02F4A0017EA0B /* UIKit.framework */; };
 		EEE82D9615D02FD80017EA0B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE82D9415D02F970017EA0B /* CoreGraphics.framework */; };
 		EEF0192A15CB447100FFD480 /* Config.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0192915CB447100FFD480 /* Config.h */; };
@@ -293,6 +310,23 @@
 		EE59AC1315E342CC00F4D738 /* CategoryTemplate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryTemplate.m; sourceTree = "<group>"; };
 		EE59AC1415E34D4F00F4D738 /* SMRecord+Calls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SMRecord+Calls.h"; sourceTree = "<group>"; };
 		EE59AC1515E34D4F00F4D738 /* SMRecord+Calls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SMRecord+Calls.m"; sourceTree = "<group>"; };
+		EE5D69681656F4C9001741E2 /* SMAllergy.rdf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SMAllergy.rdf; sourceTree = "<group>"; };
+		EE5D69691656F4C9001741E2 /* SMAllergyExclusion.rdf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SMAllergyExclusion.rdf; sourceTree = "<group>"; };
+		EE5D696A1656F4C9001741E2 /* SMClinicalNote.rdf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SMClinicalNote.rdf; sourceTree = "<group>"; };
+		EE5D696B1656F4C9001741E2 /* SMDemographics.rdf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SMDemographics.rdf; sourceTree = "<group>"; };
+		EE5D696C1656F4C9001741E2 /* SMEncounter.rdf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SMEncounter.rdf; sourceTree = "<group>"; };
+		EE5D696D1656F4C9001741E2 /* SMFulfillment.rdf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SMFulfillment.rdf; sourceTree = "<group>"; };
+		EE5D696E1656F4C9001741E2 /* SMImmunization.rdf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SMImmunization.rdf; sourceTree = "<group>"; };
+		EE5D696F1656F4C9001741E2 /* SMLabResult.rdf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SMLabResult.rdf; sourceTree = "<group>"; };
+		EE5D69701656F4C9001741E2 /* SMMedication.rdf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SMMedication.rdf; sourceTree = "<group>"; };
+		EE5D69711656F4C9001741E2 /* SMProblem.rdf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SMProblem.rdf; sourceTree = "<group>"; };
+		EE5D69721656F4C9001741E2 /* SMProcedure.rdf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SMProcedure.rdf; sourceTree = "<group>"; };
+		EE5D69731656F4C9001741E2 /* SMSocialHistory.rdf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SMSocialHistory.rdf; sourceTree = "<group>"; };
+		EE5D69741656F4C9001741E2 /* SMVitalSignSet.rdf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SMVitalSignSet.rdf; sourceTree = "<group>"; };
+		EE5D69821656F514001741E2 /* mock-callbacks.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "mock-callbacks.plist"; sourceTree = "<group>"; };
+		EE5D69841656F57E001741E2 /* test-app-manifest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "test-app-manifest.json"; sourceTree = "<group>"; };
+		EE5D69871656FDF2001741E2 /* test-server-manifest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "test-server-manifest.json"; sourceTree = "<group>"; };
+		EE5D698D16570D7C001741E2 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		EE68EB5A15DC54CC006B149E /* SMObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMObject.h; sourceTree = "<group>"; };
 		EE68EB5B15DC54CC006B149E /* SMObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMObject.m; sourceTree = "<group>"; };
 		EE6A5A7D15CC723500DD0F68 /* libredland-ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libredland-ios.a"; path = "../Redland-ObjC/build/Development-iphoneos/libredland-ios.a"; sourceTree = "<group>"; };
@@ -307,7 +341,7 @@
 		EE832F7C15D004A500E7FFF1 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		EE832F7F15D006D100E7FFF1 /* SMLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMLoginViewController.h; sourceTree = "<group>"; };
 		EE832F8015D006D100E7FFF1 /* SMLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMLoginViewController.m; sourceTree = "<group>"; };
-		EEC146F815DED1D0006B8798 /* AppledocSettings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = AppledocSettings.plist; path = ../AppledocSettings.plist; sourceTree = "<group>"; };
+		EEC146F815DED1D0006B8798 /* AppledocSettings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AppledocSettings.plist; sourceTree = "<group>"; };
 		EEC1470015DEE01A006B8798 /* ClassTemplate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClassTemplate.h; sourceTree = "<group>"; };
 		EEC1470115DEE01A006B8798 /* ClassTemplate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassTemplate.m; sourceTree = "<group>"; };
 		EEC1470315DFE790006B8798 /* SMDemographics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDemographics.h; sourceTree = "<group>"; };
@@ -527,11 +561,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE5D698E16570D7D001741E2 /* Security.framework in Frameworks */,
 				EEC9C5AA15CB2EA900B7C568 /* Foundation.framework in Frameworks */,
 				EEE82D9615D02FD80017EA0B /* CoreGraphics.framework in Frameworks */,
 				EEE82D9215D02F4A0017EA0B /* UIKit.framework in Frameworks */,
 				EEC9C5A715CB2EA900B7C568 /* SenTestingKit.framework in Frameworks */,
-				EEE82D9015D01E780017EA0B /* libredland-ios.a in Frameworks */,
+				EE5D69861656F695001741E2 /* libxml2.dylib in Frameworks */,
 				EEC9C5AD15CB2EA900B7C568 /* libSMART.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -539,6 +574,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EE5D69671656F4C9001741E2 /* RDF */ = {
+			isa = PBXGroup;
+			children = (
+				EE5D69681656F4C9001741E2 /* SMAllergy.rdf */,
+				EE5D69691656F4C9001741E2 /* SMAllergyExclusion.rdf */,
+				EE5D696A1656F4C9001741E2 /* SMClinicalNote.rdf */,
+				EE5D696B1656F4C9001741E2 /* SMDemographics.rdf */,
+				EE5D696C1656F4C9001741E2 /* SMEncounter.rdf */,
+				EE5D696D1656F4C9001741E2 /* SMFulfillment.rdf */,
+				EE5D696E1656F4C9001741E2 /* SMImmunization.rdf */,
+				EE5D696F1656F4C9001741E2 /* SMLabResult.rdf */,
+				EE5D69701656F4C9001741E2 /* SMMedication.rdf */,
+				EE5D69711656F4C9001741E2 /* SMProblem.rdf */,
+				EE5D69721656F4C9001741E2 /* SMProcedure.rdf */,
+				EE5D69731656F4C9001741E2 /* SMSocialHistory.rdf */,
+				EE5D69741656F4C9001741E2 /* SMVitalSignSet.rdf */,
+			);
+			path = RDF;
+			sourceTree = "<group>";
+		};
 		EE9977BF15E565E60027886F /* Generator Templates */ = {
 			isa = PBXGroup;
 			children = (
@@ -724,6 +779,7 @@
 				EEC9C59815CB2EA800B7C568 /* Foundation.framework */,
 				EEE82D9415D02F970017EA0B /* CoreGraphics.framework */,
 				EEE82D9115D02F4A0017EA0B /* UIKit.framework */,
+				EE5D698D16570D7C001741E2 /* Security.framework */,
 				EEC9C5A615CB2EA900B7C568 /* SenTestingKit.framework */,
 				EE832F7C15D004A500E7FFF1 /* libxml2.dylib */,
 				EE249AB615D5CBB6001A63D7 /* librdf.a */,
@@ -759,7 +815,7 @@
 				EEC9C59C15CB2EA800B7C568 /* SMARTFramework-Prefix.pch */,
 			);
 			name = "Supporting Files";
-			path = Classes;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		EEC9C5AE15CB2EA900B7C568 /* SMARTFrameworkTests */ = {
@@ -771,6 +827,10 @@
 				EE6A5A8115CC72D500DD0F68 /* TestServer.m */,
 				EE6A5A8315CC731200DD0F68 /* TestServerCalls.h */,
 				EE6A5A8415CC731200DD0F68 /* TestServerCalls.m */,
+				EE5D69821656F514001741E2 /* mock-callbacks.plist */,
+				EE5D69871656FDF2001741E2 /* test-server-manifest.json */,
+				EE5D69841656F57E001741E2 /* test-app-manifest.json */,
+				EE5D69671656F4C9001741E2 /* RDF */,
 				EEC9C5AF15CB2EA900B7C568 /* Supporting Files */,
 			);
 			path = SMARTFrameworkTests;
@@ -1102,6 +1162,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE5D69751656F4C9001741E2 /* SMAllergy.rdf in Resources */,
+				EE5D69761656F4C9001741E2 /* SMAllergyExclusion.rdf in Resources */,
+				EE5D69771656F4C9001741E2 /* SMClinicalNote.rdf in Resources */,
+				EE5D69781656F4C9001741E2 /* SMDemographics.rdf in Resources */,
+				EE5D69791656F4C9001741E2 /* SMEncounter.rdf in Resources */,
+				EE5D697A1656F4C9001741E2 /* SMFulfillment.rdf in Resources */,
+				EE5D697B1656F4C9001741E2 /* SMImmunization.rdf in Resources */,
+				EE5D697C1656F4C9001741E2 /* SMLabResult.rdf in Resources */,
+				EE5D697D1656F4C9001741E2 /* SMMedication.rdf in Resources */,
+				EE5D697E1656F4C9001741E2 /* SMProblem.rdf in Resources */,
+				EE5D697F1656F4C9001741E2 /* SMProcedure.rdf in Resources */,
+				EE5D69801656F4C9001741E2 /* SMSocialHistory.rdf in Resources */,
+				EE5D69811656F4C9001741E2 /* SMVitalSignSet.rdf in Resources */,
+				EE5D69831656F514001741E2 /* mock-callbacks.plist in Resources */,
+				EE5D69851656F57E001741E2 /* test-app-manifest.json in Resources */,
+				EE5D69881656FDF2001741E2 /* test-server-manifest.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1171,6 +1247,7 @@
 				EEE82D8615D008510017EA0B /* IndivoActionView.m in Sources */,
 				EE249A4415D59F04001A63D7 /* SMDocument.m in Sources */,
 				EE68EB5D15DC54CC006B149E /* SMObject.m in Sources */,
+				EE5D698C16570CCC001741E2 /* SMRecord+Calls.m in Sources */,
 				EEC1470815DFE790006B8798 /* SMDemographics.m in Sources */,
 				EEC1470A15DFE790006B8798 /* SMName.m in Sources */,
 				EEC147B415E076AD006B8798 /* SMAddress.m in Sources */,
@@ -1236,7 +1313,6 @@
 				EEC1485215E076AD006B8798 /* SMVCard.m in Sources */,
 				EEC1485615E076AD006B8798 /* SMVitalSign.m in Sources */,
 				EEC1485815E076AD006B8798 /* SMVitalSignSet.m in Sources */,
-				EE59AC1715E34D4F00F4D738 /* SMRecord+Calls.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1298,7 +1374,7 @@
 			buildSettings = {
 				DSTROOT = /tmp/SMARTFramework_ios.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Classes/SMARTFramework-Prefix.pch";
+				GCC_PREFIX_HEADER = "Resources/SMARTFramework-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"\"$(BUILT_PRODUCTS_DIR)\"/**",
 					"\"$(SDK_DIR)/usr/include/libxml2\"",
@@ -1320,13 +1396,11 @@
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Classes/SMARTFramework-Prefix.pch";
+				GCC_PREFIX_HEADER = "Resources/SMARTFramework-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)\"/**";
 				INFOPLIST_FILE = "SMARTFrameworkTests/SMARTFrameworkTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(BUILT_PRODUCTS_DIR)/**",
-				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -1404,7 +1478,7 @@
 			buildSettings = {
 				DSTROOT = /tmp/SMARTFramework_ios.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Classes/SMARTFramework-Prefix.pch";
+				GCC_PREFIX_HEADER = "Resources/SMARTFramework-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"\"$(BUILT_PRODUCTS_DIR)\"/**",
 					"\"$(SDK_DIR)/usr/include/libxml2\"",
@@ -1423,7 +1497,7 @@
 			buildSettings = {
 				DSTROOT = /tmp/SMARTFramework_ios.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Classes/SMARTFramework-Prefix.pch";
+				GCC_PREFIX_HEADER = "Resources/SMARTFramework-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"\"$(BUILT_PRODUCTS_DIR)\"/**",
 					"\"$(SDK_DIR)/usr/include/libxml2\"",
@@ -1444,13 +1518,11 @@
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Classes/SMARTFramework-Prefix.pch";
+				GCC_PREFIX_HEADER = "Resources/SMARTFramework-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)\"/**";
 				INFOPLIST_FILE = "SMARTFrameworkTests/SMARTFrameworkTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(BUILT_PRODUCTS_DIR)/**",
-				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -1464,13 +1536,11 @@
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Classes/SMARTFramework-Prefix.pch";
+				GCC_PREFIX_HEADER = "Resources/SMARTFramework-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)\"/**";
 				INFOPLIST_FILE = "SMARTFrameworkTests/SMARTFrameworkTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(BUILT_PRODUCTS_DIR)/**",
-				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
 			};
