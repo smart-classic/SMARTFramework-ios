@@ -28,13 +28,13 @@
 @implementation TestServerCalls
 
 
-- (void)setUp
++ (void)setUp
 {
 	self.server = [SMMockServer serverWithDelegate:nil];
 	self.record = [_server activeRecord];
 }
 
-- (void)tearDown
++ (void)tearDown
 {
 	self.server = nil;
 }
