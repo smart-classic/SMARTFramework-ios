@@ -176,40 +176,34 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
  */
 - (void)fetchServerManifest:(INCancelErrorBlock)callback
 {
-	INServerCall *call = [INServerCall newForServer:self];
-	call.method = @"manifest";
-	call.myCallback = ^(BOOL success, NSDictionary *userInfo) {
-		NSError *error = nil;
+	NSURL *manifestURL = [self.url URLByAppendingPathComponent:@"manifest"];
+	INURLLoader *loader = [INURLLoader loaderWithURL:manifestURL];
+	[loader getWithCallback:^(BOOL userDidCancel, NSString *__autoreleasing errorMessage) {
+		NSString *myError = nil;
 		
-		// upon success, parse the response into the manifest dictionary
-		if (success) {
-			NSData *jsonData = [userInfo objectForKey:INResponseDataKey];
+		// all good, parse the response into the manifest dictionary
+		if (!userDidCancel && !errorMessage) {
 			NSError *jsonError = nil;
-			id resDict = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&jsonError];
+			id resDict = [NSJSONSerialization JSONObjectWithData:loader.responseData options:0 error:&jsonError];
 			if (!resDict) {
-				ERR(&error, [jsonError localizedDescription], 0)
+				myError = [jsonError localizedDescription];
 			}
 			else if ([resDict isKindOfClass:[NSDictionary class]]) {
 				self.manifest = (NSDictionary *)resDict;
 			}
 			else {
-				NSString *errorMessage = [NSString stringWithFormat:@"Did not receive a dictionary for the manifest, but a %@:  %@", NSStringFromClass([resDict class]), resDict];
-				ERR(&error, errorMessage, 0)
+				myError = [NSString stringWithFormat:@"Did not receive a dictionary for the manifest, but a %@:  %@", NSStringFromClass([resDict class]), resDict];
 			}
 		}
 		
 		// did we err?
-		if (error) {
-			NSMutableDictionary *muteInfo = userInfo ? [userInfo mutableCopy] : [NSMutableDictionary new];
-			[muteInfo setObject:error forKey:INErrorKey];
-			userInfo = [muteInfo copy];
+		else if (errorMessage) {
+			myError = errorMessage;
 		}
 		
 		// pass it all to the main callback
-		CANCEL_ERROR_CALLBACK_OR_LOG_USER_INFO(callback, NO, userInfo);
-	};
-	
-	[self performCall:call];
+		CANCEL_ERROR_CALLBACK_OR_LOG_ERR_STRING(callback, userDidCancel, myError)
+	}];
 }
 
 /**

@@ -23,9 +23,6 @@
 /* Begin PBXBuildFile section */
 		EE249A4315D59F04001A63D7 /* SMDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = EE249A4115D59F04001A63D7 /* SMDocument.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EE249A4415D59F04001A63D7 /* SMDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = EE249A4215D59F04001A63D7 /* SMDocument.m */; };
-		EE249AB315D5CBB1001A63D7 /* libraptor2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE249AB215D5CBB1001A63D7 /* libraptor2.a */; };
-		EE249AB515D5CBB4001A63D7 /* librasqal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE249AB415D5CBB4001A63D7 /* librasqal.a */; };
-		EE249AB715D5CBB6001A63D7 /* librdf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE249AB615D5CBB6001A63D7 /* librdf.a */; };
 		EE42D04C15DEB4C900F03EB0 /* SMART.h in Headers */ = {isa = PBXBuildFile; fileRef = EE42D04B15DEB4C900F03EB0 /* SMART.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EE59AC1615E34D4F00F4D738 /* SMRecord+Calls.h in Headers */ = {isa = PBXBuildFile; fileRef = EE59AC1415E34D4F00F4D738 /* SMRecord+Calls.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EE5D69751656F4C9001741E2 /* SMAllergy.rdf in Resources */ = {isa = PBXBuildFile; fileRef = EE5D69681656F4C9001741E2 /* SMAllergy.rdf */; };
@@ -550,9 +547,6 @@
 			files = (
 				EEC9C59915CB2EA800B7C568 /* Foundation.framework in Frameworks */,
 				EE832F7D15D004A500E7FFF1 /* libxml2.dylib in Frameworks */,
-				EE249AB315D5CBB1001A63D7 /* libraptor2.a in Frameworks */,
-				EE249AB515D5CBB4001A63D7 /* librasqal.a in Frameworks */,
-				EE249AB715D5CBB6001A63D7 /* librdf.a in Frameworks */,
 				EE6A5A7E15CC723500DD0F68 /* libredland-ios.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1363,7 +1357,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = iphoneos;
 			};
@@ -1379,8 +1373,7 @@
 					"\"$(BUILT_PRODUCTS_DIR)\"/**",
 					"\"$(SDK_DIR)/usr/include/libxml2\"",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/Redland-ObjC/Redland-source/Universal\"";
+				LIBRARY_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)\"/**";
 				OTHER_CFLAGS = "-DDEBUG";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1399,7 +1392,6 @@
 				GCC_PREFIX_HEADER = "Resources/SMARTFramework-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)\"/**";
 				INFOPLIST_FILE = "SMARTFrameworkTests/SMARTFrameworkTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
@@ -1448,7 +1440,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1467,7 +1459,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1483,8 +1475,7 @@
 					"\"$(BUILT_PRODUCTS_DIR)\"/**",
 					"\"$(SDK_DIR)/usr/include/libxml2\"",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/Redland-ObjC/Redland-source/Universal\"";
+				LIBRARY_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)\"/**";
 				OTHER_CFLAGS = "-DDEBUG";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1502,8 +1493,7 @@
 					"\"$(BUILT_PRODUCTS_DIR)\"/**",
 					"\"$(SDK_DIR)/usr/include/libxml2\"",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/Redland-ObjC/Redland-source/Universal\"";
+				LIBRARY_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)\"/**";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1521,7 +1511,6 @@
 				GCC_PREFIX_HEADER = "Resources/SMARTFramework-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)\"/**";
 				INFOPLIST_FILE = "SMARTFrameworkTests/SMARTFrameworkTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
@@ -1539,7 +1528,6 @@
 				GCC_PREFIX_HEADER = "Resources/SMARTFramework-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)\"/**";
 				INFOPLIST_FILE = "SMARTFrameworkTests/SMARTFrameworkTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
