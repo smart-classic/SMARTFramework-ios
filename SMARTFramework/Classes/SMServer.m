@@ -186,6 +186,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 			NSError *jsonError = nil;
 			id resDict = [NSJSONSerialization JSONObjectWithData:loader.responseData options:0 error:&jsonError];
 			if (!resDict) {
+				DLog(@"Could not parse this as JSON:  %@", loader.responseString);
 				myError = [jsonError localizedDescription];
 			}
 			else if ([resDict isKindOfClass:[NSDictionary class]]) {
