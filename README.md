@@ -101,22 +101,22 @@ Now that you have the source it's time to add it to your Xcode project:
 1. Add the framework project (located in `SMARTFramework-ios/SMARTFramework/SMARTFramework.xcodeproj`), **not** the workspace at the top level, to your Xcode workspace.
 
 2. Tell your App to link with the necessary frameworks and libraries:  
-	Open your project's build settings, under "Link Binary With Libraries" add:
-	
+	Open your project's build settings, under **Link Binary With Libraries** add:
+
 	`libSMART.a`  
 	`Security.framework`  
 	`libxml2.dylib`
 
-3. Make sure the compiler finds the header files:  
-	Open your project's build settings, look for **User Header Search Paths** (USER_HEADER_SEARCH_PATHS), and add:
+3. In the build settings look for **User Header Search Paths** (USER_HEADER_SEARCH_PATHS) and add:
 	
-	`$(BUILT_PRODUCTS_DIR)`, with _recursive_ checked
+    `$(PROJECT_DIR)/..`, with _recursive_ enabled
+    
+    This should point to the directory where the SMART framework resides. Here I'm assuming it's in the same parent directory as your app.
 
-4. The linker needs an additional flag:  
-	Still in your project's build settings, look for **Other Linker Flags** (OTHER_LDFLAGS), and add:
-	
-	`-ObjC`  
-	
+4. Still in your project's build settings, look for **Other Linker Flags** (OTHER_LDFLAGS), and add:
+
+	`-ObjC`
+
 	This must be added so the framework can be used as a static library, otherwise class categories will not work and your app will crash.
 
 5. You will have to provide initial server settings in the configuration file, but you can always change the properties in code later on (e.g. if your App can connect to different servers).  
