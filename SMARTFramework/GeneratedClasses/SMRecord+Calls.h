@@ -29,19 +29,19 @@
  */
 @interface SMRecord(Calls)
 
-- (void)getAllergies:(INSuccessRetvalueBlock)callback;
-- (void)getClinicalNotes:(INSuccessRetvalueBlock)callback;
-- (void)getDemographics:(INSuccessRetvalueBlock)callback;
-- (void)getEncounters:(INSuccessRetvalueBlock)callback;
-- (void)getFulfillments:(INSuccessRetvalueBlock)callback;
-- (void)getImmunizations:(INSuccessRetvalueBlock)callback;
-- (void)getLabPanel:(INSuccessRetvalueBlock)callback;
-- (void)getLabPanels:(INSuccessRetvalueBlock)callback;
-- (void)getLabResults:(INSuccessRetvalueBlock)callback;
-- (void)getMedications:(INSuccessRetvalueBlock)callback;
-- (void)getProblems:(INSuccessRetvalueBlock)callback;
-- (void)getSocialHistory:(INSuccessRetvalueBlock)callback;
-- (void)getVitalSignSets:(INSuccessRetvalueBlock)callback;
+- (void)getAllergies:(SMSuccessRetvalueBlock)callback;
+- (void)getClinicalNotes:(SMSuccessRetvalueBlock)callback;
+- (void)getDemographics:(SMSuccessRetvalueBlock)callback;
+- (void)getEncounters:(SMSuccessRetvalueBlock)callback;
+- (void)getFulfillments:(SMSuccessRetvalueBlock)callback;
+- (void)getImmunizations:(SMSuccessRetvalueBlock)callback;
+- (void)getLabPanel:(SMSuccessRetvalueBlock)callback;
+- (void)getLabPanels:(SMSuccessRetvalueBlock)callback;
+- (void)getLabResults:(SMSuccessRetvalueBlock)callback;
+- (void)getMedications:(SMSuccessRetvalueBlock)callback;
+- (void)getProblems:(SMSuccessRetvalueBlock)callback;
+- (void)getSocialHistory:(SMSuccessRetvalueBlock)callback;
+- (void)getVitalSignSets:(SMSuccessRetvalueBlock)callback;
 
 
 @end

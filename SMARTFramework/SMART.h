@@ -27,11 +27,11 @@
 
 
 // Dictionary keys
-extern NSString *const INErrorKey;							/// Dictionaries return an NSError for this key
-extern NSString *const INRecordIDKey;						/// Dictionaries return an NSString for this key. The key reflects the oauth URL param name.
-extern NSString *const INResponseDataKey;					/// Dictionaries return the server's response as NSData for this key
-extern NSString *const INResponseArrayKey;					/// Dictionaries return an NSArray for this key
-extern NSString *const INResponseDocumentKey;				/// Dictionaries return an IndivoDocument for this key
+extern NSString *const SMARTErrorKey;						/// Dictionaries return an NSError for this key
+extern NSString *const SMARTRecordIDKey;					/// Dictionaries return an NSString for this key. The key reflects the oauth URL param name.
+extern NSString *const SMARTResponseDataKey;				/// Dictionaries return the server's response as NSData for this key
+extern NSString *const SMARTResponseArrayKey;				/// Dictionaries return an NSArray for this key
+extern NSString *const SMARTResponseDocumentKey;			/// Dictionaries return an IndivoDocument for this key
 
 // Other globals
 extern NSString *const SMARTInternalScheme;					/// The URL scheme we use to identify when the framework should intercept a request
@@ -43,15 +43,15 @@ extern NSString *const SMARTRecordUserInfoKey;						/// For SMARTRecordDocuments
 
 /**
  *  A block returning a success flag and a user info dictionary.
- *  If success is NO, you might find an NSError object in userInfo with key "INErrorKey". If no error is present, the operation was cancelled.
+ *  If success is NO, you might find an NSError object in userInfo with key "SMARTErrorKey". If no error is present, the operation was cancelled.
  */
-typedef void (^INSuccessRetvalueBlock)(BOOL success, NSDictionary * __autoreleasing userInfo);
+typedef void (^SMSuccessRetvalueBlock)(BOOL success, NSDictionary * __autoreleasing userInfo);
 
 /**
  *  A block returning a flag whether the user cancelled and an error message on failure, nil otherwise.
  *  If userDidCancel is NO and errorMessage is nil, the operation completed successfully.
  */
-typedef void (^INCancelErrorBlock)(BOOL userDidCancel, NSString * __autoreleasing errorMessage);
+typedef void (^SMCancelErrorBlock)(BOOL userDidCancel, NSString * __autoreleasing errorMessage);
 
 /// DLog only displays if -DSMART_DEBUG is set, ALog always displays output regardless of the DEBUG setting
 #ifndef DLog
@@ -85,7 +85,7 @@ typedef void (^INCancelErrorBlock)(BOOL userDidCancel, NSString * __autoreleasin
 /// Make callback or logging easy
 #ifndef CANCEL_ERROR_CALLBACK_OR_LOG_USER_INFO
 # define CANCEL_ERROR_CALLBACK_OR_LOG_USER_INFO(cb, didCancel, userInfo)\
-	NSError *errorFromUserInfoInBlock = [userInfo objectForKey:INErrorKey];\
+	NSError *errorFromUserInfoInBlock = [userInfo objectForKey:SMARTErrorKey];\
 	if (cb) {\
 		cb(didCancel, [errorFromUserInfoInBlock localizedDescription]);\
 	}\
@@ -108,7 +108,7 @@ typedef void (^INCancelErrorBlock)(BOOL userDidCancel, NSString * __autoreleasin
 		cb(success, userInfo);\
 	}\
 	else if (!success) {\
-		DLog(@"No callback on this method, logging to debug. Result: %@", [[userInfo objectForKey:INErrorKey] localizedDescription]);\
+		DLog(@"No callback on this method, logging to debug. Result: %@", [[userInfo objectForKey:SMARTErrorKey] localizedDescription]);\
 	}
 #endif
 #ifndef SUCCESS_RETVAL_CALLBACK_OR_LOG_ERR_STRING
@@ -118,7 +118,7 @@ typedef void (^INCancelErrorBlock)(BOOL userDidCancel, NSString * __autoreleasin
 		if (errStr) {\
 			errorFromErrStrInBlock = [NSError errorWithDomain:NSCocoaErrorDomain code:(errCode ? errCode : 0) userInfo:[NSDictionary dictionaryWithObject:errStr forKey:NSLocalizedDescriptionKey]];\
 		}\
-		cb((nil == errorFromErrStrInBlock), errorFromErrStrInBlock ? [NSDictionary dictionaryWithObject:errorFromErrStrInBlock forKey:INErrorKey] : nil);\
+		cb((nil == errorFromErrStrInBlock), errorFromErrStrInBlock ? [NSDictionary dictionaryWithObject:errorFromErrStrInBlock forKey:SMARTErrorKey] : nil);\
 	}\
 	else if (errStr) {\
 		DLog(@"No callback on this method, logging to debug. Error %d: %@", errCode, errStr);\

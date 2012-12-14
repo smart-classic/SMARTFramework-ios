@@ -1,5 +1,5 @@
 /*
- INURLFetcher.h
+ SMURLFetcher.h
  IndivoFramework
  
  Created by Pascal Pfiffner on 11/07/11.
@@ -20,27 +20,27 @@
  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#import "INURLFetcher.h"
-#import "INURLLoader.h"
+#import "SMURLFetcher.h"
+#import "SMURLLoader.h"
 
 
-@interface INURLFetcher ()
+@interface SMURLFetcher ()
 
 @property (nonatomic, readwrite, copy) NSArray *successfulLoads;
 @property (nonatomic, readwrite, copy) NSArray *failedLoads;
 @property (nonatomic, strong) NSMutableArray *mySuccessfulLoads;
 @property (nonatomic, strong) NSMutableArray *myFailedLoads;
 @property (nonatomic, strong) NSMutableArray *queuedLoaders;
-@property (nonatomic, strong) INURLLoader *currentLoader;
-@property (nonatomic, copy) INCancelErrorBlock callback;
+@property (nonatomic, strong) SMURLLoader *currentLoader;
+@property (nonatomic, copy) SMCancelErrorBlock callback;
 
-- (void)loaderDidFinish:(INURLLoader *)aLoader withErrorMessage:(NSString *)errorMessage;
+- (void)loaderDidFinish:(SMURLLoader *)aLoader withErrorMessage:(NSString *)errorMessage;
 - (void)didCancel;
 
 @end
 
 
-@implementation INURLFetcher
+@implementation SMURLFetcher
 
 @synthesize successfulLoads, failedLoads;
 @synthesize mySuccessfulLoads, myFailedLoads, queuedLoaders, currentLoader, callback;
@@ -53,7 +53,7 @@
  *  @param anURLArray An NSArray full of NSURL instances
  *  @param aCallback The callback block to be executed when the call has finished
  */
-- (void)getURLs:(NSArray *)anURLArray callback:(INCancelErrorBlock)aCallback
+- (void)getURLs:(NSArray *)anURLArray callback:(SMCancelErrorBlock)aCallback
 {
 	if (queuedLoaders) {
 		CANCEL_ERROR_CALLBACK_OR_LOG_ERR_STRING(aCallback, NO, @"A queue is already being loaded, cannot begin a new one")
@@ -66,13 +66,13 @@
 	if ([anURLArray count] > 0) {
 		self.callback = aCallback;
 		self.queuedLoaders = [NSMutableArray arrayWithCapacity:[anURLArray count] - 1];
-		self.currentLoader = [[INURLLoader alloc] initWithURL:[anURLArray objectAtIndex:0]];
+		self.currentLoader = [[SMURLLoader alloc] initWithURL:[anURLArray objectAtIndex:0]];
 		
 		// create loaders for each URL
 		BOOL first = YES;
 		for (NSURL *url in anURLArray) {
 			if (!first) {
-				INURLLoader *loader = [[INURLLoader alloc] initWithURL:url];
+				SMURLLoader *loader = [[SMURLLoader alloc] initWithURL:url];
 				[queuedLoaders addObject:loader];
 			}
 			else {
@@ -101,7 +101,7 @@
  *  @param errorMessage An error message if loading was not successful, otherwise the loader's response status is checked and if it's < 400 the loading is
  *  deemed successful
  */
-- (void)loaderDidFinish:(INURLLoader *)aLoader withErrorMessage:(NSString *)errorMessage
+- (void)loaderDidFinish:(SMURLLoader *)aLoader withErrorMessage:(NSString *)errorMessage
 {
 	// load succeeded
 	if (!errorMessage && aLoader.responseStatus < 400) {
@@ -118,7 +118,7 @@
 	if ([queuedLoaders count] > 0) {
 		self.currentLoader = [queuedLoaders objectAtIndex:0];
 		
-		__block INURLFetcher *this = self;
+		__block SMURLFetcher *this = self;
 		[currentLoader getWithCallback:^(BOOL userDidCancel, NSString *__autoreleasing errorMessage) {
 			if (userDidCancel) {
 				[self didCancel];

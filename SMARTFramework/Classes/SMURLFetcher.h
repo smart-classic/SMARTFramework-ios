@@ -1,5 +1,5 @@
 /*
- INURLFetcher.h
+ SMURLFetcher.h
  IndivoFramework
  
  Created by Pascal Pfiffner on 11/07/11.
@@ -25,15 +25,15 @@
 
 
 /**
- *  The fetcher is an accessor-class to INURLLoader objects; for example if you want to queue up loading multiple URLs you
- *  can use one fetcher instead of handling multiple INURLLoader instances yourself.
+ *  The fetcher is an accessor-class to SMURLLoader objects; for example if you want to queue up loading multiple URLs you
+ *  can use one fetcher instead of handling multiple SMURLLoader instances yourself.
  */
-@interface INURLFetcher : NSObject
+@interface SMURLFetcher : NSObject
 
-@property (nonatomic, readonly, copy) NSArray *successfulLoads;					///< Contains INURLLoader instances which loaded with an HTTP response < 400
-@property (nonatomic, readonly, copy) NSArray *failedLoads;						///< Contains all INURLLoader instances that failed to load for any reason
+@property (nonatomic, readonly, copy) NSArray *successfulLoads;					///< Contains SMURLLoader instances which loaded with an HTTP response < 400
+@property (nonatomic, readonly, copy) NSArray *failedLoads;						///< Contains all SMURLLoader instances that failed to load for any reason
 
-- (void)getURLs:(NSArray *)anURLArray callback:(INCancelErrorBlock)aCallback;
+- (void)getURLs:(NSArray *)anURLArray callback:(SMCancelErrorBlock)aCallback;
 - (void)cancel;
 - (BOOL)isIdle;
 

@@ -1,5 +1,5 @@
 /*
- INURLLoader.h
+ SMURLLoader.h
  IndivoFramework
  
  Created by Pascal Pfiffner on 10/13/11.
@@ -20,11 +20,11 @@
  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#import "INURLLoader.h"
+#import "SMURLLoader.h"
 
-@interface INURLLoader ()
+@interface SMURLLoader ()
 
-@property (nonatomic, copy) INCancelErrorBlock callback;
+@property (nonatomic, copy) SMCancelErrorBlock callback;
 @property (nonatomic, strong) NSMutableData *loadingCache;
 @property (nonatomic, readwrite, copy) NSData *responseData;
 @property (nonatomic, readwrite, copy) NSString *responseString;
@@ -35,14 +35,14 @@
 @property (nonatomic, assign) NSTimeInterval timeoutInterval;
 @property (nonatomic, strong) NSTimer *timeout;
 
-- (void)prepareWithCallback:(INCancelErrorBlock)aCallback;
+- (void)prepareWithCallback:(SMCancelErrorBlock)aCallback;
 - (void)didFinishWithError:(NSError *)anError wasCancelled:(BOOL)didCancel;
 - (void)didTimeout:(NSTimer *)timer;
 
 @end
 
 
-@implementation INURLLoader
+@implementation SMURLLoader
 
 @synthesize url, callback, loadingCache;
 @synthesize responseData, responseString, responseStatus;
@@ -71,7 +71,7 @@
  *  This method is automatically called in performRequest:withCallback:, you most likely do not need to call it manually.
  *  @param aCallback The callback block to execute after loading has finished
  */
-- (void)prepareWithCallback:(INCancelErrorBlock)aCallback
+- (void)prepareWithCallback:(SMCancelErrorBlock)aCallback
 {
 	self.responseData = nil;
 	self.responseString = nil;
@@ -88,7 +88,7 @@
  *  Start loading data from an URL
  *  @param aCallback The callback block to execute after loading has finished
  */
-- (void)getWithCallback:(INCancelErrorBlock)aCallback
+- (void)getWithCallback:(SMCancelErrorBlock)aCallback
 {
 	if (!url) {
 		CANCEL_ERROR_CALLBACK_OR_LOG_ERR_STRING(aCallback, NO, @"No URL given");
@@ -96,7 +96,7 @@
 	}
 	
 	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-	[request setTimeoutInterval:kINURLLoaderDefaultTimeoutInterval];
+	[request setTimeoutInterval:kSMURLLoaderDefaultTimeoutInterval];
 	
 	[self performRequest:request withCallback:aCallback];
 }
@@ -106,7 +106,7 @@
  *  @param postBody The HTTP-body to post
  *  @param aCallback The callback block to execute after loading has finished
  */
-- (void)post:(NSString *)postBody withCallback:(INCancelErrorBlock)aCallback
+- (void)post:(NSString *)postBody withCallback:(SMCancelErrorBlock)aCallback
 {
 	if (!url) {
 		CANCEL_ERROR_CALLBACK_OR_LOG_ERR_STRING(aCallback, NO, @"No URL given");
@@ -116,7 +116,7 @@
 	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
 	request.HTTPMethod = @"POST";
 	request.HTTPBody = [postBody dataUsingEncoding:NSUTF8StringEncoding];			/// @todo Should we URL encode this?
-	[request setTimeoutInterval:kINURLLoaderDefaultTimeoutInterval];
+	[request setTimeoutInterval:kSMURLLoaderDefaultTimeoutInterval];
 	
 	[self performRequest:request withCallback:aCallback];
 }
@@ -127,7 +127,7 @@
  *  @param aRequest The request to be performed
  *  @param aCallback The callback block to execute after loading has finished
  */
-- (void)performRequest:(NSURLRequest *)aRequest withCallback:(INCancelErrorBlock)aCallback
+- (void)performRequest:(NSURLRequest *)aRequest withCallback:(SMCancelErrorBlock)aCallback
 {
 	if (!url) {
 		self.url = aRequest.URL;
@@ -139,7 +139,7 @@
 	
 	// prepare and set a timeout timer manually
 	[self prepareWithCallback:aCallback];
-	self.timeoutInterval = fmin(kINURLLoaderDefaultTimeoutInterval, aRequest.timeoutInterval);
+	self.timeoutInterval = fmin(kSMURLLoaderDefaultTimeoutInterval, aRequest.timeoutInterval);
 	self.timeout = [NSTimer scheduledTimerWithTimeInterval:timeoutInterval target:self selector:@selector(didTimeout:) userInfo:nil repeats:NO];
 	
 	self.currentConnection = [NSURLConnection connectionWithRequest:aRequest delegate:self];

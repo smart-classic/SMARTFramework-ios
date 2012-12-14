@@ -34,7 +34,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "SMART.h"
-#import "INServerCall.h"
+#import "SMServerCall.h"
 #import "SMLoginViewController.h"
 
 @class SMServer;
@@ -101,13 +101,13 @@
 
 + (id)serverWithDelegate:(id<SMARTServerDelegate>)aDelegate;
 
-- (void)selectRecord:(INCancelErrorBlock)callback;
-- (void)authenticate:(INCancelErrorBlock)callback;
+- (void)selectRecord:(SMCancelErrorBlock)callback;
+- (void)authenticate:(SMCancelErrorBlock)callback;
 
 // authentication
-- (void)performWhenReadyToConnect:(INCancelErrorBlock)callback;
-- (void)fetchServerManifest:(INCancelErrorBlock)callback;
-- (void)fetchAppManifest:(INCancelErrorBlock)callback;
+- (void)performWhenReadyToConnect:(SMCancelErrorBlock)callback;
+- (void)fetchServerManifest:(SMCancelErrorBlock)callback;
+- (void)fetchAppManifest:(SMCancelErrorBlock)callback;
 - (BOOL)shouldAutomaticallyAuthenticateFrom:(NSURL *)authURL;
 - (NSURL *)authorizeCallbackURL;
 - (NSDictionary *)additionalRequestTokenParameters;
@@ -116,12 +116,12 @@
 - (SMRecord *)recordWithId:(NSString *)recordId;
 
 // app-specific storage
-- (void)fetchAppSpecificDocumentsWithCallback:(INSuccessRetvalueBlock)callback;
+- (void)fetchAppSpecificDocumentsWithCallback:(SMSuccessRetvalueBlock)callback;
 
 // performing calls
-- (void)performCall:(INServerCall *)aCall;
-- (void)callDidFinish:(INServerCall *)aCall;
-- (void)suspendCall:(INServerCall *)aCall;
+- (void)performCall:(SMServerCall *)aCall;
+- (void)callDidFinish:(SMServerCall *)aCall;
+- (void)suspendCall:(SMServerCall *)aCall;
 
 // OAuth
 - (MPOAuthAPI *)createOAuthWithAuthMethodClass:(NSString *)authClass error:(NSError *__autoreleasing *)error;

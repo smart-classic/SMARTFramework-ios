@@ -1,5 +1,5 @@
 /*
- INServerCall.h
+ SMServerCall.h
  IndivoFramework
  
  Created by Pascal Pfiffner on 9/16/11.
@@ -21,11 +21,11 @@
  */
 
 
-#import "INServerCall.h"
+#import "SMServerCall.h"
 #import "SMServer.h"
 
 
-@interface INServerCall ()
+@interface SMServerCall ()
 
 @property (nonatomic, readwrite, assign) BOOL hasBeenFired;
 @property (nonatomic, assign) BOOL retryWithNewTokenAfterFailure;
@@ -37,7 +37,7 @@
 @end
 
 
-@implementation INServerCall
+@implementation SMServerCall
 
 @synthesize server;
 @synthesize method, HTTPMethod, contentType, body, parameters, oauth, finishIfAuthenticated;
@@ -47,9 +47,9 @@
 /**
  *  Convenience constructor, sets the server
  *  @param aServer An indivo server instance
- *  @return an autoreleased INServerCall instance
+ *  @return an autoreleased SMServerCall instance
  */
-+ (INServerCall *)newForServer:(id)aServer
++ (SMServerCall *)newForServer:(id)aServer
 {
 	return [[self alloc] initWithServer:aServer];
 }
@@ -116,7 +116,7 @@
  *  @param inOAuth The MPOAuthAPI instance to use for the call
  *  @param inCallback The callback block to call when the method has finished
  */
-- (void)get:(NSString *)inMethod withParameters:(NSArray *)inParameters oauth:(MPOAuthAPI *)inOAuth callback:(INSuccessRetvalueBlock)inCallback
+- (void)get:(NSString *)inMethod withParameters:(NSArray *)inParameters oauth:(MPOAuthAPI *)inOAuth callback:(SMSuccessRetvalueBlock)inCallback
 {
 	self.method = inMethod;
 	self.parameters = inParameters;
@@ -134,7 +134,7 @@
  *  @param inOAuth The MPOAuthAPI instance to use for the call
  *  @param inCallback The callback block to call when the method has finished
  */
-- (void)post:(NSString *)inMethod withParameters:(NSArray *)inParameters oauth:(MPOAuthAPI *)inOAuth callback:(INSuccessRetvalueBlock)inCallback
+- (void)post:(NSString *)inMethod withParameters:(NSArray *)inParameters oauth:(MPOAuthAPI *)inOAuth callback:(SMSuccessRetvalueBlock)inCallback
 {
 	self.method = inMethod;
 	self.parameters = inParameters;
@@ -152,7 +152,7 @@
  *  @param inOAuth The MPOAuthAPI instance to use for the call
  *  @param inCallback The callback block to call when the method has finished
  */
-- (void)post:(NSString *)inMethod body:(NSString *)bodyString oauth:(MPOAuthAPI *)inOAuth callback:(INSuccessRetvalueBlock)inCallback
+- (void)post:(NSString *)inMethod body:(NSString *)bodyString oauth:(MPOAuthAPI *)inOAuth callback:(SMSuccessRetvalueBlock)inCallback
 {
 	self.method = inMethod;
 	self.body = bodyString;
@@ -171,7 +171,7 @@
  *  @param inOAuth The MPOAuthAPI instance to use for the call
  *  @param inCallback The callback block to call when the method has finished
  */
-- (void)fire:(NSString *)inMethod withParameters:(NSArray *)inParameters httpMethod:(NSString *)httpMethod oauth:(MPOAuthAPI *)inOAuth callback:(INSuccessRetvalueBlock)inCallback
+- (void)fire:(NSString *)inMethod withParameters:(NSArray *)inParameters httpMethod:(NSString *)httpMethod oauth:(MPOAuthAPI *)inOAuth callback:(SMSuccessRetvalueBlock)inCallback
 {
 	self.method = inMethod;
 	self.parameters = inParameters;
@@ -261,7 +261,7 @@
 - (void)abortWithError:(NSError *)error
 {
 	/// @todo truly abort loading, if in progress
-	[self didFinishSuccessfully:NO returnObject:(error ? [NSDictionary dictionaryWithObject:error forKey:INErrorKey] : nil)];
+	[self didFinishSuccessfully:NO returnObject:(error ? [NSDictionary dictionaryWithObject:error forKey:SMARTErrorKey] : nil)];
 }
 
 /**
@@ -275,7 +275,7 @@
 	self.oauth = nil;
 	
 	// inform the server - the server will remove us from his pool, so we need to create a strong reference to ourselves which lasts for the scope
-	INServerCall *this = self;
+	SMServerCall *this = self;
 	[server callDidFinish:self];
 	
 	// send callback and inform the server
@@ -338,7 +338,7 @@
 		error = nil;
 		ERR(&error, @"Authentication did fail with an unknown error", 0);
 	}
-	[self didFinishSuccessfully:NO returnObject:[NSDictionary dictionaryWithObject:error forKey:INErrorKey]];
+	[self didFinishSuccessfully:NO returnObject:[NSDictionary dictionaryWithObject:error forKey:SMARTErrorKey]];
 }
 
 
@@ -361,7 +361,7 @@
 	
 	// we finally got an access token, that's what we've been waiting for
 	else if ([MPOAuthNotificationAccessTokenReceived isEqualToString:nName]) {
-		if (![nDict objectForKey:INRecordIDKey]) {
+		if (![nDict objectForKey:SMARTRecordIDKey]) {
 			DLog(@"Got access token but no record id??\n%@", nDict);
 		}
 		self.responseObject = nDict;
@@ -372,7 +372,7 @@
 		NSError *error = nil;
 		//ERR(&error, [nDict objectForKey:NSLocalizedDescriptionKey] ? [nDict objectForKey:NSLocalizedDescriptionKey] : @"Access Token Rejected", 403);	// server does always send "Permission Denied"
 		ERR(&error, @"Access Token Rejected", 403);
-		self.responseObject = [NSDictionary dictionaryWithObject:error forKey:INErrorKey];
+		self.responseObject = [NSDictionary dictionaryWithObject:error forKey:SMARTErrorKey];
 		
 		if (!didRetryWithNewTokenAfterFailure) {
 			DLog(@"WARNING: The access token was rejected. I will try to get a new token, show the \"Authorize App\" page to the user if necessary and then re-perform the call.");
@@ -384,7 +384,7 @@
 	else if ([MPOAuthNotificationErrorHasOccurred isEqualToString:nName]) {
 		NSError *error = nil;
 		ERR(&error, [nDict objectForKey:NSLocalizedDescriptionKey] ? [nDict objectForKey:NSLocalizedDescriptionKey] : @"OAuth Error", 400);
-		self.responseObject = [NSDictionary dictionaryWithObject:error forKey:INErrorKey];
+		self.responseObject = [NSDictionary dictionaryWithObject:error forKey:SMARTErrorKey];
 	}
 	
 	/// @todo unhandled notification, ignore as soon as everything works
@@ -399,7 +399,7 @@
 - (void)connectionFinishedWithResponse:(NSURLResponse *)aResponse data:(NSData *)inData
 {
 	NSMutableDictionary *retDict = responseObject ? [responseObject mutableCopy] : [NSMutableDictionary dictionary];
-	[retDict setObject:inData forKey:INResponseDataKey];
+	[retDict setObject:inData forKey:SMARTResponseDataKey];
 	
 	self.responseObject = retDict;
 	[self didFinishSuccessfully:YES returnObject:responseObject];
@@ -408,7 +408,7 @@
 - (void)connectionFailedWithResponse:(NSURLResponse *)aResponse error:(NSError *)inError
 {
 	// get the correct error (if we have one in responseObject alread, we ignore inError)
-	NSError *prevError = [responseObject objectForKey:INErrorKey];
+	NSError *prevError = [responseObject objectForKey:SMARTErrorKey];
 	NSError *actualError = prevError ? prevError : inError;
 	DLog(@"%@ %@  xxxxx  %@", HTTPMethod, method, [actualError localizedDescription]);
 	
@@ -431,7 +431,7 @@
 	
 	// set the response object
 	if (!prevError) {
-		self.responseObject = [NSDictionary dictionaryWithObject:inError forKey:INErrorKey];
+		self.responseObject = [NSDictionary dictionaryWithObject:inError forKey:SMARTErrorKey];
 	}
 	else {
 		DLog(@"Failed with error %@, but will return previously encountered error %@", inError, prevError);

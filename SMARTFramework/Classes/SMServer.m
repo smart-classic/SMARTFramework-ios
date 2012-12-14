@@ -24,8 +24,8 @@
 #import "SMServer.h"
 #import "SMRecord.h"
 #import "SMARTObjects.h"
-#import "INURLLoader.h"
-#import "INServerCall.h"
+#import "SMURLLoader.h"
+#import "SMServerCall.h"
 #import "MPOAuthAPI.h"
 #import "MPOAuthAuthenticationMethodOAuth.h"			// to get ahold of dictionary key constants
 #ifndef UNIT_TEST
@@ -40,7 +40,7 @@
 @property (nonatomic, strong) MPOAuthAPI *oauth;								/// Handle to our MPOAuth instance with App credentials
 @property (nonatomic, strong) NSMutableArray *callQueue;						/// Calls are queued instead of performed in parallel to avoid getting inconsistent results
 @property (nonatomic, strong) NSMutableArray *suspendedCalls;					/// Calls that were dequeued, we need to hold on to them to not deallocate them
-@property (nonatomic, strong) INServerCall *currentCall;						/// Only one call at a time, this is the current one
+@property (nonatomic, strong) SMServerCall *currentCall;						/// Only one call at a time, this is the current one
 
 @property (nonatomic, strong) SMLoginViewController *loginVC;					/// A handle to the currently shown login view controller
 @property (nonatomic, readwrite, copy) NSString *lastOAuthVerifier;
@@ -56,11 +56,11 @@
 @implementation SMServer
 
 
-NSString *const INErrorKey = @"SMARTError";
-NSString *const INRecordIDKey = @"record_id";
-NSString *const INResponseDataKey = @"SMARTServerCallResponseData";
-NSString *const INResponseArrayKey = @"SMARTResponseArray";
-NSString *const INResponseDocumentKey = @"SMARTResponseDocument";
+NSString *const SMARTErrorKey = @"SMARTError";
+NSString *const SMARTRecordIDKey = @"record_id";
+NSString *const SMARTResponseDataKey = @"SMARTServerCallResponseData";
+NSString *const SMARTResponseArrayKey = @"SMARTResponseArray";
+NSString *const SMARTResponseDocumentKey = @"SMARTResponseDocument";
 
 NSString *const SMARTInternalScheme = @"smart-app";
 NSString *const SMARTOAuthRecordIDKey = @"smart_record_id";
@@ -144,7 +144,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
  *  Authentication calls are wrapped into this method since we need to know our endpoints before we can authenticate.
  *  @param callback The callback to perform when ready
  */
-- (void)performWhenReadyToConnect:(INCancelErrorBlock)callback
+- (void)performWhenReadyToConnect:(SMCancelErrorBlock)callback
 {
 	if ([[_url absoluteString] length] < 5) {
 		CANCEL_ERROR_CALLBACK_OR_LOG_ERR_STRING(callback, NO, L_(@"No server URL provided"))		// Error 1001
@@ -174,10 +174,10 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
  *  @param callback The callback to perform once the manifest has been fetched
  *  @warning You usually don't call this method manually, use "prepareToConnect:" and access the server manifest in "manifest" afterwards.
  */
-- (void)fetchServerManifest:(INCancelErrorBlock)callback
+- (void)fetchServerManifest:(SMCancelErrorBlock)callback
 {
 	NSURL *manifestURL = [self.url URLByAppendingPathComponent:@"manifest"];
-	INURLLoader *loader = [INURLLoader loaderWithURL:manifestURL];
+	SMURLLoader *loader = [SMURLLoader loaderWithURL:manifestURL];
 	[loader getWithCallback:^(BOOL userDidCancel, NSString *__autoreleasing errorMessage) {
 		NSString *myError = nil;
 		
@@ -212,7 +212,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
  *  @param callback The callback to perform when the manifest has been fetched
  *  TODO: Implement
  */
-- (void)fetchAppManifest:(INCancelErrorBlock)callback
+- (void)fetchAppManifest:(SMCancelErrorBlock)callback
 {
 	CANCEL_ERROR_CALLBACK_OR_LOG_ERR_STRING(callback, NO, @"Not implemented");
 }
@@ -241,14 +241,14 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
  *  @param callback A block with a first BOOL argument, which will be YES if the user cancelled the action, and an error string argument, which will be nil if
  *  authentication was successful. By the time this callback is called, the "activeRecord" property will be set (if the call was successful).
  */
-- (void)selectRecord:(INCancelErrorBlock)callback
+- (void)selectRecord:(SMCancelErrorBlock)callback
 {
 	// dequeue current call
 	if (_currentCall) {
 		[self suspendCall:_currentCall];
 	}
 	
-	// we use a INServerCall object to capture the callback block and fire it automatically when the OAuth process has completed
+	// we use a SMServerCall object to capture the callback block and fire it automatically when the OAuth process has completed
 	__unsafe_unretained SMServer *this = self;
 	[self performWhenReadyToConnect:^(BOOL userDidCancel, NSString * errorMessage) {
 		if (errorMessage || userDidCancel) {
@@ -264,7 +264,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 		}
 		
 		// all good
-		this.currentCall = [INServerCall newForServer:this];
+		this.currentCall = [SMServerCall newForServer:this];
 		this.currentCall.HTTPMethod = @"POST";
 		this.currentCall.finishIfAuthenticated = YES;
 		
@@ -274,7 +274,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 			
 			// successfully selected a record
 			if (success) {
-				NSString *forRecordId = [userInfo objectForKey:INRecordIDKey];
+				NSString *forRecordId = [userInfo objectForKey:SMARTRecordIDKey];
 				if (forRecordId && [this.activeRecord is:forRecordId]) {
 					this.activeRecord.accessToken = [userInfo objectForKey:@"oauth_token"];
 					this.activeRecord.accessTokenSecret = [userInfo objectForKey:@"oauth_token_secret"];
@@ -302,7 +302,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 			
 			// failed: Cancelled or other failure
 			else {
-				didCancel = (nil == [userInfo objectForKey:INErrorKey]);
+				didCancel = (nil == [userInfo objectForKey:SMARTErrorKey]);
 				CANCEL_ERROR_CALLBACK_OR_LOG_USER_INFO(callback, didCancel, userInfo)
 				[this _dismissLoginScreenAnimated:YES];
 			}
@@ -317,9 +317,9 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 /**
  *  Strips current credentials and then does the OAuth dance again. The authorize screen is automatically shown if necessary.
  *  @warning This call is only useful if a call is in progress (but has hit an invalid access token), so it will not do anything without a current call.
- *  @param callback An INCancelErrorBlock callback
+ *  @param callback An SMCancelErrorBlock callback
  */
-- (void)authenticate:(INCancelErrorBlock)callback
+- (void)authenticate:(SMCancelErrorBlock)callback
 {
 	NSError *error = nil;
 	
@@ -347,7 +347,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 		}
 		
 		// all good
-		this.currentCall = [INServerCall newForServer:this];
+		this.currentCall = [SMServerCall newForServer:this];
 		this.currentCall.HTTPMethod = @"POST";
 		this.currentCall.finishIfAuthenticated = YES;
 		
@@ -357,7 +357,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 			
 			// successfully authenticated
 			if (success) {
-				NSString *forRecordId = [userInfo objectForKey:INRecordIDKey];
+				NSString *forRecordId = [userInfo objectForKey:SMARTRecordIDKey];
 				if (forRecordId && [this.activeRecord is:forRecordId]) {
 					this.activeRecord.accessToken = [userInfo objectForKey:@"oauth_token"];
 					this.activeRecord.accessTokenSecret = [userInfo objectForKey:@"oauth_token_secret"];
@@ -365,7 +365,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 				
 				userInfo = nil;
 			}
-			else if (![userInfo objectForKey:INErrorKey]) {
+			else if (![userInfo objectForKey:SMARTErrorKey]) {
 				didCancel = YES;
 			}
 			
@@ -389,10 +389,10 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
  *  GETs documents from /apps/{app id}/documents/ with a two-legged OAuth call.
  *  @param callback The callback to execute once the call has finished
  */
-- (void)fetchAppSpecificDocumentsWithCallback:(INSuccessRetvalueBlock)callback
+- (void)fetchAppSpecificDocumentsWithCallback:(SMSuccessRetvalueBlock)callback
 {
-	// create the desired INServerCall instance
-	INServerCall *call = [INServerCall new];
+	// create the desired SMServerCall instance
+	SMServerCall *call = [SMServerCall new];
 	call.method = [NSString stringWithFormat:@"/apps/%@/documents/", self.appId];
 	call.HTTPMethod = @"GET";
 	
@@ -402,8 +402,8 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 		
 		// fetched successfully...
 		if (success) {
-			DLog(@"Incoming DATA: %@", [userInfo objectForKey:INResponseDataKey]);
-			//usrIfo = [NSDictionary dictionaryWithObject:appDocArr forKey:INResponseArrayKey];
+			DLog(@"Incoming DATA: %@", [userInfo objectForKey:SMARTResponseDataKey]);
+			//usrIfo = [NSDictionary dictionaryWithObject:appDocArr forKey:SMARTResponseArrayKey];
 		}
 		else {
 			usrIfo = userInfo;
@@ -567,7 +567,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
  *  This method is usally called by INServerObject subclasses, but you can use it bare if you wish
  *  @param aCall The call to perform
  */
-- (void)performCall:(INServerCall *)aCall
+- (void)performCall:(SMServerCall *)aCall
 {
 	if (!aCall) {
 		DLog(@"No call to perform");
@@ -612,7 +612,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
  *  The call will have called the callback by now, no need for us to do any further handling
  *  @param aCall The call that finished
  */
-- (void)callDidFinish:(INServerCall *)aCall
+- (void)callDidFinish:(SMServerCall *)aCall
 {
 	[_callQueue removeObject:aCall];
 	if (aCall == _currentCall) {
@@ -620,7 +620,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 	}
 	
 	// move on
-	INServerCall *nextCall = nil;
+	SMServerCall *nextCall = nil;
 	if ([_callQueue count] > 0) {
 		nextCall = [_callQueue objectAtIndex:0];
 	}
@@ -641,7 +641,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
  *  @warning Do NOT use this to cancel a call because the callback will not be called!
  *  @param aCall The call to suspend
  */
-- (void)suspendCall:(INServerCall *)aCall
+- (void)suspendCall:(SMServerCall *)aCall
 {
 	[_suspendedCalls addObject:aCall];
 	[_callQueue removeObject:aCall];

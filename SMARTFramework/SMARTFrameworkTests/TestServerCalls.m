@@ -46,7 +46,7 @@
 - (void)testAllergy
 {
 	[_record getAllergies:^(BOOL success, NSDictionary *__autoreleasing userInfo) {
-		NSArray *response = [userInfo objectForKey:INResponseArrayKey];
+		NSArray *response = [userInfo objectForKey:SMARTResponseArrayKey];
 		STAssertTrue(2 == [response count], @"Should have gotten 2 allergies");
 		
 		SMAllergy *allergy1 = [response objectAtIndex:0];

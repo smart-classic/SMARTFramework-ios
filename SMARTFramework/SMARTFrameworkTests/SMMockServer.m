@@ -66,7 +66,7 @@
  *  performing the OAuth dance, if necessary, and then performing the actual call. We bypass this by just returning XML for all paths that are understood (as
  *  declared in mock-callbacks.plist)
  */
-- (void)performCall:(INServerCall *)aCall
+- (void)performCall:(SMServerCall *)aCall
 {
 	// which fixture did we want?
 	NSDictionary *methodPaths = [_mockMappings objectForKey:aCall.HTTPMethod];
@@ -87,7 +87,7 @@
 	
 	// ok, we know about this path, read the fixture...
 	NSData *mockResponse = [self readFixture:fixturePath];
-	NSMutableDictionary *response = [NSMutableDictionary dictionaryWithObject:mockResponse forKey:INResponseDataKey];
+	NSMutableDictionary *response = [NSMutableDictionary dictionaryWithObject:mockResponse forKey:SMARTResponseDataKey];
 	
 	/* ...parse it...
 	NSError *error = nil;

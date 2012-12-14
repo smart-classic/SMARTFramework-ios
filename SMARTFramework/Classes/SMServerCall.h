@@ -1,5 +1,5 @@
 /*
- INServerCall.h
+ SMServerCall.h
  IndivoFramework
  
  Created by Pascal Pfiffner on 9/16/11.
@@ -31,7 +31,7 @@
 /**
  *  Our internal class to handle a call to the server, signed with OAuth credentials,
  */
-@interface INServerCall : NSObject <MPOAuthAPIAuthDelegate, MPOAuthAPILoadDelegate>
+@interface SMServerCall : NSObject <MPOAuthAPIAuthDelegate, MPOAuthAPILoadDelegate>
 
 @property (nonatomic, assign) SMServer *server;							///< The server upon which we are called
 @property (nonatomic, copy) NSString *method;							///< The method to call on the server URL
@@ -41,16 +41,16 @@
 @property (nonatomic, strong) NSArray *parameters;						///< An array with @"key=value" strings to be passed to the server, overridden by "body"
 @property (nonatomic, strong) MPOAuthAPI *oauth;						///< The call will retain a copy of the oauth instance
 @property (nonatomic, assign) BOOL finishIfAuthenticated;				///< If YES the call is merely a proxy to the OAuth authentication call
-@property (nonatomic, copy) INSuccessRetvalueBlock myCallback;			///< The callback after finishing our call
+@property (nonatomic, copy) SMSuccessRetvalueBlock myCallback;			///< The callback after finishing our call
 @property (nonatomic, readonly, assign) BOOL hasBeenFired;				///< As the name suggests, tells us whether it has been sent on the journey
 
-+ (INServerCall *)newForServer:(SMServer *)aServer;
++ (SMServerCall *)newForServer:(SMServer *)aServer;
 - (id)initWithServer:(SMServer *)aServer;
 
-- (void)get:(NSString *)inMethod withParameters:(NSArray *)inParameters oauth:(MPOAuthAPI *)inOAuth callback:(INSuccessRetvalueBlock)inCallback;
-- (void)post:(NSString *)inMethod withParameters:(NSArray *)inParameters oauth:(MPOAuthAPI *)inOAuth callback:(INSuccessRetvalueBlock)inCallback;
-- (void)post:(NSString *)inMethod body:(NSString *)dataString oauth:(MPOAuthAPI *)inOAuth callback:(INSuccessRetvalueBlock)inCallback;
-- (void)fire:(NSString *)inMethod withParameters:(NSArray *)inParameters httpMethod:(NSString *)httpMethod oauth:(MPOAuthAPI *)inOAuth callback:(INSuccessRetvalueBlock)inCallback;
+- (void)get:(NSString *)inMethod withParameters:(NSArray *)inParameters oauth:(MPOAuthAPI *)inOAuth callback:(SMSuccessRetvalueBlock)inCallback;
+- (void)post:(NSString *)inMethod withParameters:(NSArray *)inParameters oauth:(MPOAuthAPI *)inOAuth callback:(SMSuccessRetvalueBlock)inCallback;
+- (void)post:(NSString *)inMethod body:(NSString *)dataString oauth:(MPOAuthAPI *)inOAuth callback:(SMSuccessRetvalueBlock)inCallback;
+- (void)fire:(NSString *)inMethod withParameters:(NSArray *)inParameters httpMethod:(NSString *)httpMethod oauth:(MPOAuthAPI *)inOAuth callback:(SMSuccessRetvalueBlock)inCallback;
 - (void)fire;
 
 - (void)finishWith:(NSDictionary *)returnObject;

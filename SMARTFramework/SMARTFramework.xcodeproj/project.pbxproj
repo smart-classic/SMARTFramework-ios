@@ -189,8 +189,8 @@
 		EEC9C5A715CB2EA900B7C568 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEC9C5A615CB2EA900B7C568 /* SenTestingKit.framework */; };
 		EEC9C5AA15CB2EA900B7C568 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEC9C59815CB2EA800B7C568 /* Foundation.framework */; };
 		EEC9C5AD15CB2EA900B7C568 /* libSMART.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EEC9C59515CB2EA800B7C568 /* libSMART.a */; };
-		EEE82D8515D008510017EA0B /* IndivoActionView.h in Headers */ = {isa = PBXBuildFile; fileRef = EEE82D8315D008500017EA0B /* IndivoActionView.h */; settings = {ATTRIBUTES = (); }; };
-		EEE82D8615D008510017EA0B /* IndivoActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = EEE82D8415D008500017EA0B /* IndivoActionView.m */; };
+		EEE82D8515D008510017EA0B /* SMActionView.h in Headers */ = {isa = PBXBuildFile; fileRef = EEE82D8315D008500017EA0B /* SMActionView.h */; settings = {ATTRIBUTES = (); }; };
+		EEE82D8615D008510017EA0B /* SMActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = EEE82D8415D008500017EA0B /* SMActionView.m */; };
 		EEE82D8D15D00D810017EA0B /* SMARTObjects.h in Headers */ = {isa = PBXBuildFile; fileRef = EEE82D8C15D00D810017EA0B /* SMARTObjects.h */; settings = {ATTRIBUTES = (); }; };
 		EEE82D9215D02F4A0017EA0B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE82D9115D02F4A0017EA0B /* UIKit.framework */; };
 		EEE82D9615D02FD80017EA0B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE82D9415D02F970017EA0B /* CoreGraphics.framework */; };
@@ -242,12 +242,12 @@
 		EEF0199015CB453400FFD480 /* NSURL+MPURLParameterAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF0196315CB453400FFD480 /* NSURL+MPURLParameterAdditions.m */; };
 		EEF0199115CB453400FFD480 /* NSURLResponse+Encoding.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0196415CB453400FFD480 /* NSURLResponse+Encoding.h */; };
 		EEF0199215CB453400FFD480 /* NSURLResponse+Encoding.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF0196515CB453400FFD480 /* NSURLResponse+Encoding.m */; };
-		EEF0199915CB489A00FFD480 /* INServerCall.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0199315CB489A00FFD480 /* INServerCall.h */; settings = {ATTRIBUTES = (); }; };
-		EEF0199A15CB489A00FFD480 /* INServerCall.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF0199415CB489A00FFD480 /* INServerCall.m */; };
-		EEF0199B15CB489A00FFD480 /* INURLFetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0199515CB489A00FFD480 /* INURLFetcher.h */; settings = {ATTRIBUTES = (); }; };
-		EEF0199C15CB489A00FFD480 /* INURLFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF0199615CB489A00FFD480 /* INURLFetcher.m */; };
-		EEF0199D15CB489A00FFD480 /* INURLLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0199715CB489A00FFD480 /* INURLLoader.h */; settings = {ATTRIBUTES = (); }; };
-		EEF0199E15CB489A00FFD480 /* INURLLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF0199815CB489A00FFD480 /* INURLLoader.m */; };
+		EEF0199915CB489A00FFD480 /* SMServerCall.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0199315CB489A00FFD480 /* SMServerCall.h */; settings = {ATTRIBUTES = (); }; };
+		EEF0199A15CB489A00FFD480 /* SMServerCall.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF0199415CB489A00FFD480 /* SMServerCall.m */; };
+		EEF0199B15CB489A00FFD480 /* SMURLFetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0199515CB489A00FFD480 /* SMURLFetcher.h */; settings = {ATTRIBUTES = (); }; };
+		EEF0199C15CB489A00FFD480 /* SMURLFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF0199615CB489A00FFD480 /* SMURLFetcher.m */; };
+		EEF0199D15CB489A00FFD480 /* SMURLLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF0199715CB489A00FFD480 /* SMURLLoader.h */; settings = {ATTRIBUTES = (); }; };
+		EEF0199E15CB489A00FFD480 /* SMURLLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF0199815CB489A00FFD480 /* SMURLLoader.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -478,8 +478,8 @@
 		EEC9C5A615CB2EA900B7C568 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		EEC9C5B015CB2EA900B7C568 /* SMARTFrameworkTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SMARTFrameworkTests-Info.plist"; sourceTree = "<group>"; };
 		EEE461F515E80F2000CCF120 /* Redland.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Redland.xcodeproj; path = "Redland-ObjC/Redland.xcodeproj"; sourceTree = "<group>"; };
-		EEE82D8315D008500017EA0B /* IndivoActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndivoActionView.h; sourceTree = "<group>"; };
-		EEE82D8415D008500017EA0B /* IndivoActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndivoActionView.m; sourceTree = "<group>"; };
+		EEE82D8315D008500017EA0B /* SMActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMActionView.h; sourceTree = "<group>"; };
+		EEE82D8415D008500017EA0B /* SMActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMActionView.m; sourceTree = "<group>"; };
 		EEE82D8C15D00D810017EA0B /* SMARTObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMARTObjects.h; sourceTree = "<group>"; };
 		EEE82D9115D02F4A0017EA0B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EEE82D9415D02F970017EA0B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -532,12 +532,12 @@
 		EEF0196315CB453400FFD480 /* NSURL+MPURLParameterAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+MPURLParameterAdditions.m"; sourceTree = "<group>"; };
 		EEF0196415CB453400FFD480 /* NSURLResponse+Encoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLResponse+Encoding.h"; sourceTree = "<group>"; };
 		EEF0196515CB453400FFD480 /* NSURLResponse+Encoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLResponse+Encoding.m"; sourceTree = "<group>"; };
-		EEF0199315CB489A00FFD480 /* INServerCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INServerCall.h; sourceTree = "<group>"; };
-		EEF0199415CB489A00FFD480 /* INServerCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INServerCall.m; sourceTree = "<group>"; };
-		EEF0199515CB489A00FFD480 /* INURLFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INURLFetcher.h; sourceTree = "<group>"; };
-		EEF0199615CB489A00FFD480 /* INURLFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INURLFetcher.m; sourceTree = "<group>"; };
-		EEF0199715CB489A00FFD480 /* INURLLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INURLLoader.h; sourceTree = "<group>"; };
-		EEF0199815CB489A00FFD480 /* INURLLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INURLLoader.m; sourceTree = "<group>"; };
+		EEF0199315CB489A00FFD480 /* SMServerCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMServerCall.h; sourceTree = "<group>"; };
+		EEF0199415CB489A00FFD480 /* SMServerCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMServerCall.m; sourceTree = "<group>"; };
+		EEF0199515CB489A00FFD480 /* SMURLFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMURLFetcher.h; sourceTree = "<group>"; };
+		EEF0199615CB489A00FFD480 /* SMURLFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMURLFetcher.m; sourceTree = "<group>"; };
+		EEF0199715CB489A00FFD480 /* SMURLLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMURLLoader.h; sourceTree = "<group>"; };
+		EEF0199815CB489A00FFD480 /* SMURLLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMURLLoader.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -854,8 +854,8 @@
 			children = (
 				EE832F7F15D006D100E7FFF1 /* SMLoginViewController.h */,
 				EE832F8015D006D100E7FFF1 /* SMLoginViewController.m */,
-				EEE82D8315D008500017EA0B /* IndivoActionView.h */,
-				EEE82D8415D008500017EA0B /* IndivoActionView.m */,
+				EEE82D8315D008500017EA0B /* SMActionView.h */,
+				EEE82D8415D008500017EA0B /* SMActionView.m */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -924,12 +924,12 @@
 		EEF0199F15CB489E00FFD480 /* Server Calls */ = {
 			isa = PBXGroup;
 			children = (
-				EEF0199315CB489A00FFD480 /* INServerCall.h */,
-				EEF0199415CB489A00FFD480 /* INServerCall.m */,
-				EEF0199515CB489A00FFD480 /* INURLFetcher.h */,
-				EEF0199615CB489A00FFD480 /* INURLFetcher.m */,
-				EEF0199715CB489A00FFD480 /* INURLLoader.h */,
-				EEF0199815CB489A00FFD480 /* INURLLoader.m */,
+				EEF0199315CB489A00FFD480 /* SMServerCall.h */,
+				EEF0199415CB489A00FFD480 /* SMServerCall.m */,
+				EEF0199515CB489A00FFD480 /* SMURLFetcher.h */,
+				EEF0199615CB489A00FFD480 /* SMURLFetcher.m */,
+				EEF0199715CB489A00FFD480 /* SMURLLoader.h */,
+				EEF0199815CB489A00FFD480 /* SMURLLoader.m */,
 			);
 			name = "Server Calls";
 			sourceTree = "<group>";
@@ -970,10 +970,10 @@
 				EEF0198015CB453400FFD480 /* MPOAuthParameterFactory.h in Headers */,
 				EEF0196C15CB453400FFD480 /* MPOAuthAPIRequestLoader.h in Headers */,
 				EEF0197F15CB453400FFD480 /* MPOAuthCredentialStore.h in Headers */,
-				EEE82D8515D008510017EA0B /* IndivoActionView.h in Headers */,
-				EEF0199915CB489A00FFD480 /* INServerCall.h in Headers */,
-				EEF0199B15CB489A00FFD480 /* INURLFetcher.h in Headers */,
-				EEF0199D15CB489A00FFD480 /* INURLLoader.h in Headers */,
+				EEE82D8515D008510017EA0B /* SMActionView.h in Headers */,
+				EEF0199915CB489A00FFD480 /* SMServerCall.h in Headers */,
+				EEF0199B15CB489A00FFD480 /* SMURLFetcher.h in Headers */,
+				EEF0199D15CB489A00FFD480 /* SMURLLoader.h in Headers */,
 				EE832F8115D006D100E7FFF1 /* SMLoginViewController.h in Headers */,
 				EE68EB5C15DC54CC006B149E /* SMObject.h in Headers */,
 				EE42D04C15DEB4C900F03EB0 /* SMART.h in Headers */,
@@ -1247,12 +1247,12 @@
 				EEF0198E15CB453400FFD480 /* NSString+URLEscapingAdditions.m in Sources */,
 				EEF0199015CB453400FFD480 /* NSURL+MPURLParameterAdditions.m in Sources */,
 				EEF0199215CB453400FFD480 /* NSURLResponse+Encoding.m in Sources */,
-				EEF0199A15CB489A00FFD480 /* INServerCall.m in Sources */,
-				EEF0199C15CB489A00FFD480 /* INURLFetcher.m in Sources */,
-				EEF0199E15CB489A00FFD480 /* INURLLoader.m in Sources */,
+				EEF0199A15CB489A00FFD480 /* SMServerCall.m in Sources */,
+				EEF0199C15CB489A00FFD480 /* SMURLFetcher.m in Sources */,
+				EEF0199E15CB489A00FFD480 /* SMURLLoader.m in Sources */,
 				EE6A5A9715CC753800DD0F68 /* SMRecord.m in Sources */,
 				EE832F8315D006EE00E7FFF1 /* SMLoginViewController.m in Sources */,
-				EEE82D8615D008510017EA0B /* IndivoActionView.m in Sources */,
+				EEE82D8615D008510017EA0B /* SMActionView.m in Sources */,
 				EE249A4415D59F04001A63D7 /* SMDocument.m in Sources */,
 				EE68EB5D15DC54CC006B149E /* SMObject.m in Sources */,
 				EE5D698C16570CCC001741E2 /* SMRecord+Calls.m in Sources */,

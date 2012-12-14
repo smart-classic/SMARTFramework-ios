@@ -1,5 +1,5 @@
 /*
- INURLLoader.h
+ SMURLLoader.h
  IndivoFramework
  
  Created by Pascal Pfiffner on 10/13/11.
@@ -23,13 +23,13 @@
 #import <Foundation/Foundation.h>
 #import "SMART.h"
 
-#define kINURLLoaderDefaultTimeoutInterval 60.0								///< timeout interval in seconds
+#define kSMURLLoaderDefaultTimeoutInterval 60.0								///< timeout interval in seconds
 
 
 /**
  *  This class simplifies loading data from a URL
  */
-@interface INURLLoader : NSObject
+@interface SMURLLoader : NSObject
 
 @property (nonatomic, strong) NSURL *url;									///< The URL we will load from
 @property (nonatomic, readonly, copy) NSData *responseData;					///< Will contain the response data as loaded from url
@@ -43,9 +43,9 @@
 + (id)loaderWithURL:(NSURL *)anURL;
 - (id)initWithURL:(NSURL *)anURL;
 
-- (void)getWithCallback:(INCancelErrorBlock)callback;
-- (void)post:(NSString *)postBody withCallback:(INCancelErrorBlock)callback;
-- (void)performRequest:(NSURLRequest *)aRequest withCallback:(INCancelErrorBlock)aCallback;
+- (void)getWithCallback:(SMCancelErrorBlock)callback;
+- (void)post:(NSString *)postBody withCallback:(SMCancelErrorBlock)callback;
+- (void)performRequest:(NSURLRequest *)aRequest withCallback:(SMCancelErrorBlock)aCallback;
 
 - (void)cancel;
 

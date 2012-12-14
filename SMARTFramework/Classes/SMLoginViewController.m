@@ -23,8 +23,8 @@
 
 #import "SMLoginViewController.h"
 #import "SMART.h"
-#import "INURLLoader.h"
-#import "IndivoActionView.h"
+#import "SMURLLoader.h"
+#import "SMActionView.h"
 
 
 @interface SMLoginViewController ()
@@ -38,7 +38,7 @@
 @property (nonatomic, assign) BOOL userDidLogout;
 
 @property (nonatomic, strong) NSMutableArray *history;					///< Holds NSURLs (currently only used to reload the last page when an error occurred)
-@property (nonatomic, strong) IndivoActionView *loadingView;			///< A private view overlaid during loading activity
+@property (nonatomic, strong) SMActionView *loadingView;			///< A private view overlaid during loading activity
 
 - (void)showHideBackButton;
 - (void)showStillLoadingHint;
@@ -200,7 +200,7 @@
 		
 		// ** user did select a record
 		if ([@"did_select_record" isEqualToString:[urlComponents lastObject]]) {
-			NSDictionary *args = [INURLLoader queryFromRequest:request];
+			NSDictionary *args = [SMURLLoader queryFromRequest:request];
 			//DLog(@"DID RECEIVE: %@", args);
 			[_delegate loginView:self didSelectRecordId:[args objectForKey:@"record_id"]];
 			// extract carenet_id here once supported
@@ -209,7 +209,7 @@
 		
 		// ** received oauth verifier
 		if ([@"did_receive_verifier" isEqualToString:[urlComponents lastObject]]) {
-			NSDictionary *args = [INURLLoader queryFromRequest:request];
+			NSDictionary *args = [SMURLLoader queryFromRequest:request];
 			//DLog(@"DID RECEIVE: %@", args);
 			[_delegate loginView:self didReceiveVerifier:[args objectForKey:@"oauth_verifier"]];
 			return NO;
@@ -396,7 +396,7 @@
 - (void)showLoadingIndicator:(id)sender
 {
 	if (!_loadingView) {
-		self.loadingView = [[IndivoActionView alloc] initWithFrame:_webView.bounds];
+		self.loadingView = [[SMActionView alloc] initWithFrame:_webView.bounds];
 		[_loadingView addTarget:self action:@selector(reloadDelayed:) forControlEvents:UIControlEventTouchUpInside];
 	}
 	[_loadingView showActivityIn:_webView animated:YES];

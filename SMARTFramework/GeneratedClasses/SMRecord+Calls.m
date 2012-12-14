@@ -31,9 +31,9 @@
 /**
  *  Get Demographics for a patient.
  *  Makes a call to /records/{record_id}/demographics, originally named "get_demographics".
- *  @param callback A INSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: INResponseArrayKey) if successful.
+ *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: SMARTResponseArrayKey) if successful.
  */
-- (void)getDemographics:(INSuccessRetvalueBlock)callback
+- (void)getDemographics:(SMSuccessRetvalueBlock)callback
 {
 	NSString *path = [NSString stringWithFormat:@"/records/%@/demographics", self.record_id];
 	[self getObjectsOfClass:[SMDemographics class] from:path callback:callback];
@@ -42,9 +42,9 @@
 /**
  *  Get Social History for a patient.
  *  Makes a call to /records/{record_id}/social_history, originally named "get_social_history".
- *  @param callback A INSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: INResponseArrayKey) if successful.
+ *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: SMARTResponseArrayKey) if successful.
  */
-- (void)getSocialHistory:(INSuccessRetvalueBlock)callback
+- (void)getSocialHistory:(SMSuccessRetvalueBlock)callback
 {
 	NSString *path = [NSString stringWithFormat:@"/records/%@/social_history", self.record_id];
 	[self getObjectsOfClass:[SMSocialHistory class] from:path callback:callback];
@@ -53,9 +53,9 @@
 /**
  *  Get all Allergies and Allergy Exclusions for a patient.
  *  Makes a call to /records/{record_id}/allergies/, originally named "get_allergies".
- *  @param callback A INSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: INResponseArrayKey) if successful.
+ *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: SMARTResponseArrayKey) if successful.
  */
-- (void)getAllergies:(INSuccessRetvalueBlock)callback
+- (void)getAllergies:(SMSuccessRetvalueBlock)callback
 {
 	NSString *path = [NSString stringWithFormat:@"/records/%@/allergies/", self.record_id];
 	[self getObjectsOfClass:[SMAllergy class] from:path callback:callback];
@@ -64,9 +64,9 @@
 /**
  *  Get all Clinical Notes for a patient.
  *  Makes a call to /records/{record_id}/clinical_notes/, originally named "get_clinical_notes".
- *  @param callback A INSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: INResponseArrayKey) if successful.
+ *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: SMARTResponseArrayKey) if successful.
  */
-- (void)getClinicalNotes:(INSuccessRetvalueBlock)callback
+- (void)getClinicalNotes:(SMSuccessRetvalueBlock)callback
 {
 	NSString *path = [NSString stringWithFormat:@"/records/%@/clinical_notes/", self.record_id];
 	[self getObjectsOfClass:[SMClinicalNote class] from:path callback:callback];
@@ -75,9 +75,9 @@
 /**
  *  Get all Encounters for a patient.
  *  Makes a call to /records/{record_id}/encounters/, originally named "get_encounters".
- *  @param callback A INSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: INResponseArrayKey) if successful.
+ *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: SMARTResponseArrayKey) if successful.
  */
-- (void)getEncounters:(INSuccessRetvalueBlock)callback
+- (void)getEncounters:(SMSuccessRetvalueBlock)callback
 {
 	NSString *path = [NSString stringWithFormat:@"/records/%@/encounters/", self.record_id];
 	[self getObjectsOfClass:[SMEncounter class] from:path callback:callback];
@@ -86,9 +86,9 @@
 /**
  *  Get all Fulfillments for a patient.
  *  Makes a call to /records/{record_id}/fulfillments/, originally named "get_fulfillments".
- *  @param callback A INSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: INResponseArrayKey) if successful.
+ *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: SMARTResponseArrayKey) if successful.
  */
-- (void)getFulfillments:(INSuccessRetvalueBlock)callback
+- (void)getFulfillments:(SMSuccessRetvalueBlock)callback
 {
 	NSString *path = [NSString stringWithFormat:@"/records/%@/fulfillments/", self.record_id];
 	[self getObjectsOfClass:[SMFulfillment class] from:path callback:callback];
@@ -97,9 +97,9 @@
 /**
  *  Get all Immunizations for a patient.
  *  Makes a call to /records/{record_id}/immunizations/, originally named "get_immunizations".
- *  @param callback A INSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: INResponseArrayKey) if successful.
+ *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: SMARTResponseArrayKey) if successful.
  */
-- (void)getImmunizations:(INSuccessRetvalueBlock)callback
+- (void)getImmunizations:(SMSuccessRetvalueBlock)callback
 {
 	NSString *path = [NSString stringWithFormat:@"/records/%@/immunizations/", self.record_id];
 	[self getObjectsOfClass:[SMImmunization class] from:path callback:callback];
@@ -108,9 +108,9 @@
 /**
  *  Get all Lab Panels for a patient.
  *  Makes a call to /records/{record_id}/lab_panels/, originally named "get_lab_panels".
- *  @param callback A INSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: INResponseArrayKey) if successful.
+ *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: SMARTResponseArrayKey) if successful.
  */
-- (void)getLabPanels:(INSuccessRetvalueBlock)callback
+- (void)getLabPanels:(SMSuccessRetvalueBlock)callback
 {
 	NSString *path = [NSString stringWithFormat:@"/records/%@/lab_panels/", self.record_id];
 	[self getObjectsOfClass:[SMLabPanel class] from:path callback:callback];
@@ -119,9 +119,9 @@
 /**
  *  Get all Lab Results for a patient.
  *  Makes a call to /records/{record_id}/lab_results/, originally named "get_lab_results".
- *  @param callback A INSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: INResponseArrayKey) if successful.
+ *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: SMARTResponseArrayKey) if successful.
  */
-- (void)getLabResults:(INSuccessRetvalueBlock)callback
+- (void)getLabResults:(SMSuccessRetvalueBlock)callback
 {
 	NSString *path = [NSString stringWithFormat:@"/records/%@/lab_results/", self.record_id];
 	[self getObjectsOfClass:[SMLabResult class] from:path callback:callback];
@@ -130,9 +130,9 @@
 /**
  *  Get all Medications for a patient.
  *  Makes a call to /records/{record_id}/medications/, originally named "get_medications".
- *  @param callback A INSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: INResponseArrayKey) if successful.
+ *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: SMARTResponseArrayKey) if successful.
  */
-- (void)getMedications:(INSuccessRetvalueBlock)callback
+- (void)getMedications:(SMSuccessRetvalueBlock)callback
 {
 	NSString *path = [NSString stringWithFormat:@"/records/%@/medications/", self.record_id];
 	[self getObjectsOfClass:[SMMedication class] from:path callback:callback];
@@ -141,9 +141,9 @@
 /**
  *  Get all Problems for a patient.
  *  Makes a call to /records/{record_id}/problems/, originally named "get_problems".
- *  @param callback A INSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: INResponseArrayKey) if successful.
+ *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: SMARTResponseArrayKey) if successful.
  */
-- (void)getProblems:(INSuccessRetvalueBlock)callback
+- (void)getProblems:(SMSuccessRetvalueBlock)callback
 {
 	NSString *path = [NSString stringWithFormat:@"/records/%@/problems/", self.record_id];
 	[self getObjectsOfClass:[SMProblem class] from:path callback:callback];
@@ -152,9 +152,9 @@
 /**
  *  Get all Vital Sign Sets for a patient.
  *  Makes a call to /records/{record_id}/vital_sign_sets/, originally named "get_vital_sign_sets".
- *  @param callback A INSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: INResponseArrayKey) if successful.
+ *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: SMARTResponseArrayKey) if successful.
  */
-- (void)getVitalSignSets:(INSuccessRetvalueBlock)callback
+- (void)getVitalSignSets:(SMSuccessRetvalueBlock)callback
 {
 	NSString *path = [NSString stringWithFormat:@"/records/%@/vital_sign_sets/", self.record_id];
 	[self getObjectsOfClass:[SMVitalSignSet class] from:path callback:callback];
@@ -163,9 +163,9 @@
 /**
  *  Get one Lab Panel for a patient.
  *  Makes a call to /records/{record_id}/lab_panels/, originally named "get_lab_panel".
- *  @param callback A INSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: INResponseArrayKey) if successful.
+ *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: SMARTResponseArrayKey) if successful.
  */
-- (void)getLabPanel:(INSuccessRetvalueBlock)callback
+- (void)getLabPanel:(SMSuccessRetvalueBlock)callback
 {
 	NSString *path = [NSString stringWithFormat:@"/records/%@/lab_panels/", self.record_id];
 	[self getObjectsOfClass:[SMLabPanel class] from:path callback:callback];

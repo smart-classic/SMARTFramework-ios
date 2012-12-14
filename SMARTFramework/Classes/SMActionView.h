@@ -1,5 +1,5 @@
 /*
- IndivoActionView.h
+ SMActionView.h
  IndivoFramework
  
  Created by Pascal Pfiffner on 12/5/11.
@@ -26,7 +26,7 @@
 /**
  *  A semi-transparent view that can be overlaid over existing views and display text, a hint or a spinner
  */
-@interface IndivoActionView : UIControl {
+@interface SMActionView : UIControl {
 	BOOL animateNextLayout;
 }
 

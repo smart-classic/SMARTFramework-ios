@@ -1,5 +1,5 @@
 /*
- IndivoActionView.h
+ SMActionView.h
  IndivoFramework
  
  Created by Pascal Pfiffner on 12/5/11.
@@ -20,11 +20,11 @@
  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#import "IndivoActionView.h"
+#import "SMActionView.h"
 #import <QuartzCore/QuartzCore.h>
 
 
-@interface IndivoActionView ()
+@interface SMActionView ()
 
 @property (nonatomic, strong) UIActivityIndicatorView *activityView;		//< The activity spinner
 @property (nonatomic, strong) UILabel *mainLabel;							//< Main text label
@@ -35,7 +35,7 @@
 @end
 
 
-@implementation IndivoActionView
+@implementation SMActionView
 
 @synthesize activityView, mainLabel, hintLabel;
 

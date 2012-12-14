@@ -61,7 +61,7 @@
  *  Fetches the record's demographics document from /records/{record_id}/demographics
  *  @param callback The block to be executed after the call returns from the server
  */
-- (void)getDemographicsWithCallback:(INCancelErrorBlock)callback
+- (void)getDemographicsWithCallback:(SMCancelErrorBlock)callback
 {
 	self.name = nil;			// to clear the composed name
 	
@@ -71,7 +71,7 @@
 		
 		// error?
 		if (!success) {
-			errorMessage = [[userInfo objectForKey:INErrorKey] localizedDescription];
+			errorMessage = [[userInfo objectForKey:SMARTErrorKey] localizedDescription];
 			if ([errorMessage length] < 1) {
 				errorMessage = @"An unknown error happened when fetching this record's demographics document";
 			}
@@ -79,7 +79,7 @@
 		
 		// success, create a demographics document
 		else {
-			NSData *rdfData = [userInfo objectForKey:INResponseDataKey];
+			NSData *rdfData = [userInfo objectForKey:SMARTResponseDataKey];
 			NSString *rdf = [[NSString alloc] initWithData:rdfData encoding:NSUTF8StringEncoding];
 			if ([rdf length] > 0) {
 				self.demographics = [SMDemographics newWithRDFXML:rdf];
@@ -99,13 +99,13 @@
  *  @param aPath The path to call on the server
  *  @param callback A block to execute when the call has finished, passing a success flag and a user dictionary containing the fetched objects
  */
-- (void)getObjectsOfClass:(Class)aClass from:(NSString *)aPath callback:(INSuccessRetvalueBlock)callback
+- (void)getObjectsOfClass:(Class)aClass from:(NSString *)aPath callback:(SMSuccessRetvalueBlock)callback
 {
 	if (![aClass isSubclassOfClass:[SMObject class]]) {
 		NSString *errMessage = [NSString stringWithFormat:@"Class %@ is not a subclass of SMObject, it cannot be used with this method", NSStringFromClass(aClass)];
 		NSError *err = nil;
 		ERR(&err, errMessage, 0)
-		SUCCESS_RETVAL_CALLBACK_OR_LOG_USER_INFO(callback, NO, @{INErrorKey: err})
+		SUCCESS_RETVAL_CALLBACK_OR_LOG_USER_INFO(callback, NO, @{SMARTErrorKey: err})
 	}
 	
 	// fetch
@@ -115,7 +115,7 @@
 			 httpMethod:@"GET"
 			   callback:^(BOOL success, NSDictionary * __autoreleasing userInfo) {
 				   if (success) {
-					   NSData *rdfData = [userInfo objectForKey:INResponseDataKey];
+					   NSData *rdfData = [userInfo objectForKey:SMARTResponseDataKey];
 					   NSString *rdf = [[NSString alloc] initWithData:rdfData encoding:NSUTF8StringEncoding];
 					   if ([rdf length] > 0) {
 						   RedlandParser *parser = [RedlandParser parserWithName:RedlandRDFXMLParserName];
@@ -131,7 +131,7 @@
 							   NSError *err = nil;
 							   ERR(&err, errMessage, 0)
 							   NSMutableDictionary *usrInf = [userInfo mutableCopy];
-							   [usrInf setObject:err forKey:INErrorKey];
+							   [usrInf setObject:err forKey:SMARTErrorKey];
 							   SUCCESS_RETVAL_CALLBACK_OR_LOG_USER_INFO(callback, NO, usrInf)
 							   return;
 						   }
@@ -154,7 +154,7 @@
 						   
 						   // complete the user-info dictionary and call the callback
 						   NSMutableDictionary *usrInf = [userInfo mutableCopy];
-						   [usrInf setObject:array forKey:INResponseArrayKey];
+						   [usrInf setObject:array forKey:SMARTResponseArrayKey];
 						   SUCCESS_RETVAL_CALLBACK_OR_LOG_USER_INFO(callback, YES, usrInf)
 						   return;
 					   }
@@ -170,7 +170,7 @@
 
 /**
  *  The basic method to perform REST methods on the server with App credentials.
- *  Uses a INServerCall instance to handle the loading; INServerCall only allows a body string or parameters, but not both, with
+ *  Uses a SMServerCall instance to handle the loading; SMServerCall only allows a body string or parameters, but not both, with
  *  the body string taking precedence.
  *  @param aMethod The path to call on the server
  *  @param body The body string
@@ -178,7 +178,7 @@
  *  @param httpMethod The http method, for now GET, PUT or POST
  *  @param callback A block to execute when the call has finished
  */
-- (void)performMethod:(NSString *)aMethod withBody:(NSString *)body orParameters:(NSArray *)parameters httpMethod:(NSString *)httpMethod callback:(INSuccessRetvalueBlock)callback
+- (void)performMethod:(NSString *)aMethod withBody:(NSString *)body orParameters:(NSArray *)parameters httpMethod:(NSString *)httpMethod callback:(SMSuccessRetvalueBlock)callback
 {
 	if (!_server) {
 		NSString *errStr = [NSString stringWithFormat:@"Fatal Error: I have no server! %@", self];
@@ -186,8 +186,8 @@
 		return;
 	}
 	
-	// create the desired INServerCall instance
-	INServerCall *call = [INServerCall new];
+	// create the desired SMServerCall instance
+	SMServerCall *call = [SMServerCall new];
 	call.method = aMethod;
 	call.body = body;
 	call.parameters = parameters;
