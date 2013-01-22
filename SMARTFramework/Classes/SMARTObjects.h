@@ -68,6 +68,7 @@
 #import "SMPerson.h"
 #import "SMPharmacy.h"
 #import "SMProblem.h"
+#import "SMProblemStatus.h"
 #import "SMProcedure.h"
 #import "SMProcedureStatus.h"
 #import "SMProvider.h"

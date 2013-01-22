@@ -55,6 +55,10 @@
 		EE832F7D15D004A500E7FFF1 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EE832F7C15D004A500E7FFF1 /* libxml2.dylib */; };
 		EE832F8115D006D100E7FFF1 /* SMLoginViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EE832F7F15D006D100E7FFF1 /* SMLoginViewController.h */; settings = {ATTRIBUTES = (); }; };
 		EE832F8315D006EE00E7FFF1 /* SMLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE832F8015D006D100E7FFF1 /* SMLoginViewController.m */; };
+		EEADE77416AF02B000E8715A /* TestGeneratedClasses.m in Sources */ = {isa = PBXBuildFile; fileRef = EEADE77316AF02B000E8715A /* TestGeneratedClasses.m */; };
+		EEADE77716AF04F700E8715A /* SMProblemStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = EEADE77516AF04F700E8715A /* SMProblemStatus.h */; };
+		EEADE77816AF04F700E8715A /* SMProblemStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = EEADE77616AF04F700E8715A /* SMProblemStatus.m */; };
+		EEADE77B16AF0B1700E8715A /* SMLabPanel.rdf in Resources */ = {isa = PBXBuildFile; fileRef = EEADE77A16AF0B1700E8715A /* SMLabPanel.rdf */; };
 		EEC1470715DFE790006B8798 /* SMDemographics.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1470315DFE790006B8798 /* SMDemographics.h */; settings = {ATTRIBUTES = (); }; };
 		EEC1470815DFE790006B8798 /* SMDemographics.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1470415DFE790006B8798 /* SMDemographics.m */; };
 		EEC1470915DFE790006B8798 /* SMName.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1470515DFE790006B8798 /* SMName.h */; settings = {ATTRIBUTES = (); }; };
@@ -338,6 +342,13 @@
 		EE832F7C15D004A500E7FFF1 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		EE832F7F15D006D100E7FFF1 /* SMLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMLoginViewController.h; sourceTree = "<group>"; };
 		EE832F8015D006D100E7FFF1 /* SMLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMLoginViewController.m; sourceTree = "<group>"; };
+		EEADE77016AEFDE500E8715A /* UnitTestTemplate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnitTestTemplate.h; sourceTree = "<group>"; };
+		EEADE77116AEFDE500E8715A /* UnitTestTemplate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnitTestTemplate.m; sourceTree = "<group>"; };
+		EEADE77216AF02B000E8715A /* TestGeneratedClasses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestGeneratedClasses.h; path = ClassTests/TestGeneratedClasses.h; sourceTree = "<group>"; };
+		EEADE77316AF02B000E8715A /* TestGeneratedClasses.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestGeneratedClasses.m; path = ClassTests/TestGeneratedClasses.m; sourceTree = "<group>"; };
+		EEADE77516AF04F700E8715A /* SMProblemStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMProblemStatus.h; sourceTree = "<group>"; };
+		EEADE77616AF04F700E8715A /* SMProblemStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMProblemStatus.m; sourceTree = "<group>"; };
+		EEADE77A16AF0B1700E8715A /* SMLabPanel.rdf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SMLabPanel.rdf; sourceTree = "<group>"; };
 		EEC146F815DED1D0006B8798 /* AppledocSettings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AppledocSettings.plist; sourceTree = "<group>"; };
 		EEC1470015DEE01A006B8798 /* ClassTemplate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClassTemplate.h; sourceTree = "<group>"; };
 		EEC1470115DEE01A006B8798 /* ClassTemplate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassTemplate.m; sourceTree = "<group>"; };
@@ -480,7 +491,7 @@
 		EEE461F515E80F2000CCF120 /* Redland.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Redland.xcodeproj; path = "Redland-ObjC/Redland.xcodeproj"; sourceTree = "<group>"; };
 		EEE82D8315D008500017EA0B /* SMActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMActionView.h; sourceTree = "<group>"; };
 		EEE82D8415D008500017EA0B /* SMActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMActionView.m; sourceTree = "<group>"; };
-		EEE82D8C15D00D810017EA0B /* SMARTObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMARTObjects.h; sourceTree = "<group>"; };
+		EEE82D8C15D00D810017EA0B /* SMARTObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMARTObjects.h; path = Classes/SMARTObjects.h; sourceTree = "<group>"; };
 		EEE82D9115D02F4A0017EA0B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EEE82D9415D02F970017EA0B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		EEF0192915CB447100FFD480 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
@@ -578,6 +589,7 @@
 				EE5D696C1656F4C9001741E2 /* SMEncounter.rdf */,
 				EE5D696D1656F4C9001741E2 /* SMFulfillment.rdf */,
 				EE5D696E1656F4C9001741E2 /* SMImmunization.rdf */,
+				EEADE77A16AF0B1700E8715A /* SMLabPanel.rdf */,
 				EE5D696F1656F4C9001741E2 /* SMLabResult.rdf */,
 				EE5D69701656F4C9001741E2 /* SMMedication.rdf */,
 				EE5D69711656F4C9001741E2 /* SMProblem.rdf */,
@@ -595,6 +607,8 @@
 				EEC1470115DEE01A006B8798 /* ClassTemplate.m */,
 				EE59AC1215E342CC00F4D738 /* CategoryTemplate.h */,
 				EE59AC1315E342CC00F4D738 /* CategoryTemplate.m */,
+				EEADE77016AEFDE500E8715A /* UnitTestTemplate.h */,
+				EEADE77116AEFDE500E8715A /* UnitTestTemplate.m */,
 			);
 			name = "Generator Templates";
 			path = ../Generator;
@@ -693,6 +707,8 @@
 				EEC1477C15E076AC006B8798 /* SMPharmacy.m */,
 				EEC1477F15E076AC006B8798 /* SMProblem.h */,
 				EEC1478015E076AC006B8798 /* SMProblem.m */,
+				EEADE77516AF04F700E8715A /* SMProblemStatus.h */,
+				EEADE77616AF04F700E8715A /* SMProblemStatus.m */,
 				EEC1478115E076AD006B8798 /* SMProcedure.h */,
 				EEC1478215E076AD006B8798 /* SMProcedure.m */,
 				EEC1478315E076AD006B8798 /* SMProcedureStatus.h */,
@@ -746,6 +762,7 @@
 				EEF0192915CB447100FFD480 /* Config.h */,
 				EEF0192B15CB447900FFD480 /* Config-default.h */,
 				EE42D04B15DEB4C900F03EB0 /* SMART.h */,
+				EEE82D8C15D00D810017EA0B /* SMARTObjects.h */,
 				EEC9C59A15CB2EA800B7C568 /* Classes */,
 				EEC1470215DFE790006B8798 /* GeneratedClasses */,
 				EE9977BF15E565E60027886F /* Generator Templates */,
@@ -791,7 +808,6 @@
 				EEF0192F15CB448700FFD480 /* SMServer.m */,
 				EE6A5A9415CC753800DD0F68 /* SMRecord.h */,
 				EE6A5A9515CC753800DD0F68 /* SMRecord.m */,
-				EEE82D8C15D00D810017EA0B /* SMARTObjects.h */,
 				EE68EB5A15DC54CC006B149E /* SMObject.h */,
 				EE68EB5B15DC54CC006B149E /* SMObject.m */,
 				EE249A4115D59F04001A63D7 /* SMDocument.h */,
@@ -821,6 +837,8 @@
 				EE6A5A8115CC72D500DD0F68 /* TestServer.m */,
 				EE6A5A8315CC731200DD0F68 /* TestServerCalls.h */,
 				EE6A5A8415CC731200DD0F68 /* TestServerCalls.m */,
+				EEADE77216AF02B000E8715A /* TestGeneratedClasses.h */,
+				EEADE77316AF02B000E8715A /* TestGeneratedClasses.m */,
 				EE5D69821656F514001741E2 /* mock-callbacks.plist */,
 				EE5D69871656FDF2001741E2 /* test-server-manifest.json */,
 				EE5D69841656F57E001741E2 /* test-app-manifest.json */,
@@ -1043,6 +1061,7 @@
 				EEC1485515E076AD006B8798 /* SMVitalSign.h in Headers */,
 				EEC1485715E076AD006B8798 /* SMVitalSignSet.h in Headers */,
 				EE59AC1615E34D4F00F4D738 /* SMRecord+Calls.h in Headers */,
+				EEADE77716AF04F700E8715A /* SMProblemStatus.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1173,6 +1192,7 @@
 				EE5D69831656F514001741E2 /* mock-callbacks.plist in Resources */,
 				EE5D69851656F57E001741E2 /* test-app-manifest.json in Resources */,
 				EE5D69881656FDF2001741E2 /* test-server-manifest.json in Resources */,
+				EEADE77B16AF0B1700E8715A /* SMLabPanel.rdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1321,6 +1341,7 @@
 				EEC1485215E076AD006B8798 /* SMVCard.m in Sources */,
 				EEC1485615E076AD006B8798 /* SMVitalSign.m in Sources */,
 				EEC1485815E076AD006B8798 /* SMVitalSignSet.m in Sources */,
+				EEADE77816AF04F700E8715A /* SMProblemStatus.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1331,6 +1352,7 @@
 				EE6A5A8215CC72D500DD0F68 /* TestServer.m in Sources */,
 				EE6A5A8515CC731200DD0F68 /* TestServerCalls.m in Sources */,
 				EE6A5A9015CC736E00DD0F68 /* SMMockServer.m in Sources */,
+				EEADE77416AF02B000E8715A /* TestGeneratedClasses.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
