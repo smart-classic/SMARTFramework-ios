@@ -56,9 +56,9 @@
 		EE832F8115D006D100E7FFF1 /* SMLoginViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EE832F7F15D006D100E7FFF1 /* SMLoginViewController.h */; settings = {ATTRIBUTES = (); }; };
 		EE832F8315D006EE00E7FFF1 /* SMLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE832F8015D006D100E7FFF1 /* SMLoginViewController.m */; };
 		EEADE77416AF02B000E8715A /* TestGeneratedClasses.m in Sources */ = {isa = PBXBuildFile; fileRef = EEADE77316AF02B000E8715A /* TestGeneratedClasses.m */; };
-		EEADE77716AF04F700E8715A /* SMProblemStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = EEADE77516AF04F700E8715A /* SMProblemStatus.h */; };
-		EEADE77816AF04F700E8715A /* SMProblemStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = EEADE77616AF04F700E8715A /* SMProblemStatus.m */; };
 		EEADE77B16AF0B1700E8715A /* SMLabPanel.rdf in Resources */ = {isa = PBXBuildFile; fileRef = EEADE77A16AF0B1700E8715A /* SMLabPanel.rdf */; };
+		EEADE77E16AF2D2B00E8715A /* SMProcedure.h in Headers */ = {isa = PBXBuildFile; fileRef = EEADE77C16AF2D2B00E8715A /* SMProcedure.h */; };
+		EEADE77F16AF2D2B00E8715A /* SMProcedure.m in Sources */ = {isa = PBXBuildFile; fileRef = EEADE77D16AF2D2B00E8715A /* SMProcedure.m */; };
 		EEC1470715DFE790006B8798 /* SMDemographics.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1470315DFE790006B8798 /* SMDemographics.h */; settings = {ATTRIBUTES = (); }; };
 		EEC1470815DFE790006B8798 /* SMDemographics.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1470415DFE790006B8798 /* SMDemographics.m */; };
 		EEC1470915DFE790006B8798 /* SMName.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1470515DFE790006B8798 /* SMName.h */; settings = {ATTRIBUTES = (); }; };
@@ -67,22 +67,12 @@
 		EEC147B415E076AD006B8798 /* SMAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1470C15E076AB006B8798 /* SMAddress.m */; };
 		EEC147B915E076AD006B8798 /* SMAllergy.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1471115E076AB006B8798 /* SMAllergy.h */; settings = {ATTRIBUTES = (); }; };
 		EEC147BA15E076AD006B8798 /* SMAllergy.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1471215E076AB006B8798 /* SMAllergy.m */; };
-		EEC147BB15E076AD006B8798 /* SMAllergyCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1471315E076AB006B8798 /* SMAllergyCategory.h */; settings = {ATTRIBUTES = (); }; };
-		EEC147BC15E076AD006B8798 /* SMAllergyCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1471415E076AB006B8798 /* SMAllergyCategory.m */; };
 		EEC147BD15E076AD006B8798 /* SMAllergyExclusion.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1471515E076AB006B8798 /* SMAllergyExclusion.h */; settings = {ATTRIBUTES = (); }; };
 		EEC147BE15E076AD006B8798 /* SMAllergyExclusion.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1471615E076AB006B8798 /* SMAllergyExclusion.m */; };
-		EEC147BF15E076AD006B8798 /* SMAllergySeverity.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1471715E076AB006B8798 /* SMAllergySeverity.h */; settings = {ATTRIBUTES = (); }; };
-		EEC147C015E076AD006B8798 /* SMAllergySeverity.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1471815E076AB006B8798 /* SMAllergySeverity.m */; };
 		EEC147C515E076AD006B8798 /* SMAttribution.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1471D15E076AB006B8798 /* SMAttribution.h */; settings = {ATTRIBUTES = (); }; };
 		EEC147C615E076AD006B8798 /* SMAttribution.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1471E15E076AB006B8798 /* SMAttribution.m */; };
 		EEC147C715E076AD006B8798 /* SMBloodPressure.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1471F15E076AB006B8798 /* SMBloodPressure.h */; settings = {ATTRIBUTES = (); }; };
 		EEC147C815E076AD006B8798 /* SMBloodPressure.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1472015E076AB006B8798 /* SMBloodPressure.m */; };
-		EEC147C915E076AD006B8798 /* SMBloodPressureBodyPosition.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1472115E076AB006B8798 /* SMBloodPressureBodyPosition.h */; settings = {ATTRIBUTES = (); }; };
-		EEC147CA15E076AD006B8798 /* SMBloodPressureBodyPosition.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1472215E076AB006B8798 /* SMBloodPressureBodyPosition.m */; };
-		EEC147CB15E076AD006B8798 /* SMBloodPressureBodySite.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1472315E076AB006B8798 /* SMBloodPressureBodySite.h */; settings = {ATTRIBUTES = (); }; };
-		EEC147CC15E076AD006B8798 /* SMBloodPressureBodySite.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1472415E076AB006B8798 /* SMBloodPressureBodySite.m */; };
-		EEC147CD15E076AD006B8798 /* SMBloodPressureMethod.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1472515E076AB006B8798 /* SMBloodPressureMethod.h */; settings = {ATTRIBUTES = (); }; };
-		EEC147CE15E076AD006B8798 /* SMBloodPressureMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1472615E076AB006B8798 /* SMBloodPressureMethod.m */; };
 		EEC147D315E076AD006B8798 /* SMClinicalNote.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1472B15E076AB006B8798 /* SMClinicalNote.h */; settings = {ATTRIBUTES = (); }; };
 		EEC147D415E076AD006B8798 /* SMClinicalNote.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1472C15E076AB006B8798 /* SMClinicalNote.m */; };
 		EEC147D515E076AD006B8798 /* SMCode.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1472D15E076AB006B8798 /* SMCode.h */; settings = {ATTRIBUTES = (); }; };
@@ -99,42 +89,22 @@
 		EEC147E415E076AD006B8798 /* SMDocumentWithFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1473C15E076AC006B8798 /* SMDocumentWithFormat.m */; };
 		EEC147E515E076AD006B8798 /* SMEncounter.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1473D15E076AC006B8798 /* SMEncounter.h */; settings = {ATTRIBUTES = (); }; };
 		EEC147E615E076AD006B8798 /* SMEncounter.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1473E15E076AC006B8798 /* SMEncounter.m */; };
-		EEC147E715E076AD006B8798 /* SMEncounterType.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1473F15E076AC006B8798 /* SMEncounterType.h */; settings = {ATTRIBUTES = (); }; };
-		EEC147E815E076AD006B8798 /* SMEncounterType.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1474015E076AC006B8798 /* SMEncounterType.m */; };
 		EEC147EB15E076AD006B8798 /* SMFulfillment.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1474315E076AC006B8798 /* SMFulfillment.h */; settings = {ATTRIBUTES = (); }; };
 		EEC147EC15E076AD006B8798 /* SMFulfillment.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1474415E076AC006B8798 /* SMFulfillment.m */; };
 		EEC147EF15E076AD006B8798 /* SMImmunization.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1474715E076AC006B8798 /* SMImmunization.h */; settings = {ATTRIBUTES = (); }; };
 		EEC147F015E076AD006B8798 /* SMImmunization.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1474815E076AC006B8798 /* SMImmunization.m */; };
-		EEC147F115E076AD006B8798 /* SMImmunizationAdministrationStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1474915E076AC006B8798 /* SMImmunizationAdministrationStatus.h */; settings = {ATTRIBUTES = (); }; };
-		EEC147F215E076AD006B8798 /* SMImmunizationAdministrationStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1474A15E076AC006B8798 /* SMImmunizationAdministrationStatus.m */; };
-		EEC147F315E076AD006B8798 /* SMImmunizationClass.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1474B15E076AC006B8798 /* SMImmunizationClass.h */; settings = {ATTRIBUTES = (); }; };
-		EEC147F415E076AD006B8798 /* SMImmunizationClass.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1474C15E076AC006B8798 /* SMImmunizationClass.m */; };
-		EEC147F515E076AD006B8798 /* SMImmunizationProduct.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1474D15E076AC006B8798 /* SMImmunizationProduct.h */; settings = {ATTRIBUTES = (); }; };
-		EEC147F615E076AD006B8798 /* SMImmunizationProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1474E15E076AC006B8798 /* SMImmunizationProduct.m */; };
-		EEC147F715E076AD006B8798 /* SMImmunizationRefusalReason.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1474F15E076AC006B8798 /* SMImmunizationRefusalReason.h */; settings = {ATTRIBUTES = (); }; };
-		EEC147F815E076AD006B8798 /* SMImmunizationRefusalReason.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1475015E076AC006B8798 /* SMImmunizationRefusalReason.m */; };
 		EEC147F915E076AD006B8798 /* SMLabPanel.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1475115E076AC006B8798 /* SMLabPanel.h */; settings = {ATTRIBUTES = (); }; };
 		EEC147FA15E076AD006B8798 /* SMLabPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1475215E076AC006B8798 /* SMLabPanel.m */; };
 		EEC147FB15E076AD006B8798 /* SMLabResult.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1475315E076AC006B8798 /* SMLabResult.h */; settings = {ATTRIBUTES = (); }; };
 		EEC147FC15E076AD006B8798 /* SMLabResult.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1475415E076AC006B8798 /* SMLabResult.m */; };
-		EEC147FD15E076AD006B8798 /* SMLabResultInterpretation.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1475515E076AC006B8798 /* SMLabResultInterpretation.h */; settings = {ATTRIBUTES = (); }; };
-		EEC147FE15E076AD006B8798 /* SMLabResultInterpretation.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1475615E076AC006B8798 /* SMLabResultInterpretation.m */; };
-		EEC147FF15E076AD006B8798 /* SMLabResultStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1475715E076AC006B8798 /* SMLabResultStatus.h */; settings = {ATTRIBUTES = (); }; };
-		EEC1480015E076AD006B8798 /* SMLabResultStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1475815E076AC006B8798 /* SMLabResultStatus.m */; };
-		EEC1480315E076AD006B8798 /* SMLOINC.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1475B15E076AC006B8798 /* SMLOINC.h */; settings = {ATTRIBUTES = (); }; };
-		EEC1480415E076AD006B8798 /* SMLOINC.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1475C15E076AC006B8798 /* SMLOINC.m */; };
 		EEC1480515E076AD006B8798 /* SMMediaTypeOrExtent.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1475D15E076AC006B8798 /* SMMediaTypeOrExtent.h */; settings = {ATTRIBUTES = (); }; };
 		EEC1480615E076AD006B8798 /* SMMediaTypeOrExtent.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1475E15E076AC006B8798 /* SMMediaTypeOrExtent.m */; };
 		EEC1480715E076AD006B8798 /* SMMedicalRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1475F15E076AC006B8798 /* SMMedicalRecord.h */; settings = {ATTRIBUTES = (); }; };
 		EEC1480815E076AD006B8798 /* SMMedicalRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1476015E076AC006B8798 /* SMMedicalRecord.m */; };
-		EEC1480915E076AD006B8798 /* SMMedicalRecordNumber.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1476115E076AC006B8798 /* SMMedicalRecordNumber.h */; settings = {ATTRIBUTES = (); }; };
-		EEC1480A15E076AD006B8798 /* SMMedicalRecordNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1476215E076AC006B8798 /* SMMedicalRecordNumber.m */; };
 		EEC1480B15E076AD006B8798 /* SMMedication.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1476315E076AC006B8798 /* SMMedication.h */; settings = {ATTRIBUTES = (); }; };
 		EEC1480C15E076AD006B8798 /* SMMedication.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1476415E076AC006B8798 /* SMMedication.m */; };
 		EEC1480D15E076AD006B8798 /* SMNarrativeResult.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1476515E076AC006B8798 /* SMNarrativeResult.h */; settings = {ATTRIBUTES = (); }; };
 		EEC1480E15E076AD006B8798 /* SMNarrativeResult.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1476615E076AC006B8798 /* SMNarrativeResult.m */; };
-		EEC1480F15E076AD006B8798 /* SMNDFRT.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1476715E076AC006B8798 /* SMNDFRT.h */; settings = {ATTRIBUTES = (); }; };
-		EEC1481015E076AD006B8798 /* SMNDFRT.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1476815E076AC006B8798 /* SMNDFRT.m */; };
 		EEC1481715E076AD006B8798 /* SMOrganization.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1476F15E076AC006B8798 /* SMOrganization.h */; settings = {ATTRIBUTES = (); }; };
 		EEC1481815E076AD006B8798 /* SMOrganization.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1477015E076AC006B8798 /* SMOrganization.m */; };
 		EEC1481915E076AD006B8798 /* SMPanel.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1477115E076AC006B8798 /* SMPanel.h */; settings = {ATTRIBUTES = (); }; };
@@ -147,34 +117,16 @@
 		EEC1482415E076AD006B8798 /* SMPharmacy.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1477C15E076AC006B8798 /* SMPharmacy.m */; };
 		EEC1482715E076AD006B8798 /* SMProblem.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1477F15E076AC006B8798 /* SMProblem.h */; settings = {ATTRIBUTES = (); }; };
 		EEC1482815E076AD006B8798 /* SMProblem.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1478015E076AC006B8798 /* SMProblem.m */; };
-		EEC1482915E076AD006B8798 /* SMProcedure.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1478115E076AD006B8798 /* SMProcedure.h */; settings = {ATTRIBUTES = (); }; };
-		EEC1482A15E076AD006B8798 /* SMProcedure.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1478215E076AD006B8798 /* SMProcedure.m */; };
-		EEC1482B15E076AD006B8798 /* SMProcedureStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1478315E076AD006B8798 /* SMProcedureStatus.h */; settings = {ATTRIBUTES = (); }; };
-		EEC1482C15E076AD006B8798 /* SMProcedureStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1478415E076AD006B8798 /* SMProcedureStatus.m */; };
 		EEC1482D15E076AD006B8798 /* SMProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1478515E076AD006B8798 /* SMProvider.h */; settings = {ATTRIBUTES = (); }; };
 		EEC1482E15E076AD006B8798 /* SMProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1478615E076AD006B8798 /* SMProvider.m */; };
 		EEC1482F15E076AD006B8798 /* SMQuantitativeResult.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1478715E076AD006B8798 /* SMQuantitativeResult.h */; settings = {ATTRIBUTES = (); }; };
 		EEC1483015E076AD006B8798 /* SMQuantitativeResult.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1478815E076AD006B8798 /* SMQuantitativeResult.m */; };
-		EEC1483115E076AD006B8798 /* SMRxNorm.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1478915E076AD006B8798 /* SMRxNorm.h */; settings = {ATTRIBUTES = (); }; };
-		EEC1483215E076AD006B8798 /* SMRxNorm.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1478A15E076AD006B8798 /* SMRxNorm.m */; };
-		EEC1483315E076AD006B8798 /* SMRxNormIngredient.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1478B15E076AD006B8798 /* SMRxNormIngredient.h */; settings = {ATTRIBUTES = (); }; };
-		EEC1483415E076AD006B8798 /* SMRxNormIngredient.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1478C15E076AD006B8798 /* SMRxNormIngredient.m */; };
-		EEC1483515E076AD006B8798 /* SMRxNormSemantic.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1478D15E076AD006B8798 /* SMRxNormSemantic.h */; settings = {ATTRIBUTES = (); }; };
-		EEC1483615E076AD006B8798 /* SMRxNormSemantic.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1478E15E076AD006B8798 /* SMRxNormSemantic.m */; };
 		EEC1483915E076AD006B8798 /* SMSMARTStatement.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1479115E076AD006B8798 /* SMSMARTStatement.h */; settings = {ATTRIBUTES = (); }; };
 		EEC1483A15E076AD006B8798 /* SMSMARTStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1479215E076AD006B8798 /* SMSMARTStatement.m */; };
-		EEC1483B15E076AD006B8798 /* SMSmokingStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1479315E076AD006B8798 /* SMSmokingStatus.h */; settings = {ATTRIBUTES = (); }; };
-		EEC1483C15E076AD006B8798 /* SMSmokingStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1479415E076AD006B8798 /* SMSmokingStatus.m */; };
-		EEC1483D15E076AD006B8798 /* SMSNOMED.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1479515E076AD006B8798 /* SMSNOMED.h */; settings = {ATTRIBUTES = (); }; };
-		EEC1483E15E076AD006B8798 /* SMSNOMED.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1479615E076AD006B8798 /* SMSNOMED.m */; };
 		EEC1483F15E076AD006B8798 /* SMSocialHistory.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1479715E076AD006B8798 /* SMSocialHistory.h */; settings = {ATTRIBUTES = (); }; };
 		EEC1484015E076AD006B8798 /* SMSocialHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1479815E076AD006B8798 /* SMSocialHistory.m */; };
 		EEC1484115E076AD006B8798 /* SMTel.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1479915E076AD006B8798 /* SMTel.h */; settings = {ATTRIBUTES = (); }; };
 		EEC1484215E076AD006B8798 /* SMTel.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1479A15E076AD006B8798 /* SMTel.m */; };
-		EEC1484315E076AD006B8798 /* SMTranslationFidelity.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1479B15E076AD006B8798 /* SMTranslationFidelity.h */; settings = {ATTRIBUTES = (); }; };
-		EEC1484415E076AD006B8798 /* SMTranslationFidelity.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1479C15E076AD006B8798 /* SMTranslationFidelity.m */; };
-		EEC1484515E076AD006B8798 /* SMUNII.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1479D15E076AD006B8798 /* SMUNII.h */; settings = {ATTRIBUTES = (); }; };
-		EEC1484615E076AD006B8798 /* SMUNII.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1479E15E076AD006B8798 /* SMUNII.m */; };
 		EEC1484715E076AD006B8798 /* SMUser.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1479F15E076AD006B8798 /* SMUser.h */; settings = {ATTRIBUTES = (); }; };
 		EEC1484815E076AD006B8798 /* SMUser.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC147A015E076AD006B8798 /* SMUser.m */; };
 		EEC1484B15E076AD006B8798 /* SMValueAndUnit.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC147A315E076AD006B8798 /* SMValueAndUnit.h */; settings = {ATTRIBUTES = (); }; };
@@ -346,9 +298,9 @@
 		EEADE77116AEFDE500E8715A /* UnitTestTemplate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnitTestTemplate.m; sourceTree = "<group>"; };
 		EEADE77216AF02B000E8715A /* TestGeneratedClasses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestGeneratedClasses.h; path = ClassTests/TestGeneratedClasses.h; sourceTree = "<group>"; };
 		EEADE77316AF02B000E8715A /* TestGeneratedClasses.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestGeneratedClasses.m; path = ClassTests/TestGeneratedClasses.m; sourceTree = "<group>"; };
-		EEADE77516AF04F700E8715A /* SMProblemStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMProblemStatus.h; sourceTree = "<group>"; };
-		EEADE77616AF04F700E8715A /* SMProblemStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMProblemStatus.m; sourceTree = "<group>"; };
 		EEADE77A16AF0B1700E8715A /* SMLabPanel.rdf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SMLabPanel.rdf; sourceTree = "<group>"; };
+		EEADE77C16AF2D2B00E8715A /* SMProcedure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMProcedure.h; sourceTree = "<group>"; };
+		EEADE77D16AF2D2B00E8715A /* SMProcedure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMProcedure.m; sourceTree = "<group>"; };
 		EEC146F815DED1D0006B8798 /* AppledocSettings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AppledocSettings.plist; sourceTree = "<group>"; };
 		EEC1470015DEE01A006B8798 /* ClassTemplate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClassTemplate.h; sourceTree = "<group>"; };
 		EEC1470115DEE01A006B8798 /* ClassTemplate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassTemplate.m; sourceTree = "<group>"; };
@@ -360,22 +312,12 @@
 		EEC1470C15E076AB006B8798 /* SMAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAddress.m; sourceTree = "<group>"; };
 		EEC1471115E076AB006B8798 /* SMAllergy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAllergy.h; sourceTree = "<group>"; };
 		EEC1471215E076AB006B8798 /* SMAllergy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAllergy.m; sourceTree = "<group>"; };
-		EEC1471315E076AB006B8798 /* SMAllergyCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAllergyCategory.h; sourceTree = "<group>"; };
-		EEC1471415E076AB006B8798 /* SMAllergyCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAllergyCategory.m; sourceTree = "<group>"; };
 		EEC1471515E076AB006B8798 /* SMAllergyExclusion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAllergyExclusion.h; sourceTree = "<group>"; };
 		EEC1471615E076AB006B8798 /* SMAllergyExclusion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAllergyExclusion.m; sourceTree = "<group>"; };
-		EEC1471715E076AB006B8798 /* SMAllergySeverity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAllergySeverity.h; sourceTree = "<group>"; };
-		EEC1471815E076AB006B8798 /* SMAllergySeverity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAllergySeverity.m; sourceTree = "<group>"; };
 		EEC1471D15E076AB006B8798 /* SMAttribution.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAttribution.h; sourceTree = "<group>"; };
 		EEC1471E15E076AB006B8798 /* SMAttribution.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAttribution.m; sourceTree = "<group>"; };
 		EEC1471F15E076AB006B8798 /* SMBloodPressure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMBloodPressure.h; sourceTree = "<group>"; };
 		EEC1472015E076AB006B8798 /* SMBloodPressure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMBloodPressure.m; sourceTree = "<group>"; };
-		EEC1472115E076AB006B8798 /* SMBloodPressureBodyPosition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMBloodPressureBodyPosition.h; sourceTree = "<group>"; };
-		EEC1472215E076AB006B8798 /* SMBloodPressureBodyPosition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMBloodPressureBodyPosition.m; sourceTree = "<group>"; };
-		EEC1472315E076AB006B8798 /* SMBloodPressureBodySite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMBloodPressureBodySite.h; sourceTree = "<group>"; };
-		EEC1472415E076AB006B8798 /* SMBloodPressureBodySite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMBloodPressureBodySite.m; sourceTree = "<group>"; };
-		EEC1472515E076AB006B8798 /* SMBloodPressureMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMBloodPressureMethod.h; sourceTree = "<group>"; };
-		EEC1472615E076AB006B8798 /* SMBloodPressureMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMBloodPressureMethod.m; sourceTree = "<group>"; };
 		EEC1472B15E076AB006B8798 /* SMClinicalNote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMClinicalNote.h; sourceTree = "<group>"; };
 		EEC1472C15E076AB006B8798 /* SMClinicalNote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMClinicalNote.m; sourceTree = "<group>"; };
 		EEC1472D15E076AB006B8798 /* SMCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCode.h; sourceTree = "<group>"; };
@@ -392,42 +334,22 @@
 		EEC1473C15E076AC006B8798 /* SMDocumentWithFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDocumentWithFormat.m; sourceTree = "<group>"; };
 		EEC1473D15E076AC006B8798 /* SMEncounter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMEncounter.h; sourceTree = "<group>"; };
 		EEC1473E15E076AC006B8798 /* SMEncounter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMEncounter.m; sourceTree = "<group>"; };
-		EEC1473F15E076AC006B8798 /* SMEncounterType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMEncounterType.h; sourceTree = "<group>"; };
-		EEC1474015E076AC006B8798 /* SMEncounterType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMEncounterType.m; sourceTree = "<group>"; };
 		EEC1474315E076AC006B8798 /* SMFulfillment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMFulfillment.h; sourceTree = "<group>"; };
 		EEC1474415E076AC006B8798 /* SMFulfillment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMFulfillment.m; sourceTree = "<group>"; };
 		EEC1474715E076AC006B8798 /* SMImmunization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMImmunization.h; sourceTree = "<group>"; };
 		EEC1474815E076AC006B8798 /* SMImmunization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMImmunization.m; sourceTree = "<group>"; };
-		EEC1474915E076AC006B8798 /* SMImmunizationAdministrationStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMImmunizationAdministrationStatus.h; sourceTree = "<group>"; };
-		EEC1474A15E076AC006B8798 /* SMImmunizationAdministrationStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMImmunizationAdministrationStatus.m; sourceTree = "<group>"; };
-		EEC1474B15E076AC006B8798 /* SMImmunizationClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMImmunizationClass.h; sourceTree = "<group>"; };
-		EEC1474C15E076AC006B8798 /* SMImmunizationClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMImmunizationClass.m; sourceTree = "<group>"; };
-		EEC1474D15E076AC006B8798 /* SMImmunizationProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMImmunizationProduct.h; sourceTree = "<group>"; };
-		EEC1474E15E076AC006B8798 /* SMImmunizationProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMImmunizationProduct.m; sourceTree = "<group>"; };
-		EEC1474F15E076AC006B8798 /* SMImmunizationRefusalReason.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMImmunizationRefusalReason.h; sourceTree = "<group>"; };
-		EEC1475015E076AC006B8798 /* SMImmunizationRefusalReason.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMImmunizationRefusalReason.m; sourceTree = "<group>"; };
 		EEC1475115E076AC006B8798 /* SMLabPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMLabPanel.h; sourceTree = "<group>"; };
 		EEC1475215E076AC006B8798 /* SMLabPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMLabPanel.m; sourceTree = "<group>"; };
 		EEC1475315E076AC006B8798 /* SMLabResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMLabResult.h; sourceTree = "<group>"; };
 		EEC1475415E076AC006B8798 /* SMLabResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMLabResult.m; sourceTree = "<group>"; };
-		EEC1475515E076AC006B8798 /* SMLabResultInterpretation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMLabResultInterpretation.h; sourceTree = "<group>"; };
-		EEC1475615E076AC006B8798 /* SMLabResultInterpretation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMLabResultInterpretation.m; sourceTree = "<group>"; };
-		EEC1475715E076AC006B8798 /* SMLabResultStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMLabResultStatus.h; sourceTree = "<group>"; };
-		EEC1475815E076AC006B8798 /* SMLabResultStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMLabResultStatus.m; sourceTree = "<group>"; };
-		EEC1475B15E076AC006B8798 /* SMLOINC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMLOINC.h; sourceTree = "<group>"; };
-		EEC1475C15E076AC006B8798 /* SMLOINC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMLOINC.m; sourceTree = "<group>"; };
 		EEC1475D15E076AC006B8798 /* SMMediaTypeOrExtent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMediaTypeOrExtent.h; sourceTree = "<group>"; };
 		EEC1475E15E076AC006B8798 /* SMMediaTypeOrExtent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMediaTypeOrExtent.m; sourceTree = "<group>"; };
 		EEC1475F15E076AC006B8798 /* SMMedicalRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMedicalRecord.h; sourceTree = "<group>"; };
 		EEC1476015E076AC006B8798 /* SMMedicalRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMedicalRecord.m; sourceTree = "<group>"; };
-		EEC1476115E076AC006B8798 /* SMMedicalRecordNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMedicalRecordNumber.h; sourceTree = "<group>"; };
-		EEC1476215E076AC006B8798 /* SMMedicalRecordNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMedicalRecordNumber.m; sourceTree = "<group>"; };
 		EEC1476315E076AC006B8798 /* SMMedication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMedication.h; sourceTree = "<group>"; };
 		EEC1476415E076AC006B8798 /* SMMedication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMedication.m; sourceTree = "<group>"; };
 		EEC1476515E076AC006B8798 /* SMNarrativeResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMNarrativeResult.h; sourceTree = "<group>"; };
 		EEC1476615E076AC006B8798 /* SMNarrativeResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMNarrativeResult.m; sourceTree = "<group>"; };
-		EEC1476715E076AC006B8798 /* SMNDFRT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMNDFRT.h; sourceTree = "<group>"; };
-		EEC1476815E076AC006B8798 /* SMNDFRT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMNDFRT.m; sourceTree = "<group>"; };
 		EEC1476F15E076AC006B8798 /* SMOrganization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMOrganization.h; sourceTree = "<group>"; };
 		EEC1477015E076AC006B8798 /* SMOrganization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMOrganization.m; sourceTree = "<group>"; };
 		EEC1477115E076AC006B8798 /* SMPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMPanel.h; sourceTree = "<group>"; };
@@ -440,34 +362,16 @@
 		EEC1477C15E076AC006B8798 /* SMPharmacy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMPharmacy.m; sourceTree = "<group>"; };
 		EEC1477F15E076AC006B8798 /* SMProblem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMProblem.h; sourceTree = "<group>"; };
 		EEC1478015E076AC006B8798 /* SMProblem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMProblem.m; sourceTree = "<group>"; };
-		EEC1478115E076AD006B8798 /* SMProcedure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMProcedure.h; sourceTree = "<group>"; };
-		EEC1478215E076AD006B8798 /* SMProcedure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMProcedure.m; sourceTree = "<group>"; };
-		EEC1478315E076AD006B8798 /* SMProcedureStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMProcedureStatus.h; sourceTree = "<group>"; };
-		EEC1478415E076AD006B8798 /* SMProcedureStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMProcedureStatus.m; sourceTree = "<group>"; };
 		EEC1478515E076AD006B8798 /* SMProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMProvider.h; sourceTree = "<group>"; };
 		EEC1478615E076AD006B8798 /* SMProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMProvider.m; sourceTree = "<group>"; };
 		EEC1478715E076AD006B8798 /* SMQuantitativeResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMQuantitativeResult.h; sourceTree = "<group>"; };
 		EEC1478815E076AD006B8798 /* SMQuantitativeResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMQuantitativeResult.m; sourceTree = "<group>"; };
-		EEC1478915E076AD006B8798 /* SMRxNorm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRxNorm.h; sourceTree = "<group>"; };
-		EEC1478A15E076AD006B8798 /* SMRxNorm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRxNorm.m; sourceTree = "<group>"; };
-		EEC1478B15E076AD006B8798 /* SMRxNormIngredient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRxNormIngredient.h; sourceTree = "<group>"; };
-		EEC1478C15E076AD006B8798 /* SMRxNormIngredient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRxNormIngredient.m; sourceTree = "<group>"; };
-		EEC1478D15E076AD006B8798 /* SMRxNormSemantic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRxNormSemantic.h; sourceTree = "<group>"; };
-		EEC1478E15E076AD006B8798 /* SMRxNormSemantic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRxNormSemantic.m; sourceTree = "<group>"; };
 		EEC1479115E076AD006B8798 /* SMSMARTStatement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSMARTStatement.h; sourceTree = "<group>"; };
 		EEC1479215E076AD006B8798 /* SMSMARTStatement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSMARTStatement.m; sourceTree = "<group>"; };
-		EEC1479315E076AD006B8798 /* SMSmokingStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSmokingStatus.h; sourceTree = "<group>"; };
-		EEC1479415E076AD006B8798 /* SMSmokingStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSmokingStatus.m; sourceTree = "<group>"; };
-		EEC1479515E076AD006B8798 /* SMSNOMED.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSNOMED.h; sourceTree = "<group>"; };
-		EEC1479615E076AD006B8798 /* SMSNOMED.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSNOMED.m; sourceTree = "<group>"; };
 		EEC1479715E076AD006B8798 /* SMSocialHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSocialHistory.h; sourceTree = "<group>"; };
 		EEC1479815E076AD006B8798 /* SMSocialHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSocialHistory.m; sourceTree = "<group>"; };
 		EEC1479915E076AD006B8798 /* SMTel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTel.h; sourceTree = "<group>"; };
 		EEC1479A15E076AD006B8798 /* SMTel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTel.m; sourceTree = "<group>"; };
-		EEC1479B15E076AD006B8798 /* SMTranslationFidelity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTranslationFidelity.h; sourceTree = "<group>"; };
-		EEC1479C15E076AD006B8798 /* SMTranslationFidelity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTranslationFidelity.m; sourceTree = "<group>"; };
-		EEC1479D15E076AD006B8798 /* SMUNII.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMUNII.h; sourceTree = "<group>"; };
-		EEC1479E15E076AD006B8798 /* SMUNII.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMUNII.m; sourceTree = "<group>"; };
 		EEC1479F15E076AD006B8798 /* SMUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMUser.h; sourceTree = "<group>"; };
 		EEC147A015E076AD006B8798 /* SMUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMUser.m; sourceTree = "<group>"; };
 		EEC147A315E076AD006B8798 /* SMValueAndUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMValueAndUnit.h; sourceTree = "<group>"; };
@@ -623,22 +527,12 @@
 				EEC1470C15E076AB006B8798 /* SMAddress.m */,
 				EEC1471115E076AB006B8798 /* SMAllergy.h */,
 				EEC1471215E076AB006B8798 /* SMAllergy.m */,
-				EEC1471315E076AB006B8798 /* SMAllergyCategory.h */,
-				EEC1471415E076AB006B8798 /* SMAllergyCategory.m */,
 				EEC1471515E076AB006B8798 /* SMAllergyExclusion.h */,
 				EEC1471615E076AB006B8798 /* SMAllergyExclusion.m */,
-				EEC1471715E076AB006B8798 /* SMAllergySeverity.h */,
-				EEC1471815E076AB006B8798 /* SMAllergySeverity.m */,
 				EEC1471D15E076AB006B8798 /* SMAttribution.h */,
 				EEC1471E15E076AB006B8798 /* SMAttribution.m */,
 				EEC1471F15E076AB006B8798 /* SMBloodPressure.h */,
 				EEC1472015E076AB006B8798 /* SMBloodPressure.m */,
-				EEC1472115E076AB006B8798 /* SMBloodPressureBodyPosition.h */,
-				EEC1472215E076AB006B8798 /* SMBloodPressureBodyPosition.m */,
-				EEC1472315E076AB006B8798 /* SMBloodPressureBodySite.h */,
-				EEC1472415E076AB006B8798 /* SMBloodPressureBodySite.m */,
-				EEC1472515E076AB006B8798 /* SMBloodPressureMethod.h */,
-				EEC1472615E076AB006B8798 /* SMBloodPressureMethod.m */,
 				EEC1472B15E076AB006B8798 /* SMClinicalNote.h */,
 				EEC1472C15E076AB006B8798 /* SMClinicalNote.m */,
 				EEC1472D15E076AB006B8798 /* SMCode.h */,
@@ -657,44 +551,24 @@
 				EEC1473C15E076AC006B8798 /* SMDocumentWithFormat.m */,
 				EEC1473D15E076AC006B8798 /* SMEncounter.h */,
 				EEC1473E15E076AC006B8798 /* SMEncounter.m */,
-				EEC1473F15E076AC006B8798 /* SMEncounterType.h */,
-				EEC1474015E076AC006B8798 /* SMEncounterType.m */,
 				EEC1474315E076AC006B8798 /* SMFulfillment.h */,
 				EEC1474415E076AC006B8798 /* SMFulfillment.m */,
 				EEC1474715E076AC006B8798 /* SMImmunization.h */,
 				EEC1474815E076AC006B8798 /* SMImmunization.m */,
-				EEC1474915E076AC006B8798 /* SMImmunizationAdministrationStatus.h */,
-				EEC1474A15E076AC006B8798 /* SMImmunizationAdministrationStatus.m */,
-				EEC1474B15E076AC006B8798 /* SMImmunizationClass.h */,
-				EEC1474C15E076AC006B8798 /* SMImmunizationClass.m */,
-				EEC1474D15E076AC006B8798 /* SMImmunizationProduct.h */,
-				EEC1474E15E076AC006B8798 /* SMImmunizationProduct.m */,
-				EEC1474F15E076AC006B8798 /* SMImmunizationRefusalReason.h */,
-				EEC1475015E076AC006B8798 /* SMImmunizationRefusalReason.m */,
 				EEC1475115E076AC006B8798 /* SMLabPanel.h */,
 				EEC1475215E076AC006B8798 /* SMLabPanel.m */,
 				EEC1475315E076AC006B8798 /* SMLabResult.h */,
 				EEC1475415E076AC006B8798 /* SMLabResult.m */,
-				EEC1475515E076AC006B8798 /* SMLabResultInterpretation.h */,
-				EEC1475615E076AC006B8798 /* SMLabResultInterpretation.m */,
-				EEC1475715E076AC006B8798 /* SMLabResultStatus.h */,
-				EEC1475815E076AC006B8798 /* SMLabResultStatus.m */,
-				EEC1475B15E076AC006B8798 /* SMLOINC.h */,
-				EEC1475C15E076AC006B8798 /* SMLOINC.m */,
 				EEC1475D15E076AC006B8798 /* SMMediaTypeOrExtent.h */,
 				EEC1475E15E076AC006B8798 /* SMMediaTypeOrExtent.m */,
 				EEC1475F15E076AC006B8798 /* SMMedicalRecord.h */,
 				EEC1476015E076AC006B8798 /* SMMedicalRecord.m */,
-				EEC1476115E076AC006B8798 /* SMMedicalRecordNumber.h */,
-				EEC1476215E076AC006B8798 /* SMMedicalRecordNumber.m */,
 				EEC1476315E076AC006B8798 /* SMMedication.h */,
 				EEC1476415E076AC006B8798 /* SMMedication.m */,
 				EEC1470515DFE790006B8798 /* SMName.h */,
 				EEC1470615DFE790006B8798 /* SMName.m */,
 				EEC1476515E076AC006B8798 /* SMNarrativeResult.h */,
 				EEC1476615E076AC006B8798 /* SMNarrativeResult.m */,
-				EEC1476715E076AC006B8798 /* SMNDFRT.h */,
-				EEC1476815E076AC006B8798 /* SMNDFRT.m */,
 				EEC1476F15E076AC006B8798 /* SMOrganization.h */,
 				EEC1477015E076AC006B8798 /* SMOrganization.m */,
 				EEC1477115E076AC006B8798 /* SMPanel.h */,
@@ -707,36 +581,18 @@
 				EEC1477C15E076AC006B8798 /* SMPharmacy.m */,
 				EEC1477F15E076AC006B8798 /* SMProblem.h */,
 				EEC1478015E076AC006B8798 /* SMProblem.m */,
-				EEADE77516AF04F700E8715A /* SMProblemStatus.h */,
-				EEADE77616AF04F700E8715A /* SMProblemStatus.m */,
-				EEC1478115E076AD006B8798 /* SMProcedure.h */,
-				EEC1478215E076AD006B8798 /* SMProcedure.m */,
-				EEC1478315E076AD006B8798 /* SMProcedureStatus.h */,
-				EEC1478415E076AD006B8798 /* SMProcedureStatus.m */,
+				EEADE77C16AF2D2B00E8715A /* SMProcedure.h */,
+				EEADE77D16AF2D2B00E8715A /* SMProcedure.m */,
 				EEC1478515E076AD006B8798 /* SMProvider.h */,
 				EEC1478615E076AD006B8798 /* SMProvider.m */,
 				EEC1478715E076AD006B8798 /* SMQuantitativeResult.h */,
 				EEC1478815E076AD006B8798 /* SMQuantitativeResult.m */,
-				EEC1478915E076AD006B8798 /* SMRxNorm.h */,
-				EEC1478A15E076AD006B8798 /* SMRxNorm.m */,
-				EEC1478B15E076AD006B8798 /* SMRxNormIngredient.h */,
-				EEC1478C15E076AD006B8798 /* SMRxNormIngredient.m */,
-				EEC1478D15E076AD006B8798 /* SMRxNormSemantic.h */,
-				EEC1478E15E076AD006B8798 /* SMRxNormSemantic.m */,
 				EEC1479115E076AD006B8798 /* SMSMARTStatement.h */,
 				EEC1479215E076AD006B8798 /* SMSMARTStatement.m */,
-				EEC1479315E076AD006B8798 /* SMSmokingStatus.h */,
-				EEC1479415E076AD006B8798 /* SMSmokingStatus.m */,
-				EEC1479515E076AD006B8798 /* SMSNOMED.h */,
-				EEC1479615E076AD006B8798 /* SMSNOMED.m */,
 				EEC1479715E076AD006B8798 /* SMSocialHistory.h */,
 				EEC1479815E076AD006B8798 /* SMSocialHistory.m */,
 				EEC1479915E076AD006B8798 /* SMTel.h */,
 				EEC1479A15E076AD006B8798 /* SMTel.m */,
-				EEC1479B15E076AD006B8798 /* SMTranslationFidelity.h */,
-				EEC1479C15E076AD006B8798 /* SMTranslationFidelity.m */,
-				EEC1479D15E076AD006B8798 /* SMUNII.h */,
-				EEC1479E15E076AD006B8798 /* SMUNII.m */,
 				EEC1479F15E076AD006B8798 /* SMUser.h */,
 				EEC147A015E076AD006B8798 /* SMUser.m */,
 				EEC147A315E076AD006B8798 /* SMValueAndUnit.h */,
@@ -999,14 +855,9 @@
 				EEC1470915DFE790006B8798 /* SMName.h in Headers */,
 				EEC147B315E076AD006B8798 /* SMAddress.h in Headers */,
 				EEC147B915E076AD006B8798 /* SMAllergy.h in Headers */,
-				EEC147BB15E076AD006B8798 /* SMAllergyCategory.h in Headers */,
 				EEC147BD15E076AD006B8798 /* SMAllergyExclusion.h in Headers */,
-				EEC147BF15E076AD006B8798 /* SMAllergySeverity.h in Headers */,
 				EEC147C515E076AD006B8798 /* SMAttribution.h in Headers */,
 				EEC147C715E076AD006B8798 /* SMBloodPressure.h in Headers */,
-				EEC147C915E076AD006B8798 /* SMBloodPressureBodyPosition.h in Headers */,
-				EEC147CB15E076AD006B8798 /* SMBloodPressureBodySite.h in Headers */,
-				EEC147CD15E076AD006B8798 /* SMBloodPressureMethod.h in Headers */,
 				EEC147D315E076AD006B8798 /* SMClinicalNote.h in Headers */,
 				EEC147D515E076AD006B8798 /* SMCode.h in Headers */,
 				EEC147D715E076AD006B8798 /* SMCodedValue.h in Headers */,
@@ -1015,44 +866,25 @@
 				EEC147E115E076AD006B8798 /* SMDateTime.h in Headers */,
 				EEC147E315E076AD006B8798 /* SMDocumentWithFormat.h in Headers */,
 				EEC147E515E076AD006B8798 /* SMEncounter.h in Headers */,
-				EEC147E715E076AD006B8798 /* SMEncounterType.h in Headers */,
 				EEC147EB15E076AD006B8798 /* SMFulfillment.h in Headers */,
 				EEC147EF15E076AD006B8798 /* SMImmunization.h in Headers */,
-				EEC147F115E076AD006B8798 /* SMImmunizationAdministrationStatus.h in Headers */,
-				EEC147F315E076AD006B8798 /* SMImmunizationClass.h in Headers */,
-				EEC147F515E076AD006B8798 /* SMImmunizationProduct.h in Headers */,
-				EEC147F715E076AD006B8798 /* SMImmunizationRefusalReason.h in Headers */,
 				EEC147F915E076AD006B8798 /* SMLabPanel.h in Headers */,
 				EEC147FB15E076AD006B8798 /* SMLabResult.h in Headers */,
-				EEC147FD15E076AD006B8798 /* SMLabResultInterpretation.h in Headers */,
-				EEC147FF15E076AD006B8798 /* SMLabResultStatus.h in Headers */,
-				EEC1480315E076AD006B8798 /* SMLOINC.h in Headers */,
 				EEC1480515E076AD006B8798 /* SMMediaTypeOrExtent.h in Headers */,
 				EEC1480715E076AD006B8798 /* SMMedicalRecord.h in Headers */,
-				EEC1480915E076AD006B8798 /* SMMedicalRecordNumber.h in Headers */,
 				EEC1480B15E076AD006B8798 /* SMMedication.h in Headers */,
 				EEC1480D15E076AD006B8798 /* SMNarrativeResult.h in Headers */,
-				EEC1480F15E076AD006B8798 /* SMNDFRT.h in Headers */,
 				EEC1481715E076AD006B8798 /* SMOrganization.h in Headers */,
 				EEC1481915E076AD006B8798 /* SMPanel.h in Headers */,
 				EEC1481F15E076AD006B8798 /* SMParticipant.h in Headers */,
 				EEC1482115E076AD006B8798 /* SMPerson.h in Headers */,
 				EEC1482315E076AD006B8798 /* SMPharmacy.h in Headers */,
 				EEC1482715E076AD006B8798 /* SMProblem.h in Headers */,
-				EEC1482915E076AD006B8798 /* SMProcedure.h in Headers */,
-				EEC1482B15E076AD006B8798 /* SMProcedureStatus.h in Headers */,
 				EEC1482D15E076AD006B8798 /* SMProvider.h in Headers */,
 				EEC1482F15E076AD006B8798 /* SMQuantitativeResult.h in Headers */,
-				EEC1483115E076AD006B8798 /* SMRxNorm.h in Headers */,
-				EEC1483315E076AD006B8798 /* SMRxNormIngredient.h in Headers */,
-				EEC1483515E076AD006B8798 /* SMRxNormSemantic.h in Headers */,
 				EEC1483915E076AD006B8798 /* SMSMARTStatement.h in Headers */,
-				EEC1483B15E076AD006B8798 /* SMSmokingStatus.h in Headers */,
-				EEC1483D15E076AD006B8798 /* SMSNOMED.h in Headers */,
 				EEC1483F15E076AD006B8798 /* SMSocialHistory.h in Headers */,
 				EEC1484115E076AD006B8798 /* SMTel.h in Headers */,
-				EEC1484315E076AD006B8798 /* SMTranslationFidelity.h in Headers */,
-				EEC1484515E076AD006B8798 /* SMUNII.h in Headers */,
 				EEC1484715E076AD006B8798 /* SMUser.h in Headers */,
 				EEC1484B15E076AD006B8798 /* SMValueAndUnit.h in Headers */,
 				EEC1484D15E076AD006B8798 /* SMValueRange.h in Headers */,
@@ -1061,7 +893,7 @@
 				EEC1485515E076AD006B8798 /* SMVitalSign.h in Headers */,
 				EEC1485715E076AD006B8798 /* SMVitalSignSet.h in Headers */,
 				EE59AC1615E34D4F00F4D738 /* SMRecord+Calls.h in Headers */,
-				EEADE77716AF04F700E8715A /* SMProblemStatus.h in Headers */,
+				EEADE77E16AF2D2B00E8715A /* SMProcedure.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1280,14 +1112,9 @@
 				EEC1470A15DFE790006B8798 /* SMName.m in Sources */,
 				EEC147B415E076AD006B8798 /* SMAddress.m in Sources */,
 				EEC147BA15E076AD006B8798 /* SMAllergy.m in Sources */,
-				EEC147BC15E076AD006B8798 /* SMAllergyCategory.m in Sources */,
 				EEC147BE15E076AD006B8798 /* SMAllergyExclusion.m in Sources */,
-				EEC147C015E076AD006B8798 /* SMAllergySeverity.m in Sources */,
 				EEC147C615E076AD006B8798 /* SMAttribution.m in Sources */,
 				EEC147C815E076AD006B8798 /* SMBloodPressure.m in Sources */,
-				EEC147CA15E076AD006B8798 /* SMBloodPressureBodyPosition.m in Sources */,
-				EEC147CC15E076AD006B8798 /* SMBloodPressureBodySite.m in Sources */,
-				EEC147CE15E076AD006B8798 /* SMBloodPressureMethod.m in Sources */,
 				EEC147D415E076AD006B8798 /* SMClinicalNote.m in Sources */,
 				EEC147D615E076AD006B8798 /* SMCode.m in Sources */,
 				EEC147D815E076AD006B8798 /* SMCodedValue.m in Sources */,
@@ -1296,44 +1123,25 @@
 				EEC147E215E076AD006B8798 /* SMDateTime.m in Sources */,
 				EEC147E415E076AD006B8798 /* SMDocumentWithFormat.m in Sources */,
 				EEC147E615E076AD006B8798 /* SMEncounter.m in Sources */,
-				EEC147E815E076AD006B8798 /* SMEncounterType.m in Sources */,
 				EEC147EC15E076AD006B8798 /* SMFulfillment.m in Sources */,
 				EEC147F015E076AD006B8798 /* SMImmunization.m in Sources */,
-				EEC147F215E076AD006B8798 /* SMImmunizationAdministrationStatus.m in Sources */,
-				EEC147F415E076AD006B8798 /* SMImmunizationClass.m in Sources */,
-				EEC147F615E076AD006B8798 /* SMImmunizationProduct.m in Sources */,
-				EEC147F815E076AD006B8798 /* SMImmunizationRefusalReason.m in Sources */,
 				EEC147FA15E076AD006B8798 /* SMLabPanel.m in Sources */,
 				EEC147FC15E076AD006B8798 /* SMLabResult.m in Sources */,
-				EEC147FE15E076AD006B8798 /* SMLabResultInterpretation.m in Sources */,
-				EEC1480015E076AD006B8798 /* SMLabResultStatus.m in Sources */,
-				EEC1480415E076AD006B8798 /* SMLOINC.m in Sources */,
 				EEC1480615E076AD006B8798 /* SMMediaTypeOrExtent.m in Sources */,
 				EEC1480815E076AD006B8798 /* SMMedicalRecord.m in Sources */,
-				EEC1480A15E076AD006B8798 /* SMMedicalRecordNumber.m in Sources */,
 				EEC1480C15E076AD006B8798 /* SMMedication.m in Sources */,
 				EEC1480E15E076AD006B8798 /* SMNarrativeResult.m in Sources */,
-				EEC1481015E076AD006B8798 /* SMNDFRT.m in Sources */,
 				EEC1481815E076AD006B8798 /* SMOrganization.m in Sources */,
 				EEC1481A15E076AD006B8798 /* SMPanel.m in Sources */,
 				EEC1482015E076AD006B8798 /* SMParticipant.m in Sources */,
 				EEC1482215E076AD006B8798 /* SMPerson.m in Sources */,
 				EEC1482415E076AD006B8798 /* SMPharmacy.m in Sources */,
 				EEC1482815E076AD006B8798 /* SMProblem.m in Sources */,
-				EEC1482A15E076AD006B8798 /* SMProcedure.m in Sources */,
-				EEC1482C15E076AD006B8798 /* SMProcedureStatus.m in Sources */,
 				EEC1482E15E076AD006B8798 /* SMProvider.m in Sources */,
 				EEC1483015E076AD006B8798 /* SMQuantitativeResult.m in Sources */,
-				EEC1483215E076AD006B8798 /* SMRxNorm.m in Sources */,
-				EEC1483415E076AD006B8798 /* SMRxNormIngredient.m in Sources */,
-				EEC1483615E076AD006B8798 /* SMRxNormSemantic.m in Sources */,
 				EEC1483A15E076AD006B8798 /* SMSMARTStatement.m in Sources */,
-				EEC1483C15E076AD006B8798 /* SMSmokingStatus.m in Sources */,
-				EEC1483E15E076AD006B8798 /* SMSNOMED.m in Sources */,
 				EEC1484015E076AD006B8798 /* SMSocialHistory.m in Sources */,
 				EEC1484215E076AD006B8798 /* SMTel.m in Sources */,
-				EEC1484415E076AD006B8798 /* SMTranslationFidelity.m in Sources */,
-				EEC1484615E076AD006B8798 /* SMUNII.m in Sources */,
 				EEC1484815E076AD006B8798 /* SMUser.m in Sources */,
 				EEC1484C15E076AD006B8798 /* SMValueAndUnit.m in Sources */,
 				EEC1484E15E076AD006B8798 /* SMValueRange.m in Sources */,
@@ -1341,7 +1149,7 @@
 				EEC1485215E076AD006B8798 /* SMVCard.m in Sources */,
 				EEC1485615E076AD006B8798 /* SMVitalSign.m in Sources */,
 				EEC1485815E076AD006B8798 /* SMVitalSignSet.m in Sources */,
-				EEADE77816AF04F700E8715A /* SMProblemStatus.m in Sources */,
+				EEADE77F16AF2D2B00E8715A /* SMProcedure.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

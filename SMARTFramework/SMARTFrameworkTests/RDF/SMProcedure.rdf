@@ -30,5 +30,6 @@
         </v:n>
       </sp:Provider>
     </sp:provider>
+    <sp:notes>Patient claimed to have already had an appendectomy</sp:notes>
  </sp:Procedure>
 </rdf:RDF>

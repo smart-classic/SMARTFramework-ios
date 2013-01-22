@@ -15,8 +15,8 @@ _class_unittests_dir = 'SMARTFramework/SMARTFrameworkTests/ClassTests'
 ### ---------------------------------------------------------- ###
 
 _classes_to_ignore = [
-	'AnyURI',
-	'AppManifest',
+	'anyURI',
+	'App Manifest',
 	'Call',
 	'Cell',
 	'Component',
@@ -29,8 +29,8 @@ _classes_to_ignore = [
 	'ParameterSet',
 	'Pref',
 	'SMARTAPI',
-	'UserPreferences',
-	'VCardLabel',
+	'User Preferences',
+	'VCardLabels',
 	'Work',
 ]
 
@@ -156,7 +156,7 @@ import re
 import urllib2
 import datetime
 
-print '-->	Parsing ontology'
+print '--> Parsing ontology'
 from smart_common.rdf_tools import rdf_ontology
 
 _arguments = sys.argv[1:] if len(sys.argv) > 1 else []
@@ -224,6 +224,15 @@ def handle_class(a_class):
 	- YEAR
 	- EXAMPLE
 	"""
+	
+	# is this an item we want a class for?
+	#print 'CHECKING    %s' % a_class.name
+	if a_class.name in _classes_to_ignore:
+		#print 'IGNORING    %s [%s]' % (a_class.name, a_class.uri)
+		return None
+	if a_class.uri and a_class.uri.startswith('http://smartplatforms.org/terms/codes/'):
+		#print 'SKIPPING    %s [%s]' % (a_class.name, a_class.uri)
+		return None
 	
 	# start the dictionary
 	now = datetime.date.today()
@@ -498,7 +507,7 @@ if __name__ == "__main__":
 		print "xx>  Can't write unit tests to %s" % _class_unittests_dir
 		sys.exit(1)
 	
-	print '-->	 Processing classes'
+	print '--> Processing classes'
 	known_classes = {}			# will be name: property-dictionary
 	class_tests = []
 	num_classes = 0
@@ -506,17 +515,15 @@ if __name__ == "__main__":
 	
 	# loop all SMART_Class instances
 	for o_class in rdf_ontology.api_types:
-		if o_class.name in _classes_to_ignore:
-			continue
 		if o_class.name in known_classes:
 			continue
 		
 		d = handle_class(o_class)
-		if d:
+		if d is not None:
 			
 			# output the RDF example for the class
 			if write_class_example(d, _overwrite):
-				print '-->	  Wrote class %s examples' % d['CLASS_NAME']
+				print '-->  Wrote %s example' % d['CLASS_NAME']
 			
 			# collect unit tests
 			unit_test = synthesize_class_tests(d)
@@ -525,7 +532,7 @@ if __name__ == "__main__":
 			
 			# write class files
 			if write_class(d, _overwrite):
-				print '-->	  Wrote class %s' % d['CLASS_NAME']
+				print '-->  Wrote class %s' % d['CLASS_NAME']
 				num_classes += 1
 	
 	# write unit tests
@@ -550,7 +557,7 @@ if __name__ == "__main__":
 		implem = apply_template(_templates['UnitTestTemplate.m'], test_dict)
 		handle = open(path_m, 'w')
 		handle.write(implem)
-		print '-->	  Wrote %d class unit tests' % len(class_tests)
+		print '-->  Wrote %d class unit tests' % len(class_tests)
 	
 	# put record-scoped calls into a record category
 	used_call_names = _single_item_calls
@@ -566,8 +573,8 @@ if __name__ == "__main__":
 	# warn about the api calls that we did ignore
 	for api in rdf_ontology.api_calls:
 		orig_name = api.guess_name()
-		if orig_name not in used_call_names:
-			print 'xx>  Ignored API call: %s (level: %s)' % (orig_name, api.category)
+		#if orig_name not in used_call_names:
+		#	print 'xx>  Ignored API call: %s (level: %s)' % (orig_name, api.category)
 	
 	# write to SMRecord category
 	if len(record_sigs) > 0:
@@ -608,5 +615,5 @@ if __name__ == "__main__":
 			num_calls += 1
 	
 	# all done
-	print '-->	 Done. %d classes and %d categories written.' % (num_classes, num_calls)
+	print '--> Done. %d classes and %d categories written.' % (num_classes, num_calls)
 

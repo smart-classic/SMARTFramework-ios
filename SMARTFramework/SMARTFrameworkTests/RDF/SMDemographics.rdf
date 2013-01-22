@@ -47,7 +47,11 @@
      <foaf:gender>male</foaf:gender>
      <v:bday>1959-12-25</v:bday>
      <v:email>bob.odenkirk@example.com</v:email>
-
+     
+     <sp:ethnicity>Welsh</sp:ethnicity>
+     <sp:race>Caucasian</sp:race>
+     <sp:preferredLanguage>English</sp:preferredLanguage>
+     
      <sp:medicalRecordNumber>
        <sp:Code>
         <dcterms:title>My Hospital Record 2304575</dcterms:title> 

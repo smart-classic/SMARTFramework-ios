@@ -12,7 +12,11 @@
     <dcterms:title>Cardiology clinic follow-up</dcterms:title>
     <dcterms:hasFormat>
          <sp:DocumentWithFormat rdf:about="http://url.of.raw.note/content">
-            <dcterms:format rdf:resoruce="http://purl.org/NET/mediatypes/text/html"/>
+            <dcterms:format>
+                <dcterms:MediaTypeOrExtent rdf:about="http://purl.org/NET/mediatypes/text/html">
+                    <rdfs:label>text/html</rdfs:label>
+                </dcterms:MediaTypeOrExtent>
+            </dcterms:format>
          </sp:DocumentWithFormat>
     </dcterms:hasFormat>
     <sp:provider>
