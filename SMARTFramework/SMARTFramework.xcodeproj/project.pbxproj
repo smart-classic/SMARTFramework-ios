@@ -1055,7 +1055,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "PATH=/bin:/usr/bin:/usr/local/bin\nDOX=$(which appledoc)\nif [[ 'x' == ${DOX}x ]]; then\n    echo \"I can't find appledoc, check the README on how to install it or adjust the PATH variable in this script\"\n    exit 1\nfi\n\nappledoc AppledocSettings.plist Classes GeneratedClasses";
+			shellScript = "PATH=/bin:/usr/bin:/usr/local/bin\nDOX=$(which appledoc)\nif [[ 'x' == ${DOX}x ]]; then\n    echo \"I can't find appledoc, check the README on how to install it or adjust the PATH variable in this script\"\n    exit 1\nfi\n\nappledoc Resources/AppledocSettings.plist Classes GeneratedClasses";
 		};
 		EEC9C5A315CB2EA900B7C568 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
