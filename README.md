@@ -96,7 +96,7 @@ If you have checked out the source from GitHub, open the SMARTFramework workspac
 Framework Setup
 ---------------
 
-Now that you have the source it's time to add it to your Xcode project:
+If you want to build your own app and use the SMART framework, follow these steps to set your app up:
 
 1. Add the framework project (located in `SMARTFramework-ios/SMARTFramework/SMARTFramework.xcodeproj`), **not** the workspace at the top level, to your Xcode workspace.
 
@@ -119,14 +119,16 @@ Now that you have the source it's time to add it to your Xcode project:
 
 	This must be added so the framework can be used as a static library, otherwise class categories will not work and your app will crash.
 
-5. You will have to provide initial server settings in the configuration file, but you can always change the properties in code later on (e.g. if your App can connect to different servers).  
+5. You will have to provide **initial server settings** in the configuration file, but you can always change the properties in code later on (e.g. if your App can connect to different servers).  
 	Copy the file `Config-default.h` in the **framework** project (not your own app) to `Config.h` and adjust it to suit your needs. The setting names should define NSStrings and are named:
 	- `kSMARTAPIBaseURL`  (The Server URL)
 	- `kSMARTAppId`  (The App id)
 	- `kSMARTConsumerKey`  (Your consumer key)
 	- `kSMARTConsumerSecret`  (Your consumer secret)
+	
+	(Compare to the default file to see correct definitions)
 
-6. Add `Config.h` to the Indivo Framework target. (In the default project Xcode should already know the file but show it in red because it's not in the repository. As soon as you create it, Xcode should find it and you're all good).
+6. Add `Config.h` to the SMART Framework target. (In the default project Xcode should already know the file but show it in red because it's not in the repository. As soon as you create it, Xcode should find it and you're all good).
 
 7. In your code, include the header files (where needed) as user header files:
 
