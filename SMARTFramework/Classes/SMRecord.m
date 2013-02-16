@@ -118,6 +118,8 @@
 					   NSData *rdfData = [userInfo objectForKey:SMARTResponseDataKey];
 					   NSString *rdf = [[NSString alloc] initWithData:rdfData encoding:NSUTF8StringEncoding];
 					   if ([rdf length] > 0) {
+						   DLog(@"-->  GET  %@", aPath);
+						   DLog(@"==>  %@", rdf);
 						   RedlandParser *parser = [RedlandParser parserWithName:RedlandRDFXMLParserName];
 						   RedlandURI *uri = [RedlandURI URIWithString:@"http://www.smartplatforms.org/terms#"];
 						   RedlandModel *model = [RedlandModel new];
