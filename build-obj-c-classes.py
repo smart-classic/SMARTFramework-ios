@@ -120,15 +120,28 @@ _templates['class_base_path_getter'] = """+ (NSString *)basePath
 }"""
 
 _templates['record_multi_item_getter'] = """/**
- *	{{ description }}.
- *	Makes a call to {{ path }}, originally named "{{ orig_name }}".
- *	@param callback A INSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: INResponseArrayKey) if successful.
+ *  {{ description }}.
+ *  Makes a call to {{ path }}, originally named "{{ orig_name }}".
+ *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: SMARTResponseArrayKey) if successful.
  */
 {{ method_signature }}
 {
 	NSString *path = [NSString stringWithFormat:@"{{ nsstring_path }}", self.record_id];
 	[self getObjectsOfClass:[{{ item_class }} class] from:path callback:callback];
 }"""
+
+_templates['record_item_poster'] = """/**
+ *  {{ description }}
+ *  Posts to {{ path }}, originally named "{{ orig_name }}".
+ *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the posted item (key: SMARTResponseDataKey) if successful.
+ */
+{{ method_signature }}
+{
+	NSString *path = [NSString stringWithFormat:@"{{ nsstring_path }}", self.record_id];
+	DLog(@"POST Method: Should now POST to %@, but this is not yet implemented", path);
+	SUCCESS_RETVAL_CALLBACK_OR_LOG_USER_INFO(callback, NO, @{})
+}
+"""
 
 _templates['class_unit_test'] = """/**
  *  Testing {{ CLASS_NAME }}
@@ -240,7 +253,7 @@ def handle_class(a_class):
 	class_name = toObjCClassName(a_class.name)
 	myDict = {
 		'CLASS_NAME': class_name,
-		'CLASS_SUPERCLASS': 'SMDocument' if base_path else 'SMObject',
+		'CLASS_SUPERCLASS': 'SMBaseDocument' if base_path else 'SMObject',
 		'BASE_PATH': None,
 		'RDF_TYPE': unicode(a_class.uri),
 		'AUTHOR': __file__,
@@ -319,7 +332,7 @@ def handle_class(a_class):
 	# calls for this class (SMART_API_Call instances)
 	global _record_calls
 	prefix = '- (void)'
-	block_arg = '(INSuccessRetvalueBlock)callback'
+	block_arg = '(SMSuccessRetvalueBlock)callback'
 	if a_class.calls and len(a_class.calls) > 0:
 		for api in a_class.calls:
 			
@@ -329,6 +342,7 @@ def handle_class(a_class):
 				method_name = toObjCPropertyName(orig_name)
 				cDict = {
 					'orig_name': orig_name,
+					'http_method': api.http_method,
 					'item_class': class_name,
 					'path': str(api.path),
 					'nsstring_path': str(re.sub(r'(\{\s*\w+\s*\})', '%@', api.path)),
@@ -371,7 +385,7 @@ def handle_class(a_class):
 					#print '	  %s: %s' % (a_class.name, cDict)
 	
 	# add it to the known classes dict
-	known_classes[a_class.name] = myDict
+	known_classes[a_class.name] = class_name
 	return myDict
 
 
@@ -508,7 +522,7 @@ if __name__ == "__main__":
 		sys.exit(1)
 	
 	print '--> Processing classes'
-	known_classes = {}			# will be name: property-dictionary
+	known_classes = {}			# will be SMART name: Obj-C class name
 	class_tests = []
 	num_classes = 0
 	num_calls = 0
@@ -565,7 +579,8 @@ if __name__ == "__main__":
 	record_calls = []
 	for api in _record_calls:
 		used_call_names.append(api['orig_name'])
-		call = apply_template(_templates['record_multi_item_getter'], api)
+		template = 'record_item_poster' if 'POST' == api['http_method'] else 'record_multi_item_getter'
+		call = apply_template(_templates[template], api)
 		
 		record_sigs.append('%s;' % api['method_signature'])
 		record_calls.append(call)
@@ -614,6 +629,15 @@ if __name__ == "__main__":
 			print '-->  Wrote category %s on %s' % (d['CATEGORY_NAME'], d['CATEGORY_CLASS'])	
 			num_calls += 1
 	
-	# all done
-	print '--> Done. %d classes and %d categories written.' % (num_classes, num_calls)
+	# all classes are done
+	print '--> %d classes and %d categories written.' % (num_classes, num_calls)
+	print '-> SMARTObjects.h'
+	
+	# output class imports
+	classnames = sorted(known_classes.values(), key=lambda s: s.lower())
+	for name in classnames:
+		print '#import "%s.h"' % name
+	
+	print '-> Done'
+
 

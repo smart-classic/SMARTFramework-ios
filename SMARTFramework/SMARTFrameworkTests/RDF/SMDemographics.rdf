@@ -46,11 +46,19 @@
 
      <foaf:gender>male</foaf:gender>
      <v:bday>1959-12-25</v:bday>
+     <v:deathdate>2012-11-18</v:deathdate>
      <v:email>bob.odenkirk@example.com</v:email>
      
      <sp:ethnicity>Welsh</sp:ethnicity>
      <sp:race>Caucasian</sp:race>
      <sp:preferredLanguage>English</sp:preferredLanguage>
+
+     <sp:gestationalAgeAtBirth>
+       <sp:GestationalAgeAtBirth>
+         <sp:value>37.6</sp:value>
+         <sp:unit>wk</sp:unit>
+       </sp:GestationalAgeAtBirth>
+     </sp:gestationalAgeAtBirth>
      
      <sp:medicalRecordNumber>
        <sp:Code>

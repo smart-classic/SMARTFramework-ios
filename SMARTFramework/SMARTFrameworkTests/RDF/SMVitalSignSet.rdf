@@ -45,8 +45,8 @@
             </sp:code>
           </sp:CodedValue>
         </sp:vitalName>
-        <sp:value>1.80</sp:value>
-        <sp:unit>m</sp:unit>
+        <sp:value>180</sp:value>
+        <sp:unit>cm</sp:unit>
       </sp:VitalSign>
     </sp:height>
     <sp:weight>
@@ -140,8 +140,8 @@
             </sp:code>
           </sp:CodedValue>
         </sp:vitalName>
-        <sp:value>70</sp:value>
-        <sp:unit>{beats}/min</sp:unit>
+        <sp:value>56.4</sp:value>
+        <sp:unit>cm</sp:unit>
       </sp:VitalSign>
     </sp:headCircumference>
     <sp:oxygenSaturation>

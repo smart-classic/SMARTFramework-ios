@@ -27,7 +27,7 @@
 #import "SMServerCall.h"
 
 
-@implementation SMDocument
+@implementation SMBaseDocument
 
 
 #pragma mark - Handling Instances

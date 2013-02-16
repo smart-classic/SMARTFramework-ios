@@ -24,9 +24,9 @@
 
 
 /**
- *  The base class for all our documents
+ *  The base class for all SMART server documents.
  */
-@interface SMDocument : SMObject
+@interface SMBaseDocument : SMObject
 
 @property (nonatomic, copy) NSString *uuid;						///< This document's ID on the server
 @property (nonatomic, weak) SMRecord *record;					///< The record this document belongs to

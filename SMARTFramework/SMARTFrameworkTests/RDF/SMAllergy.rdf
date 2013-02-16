@@ -6,6 +6,7 @@
   xmlns:spcode="http://smartplatforms.org/terms/codes/"> 
       <sp:Allergy rdf:about="http://sandbox-api.smartplatforms.org/records/2169591/allergies/873252">
       <sp:belongsTo rdf:resource="http://sandbox-api.smartplatforms.org/records/2169591" />
+      <sp:startDate>2007-06-12</sp:startDate>
       <sp:drugClassAllergen>
       <sp:CodedValue>
         <dcterms:title>Sulfonamide Antibacterial</dcterms:title>
@@ -65,6 +66,7 @@
 
   <sp:Allergy>
       <sp:belongsTo rdf:resource="http://sandbox-api.smartplatforms.org/records/2169591" />
+      <sp:startDate>2007-06-12</sp:startDate>
       <sp:drugAllergen>
       <sp:CodedValue>
           <dcterms:title>Cephalexin</dcterms:title>
