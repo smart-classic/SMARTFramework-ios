@@ -279,6 +279,12 @@ def handle_class(a_class):
 		# o_prop.multiple_cardinality	  ->  Bool whether the property can have multiple items
 		# o_prop.to_class				  ->  SMART_Class represented by the property
 		# o_prop.to_class.uri	  		  ->  Class URI
+		
+		# we have a problem with "TranslationFidelity" here, it should be "Coded Value"
+		if 'TranslationFidelity' == o_prop.to_class.name:
+			print 'xx>  WARNING: Changing "TranslationFidelity" to coded value. This is necessary.'
+			o_prop.to_class.name = "Coded Value"
+		
 		itemClass = toObjCClassName(o_prop.to_class.name)
 		c_forwards.add(itemClass)
 		prop = {
