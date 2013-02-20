@@ -84,8 +84,15 @@ _templates['model_getter'] = """- ({{ itemClass }} *){{ name }}
 		RedlandStatement *rslt = [query nextObject];
 		
 		// create an item for this object
-		self.{{ name }} = [{{ itemClass }} newWithSubject:rslt.object inModel:self.model];
+		{{ itemClass }} *obj = [{{ itemClass }} newWithSubject:rslt.object inModel:self.model];
+		self.{{ name }} = obj ? obj : (id)[NSNull null];
 	}
+	
+	// we use NSNull as a placeholder in case we already searched the graph and haven't found the object. This should help with performance.
+	else if ((id)[NSNull null] == _{{ name }}) {
+		return nil;
+	}
+	
 	return _{{ name }};
 }"""
 
