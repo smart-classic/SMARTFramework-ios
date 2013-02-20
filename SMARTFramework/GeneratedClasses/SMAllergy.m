@@ -46,7 +46,7 @@
 	}
 	
 	// we use NSNull as a placeholder in case we already searched the graph and haven't found the object. This should help with performance.
-	else if ((id)[NSNull null] == _allergicReaction) {
+	if ((id)[NSNull null] == _allergicReaction) {
 		return nil;
 	}
 	
@@ -69,7 +69,7 @@
 	}
 	
 	// we use NSNull as a placeholder in case we already searched the graph and haven't found the object. This should help with performance.
-	else if ((id)[NSNull null] == _belongsTo) {
+	if ((id)[NSNull null] == _belongsTo) {
 		return nil;
 	}
 	
@@ -92,7 +92,7 @@
 	}
 	
 	// we use NSNull as a placeholder in case we already searched the graph and haven't found the object. This should help with performance.
-	else if ((id)[NSNull null] == _category) {
+	if ((id)[NSNull null] == _category) {
 		return nil;
 	}
 	
@@ -115,7 +115,7 @@
 	}
 	
 	// we use NSNull as a placeholder in case we already searched the graph and haven't found the object. This should help with performance.
-	else if ((id)[NSNull null] == _drugAllergen) {
+	if ((id)[NSNull null] == _drugAllergen) {
 		return nil;
 	}
 	
@@ -138,7 +138,7 @@
 	}
 	
 	// we use NSNull as a placeholder in case we already searched the graph and haven't found the object. This should help with performance.
-	else if ((id)[NSNull null] == _drugClassAllergen) {
+	if ((id)[NSNull null] == _drugClassAllergen) {
 		return nil;
 	}
 	
@@ -174,7 +174,7 @@
 	}
 	
 	// we use NSNull as a placeholder in case we already searched the graph and haven't found the object. This should help with performance.
-	else if ((id)[NSNull null] == _otherAllergen) {
+	if ((id)[NSNull null] == _otherAllergen) {
 		return nil;
 	}
 	
@@ -197,7 +197,7 @@
 	}
 	
 	// we use NSNull as a placeholder in case we already searched the graph and haven't found the object. This should help with performance.
-	else if ((id)[NSNull null] == _severity) {
+	if ((id)[NSNull null] == _severity) {
 		return nil;
 	}
 	

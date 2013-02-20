@@ -46,7 +46,7 @@
 	}
 	
 	// we use NSNull as a placeholder in case we already searched the graph and haven't found the object. This should help with performance.
-	else if ((id)[NSNull null] == _bodyPosition) {
+	if ((id)[NSNull null] == _bodyPosition) {
 		return nil;
 	}
 	
@@ -69,7 +69,7 @@
 	}
 	
 	// we use NSNull as a placeholder in case we already searched the graph and haven't found the object. This should help with performance.
-	else if ((id)[NSNull null] == _bodySite) {
+	if ((id)[NSNull null] == _bodySite) {
 		return nil;
 	}
 	
@@ -92,7 +92,7 @@
 	}
 	
 	// we use NSNull as a placeholder in case we already searched the graph and haven't found the object. This should help with performance.
-	else if ((id)[NSNull null] == _diastolic) {
+	if ((id)[NSNull null] == _diastolic) {
 		return nil;
 	}
 	
@@ -115,7 +115,7 @@
 	}
 	
 	// we use NSNull as a placeholder in case we already searched the graph and haven't found the object. This should help with performance.
-	else if ((id)[NSNull null] == _method) {
+	if ((id)[NSNull null] == _method) {
 		return nil;
 	}
 	
@@ -138,7 +138,7 @@
 	}
 	
 	// we use NSNull as a placeholder in case we already searched the graph and haven't found the object. This should help with performance.
-	else if ((id)[NSNull null] == _systolic) {
+	if ((id)[NSNull null] == _systolic) {
 		return nil;
 	}
 	

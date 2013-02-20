@@ -46,7 +46,7 @@
 	}
 	
 	// we use NSNull as a placeholder in case we already searched the graph and haven't found the object. This should help with performance.
-	else if ((id)[NSNull null] == _belongsTo) {
+	if ((id)[NSNull null] == _belongsTo) {
 		return nil;
 	}
 	
@@ -69,7 +69,7 @@
 	}
 	
 	// we use NSNull as a placeholder in case we already searched the graph and haven't found the object. This should help with performance.
-	else if ((id)[NSNull null] == _bloodPressure) {
+	if ((id)[NSNull null] == _bloodPressure) {
 		return nil;
 	}
 	
@@ -92,7 +92,7 @@
 	}
 	
 	// we use NSNull as a placeholder in case we already searched the graph and haven't found the object. This should help with performance.
-	else if ((id)[NSNull null] == _bodyMassIndex) {
+	if ((id)[NSNull null] == _bodyMassIndex) {
 		return nil;
 	}
 	
@@ -128,7 +128,7 @@
 	}
 	
 	// we use NSNull as a placeholder in case we already searched the graph and haven't found the object. This should help with performance.
-	else if ((id)[NSNull null] == _encounter) {
+	if ((id)[NSNull null] == _encounter) {
 		return nil;
 	}
 	
@@ -151,7 +151,7 @@
 	}
 	
 	// we use NSNull as a placeholder in case we already searched the graph and haven't found the object. This should help with performance.
-	else if ((id)[NSNull null] == _headCircumference) {
+	if ((id)[NSNull null] == _headCircumference) {
 		return nil;
 	}
 	
@@ -174,7 +174,7 @@
 	}
 	
 	// we use NSNull as a placeholder in case we already searched the graph and haven't found the object. This should help with performance.
-	else if ((id)[NSNull null] == _heartRate) {
+	if ((id)[NSNull null] == _heartRate) {
 		return nil;
 	}
 	
@@ -197,7 +197,7 @@
 	}
 	
 	// we use NSNull as a placeholder in case we already searched the graph and haven't found the object. This should help with performance.
-	else if ((id)[NSNull null] == _height) {
+	if ((id)[NSNull null] == _height) {
 		return nil;
 	}
 	
@@ -220,7 +220,7 @@
 	}
 	
 	// we use NSNull as a placeholder in case we already searched the graph and haven't found the object. This should help with performance.
-	else if ((id)[NSNull null] == _oxygenSaturation) {
+	if ((id)[NSNull null] == _oxygenSaturation) {
 		return nil;
 	}
 	
@@ -243,7 +243,7 @@
 	}
 	
 	// we use NSNull as a placeholder in case we already searched the graph and haven't found the object. This should help with performance.
-	else if ((id)[NSNull null] == _respiratoryRate) {
+	if ((id)[NSNull null] == _respiratoryRate) {
 		return nil;
 	}
 	
@@ -266,7 +266,7 @@
 	}
 	
 	// we use NSNull as a placeholder in case we already searched the graph and haven't found the object. This should help with performance.
-	else if ((id)[NSNull null] == _temperature) {
+	if ((id)[NSNull null] == _temperature) {
 		return nil;
 	}
 	
@@ -289,7 +289,7 @@
 	}
 	
 	// we use NSNull as a placeholder in case we already searched the graph and haven't found the object. This should help with performance.
-	else if ((id)[NSNull null] == _weight) {
+	if ((id)[NSNull null] == _weight) {
 		return nil;
 	}
 	

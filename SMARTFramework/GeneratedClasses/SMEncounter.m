@@ -46,7 +46,7 @@
 	}
 	
 	// we use NSNull as a placeholder in case we already searched the graph and haven't found the object. This should help with performance.
-	else if ((id)[NSNull null] == _belongsTo) {
+	if ((id)[NSNull null] == _belongsTo) {
 		return nil;
 	}
 	
@@ -69,7 +69,7 @@
 	}
 	
 	// we use NSNull as a placeholder in case we already searched the graph and haven't found the object. This should help with performance.
-	else if ((id)[NSNull null] == _encounterType) {
+	if ((id)[NSNull null] == _encounterType) {
 		return nil;
 	}
 	
@@ -105,7 +105,7 @@
 	}
 	
 	// we use NSNull as a placeholder in case we already searched the graph and haven't found the object. This should help with performance.
-	else if ((id)[NSNull null] == _facility) {
+	if ((id)[NSNull null] == _facility) {
 		return nil;
 	}
 	
@@ -128,7 +128,7 @@
 	}
 	
 	// we use NSNull as a placeholder in case we already searched the graph and haven't found the object. This should help with performance.
-	else if ((id)[NSNull null] == _provider) {
+	if ((id)[NSNull null] == _provider) {
 		return nil;
 	}
 	

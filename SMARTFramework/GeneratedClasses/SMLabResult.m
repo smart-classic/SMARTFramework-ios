@@ -46,7 +46,7 @@
 	}
 	
 	// we use NSNull as a placeholder in case we already searched the graph and haven't found the object. This should help with performance.
-	else if ((id)[NSNull null] == _abnormalInterpretation) {
+	if ((id)[NSNull null] == _abnormalInterpretation) {
 		return nil;
 	}
 	
@@ -82,7 +82,7 @@
 	}
 	
 	// we use NSNull as a placeholder in case we already searched the graph and haven't found the object. This should help with performance.
-	else if ((id)[NSNull null] == _belongsTo) {
+	if ((id)[NSNull null] == _belongsTo) {
 		return nil;
 	}
 	
@@ -118,7 +118,7 @@
 	}
 	
 	// we use NSNull as a placeholder in case we already searched the graph and haven't found the object. This should help with performance.
-	else if ((id)[NSNull null] == _labName) {
+	if ((id)[NSNull null] == _labName) {
 		return nil;
 	}
 	
@@ -141,7 +141,7 @@
 	}
 	
 	// we use NSNull as a placeholder in case we already searched the graph and haven't found the object. This should help with performance.
-	else if ((id)[NSNull null] == _labStatus) {
+	if ((id)[NSNull null] == _labStatus) {
 		return nil;
 	}
 	
@@ -164,7 +164,7 @@
 	}
 	
 	// we use NSNull as a placeholder in case we already searched the graph and haven't found the object. This should help with performance.
-	else if ((id)[NSNull null] == _narrativeResult) {
+	if ((id)[NSNull null] == _narrativeResult) {
 		return nil;
 	}
 	
@@ -200,7 +200,7 @@
 	}
 	
 	// we use NSNull as a placeholder in case we already searched the graph and haven't found the object. This should help with performance.
-	else if ((id)[NSNull null] == _quantitativeResult) {
+	if ((id)[NSNull null] == _quantitativeResult) {
 		return nil;
 	}
 	

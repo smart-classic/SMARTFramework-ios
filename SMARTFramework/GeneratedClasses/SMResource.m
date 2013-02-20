@@ -46,7 +46,7 @@
 	}
 	
 	// we use NSNull as a placeholder in case we already searched the graph and haven't found the object. This should help with performance.
-	else if ((id)[NSNull null] == _content) {
+	if ((id)[NSNull null] == _content) {
 		return nil;
 	}
 	
@@ -69,7 +69,7 @@
 	}
 	
 	// we use NSNull as a placeholder in case we already searched the graph and haven't found the object. This should help with performance.
-	else if ((id)[NSNull null] == _hash) {
+	if ((id)[NSNull null] == _hash) {
 		return nil;
 	}
 	
