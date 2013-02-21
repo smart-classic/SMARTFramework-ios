@@ -31,7 +31,8 @@
 /**
  *  Get Demographics for a patient.
  *  Makes a call to /records/{record_id}/demographics, originally named "get_demographics".
- *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: SMARTResponseArrayKey) if successful.
+ *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing
+ *  the desired objects (key: SMARTResponseArrayKey) if successful.
  */
 - (void)getDemographics:(SMSuccessRetvalueBlock)callback
 {
@@ -42,7 +43,8 @@
 /**
  *  Get Social History for a patient.
  *  Makes a call to /records/{record_id}/social_history, originally named "get_social_history".
- *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: SMARTResponseArrayKey) if successful.
+ *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing
+ *  the desired objects (key: SMARTResponseArrayKey) if successful.
  */
 - (void)getSocialHistory:(SMSuccessRetvalueBlock)callback
 {
@@ -53,7 +55,8 @@
 /**
  *  Get all Allergies and Allergy Exclusions for a patient.
  *  Makes a call to /records/{record_id}/allergies/, originally named "get_allergies".
- *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: SMARTResponseArrayKey) if successful.
+ *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing
+ *  the desired objects (key: SMARTResponseArrayKey) if successful.
  */
 - (void)getAllergies:(SMSuccessRetvalueBlock)callback
 {
@@ -64,7 +67,8 @@
 /**
  *  Get all Clinical Notes for a patient.
  *  Makes a call to /records/{record_id}/clinical_notes/, originally named "get_clinical_notes".
- *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: SMARTResponseArrayKey) if successful.
+ *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing
+ *  the desired objects (key: SMARTResponseArrayKey) if successful.
  */
 - (void)getClinicalNotes:(SMSuccessRetvalueBlock)callback
 {
@@ -75,7 +79,8 @@
 /**
  *  Get all Documents for a patient.
  *  Makes a call to /records/{record_id}/documents/, originally named "get_documents".
- *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: SMARTResponseArrayKey) if successful.
+ *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing
+ *  the desired objects (key: SMARTResponseArrayKey) if successful.
  */
 - (void)getDocuments:(SMSuccessRetvalueBlock)callback
 {
@@ -86,7 +91,8 @@
 /**
  *  Get all Encounters for a patient.
  *  Makes a call to /records/{record_id}/encounters/, originally named "get_encounters".
- *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: SMARTResponseArrayKey) if successful.
+ *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing
+ *  the desired objects (key: SMARTResponseArrayKey) if successful.
  */
 - (void)getEncounters:(SMSuccessRetvalueBlock)callback
 {
@@ -97,7 +103,8 @@
 /**
  *  Get all Family Histories for a patient.
  *  Makes a call to /records/{record_id}/family_histories/, originally named "get_family_histories".
- *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: SMARTResponseArrayKey) if successful.
+ *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing
+ *  the desired objects (key: SMARTResponseArrayKey) if successful.
  */
 - (void)getFamilyHistories:(SMSuccessRetvalueBlock)callback
 {
@@ -108,7 +115,8 @@
 /**
  *  Get all Fulfillments for a patient.
  *  Makes a call to /records/{record_id}/fulfillments/, originally named "get_fulfillments".
- *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: SMARTResponseArrayKey) if successful.
+ *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing
+ *  the desired objects (key: SMARTResponseArrayKey) if successful.
  */
 - (void)getFulfillments:(SMSuccessRetvalueBlock)callback
 {
@@ -119,7 +127,8 @@
 /**
  *  Get all Immunizations for a patient.
  *  Makes a call to /records/{record_id}/immunizations/, originally named "get_immunizations".
- *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: SMARTResponseArrayKey) if successful.
+ *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing
+ *  the desired objects (key: SMARTResponseArrayKey) if successful.
  */
 - (void)getImmunizations:(SMSuccessRetvalueBlock)callback
 {
@@ -130,7 +139,8 @@
 /**
  *  Get all Lab Panels for a patient.
  *  Makes a call to /records/{record_id}/lab_panels/, originally named "get_lab_panels".
- *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: SMARTResponseArrayKey) if successful.
+ *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing
+ *  the desired objects (key: SMARTResponseArrayKey) if successful.
  */
 - (void)getLabPanels:(SMSuccessRetvalueBlock)callback
 {
@@ -141,7 +151,8 @@
 /**
  *  Get all Lab Results for a patient.
  *  Makes a call to /records/{record_id}/lab_results/, originally named "get_lab_results".
- *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: SMARTResponseArrayKey) if successful.
+ *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing
+ *  the desired objects (key: SMARTResponseArrayKey) if successful.
  */
 - (void)getLabResults:(SMSuccessRetvalueBlock)callback
 {
@@ -152,7 +163,8 @@
 /**
  *  Get all Medications for a patient.
  *  Makes a call to /records/{record_id}/medications/, originally named "get_medications".
- *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: SMARTResponseArrayKey) if successful.
+ *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing
+ *  the desired objects (key: SMARTResponseArrayKey) if successful.
  */
 - (void)getMedications:(SMSuccessRetvalueBlock)callback
 {
@@ -163,7 +175,8 @@
 /**
  *  Get all Problems for a patient.
  *  Makes a call to /records/{record_id}/problems/, originally named "get_problems".
- *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: SMARTResponseArrayKey) if successful.
+ *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing
+ *  the desired objects (key: SMARTResponseArrayKey) if successful.
  */
 - (void)getProblems:(SMSuccessRetvalueBlock)callback
 {
@@ -174,7 +187,8 @@
 /**
  *  Get all Procedures for a patient.
  *  Makes a call to /records/{record_id}/procedures/, originally named "get_procedures".
- *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: SMARTResponseArrayKey) if successful.
+ *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing
+ *  the desired objects (key: SMARTResponseArrayKey) if successful.
  */
 - (void)getProcedures:(SMSuccessRetvalueBlock)callback
 {
@@ -185,7 +199,8 @@
 /**
  *  Get all Vital Sign Sets for a patient.
  *  Makes a call to /records/{record_id}/vital_sign_sets/, originally named "get_vital_sign_sets".
- *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: SMARTResponseArrayKey) if successful.
+ *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing
+ *  the desired objects (key: SMARTResponseArrayKey) if successful.
  */
 - (void)getVitalSignSets:(SMSuccessRetvalueBlock)callback
 {
@@ -196,7 +211,8 @@
 /**
  *  Get one Lab Panel for a patient.
  *  Makes a call to /records/{record_id}/lab_panels/, originally named "get_lab_panel".
- *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: SMARTResponseArrayKey) if successful.
+ *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing
+ *  the desired objects (key: SMARTResponseArrayKey) if successful.
  */
 - (void)getLabPanel:(SMSuccessRetvalueBlock)callback
 {
@@ -207,7 +223,8 @@
 /**
  *  Post a Clinical Note for a patient
  *  Posts to /records/{record_id}/clinical_notes/, originally named "post_clinical_note".
- *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the posted item (key: SMARTResponseDataKey) if successful.
+ *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing
+ *  the posted item (key: SMARTResponseDataKey) if successful.
  */
 - (void)postClinicalNote:(SMSuccessRetvalueBlock)callback
 {

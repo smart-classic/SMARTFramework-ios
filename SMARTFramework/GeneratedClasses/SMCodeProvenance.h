@@ -37,6 +37,12 @@
 @property (nonatomic, copy) NSString *title;
 
 /// Representing http://smartplatforms.org/terms#translationFidelity
+/**
+ *  The codes in this property should be:
+ *    - http://smartplatforms.org/terms/codes/TranslationFidelity#automated: 	Automated
+ *    - http://smartplatforms.org/terms/codes/TranslationFidelity#verified: 	Verified
+ *    - http://smartplatforms.org/terms/codes/TranslationFidelity#unmappable: 	Unmappable
+ */
 @property (nonatomic, strong) SMCodedValue *translationFidelity;
 
 

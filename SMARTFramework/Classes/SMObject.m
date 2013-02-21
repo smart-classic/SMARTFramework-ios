@@ -53,7 +53,7 @@
  *
  *  An object is defined by anchoring to a subject in a model. This means a subject is needed if you want to be sure to get correct data from the model, and
  *  for this reason the initializer requires a subject or will return nil.
- *  @attention Will return nil if there is no subject.
+ *  @warning Will return nil if there is no subject.
  *  @param aSubject The node that represents the subject being wrapped by this class, can not be nil!
  *  @param aModel The complete model from which to pull properties for the instance
  *  @return An instance wrapping the given RDF model

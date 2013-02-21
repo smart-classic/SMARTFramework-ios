@@ -61,7 +61,6 @@
 #import "SMProvider.h"
 #import "SMQuantitativeResult.h"
 #import "SMResource.h"
-//#import "SMScratchpadData.h"
 #import "SMSMARTStatement.h"
 #import "SMSocialHistory.h"
 #import "SMTel.h"

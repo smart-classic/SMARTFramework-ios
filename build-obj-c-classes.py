@@ -15,29 +15,30 @@ _class_unittests_dir = 'SMARTFramework/SMARTFrameworkTests/ClassTests'
 ### ---------------------------------------------------------- ###
 
 _classes_to_ignore = [
-	'anyURI',
-	'App Manifest',
-	'Call',
-	'Cell',
-	'Component',
-	'ContainerManifest',
-	'Filter',
-	'Home',
-	'Literal',
-	'Ontology',
-	'Parameter',
-	'ParameterSet',
-	'Pref',
-	'SMARTAPI',
-	'User Preferences',
-	'VCardLabels',
-	'Work',
+	'http://www.w3.org/2001/XMLSchema#anyURI',
+	'http://smartplatforms.org/terms#AppManifest',
+	'http://smartplatforms.org/terms/api#Call',
+	'http://www.w3.org/2006/vcard/ns#Cell',
+	'http://smartplatforms.org/terms#Component',
+	'http://smartplatforms.org/terms#ContainerManifest',
+	'http://smartplatforms.org/terms/api#Filter',
+	'http://www.w3.org/2006/vcard/ns#Home',
+	'http://www.w3.org/2000/01/rdf-schema#Literal',
+	'http://smartplatforms.org/terms#Ontology',
+	'http://smartplatforms.org/terms/api#Parameter',
+	'http://smartplatforms.org/terms/api#ParameterSet',
+	'http://www.w3.org/2006/vcard/ns#Pref',
+	'http://smartplatforms.org/terms#ScratchpadData',
+	'http://smartplatforms.org/terms#SMARTAPI',
+	'http://smartplatforms.org/terms#UserPreferences',
+	'http://smartplatforms.org/terms#VCardLabels',
+	'http://www.w3.org/2006/vcard/ns#Work',
 ]
 
 _templates = {}
 
 _templates['property_header'] = """/// Representing {{ uri }}
-@property (nonatomic, {{ strength }}) {{ useClass }} *{{ name }};"""
+{{ add_comment }}@property (nonatomic, {{ strength }}) {{ useClass }} *{{ name }};"""
 
 _templates['literal_getter'] = """- ({{ itemClass }} *){{ name }}
 {
@@ -129,7 +130,8 @@ _templates['class_base_path_getter'] = """+ (NSString *)basePath
 _templates['record_multi_item_getter'] = """/**
  *  {{ description }}.
  *  Makes a call to {{ path }}, originally named "{{ orig_name }}".
- *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the desired objects (key: SMARTResponseArrayKey) if successful.
+ *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing
+ *  the desired objects (key: SMARTResponseArrayKey) if successful.
  */
 {{ method_signature }}
 {
@@ -140,7 +142,8 @@ _templates['record_multi_item_getter'] = """/**
 _templates['record_item_poster'] = """/**
  *  {{ description }}
  *  Posts to {{ path }}, originally named "{{ orig_name }}".
- *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing the posted item (key: SMARTResponseDataKey) if successful.
+ *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing
+ *  the posted item (key: SMARTResponseDataKey) if successful.
  */
 {{ method_signature }}
 {
@@ -176,12 +179,16 @@ import re
 import urllib2
 import datetime
 
+print 'Use -v for verbose or -f to force overriding existing classes'
 print '--> Parsing ontology'
 from smart_common.rdf_tools import rdf_ontology
 
 _arguments = sys.argv[1:] if len(sys.argv) > 1 else []
 _overwrite = '-f' in _arguments
+_verbose = '-v' in _arguments
 
+_known_classes = {}			# will be { SMART name: Obj-C class name }
+_valid_values = {}			# will be { SMART name: { key: val } }
 _record_calls = []
 _single_item_calls = []
 
@@ -226,12 +233,12 @@ def toObjCPropertyName(name):
 
 
 def handle_class(a_class):
-	"""Returns a dictionary with substitutions to fill the class template files.
+	""" Returns a tuple with the Objective-C class name to use with the given class, or None if we don't want this,
+	class, and a dictionary of valid coded values for the class, if those are defined and is applicable to the class.
 	
-	Feed it a SMART_Class for which it should create an Objective-C class for,
-	this class then fills a dictionary with the values for template keys. The
-	dictionary can then be used to substitute placeholders in the class
-	template files:
+	Feed it a SMART_Class for which it should create an Objective-C class for, this class then fills a dictionary with
+	the values for template keys. The dictionary can then be used to substitute placeholders in the class template
+	files and contains:
 	- CLASS_NAME
 	- CLASS_SUPERCLASS
 	- CLASS_FORWARDS
@@ -245,18 +252,24 @@ def handle_class(a_class):
 	- EXAMPLE
 	"""
 	
+	global _known_classes
+	global _valid_values
+	identifier = str(a_class.uri)
+	
+	# already handled?
+	if identifier in _known_classes:
+		valid = _valid_values[identifier] if identifier in _valid_values else None
+		return _known_classes[identifier], valid
+
 	# is this an item we want a class for?
-	#print 'CHECKING    %s' % a_class.name
-	if a_class.name in _classes_to_ignore:
-		#print 'IGNORING    %s [%s]' % (a_class.name, a_class.uri)
-		return None
-	if a_class.uri and a_class.uri.startswith('http://smartplatforms.org/terms/codes/'):
-		#print 'SKIPPING    %s [%s]' % (a_class.name, a_class.uri)
-		return None
+	if identifier in _classes_to_ignore:
+		if _verbose:
+			print 'IGNORING    %s [%s]' % (a_class.name, a_class.uri)
+		return None, None
 	
 	# start the dictionary
 	now = datetime.date.today()
-	base_path = o_class.base_path
+	base_path = a_class.base_path
 	class_name = toObjCClassName(a_class.name)
 	myDict = {
 		'CLASS_NAME': class_name,
@@ -269,6 +282,27 @@ def handle_class(a_class):
 		'EXAMPLE': a_class.example,
 	}
 	
+	# special case: all our code types we simplify to coded value
+	if identifier.startswith('http://smartplatforms.org/terms/codes/'):
+		if _verbose:
+			print 'CODED       %s describes a SMART code and will become Coded Value' % a_class.name
+		class_name = 'SMCodedValue'
+		_known_classes[identifier] = class_name
+		
+		# equivalents are our "valid values"
+		equiv = None
+		if a_class.equivalent_classes is not None and len(a_class.equivalent_classes) > 0:
+			equiv = {}
+			for e in a_class.equivalent_classes:
+				for eq in e.one_of:
+					equiv[unicode(eq.uri)] = unicode(eq.title)
+			_valid_values[identifier] = equiv
+		
+		return class_name, equiv
+	
+	# add our class to the known classes dict
+	_known_classes[identifier] = class_name
+	
 	c_forwards = set()
 	prop_statements = []
 	prop_getter = []
@@ -278,14 +312,13 @@ def handle_class(a_class):
 	for o_prop in a_class.object_properties:
 		# o_prop.multiple_cardinality	  ->  Bool whether the property can have multiple items
 		# o_prop.to_class				  ->  SMART_Class represented by the property
+		# o_prop.to_class.name			  ->  The name of the class
 		# o_prop.to_class.uri	  		  ->  Class URI
 		
-		# we have a problem with "TranslationFidelity" here, it should be "Coded Value"
-		if 'TranslationFidelity' == o_prop.to_class.name:
-			print 'xx>  WARNING: Changing "TranslationFidelity" to coded value. This is necessary.'
-			o_prop.to_class.name = "Coded Value"
+		# handle the property class
+		itemClass, valid = handle_class(o_prop.to_class)
+		prop_class_id = str(o_prop.to_class.uri)
 		
-		itemClass = toObjCClassName(o_prop.to_class.name)
 		c_forwards.add(itemClass)
 		prop = {
 			'name': toObjCPropertyName(o_prop.name),
@@ -295,6 +328,17 @@ def handle_class(a_class):
 			'strength': 'copy' if o_prop.multiple_cardinality else 'strong',
 			'_template': 'multi_model_getter' if o_prop.multiple_cardinality else 'model_getter'
 		}
+		
+				
+		# if we have valid values, write a nice comment
+		if prop_class_id in _valid_values:
+			comment = "/**\n *  The codes in this property should be:\n"
+			
+			for key, val in _valid_values[prop_class_id].iteritems():
+				comment += " *    - %s: \t%s\n" % (key, val)
+			comment += " */\n"
+			
+			prop['add_comment'] = comment
 		
 		my_properties.append(prop)
 	
@@ -343,63 +387,25 @@ def handle_class(a_class):
 		myDict['ITEM_TESTS'] = ";\n\t".join(my_property_tests)
 	
 	# calls for this class (SMART_API_Call instances)
-	global _record_calls
-	prefix = '- (void)'
-	block_arg = '(SMSuccessRetvalueBlock)callback'
 	if a_class.calls and len(a_class.calls) > 0:
 		for api in a_class.calls:
-			
-			# we can only use record-scoped calls
-			if 'record' == api.category:
-				orig_name = api.guess_name()
-				method_name = toObjCPropertyName(orig_name)
-				cDict = {
-					'orig_name': orig_name,
-					'http_method': api.http_method,
-					'item_class': class_name,
-					'path': str(api.path),
-					'nsstring_path': str(re.sub(r'(\{\s*\w+\s*\})', '%@', api.path)),
-					'description': str(api.description),
-				}
-				
-				# synthesize the method name:
-				#	 getX:(block)callback
-				#	 getXForY:(NSString *)y callback:(block)callback
-				usable = []
-				
-				# extract placeholders from the path
-				placeholders = re.findall(r'\{\s*(\w+)\s*\}', api.path)
-				guessed_item_id_name = orig_name.replace('get_', '')
-				
-				# put record-level getters in the array
-				if 1 == len(placeholders) and 'record_id' == placeholders[0]:
-					cDict['method_signature'] = '%s%s:%s' % (prefix, method_name, block_arg)
-					_record_calls.append(cDict)
-				
-				# find the "get one item" methods (first param 'record_id', second 'item_id')
-				elif 2 == len(placeholders) and 'record_id' == placeholders[0] \
-					and '%s_id' % guessed_item_id_name == placeholders[1]:
-					_single_item_calls.append(orig_name)
-				
-				# other class related calls: there currently are none and we're not doing anything with these
-				else:
-					for p in placeholders:
-						if 'record_id' != p:
-							argname = toObjCPropertyName(p)
-							pname = argname if len(usable) > 0 else toObjCPropertyName('%s_for_%s' % (orig_name, p))
-							usable.append('%s:(NSString *)%s' % (pname, argname))
-					
-					if len(usable) > 0:
-						usable.append('callback:%s' % block_arg)
-						cDict['method_name'] = ' '.join(usable)
-					else:
-						cDict['method_name'] = '%s:%s' % (toObjCPropertyName(orig_name), block_arg)
-					
-					#print '	  %s: %s' % (a_class.name, cDict)
+			handle_class_method(class_name, api)
 	
-	# add it to the known classes dict
-	known_classes[a_class.name] = class_name
-	return myDict
+	# output the RDF example for the class
+	if write_class_example(myDict, _overwrite):
+		print '--> Wrote %s example' % class_name
+	
+	# collect unit tests
+	global class_tests
+	unit_test = synthesize_class_tests(myDict)
+	if unit_test is not None:
+		class_tests.append(unit_test)
+	
+	# write class files
+	if write_class(myDict, _overwrite):
+		print '--> Wrote class %s' % class_name
+	
+	return class_name, None
 
 
 def write_class(class_dict, overwrite=False):
@@ -474,12 +480,71 @@ def synthesize_class_tests(class_dict):
 	return test_method
 
 
+def handle_class_method(class_name, api):
+	""" Handles API calls defined on a class.
+	This method just puts them into globals and lets the main exect handle them.
+	
+	class_name:	A string with the Objective-C class name
+	api:		SMART_API_Call instance
+	"""
+	
+	# we can only use record-scoped calls
+	if 'record' == api.category:
+		orig_name = api.guess_name()
+		method_name = toObjCPropertyName(orig_name)
+		cDict = {
+			'orig_name': orig_name,
+			'http_method': api.http_method,
+			'item_class': class_name,
+			'path': str(api.path),
+			'nsstring_path': str(re.sub(r'(\{\s*\w+\s*\})', '%@', api.path)),
+			'description': str(api.description),
+		}
+		
+		# synthesize the method name:
+		#	 getX:(block)callback
+		#	 getXForY:(NSString *)y callback:(block)callback
+		usable = []
+		prefix = '- (void)'
+		block_arg = '(SMSuccessRetvalueBlock)callback'
+		
+		# extract placeholders from the path
+		placeholders = re.findall(r'\{\s*(\w+)\s*\}', api.path)
+		guessed_item_id_name = orig_name.replace('get_', '')
+		
+		# put record-level getters in the array
+		if 1 == len(placeholders) and 'record_id' == placeholders[0]:
+			global _record_calls
+			cDict['method_signature'] = '%s%s:%s' % (prefix, method_name, block_arg)
+			_record_calls.append(cDict)
+		
+		# find the "get one item" methods (first param 'record_id', second 'item_id')
+		elif 2 == len(placeholders) and 'record_id' == placeholders[0] \
+			and '%s_id' % guessed_item_id_name == placeholders[1]:
+			global _single_item_calls
+			_single_item_calls.append(orig_name)
+		
+		# other class related calls: there currently are none and we're not doing anything with these
+		else:
+			for p in placeholders:
+				if 'record_id' != p:
+					argname = toObjCPropertyName(p)
+					pname = argname if len(usable) > 0 else toObjCPropertyName('%s_for_%s' % (orig_name, p))
+					usable.append('%s:(NSString *)%s' % (pname, argname))
+			
+			if len(usable) > 0:
+				usable.append('callback:%s' % block_arg)
+				cDict['method_name'] = ' '.join(usable)
+			else:
+				cDict['method_name'] = '%s:%s' % (toObjCPropertyName(orig_name), block_arg)
+
+
 def read_template(template_name):
 	"""Looks for a template with the given filename and returns its contents"""
 	
 	template_path = '%s/%s' % (_template_dir, template_name)
 	if not os.path.exists(template_path):
-		print 'xx>  No template could be found at %s' % template_path
+		print 'xx> No template could be found at %s' % template_path
 		return None
 	
 	return open(template_path).read()
@@ -491,13 +556,19 @@ def apply_template(template, subst):
 	"""
 	
 	if not template:
-		print 'xx>  No template given'
+		print 'xx> No template given'
 		return None
 	
+	# apply the known items
 	applied = template
 	for k, v in subst.iteritems():
-		#print "===>  %s  ||  %s" % (k, v)
 		applied = re.sub('\{\{\s*' + k + '\s*\}\}', v if v else '', applied)
+	
+	# remove unknown items
+	matches = re.findall('\{\{[^\}]+\}\}', applied)
+	if matches is not None:
+		for match in matches:
+			applied = applied.replace(match, '')
 	
 	return applied
 
@@ -510,7 +581,7 @@ if __name__ == "__main__":
 	for f in ['ClassTemplate.h', 'ClassTemplate.m', 'CategoryTemplate.h', 'CategoryTemplate.m', 'UnitTestTemplate.h', 'UnitTestTemplate.m']:
 		template = read_template(f)
 		if template is None:
-			print 'xx>  Failed to load template %s' % f
+			print 'xx> Failed to load template %s' % f
 			sys.exit(1)
 		
 		_templates[f] = template
@@ -519,48 +590,30 @@ if __name__ == "__main__":
 	if not os.path.exists(_generated_classes_dir):
 		os.mkdir(_generated_classes_dir)
 	if not os.access(_generated_classes_dir, os.W_OK):
-		print "xx>  Can't write classes to %s" % _generated_classes_dir
+		print "xx> Can't write classes to %s" % _generated_classes_dir
 		sys.exit(1)
 	
 	if not os.path.exists(_class_examples_dir):
 		os.mkdir(_class_examples_dir)
 	if not os.access(_class_examples_dir, os.W_OK):
-		print "xx>  Can't write test RDF to %s" % _class_examples_dir
+		print "xx> Can't write test RDF to %s" % _class_examples_dir
 		sys.exit(1)
 	
 	if not os.path.exists(_class_unittests_dir):
 		os.mkdir(_class_unittests_dir)
 	if not os.access(_class_unittests_dir, os.W_OK):
-		print "xx>  Can't write unit tests to %s" % _class_unittests_dir
+		print "xx> Can't write unit tests to %s" % _class_unittests_dir
 		sys.exit(1)
 	
 	print '--> Processing classes'
-	known_classes = {}			# will be SMART name: Obj-C class name
 	class_tests = []
 	num_classes = 0
 	num_calls = 0
 	
 	# loop all SMART_Class instances
-	for o_class in rdf_ontology.api_types:
-		if o_class.name in known_classes:
-			continue
-		
-		d = handle_class(o_class)
-		if d is not None:
-			
-			# output the RDF example for the class
-			if write_class_example(d, _overwrite):
-				print '-->  Wrote %s example' % d['CLASS_NAME']
-			
-			# collect unit tests
-			unit_test = synthesize_class_tests(d)
-			if unit_test is not None:
-				class_tests.append(unit_test)
-			
-			# write class files
-			if write_class(d, _overwrite):
-				print '-->  Wrote class %s' % d['CLASS_NAME']
-				num_classes += 1
+	for a_class in rdf_ontology.api_types:
+		if handle_class(a_class)[0] is not None:
+			num_classes += 1
 	
 	# write unit tests
 	class_tests = sorted(class_tests)
@@ -584,7 +637,7 @@ if __name__ == "__main__":
 		implem = apply_template(_templates['UnitTestTemplate.m'], test_dict)
 		handle = open(path_m, 'w')
 		handle.write(implem)
-		print '-->  Wrote %d class unit tests' % len(class_tests)
+		print '--> Wrote %d class unit tests' % len(class_tests)
 	
 	# put record-scoped calls into a record category
 	used_call_names = _single_item_calls
@@ -599,10 +652,11 @@ if __name__ == "__main__":
 		record_calls.append(call)
 	
 	# warn about the api calls that we did ignore
-	for api in rdf_ontology.api_calls:
-		orig_name = api.guess_name()
-		#if orig_name not in used_call_names:
-		#	print 'xx>  Ignored API call: %s (level: %s)' % (orig_name, api.category)
+	if _verbose:
+		for api in rdf_ontology.api_calls:
+			orig_name = api.guess_name()
+			if orig_name not in used_call_names:
+				print 'IGNORED API call: %s (level: %s)' % (orig_name, api.category)
 	
 	# write to SMRecord category
 	if len(record_sigs) > 0:
@@ -639,15 +693,15 @@ if __name__ == "__main__":
 			written = True
 		
 		if written:
-			print '-->  Wrote category %s on %s' % (d['CATEGORY_NAME'], d['CATEGORY_CLASS'])	
+			print '--> Wrote category %s on %s' % (d['CATEGORY_NAME'], d['CATEGORY_CLASS'])	
 			num_calls += 1
 	
 	# all classes are done
-	print '--> %d classes and %d categories written.' % (num_classes, num_calls)
-	print '-> SMARTObjects.h'
+	print '--> %d classes and %d categories processed.' % (num_classes, num_calls)
+	print '--> SMARTObjects.h'
 	
 	# output class imports
-	classnames = sorted(known_classes.values(), key=lambda s: s.lower())
+	classnames = sorted(set(_known_classes.values()), key=lambda s: s.lower())
 	for name in classnames:
 		print '#import "%s.h"' % name
 	
