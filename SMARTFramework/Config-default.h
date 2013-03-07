@@ -33,6 +33,3 @@
 #define kSMARTConsumerKey @"medsample@apps.smartplatforms.org"
 #define kSMARTConsumerSecret @"medsample"
 
-/// Your pillbox API key, needed for some medication functions (you can make it an empty string or nil if you don't have one)
-#define kPillboxAPIKey @""
-

@@ -107,11 +107,11 @@ If you want to build your own app and use the SMART framework, follow these step
 	`Security.framework`  
 	`libxml2.dylib`
 
-3. In the build settings look for **User Header Search Paths** (USER_HEADER_SEARCH_PATHS) and add:
+3. In the build settings look for **Header Search Paths** (USER_HEADER_SEARCH_PATHS) and add:
 	
     `$(PROJECT_DIR)/..`, with _recursive_ enabled
     
-    This should point to the directory where the SMART framework resides. Here I'm assuming it's in the same parent directory as your app.
+    This should point to the directory where the SMART framework resides. Here I'm assuming it's in the same parent directory as your app. Do the same with **User Header Search Paths** (HEADER_SEARCH_PATHS).
 
 4. Still in your project's build settings, look for **Other Linker Flags** (OTHER_LDFLAGS), and add:
 

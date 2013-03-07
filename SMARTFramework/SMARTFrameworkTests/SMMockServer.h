@@ -26,7 +26,6 @@
 #define kSMARTAppId @"unit-test"
 #define kSMARTConsumerKey @"unit-test-key"
 #define kSMARTConsumerSecret @"unit-test-secret"
-#define kPillboxAPIKey @""
 
 
 /**
