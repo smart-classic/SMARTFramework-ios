@@ -67,6 +67,8 @@
 		EE832F7D15D004A500E7FFF1 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EE832F7C15D004A500E7FFF1 /* libxml2.dylib */; };
 		EE832F8115D006D100E7FFF1 /* SMLoginViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EE832F7F15D006D100E7FFF1 /* SMLoginViewController.h */; settings = {ATTRIBUTES = (); }; };
 		EE832F8315D006EE00E7FFF1 /* SMLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE832F8015D006D100E7FFF1 /* SMLoginViewController.m */; };
+		EE93B37D1709FA1500B5A536 /* SMScratchpadData.h in Headers */ = {isa = PBXBuildFile; fileRef = EE93B37B1709FA1500B5A536 /* SMScratchpadData.h */; };
+		EE93B37E1709FA1500B5A536 /* SMScratchpadData.m in Sources */ = {isa = PBXBuildFile; fileRef = EE93B37C1709FA1500B5A536 /* SMScratchpadData.m */; };
 		EEADE77416AF02B000E8715A /* TestGeneratedClasses.m in Sources */ = {isa = PBXBuildFile; fileRef = EEADE77316AF02B000E8715A /* TestGeneratedClasses.m */; };
 		EEADE77B16AF0B1700E8715A /* SMLabPanel.rdf in Resources */ = {isa = PBXBuildFile; fileRef = EEADE77A16AF0B1700E8715A /* SMLabPanel.rdf */; };
 		EEADE77E16AF2D2B00E8715A /* SMProcedure.h in Headers */ = {isa = PBXBuildFile; fileRef = EEADE77C16AF2D2B00E8715A /* SMProcedure.h */; };
@@ -318,6 +320,8 @@
 		EE832F7C15D004A500E7FFF1 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		EE832F7F15D006D100E7FFF1 /* SMLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMLoginViewController.h; sourceTree = "<group>"; };
 		EE832F8015D006D100E7FFF1 /* SMLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMLoginViewController.m; sourceTree = "<group>"; };
+		EE93B37B1709FA1500B5A536 /* SMScratchpadData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMScratchpadData.h; path = ../Classes/SMScratchpadData.h; sourceTree = "<group>"; };
+		EE93B37C1709FA1500B5A536 /* SMScratchpadData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMScratchpadData.m; path = ../Classes/SMScratchpadData.m; sourceTree = "<group>"; };
 		EEADE77016AEFDE500E8715A /* UnitTestTemplate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnitTestTemplate.h; sourceTree = "<group>"; };
 		EEADE77116AEFDE500E8715A /* UnitTestTemplate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnitTestTemplate.m; sourceTree = "<group>"; };
 		EEADE77216AF02B000E8715A /* TestGeneratedClasses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestGeneratedClasses.h; path = ClassTests/TestGeneratedClasses.h; sourceTree = "<group>"; };
@@ -623,6 +627,8 @@
 				EEC1478815E076AD006B8798 /* SMQuantitativeResult.m */,
 				EE7BFC8916CFE51F006D460E /* SMResource.h */,
 				EE7BFC8A16CFE51F006D460E /* SMResource.m */,
+				EE93B37B1709FA1500B5A536 /* SMScratchpadData.h */,
+				EE93B37C1709FA1500B5A536 /* SMScratchpadData.m */,
 				EEC1479115E076AD006B8798 /* SMSMARTStatement.h */,
 				EEC1479215E076AD006B8798 /* SMSMARTStatement.m */,
 				EEC1479715E076AD006B8798 /* SMSocialHistory.h */,
@@ -935,6 +941,7 @@
 				EE7BFC8B16CFE51F006D460E /* SMResource.h in Headers */,
 				EE7BFC8F16CFE57C006D460E /* SMContent.h in Headers */,
 				EE7BFC9316CFE5A8006D460E /* SMHash.h in Headers */,
+				EE93B37D1709FA1500B5A536 /* SMScratchpadData.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1198,6 +1205,7 @@
 				EE7BFC8C16CFE51F006D460E /* SMResource.m in Sources */,
 				EE7BFC9016CFE57C006D460E /* SMContent.m in Sources */,
 				EE7BFC9416CFE5A8006D460E /* SMHash.m in Sources */,
+				EE93B37E1709FA1500B5A536 /* SMScratchpadData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

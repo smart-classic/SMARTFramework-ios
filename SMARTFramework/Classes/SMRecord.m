@@ -31,6 +31,7 @@
 @interface SMRecord ()
 
 @property (nonatomic, readwrite, strong) SMDemographics *demographics;
+@property (nonatomic, readwrite, strong) SMScratchpadData *scratchpad;
 
 @end
 
@@ -50,6 +51,7 @@
 	if ((self = [super init])) {
 		self.record_id = anId;
 		self.server = aServer;
+		self.scratchpad = [SMScratchpadData new];
 	}
 	return self;
 }
@@ -66,7 +68,7 @@
 	self.name = nil;			// to clear the composed name
 	
 	NSString *demoPath = [NSString stringWithFormat:@"/records/%@/demographics", _record_id];
-	[self performMethod:demoPath withBody:nil orParameters:nil httpMethod:@"GET" callback:^(BOOL success, NSDictionary *userInfo) {
+	[self performMethod:demoPath withBody:nil orParameters:nil ofType:nil httpMethod:@"GET" callback:^(BOOL success, NSDictionary *userInfo) {
 		NSString *errorMessage = nil;
 		
 		// error?
@@ -112,56 +114,65 @@
 	[self performMethod:aPath
 			   withBody:nil
 		   orParameters:nil
+				 ofType:nil
 			 httpMethod:@"GET"
 			   callback:^(BOOL success, NSDictionary * __autoreleasing userInfo) {
 				   if (success) {
-					   NSData *rdfData = [userInfo objectForKey:SMARTResponseDataKey];
-					   NSString *rdf = [[NSString alloc] initWithData:rdfData encoding:NSUTF8StringEncoding];
-					   if ([rdf length] > 0) {
-						   DLog(@"-->  GET  %@", aPath);
-						   DLog(@"==>  %@", rdf);
-						   RedlandParser *parser = [RedlandParser parserWithName:RedlandRDFXMLParserName];
-						   RedlandURI *uri = [RedlandURI URIWithString:@"http://www.smartplatforms.org/terms#"];
-						   RedlandModel *model = [RedlandModel new];
-						   
-						   // parse RDF+XML
-						   @try {
-							   [parser parseString:rdf intoModel:model withBaseURI:uri];
-						   }
-						   @catch (NSException *exception) {
-							   NSString *errMessage = [NSString stringWithFormat:@"Failed to parse RDF: %@", [exception reason]];
-							   NSError *err = nil;
-							   ERR(&err, errMessage, 0)
+					   NSString *contentType = [userInfo objectForKey:SMARTResponseContentTypeKey];
+					   
+					   // if we get RDF-XML data back we parse it
+					   if ([contentType hasPrefix:@"application/rdf+xml"]) {
+						   NSData *rdfData = [userInfo objectForKey:SMARTResponseDataKey];
+						   NSString *rdf = [[NSString alloc] initWithData:rdfData encoding:NSUTF8StringEncoding];
+						   if ([rdf length] > 0) {
+				//			   DLog(@"-->  GET  %@", aPath);
+				//			   DLog(@"==>  %@", rdf);
+							   RedlandParser *parser = [RedlandParser parserWithName:RedlandRDFXMLParserName];
+							   RedlandURI *uri = [RedlandURI URIWithString:@"http://www.smartplatforms.org/terms#"];
+							   RedlandModel *model = [RedlandModel new];
+							   
+							   // parse RDF+XML
+							   @try {
+								   [parser parseString:rdf intoModel:model withBaseURI:uri];
+							   }
+							   @catch (NSException *exception) {
+								   NSString *errMessage = [NSString stringWithFormat:@"Failed to parse RDF: %@", [exception reason]];
+								   NSError *err = nil;
+								   ERR(&err, errMessage, 0)
+								   NSMutableDictionary *usrInf = [userInfo mutableCopy];
+								   [usrInf setObject:err forKey:SMARTErrorKey];
+								   SUCCESS_RETVAL_CALLBACK_OR_LOG_USER_INFO(callback, NO, usrInf)
+								   return;
+							   }
+							   
+							   // get the desired sub-models
+							   RedlandNode *predicate = [RedlandNode nodeWithURIString:@"http://www.w3.org/1999/02/22-rdf-syntax-ns#type"];
+							   RedlandNode *object = [RedlandNode nodeWithURIString:[aClass rdfType]];
+							   RedlandStatement *statement = [RedlandStatement statementWithSubject:nil predicate:predicate object:object];
+							   RedlandStreamEnumerator *query = [model enumeratorOfStatementsLike:statement];
+							   
+							   // create our objects wrapping those sub-models
+							   NSMutableArray *array = [NSMutableArray array];
+							   RedlandStatement *rslt = nil;
+							   while ((rslt = [query nextObject])) {
+								   id item = [aClass newWithSubject:rslt.subject inModel:model];
+								   if (item) {
+									   [array addObject:item];
+								   }
+							   }
+							   
+							   // complete the user-info dictionary and call the callback
 							   NSMutableDictionary *usrInf = [userInfo mutableCopy];
-							   [usrInf setObject:err forKey:SMARTErrorKey];
-							   SUCCESS_RETVAL_CALLBACK_OR_LOG_USER_INFO(callback, NO, usrInf)
+							   [usrInf setObject:array forKey:SMARTResponseArrayKey];
+							   SUCCESS_RETVAL_CALLBACK_OR_LOG_USER_INFO(callback, YES, usrInf)
 							   return;
 						   }
-						   
-						   // get the desired sub-models
-						   RedlandNode *predicate = [RedlandNode nodeWithURIString:@"http://www.w3.org/1999/02/22-rdf-syntax-ns#type"];
-						   RedlandNode *object = [RedlandNode nodeWithURIString:[aClass rdfType]];
-						   RedlandStatement *statement = [RedlandStatement statementWithSubject:nil predicate:predicate object:object];
-						   RedlandStreamEnumerator *query = [model enumeratorOfStatementsLike:statement];
-						   
-						   // create our objects wrapping those sub-models
-						   NSMutableArray *array = [NSMutableArray array];
-						   RedlandStatement *rslt = nil;
-						   while ((rslt = [query nextObject])) {
-							   id item = [aClass newWithSubject:rslt.subject inModel:model];
-							   if (item) {
-								   [array addObject:item];
-							   }
+						   else {
+							   DLog(@"Response is empty for GET call to %@", aPath);
 						   }
-						   
-						   // complete the user-info dictionary and call the callback
-						   NSMutableDictionary *usrInf = [userInfo mutableCopy];
-						   [usrInf setObject:array forKey:SMARTResponseArrayKey];
-						   SUCCESS_RETVAL_CALLBACK_OR_LOG_USER_INFO(callback, YES, usrInf)
-						   return;
 					   }
 					   else {
-						   DLog(@"Response is empty for GET call to %@", aPath);
+						   DLog(@"Only content with Content-Type \"application/rdf+xml\" will be automatically parsed. The response came back as \"%@\"", contentType);
 					   }
 				   }
 				   
@@ -177,10 +188,11 @@
  *  @param aMethod The path to call on the server
  *  @param body The body string
  *  @param parameters An array full of strings in the form "key=value"
+ *  @param contentType The optional contentType of the data for PUT or POST
  *  @param httpMethod The http method, for now GET, PUT or POST
  *  @param callback A block to execute when the call has finished
  */
-- (void)performMethod:(NSString *)aMethod withBody:(NSString *)body orParameters:(NSArray *)parameters httpMethod:(NSString *)httpMethod callback:(SMSuccessRetvalueBlock)callback
+- (void)performMethod:(NSString *)aMethod withBody:(NSString *)body orParameters:(NSArray *)parameters ofType:(NSString *)contentType httpMethod:(NSString *)httpMethod callback:(SMSuccessRetvalueBlock)callback
 {
 	if (!_server) {
 		NSString *errStr = [NSString stringWithFormat:@"Fatal Error: I have no server! %@", self];
@@ -224,6 +236,14 @@
 		}
 	}
 	return _name;
+}
+
+- (void)setScratchpad:(SMScratchpadData *)scratchpad
+{
+	if (scratchpad != _scratchpad) {
+		_scratchpad = scratchpad;
+		_scratchpad.record = self;
+	}
 }
 
 

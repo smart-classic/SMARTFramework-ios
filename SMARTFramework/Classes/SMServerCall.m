@@ -39,10 +39,6 @@
 
 @implementation SMServerCall
 
-@synthesize server;
-@synthesize method, HTTPMethod, contentType, body, parameters, oauth, finishIfAuthenticated;
-@synthesize hasBeenFired, retryWithNewTokenAfterFailure, didRetryWithNewTokenAfterFailure, responseObject, myCallback;
-
 
 /**
  *  Convenience constructor, sets the server
@@ -72,13 +68,13 @@
 #pragma mark - OAuth Setup
 - (void)setOauth:(MPOAuthAPI *)newOAuth
 {
-	if (newOAuth != oauth) {
-		if (oauth) {
-			if (self == oauth.authDelegate) {
-				oauth.authDelegate = nil;
+	if (newOAuth != _oauth) {
+		if (_oauth) {
+			if (self == _oauth.authDelegate) {
+				_oauth.authDelegate = nil;
 			}
-			if (self == oauth.loadDelegate) {
-				oauth.loadDelegate = nil;
+			if (self == _oauth.loadDelegate) {
+				_oauth.loadDelegate = nil;
 			}
 			
 			NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
@@ -89,19 +85,19 @@
 			[center removeObserver:self name:MPOAuthNotificationErrorHasOccurred object:nil];
 		}
 		
-		oauth = newOAuth;			// This certainly looks weird, holy new ARC technology...
+		_oauth = newOAuth;			// This certainly looks weird, holy new ARC technology...
 		
 		// we are the delegate of our oauth instance and we want to receive all its notifications
-		if (oauth) {
+		if (_oauth) {
 			NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-			[center addObserver:self selector:@selector(oauthNotificationReceived:) name:MPOAuthNotificationAccessTokenReceived object:oauth];
-			[center addObserver:self selector:@selector(oauthNotificationReceived:) name:MPOAuthNotificationAccessTokenRejected object:oauth];
-			[center addObserver:self selector:@selector(oauthNotificationReceived:) name:MPOAuthNotificationAccessTokenRefreshed object:oauth];
-			[center addObserver:self selector:@selector(oauthNotificationReceived:) name:MPOAuthNotificationOAuthCredentialsReady object:oauth];
-			[center addObserver:self selector:@selector(oauthNotificationReceived:) name:MPOAuthNotificationErrorHasOccurred object:oauth];
+			[center addObserver:self selector:@selector(oauthNotificationReceived:) name:MPOAuthNotificationAccessTokenReceived object:_oauth];
+			[center addObserver:self selector:@selector(oauthNotificationReceived:) name:MPOAuthNotificationAccessTokenRejected object:_oauth];
+			[center addObserver:self selector:@selector(oauthNotificationReceived:) name:MPOAuthNotificationAccessTokenRefreshed object:_oauth];
+			[center addObserver:self selector:@selector(oauthNotificationReceived:) name:MPOAuthNotificationOAuthCredentialsReady object:_oauth];
+			[center addObserver:self selector:@selector(oauthNotificationReceived:) name:MPOAuthNotificationErrorHasOccurred object:_oauth];
 			
-			oauth.authDelegate = self;
-			oauth.loadDelegate = self;
+			_oauth.authDelegate = self;
+			_oauth.loadDelegate = self;
 		}
 	}
 }
@@ -188,33 +184,39 @@
  */
 - (void)fire
 {
-	if (!oauth) {
+	if (!_oauth) {
 		DLog(@"Cannot fire without oauth property. Call: %@", self);
 		return;
 	}
 	
-	if (HTTPMethod) {
-		oauth.defaultHTTPMethod = HTTPMethod;
+	if (_HTTPMethod) {
+		_oauth.defaultHTTPMethod = _HTTPMethod;
 	}
 	self.hasBeenFired = YES;
-	self.didRetryWithNewTokenAfterFailure = retryWithNewTokenAfterFailure;
+	self.didRetryWithNewTokenAfterFailure = _retryWithNewTokenAfterFailure;
 	self.retryWithNewTokenAfterFailure = NO;
 	
 	// let MPOAuth do its magic
-	if (![oauth isAuthenticated]) {
-		oauth.defaultHTTPMethod = @"POST";
-		[oauth authenticate];
+	if (![_oauth isAuthenticated]) {
+		_oauth.defaultHTTPMethod = @"POST";
+		[_oauth authenticate];
 	}
 	
 	// the main work performing call
 	else if (!self.finishIfAuthenticated) {
-		if ([body length] > 0) {
-			NSData *bodyData = [body dataUsingEncoding:NSUTF8StringEncoding];
-			
+		NSData *bodyData = nil;
+		if (_bodyData) {
+			bodyData = _bodyData;
+		}
+		else if ([_body length] > 0) {
+			bodyData = [_body dataUsingEncoding:NSUTF8StringEncoding];
+		}
+		
+		if (bodyData) {
 			NSURL *fullURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", [self.oauth.baseURL absoluteString], self.method]];
 			NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:fullURL];
-			NSString *contType = ([contentType length] > 0) ? contentType : @"application/xml";
-			[request setHTTPMethod:HTTPMethod];
+			NSString *contType = ([_contentType length] > 0) ? _contentType : @"application/xml";
+			[request setHTTPMethod:_HTTPMethod];
 			[request setValue:contType forHTTPHeaderField:@"Content-Type"];
 			[request setValue:[NSString stringWithFormat:@"%d", [bodyData length]] forHTTPHeaderField:@"Content-Length"];
 			[request setHTTPBody:bodyData];
@@ -222,7 +224,7 @@
 			[self.oauth performURLRequest:request withDelegate:self];
 		}
 		else {
-			[self.oauth performMethod:method withParameters:parameters delegate:self];
+			[self.oauth performMethod:_method withParameters:_parameters delegate:self];
 		}
 	}
 	
@@ -261,7 +263,7 @@
 - (void)abortWithError:(NSError *)error
 {
 	/// @todo truly abort loading, if in progress
-	[self didFinishSuccessfully:NO returnObject:(error ? [NSDictionary dictionaryWithObject:error forKey:SMARTErrorKey] : nil)];
+	[self didFinishSuccessfully:NO returnObject:(error ? @{SMARTErrorKey: error} : nil)];
 }
 
 /**
@@ -276,10 +278,10 @@
 	
 	// inform the server - the server will remove us from his pool, so we need to create a strong reference to ourselves which lasts for the scope
 	SMServerCall *this = self;
-	[server callDidFinish:self];
+	[_server callDidFinish:self];
 	
 	// send callback and inform the server
-	SUCCESS_RETVAL_CALLBACK_OR_LOG_USER_INFO(myCallback, success, returnObject);
+	SUCCESS_RETVAL_CALLBACK_OR_LOG_USER_INFO(_myCallback, success, returnObject);
 	self.myCallback = nil;
 	this = nil;
 }
@@ -292,7 +294,7 @@
  */
 - (NSURL *)callbackURLForCompletedUserAuthorizationDISABLED
 {
-	return [server authorizeCallbackURL];
+	return [_server authorizeCallbackURL];
 }
 
 /**
@@ -302,12 +304,12 @@
  */
 - (NSString *)oauthVerifierForCompletedUserAuthorization
 {
-	return [server lastOAuthVerifier];
+	return [_server lastOAuthVerifier];
 }
 
 - (NSDictionary *)additionalRequestTokenParameters
 {
-	return [server additionalRequestTokenParameters];
+	return [_server additionalRequestTokenParameters];
 }
 
 /*
@@ -315,7 +317,7 @@
  */
 - (BOOL)automaticallyRequestAuthenticationFromURL:(NSURL *)inAuthURL withCallbackURL:(NSURL *)inCallbackURL
 {
-	return [server shouldAutomaticallyAuthenticateFrom:inAuthURL];
+	return [_server shouldAutomaticallyAuthenticateFrom:inAuthURL];
 }
 
 
@@ -338,7 +340,7 @@
 		error = nil;
 		ERR(&error, @"Authentication did fail with an unknown error", 0);
 	}
-	[self didFinishSuccessfully:NO returnObject:[NSDictionary dictionaryWithObject:error forKey:SMARTErrorKey]];
+	[self didFinishSuccessfully:NO returnObject:@{SMARTErrorKey: error}];
 }
 
 
@@ -372,11 +374,11 @@
 		NSError *error = nil;
 		//ERR(&error, [nDict objectForKey:NSLocalizedDescriptionKey] ? [nDict objectForKey:NSLocalizedDescriptionKey] : @"Access Token Rejected", 403);	// server does always send "Permission Denied"
 		ERR(&error, @"Access Token Rejected", 403);
-		self.responseObject = [NSDictionary dictionaryWithObject:error forKey:SMARTErrorKey];
+		self.responseObject = @{SMARTErrorKey: error};
 		
-		if (!didRetryWithNewTokenAfterFailure) {
+		if (!_didRetryWithNewTokenAfterFailure) {
 			DLog(@"WARNING: The access token was rejected. I will try to get a new token, show the \"Authorize App\" page to the user if necessary and then re-perform the call.");
-			retryWithNewTokenAfterFailure = YES;
+			_retryWithNewTokenAfterFailure = YES;
 		}
 	}
 	
@@ -384,7 +386,7 @@
 	else if ([MPOAuthNotificationErrorHasOccurred isEqualToString:nName]) {
 		NSError *error = nil;
 		ERR(&error, [nDict objectForKey:NSLocalizedDescriptionKey] ? [nDict objectForKey:NSLocalizedDescriptionKey] : @"OAuth Error", 400);
-		self.responseObject = [NSDictionary dictionaryWithObject:error forKey:SMARTErrorKey];
+		self.responseObject = @{SMARTErrorKey: error};
 	}
 	
 	/// @todo unhandled notification, ignore as soon as everything works
@@ -398,23 +400,29 @@
 #pragma mark - OAuth Load Delegate
 - (void)connectionFinishedWithResponse:(NSURLResponse *)aResponse data:(NSData *)inData
 {
-	NSMutableDictionary *retDict = responseObject ? [responseObject mutableCopy] : [NSMutableDictionary dictionary];
+	// set response data
+	NSMutableDictionary *retDict = _responseObject ? [_responseObject mutableCopy] : [NSMutableDictionary dictionary];
 	[retDict setObject:inData forKey:SMARTResponseDataKey];
 	
+	// set response Content-Type
+	if ([aResponse isKindOfClass:[NSHTTPURLResponse class]]) {
+		[retDict setObject:[[(NSHTTPURLResponse *)aResponse allHeaderFields] objectForKey:@"Content-Type"] forKey:SMARTResponseContentTypeKey];
+	}
+	
 	self.responseObject = retDict;
-	[self didFinishSuccessfully:YES returnObject:responseObject];
+	[self didFinishSuccessfully:YES returnObject:_responseObject];
 }
 
 - (void)connectionFailedWithResponse:(NSURLResponse *)aResponse error:(NSError *)inError
 {
 	// get the correct error (if we have one in responseObject alread, we ignore inError)
-	NSError *prevError = [responseObject objectForKey:SMARTErrorKey];
+	NSError *prevError = [_responseObject objectForKey:SMARTErrorKey];
 	NSError *actualError = prevError ? prevError : inError;
-	DLog(@"%@ %@  xxxxx  %@", HTTPMethod, method, [actualError localizedDescription]);
+	DLog(@"%@ to server %@  method: %@ failed  xxxxx  %@", _HTTPMethod, _server.url, _method, [actualError localizedDescription]);
 	
 	// we should arrive here if the token was rejected
-	if (retryWithNewTokenAfterFailure) {
-		[server authenticate:^(BOOL userDidCancel, NSString *__autoreleasing errorMessage) {
+	if (_retryWithNewTokenAfterFailure) {
+		[_server authenticate:^(BOOL userDidCancel, NSString *__autoreleasing errorMessage) {
 			if (userDidCancel || errorMessage) {
 				NSError *error = actualError;
 				if (errorMessage) {
@@ -436,7 +444,7 @@
 	else {
 		DLog(@"Failed with error %@, but will return previously encountered error %@", inError, prevError);
 	}
-	[self didFinishSuccessfully:NO returnObject:responseObject];
+	[self didFinishSuccessfully:NO returnObject:_responseObject];
 }
 
 
@@ -444,15 +452,15 @@
 #pragma mark - Utilities
 - (BOOL)isAuthenticationCall
 {
-	return (nil == method);			// seems hackish...
+	return (nil == _method);			// seems hackish...
 }
 
 - (NSString *)description
 {
-	NSString *action = method ? [@"\n" stringByAppendingString:method] : @"Authentication";
-	NSString *bodyString = body ? [@"\n" stringByAppendingString:body] : @"";
-	NSString *paramString = parameters ? [NSString stringWithFormat:@" with %@", parameters] : @"";
-	return [NSString stringWithFormat:@"%@ <%p> %@: \"%@\"%@%@", NSStringFromClass([self class]), self, HTTPMethod, action, paramString, bodyString];
+	NSString *action = _method ? [@"\n" stringByAppendingString:_method] : @"Authentication";
+	NSString *bodyString = _body ? [@"\n" stringByAppendingString:_body] : @"";
+	NSString *paramString = _parameters ? [NSString stringWithFormat:@" with %@", _parameters] : @"";
+	return [NSString stringWithFormat:@"%@ <%p> %@: \"%@\"%@%@", NSStringFromClass([self class]), self, _HTTPMethod, action, paramString, bodyString];
 }
 
 

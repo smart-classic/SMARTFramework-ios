@@ -37,7 +37,7 @@
 - (void)get:(SMCancelErrorBlock)callback;
 - (void)get:(NSString *)aMethod callback:(SMSuccessRetvalueBlock)callback;
 - (void)get:(NSString *)aMethod parameters:(NSArray *)paramArray callback:(SMSuccessRetvalueBlock)callback;
-- (void)performMethod:(NSString *)aMethod withBody:(NSString *)body orParameters:(NSArray *)parameters httpMethod:(NSString *)httpMethod callback:(SMSuccessRetvalueBlock)callback;
+- (void)performMethod:(NSString *)aMethod withBody:(id)body orParameters:(NSArray *)parameters ofType:(NSString *)contentType httpMethod:(NSString *)httpMethod callback:(SMSuccessRetvalueBlock)callback;
 
 + (NSString *)basePath;
 

@@ -60,15 +60,16 @@
  *  Uses a SMServerCall instance to handle the loading; SMServerCall only allows a body string or parameters, but not both, with
  *  the body string taking precedence.
  *  @param aMethod The path to call on the server
- *  @param body The body string
+ *  @param body The body data (NSData) or string (NSString)
  *  @param parameters An array full of strings in the form "key=value"
+ *  @param contentType The optional content-type for PUT and POST
  *  @param httpMethod The http method, for now GET, PUT or POST
  *  @param callback A block to execute when the call has finished
  */
-- (void)performMethod:(NSString *)aMethod withBody:(NSString *)body orParameters:(NSArray *)parameters httpMethod:(NSString *)httpMethod callback:(SMSuccessRetvalueBlock)callback
+- (void)performMethod:(NSString *)aMethod withBody:(id)body orParameters:(NSArray *)parameters ofType:(NSString *)contentType httpMethod:(NSString *)httpMethod callback:(SMSuccessRetvalueBlock)callback
 {
 	if (!_record.server) {
-		NSString *errStr = [NSString stringWithFormat:@"Fatal Error: I have no server! %@", self];
+		NSString *errStr = [NSString stringWithFormat:@"Fatal Error: I have no %@! %@", (_record ? @"server" : @"record"), self];
 		SUCCESS_RETVAL_CALLBACK_OR_LOG_ERR_STRING(callback, errStr, 2000)
 		return;
 	}
@@ -76,7 +77,9 @@
 	// create the desired SMServerCall instance
 	SMServerCall *call = [SMServerCall new];
 	call.method = aMethod;
-	call.body = body;
+	call.contentType = contentType;
+	call.body = [body isKindOfClass:[NSString class]] ? body : nil;
+	call.bodyData = [body isKindOfClass:[NSData class]] ? body : nil;
 	call.parameters = parameters;
 	call.HTTPMethod = httpMethod;
 	call.myCallback = callback;
@@ -89,26 +92,26 @@
 /**
  *  Shortcut for GETting data.
  *
- *  Calls "performMethod:withBody:orParameters:httpMethod:callback:" internally.
+ *  Calls "performMethod:withBody:orParameters:ofType:httpMethod:callback:" internally.
  *  @param aMethod The method to perform, e.g. "/records/id/documents/"
  *  @param callback The callback block to execute when the call has finished
  */
 - (void)get:(NSString *)aMethod callback:(SMSuccessRetvalueBlock)callback
 {
-	[self performMethod:aMethod withBody:nil orParameters:nil httpMethod:@"GET" callback:callback];
+	[self performMethod:aMethod withBody:nil orParameters:nil ofType:nil httpMethod:@"GET" callback:callback];
 }
 
 /**
  *  Shortcut for GETting data with parameters.
  *
- *  Calls "performMethod:withBody:orParameters:httpMethod:callback:" internally.
+ *  Calls "performMethod:withBody:orParameters:ofType:httpMethod:callback:" internally.
  *  @param aMethod The method to perform, e.g. "/records/id/documents/"
  *  @param paramArray An array of NSString parameters in the form @"key=value"; will be URL-encoded automatically
  *  @param callback The callback block to execute when the call has finished
  */
 - (void)get:(NSString *)aMethod parameters:(NSArray *)paramArray callback:(SMSuccessRetvalueBlock)callback
 {
-	[self performMethod:aMethod withBody:nil orParameters:paramArray httpMethod:@"GET" callback:callback];
+	[self performMethod:aMethod withBody:nil orParameters:paramArray ofType:nil httpMethod:@"GET" callback:callback];
 }
 
 
@@ -121,9 +124,18 @@
  */
 - (NSString *)basePath
 {
-	if (!_basePath && _record.record_id && _uuid) {
-		NSString *foo = [[[self class] basePath] stringByReplacingOccurrencesOfString:@"{record_id}" withString:_record.record_id];
-		self.basePath = [foo stringByReplacingOccurrencesOfString:@"{uuid}" withString:_uuid];
+	if (!_basePath) {
+		NSString *base = [[self class] basePath];
+		if (_record.server.appId) {
+			base = [base stringByReplacingOccurrencesOfString:@"{smart_app_id}" withString:_record.server.appId];
+		}
+		if (_record.record_id) {
+			base = [base stringByReplacingOccurrencesOfString:@"{record_id}" withString:_record.record_id];
+		}
+		if (_uuid) {
+			base = [base stringByReplacingOccurrencesOfString:@"{uuid}" withString:_uuid];
+		}
+		self.basePath = base;
 	}
 	return _basePath;
 }

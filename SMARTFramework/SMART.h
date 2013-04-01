@@ -29,6 +29,7 @@
 // Dictionary keys
 extern NSString *const SMARTErrorKey;						/// Dictionaries return an NSError for this key
 extern NSString *const SMARTRecordIDKey;					/// Dictionaries return an NSString for this key. The key reflects the oauth URL param name.
+extern NSString *const SMARTResponseContentTypeKey;			/// Dictionaries return the server response's Content-Type as NSString for this key
 extern NSString *const SMARTResponseDataKey;				/// Dictionaries return the server's response as NSData for this key
 extern NSString *const SMARTResponseArrayKey;				/// Dictionaries return an NSArray for this key
 extern NSString *const SMARTResponseDocumentKey;			/// Dictionaries return an IndivoDocument for this key
@@ -69,7 +70,7 @@ typedef void (^SMCancelErrorBlock)(BOOL userDidCancel, NSString * __autoreleasin
 #ifndef ERR
 # define ERR(p, s, c)\
 	if (p != NULL && s) {\
-		*p = [NSError errorWithDomain:NSCocoaErrorDomain code:(c ? c : 0) userInfo:[NSDictionary dictionaryWithObject:s forKey:NSLocalizedDescriptionKey]];\
+		*p = [NSError errorWithDomain:NSCocoaErrorDomain code:(c ? c : 0) userInfo:@{NSLocalizedDescriptionKey: s}];\
 	}\
 	else {\
 		DLog(@"Ignored Error: %@", s);\
@@ -79,7 +80,7 @@ typedef void (^SMCancelErrorBlock)(BOOL userDidCancel, NSString * __autoreleasin
 /// This creates an error object with NSXMLParserErrorDomain domain
 #define XERR(p, s, c)\
 	if (p != NULL && s) {\
-		*p = [NSError errorWithDomain:NSXMLParserErrorDomain code:(c ? c : 0) userInfo:[NSDictionary dictionaryWithObject:s forKey:NSLocalizedDescriptionKey]];\
+		*p = [NSError errorWithDomain:NSXMLParserErrorDomain code:(c ? c : 0) userInfo:@{NSLocalizedDescriptionKey: s}];\
 	}
 
 /// Make callback or logging easy
@@ -116,9 +117,9 @@ typedef void (^SMCancelErrorBlock)(BOOL userDidCancel, NSString * __autoreleasin
 	if (cb) {\
 		NSError *errorFromErrStrInBlock = nil;\
 		if (errStr) {\
-			errorFromErrStrInBlock = [NSError errorWithDomain:NSCocoaErrorDomain code:(errCode ? errCode : 0) userInfo:[NSDictionary dictionaryWithObject:errStr forKey:NSLocalizedDescriptionKey]];\
+			errorFromErrStrInBlock = [NSError errorWithDomain:NSCocoaErrorDomain code:(errCode ? errCode : 0) userInfo:@{NSLocalizedDescriptionKey: errStr}];\
 		}\
-		cb((nil == errorFromErrStrInBlock), errorFromErrStrInBlock ? [NSDictionary dictionaryWithObject:errorFromErrStrInBlock forKey:SMARTErrorKey] : nil);\
+		cb((nil == errorFromErrStrInBlock), errorFromErrStrInBlock ? @{SMARTErrorKey: errorFromErrStrInBlock} : nil);\
 	}\
 	else if (errStr) {\
 		DLog(@"No callback on this method, logging to debug. Error %d: %@", errCode, errStr);\

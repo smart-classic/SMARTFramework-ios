@@ -37,7 +37,8 @@
 @property (nonatomic, copy) NSString *method;							///< The method to call on the server URL
 @property (nonatomic, copy) NSString *HTTPMethod;						///< Will be GET by default
 @property (nonatomic, copy) NSString *contentType;						///< "application/xml" by default
-@property (nonatomic, copy) NSString *body;								///< Body data, takes precedence over "parameters" if length is > 0
+@property (nonatomic, copy) NSString *body;								///< Body string data, takes precedence over "parameters" if length is > 0
+@property (nonatomic, copy) NSData *bodyData;							///< Body data, takes precedence over "body" if non-nil
 @property (nonatomic, strong) NSArray *parameters;						///< An array with @"key=value" strings to be passed to the server, overridden by "body"
 @property (nonatomic, strong) MPOAuthAPI *oauth;						///< The call will retain a copy of the oauth instance
 @property (nonatomic, assign) BOOL finishIfAuthenticated;				///< If YES the call is merely a proxy to the OAuth authentication call

@@ -25,6 +25,7 @@
 
 @class SMServer;
 @class SMDemographics;
+@class SMScratchpadData;
 
 
 /**
@@ -32,21 +33,34 @@
  */
 @interface SMRecord : NSObject
 
-@property (nonatomic, copy) NSString *record_id;							///< The record id
+/// The record id
+@property (nonatomic, copy) NSString *record_id;
 
-@property (nonatomic, weak) SMServer *server;								///< The server this record lives on
-@property (nonatomic, copy) NSString *accessToken;							///< The OAuth token tied to this record and its server
-@property (nonatomic, copy) NSString *accessTokenSecret;					///< The OAuth secret
+/// The server this record lives on
+@property (nonatomic, weak) SMServer *server;
 
-@property (nonatomic, readonly, strong) SMDemographics *demographics;		///< The demographics document for this record
-@property (nonatomic, copy) NSString *name;									///< Composed name from givenName and familyName, taken from the demographics document
+/// The OAuth token tied to this record and its server
+@property (nonatomic, copy) NSString *accessToken;
+
+/// The OAuth secret
+@property (nonatomic, copy) NSString *accessTokenSecret;
+
+/// The demographics document for this record
+@property (nonatomic, readonly, strong) SMDemographics *demographics;
+
+/// Composed name from givenName and familyName, taken from the demographics document
+@property (nonatomic, copy) NSString *name;
+
+/// The scratchpad document for this record - to get the data you will need to call "get:" on this first!
+@property (nonatomic, readonly, strong) SMScratchpadData *scratchpad;
+
 
 - (id)initWithId:(NSString *)anId onServer:(SMServer *)aServer;
 
 // data fetching
 - (void)getDemographicsWithCallback:(SMCancelErrorBlock)callback;
 - (void)getObjectsOfClass:(Class)aClass from:(NSString *)aPath callback:(SMSuccessRetvalueBlock)callback;
-- (void)performMethod:(NSString *)aMethod withBody:(NSString *)body orParameters:(NSArray *)parameters httpMethod:(NSString *)httpMethod callback:(SMSuccessRetvalueBlock)callback;
+- (void)performMethod:(NSString *)aMethod withBody:(NSString *)body orParameters:(NSArray *)parameters ofType:(NSString *)contentType httpMethod:(NSString *)httpMethod callback:(SMSuccessRetvalueBlock)callback;
 
 // utilities
 - (BOOL)is:(NSString *)anId;

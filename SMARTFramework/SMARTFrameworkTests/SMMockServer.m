@@ -87,15 +87,7 @@
 	
 	// ok, we know about this path, read the fixture...
 	NSData *mockResponse = [self readFixture:fixturePath];
-	NSMutableDictionary *response = [NSMutableDictionary dictionaryWithObject:mockResponse forKey:SMARTResponseDataKey];
-	
-	/* ...parse it...
-	NSError *error = nil;
-	INXMLNode *mockDoc = [INXMLParser parseXML:mockResponse error:&error];
-	if (mockDoc) {
-		[response setObject:mockDoc forKey:INResponseXMLKey];
-	}
-	*/
+	NSDictionary *response = @{SMARTResponseContentTypeKey: @"application/rdf+xml", SMARTResponseDataKey: mockResponse};
 	
 	// ...and hand it to the call
 	[aCall finishWith:response];

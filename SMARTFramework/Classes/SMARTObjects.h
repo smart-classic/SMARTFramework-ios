@@ -72,3 +72,6 @@
 #import "SMVitalSign.h"
 #import "SMVitalSignSet.h"
 
+// scratchpad data is currently curated by hand
+#import "SMScratchpadData.h"
+
