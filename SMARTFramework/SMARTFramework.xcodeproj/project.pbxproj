@@ -23,6 +23,10 @@
 /* Begin PBXBuildFile section */
 		EE249A4315D59F04001A63D7 /* SMBaseDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = EE249A4115D59F04001A63D7 /* SMBaseDocument.h */; settings = {ATTRIBUTES = (); }; };
 		EE249A4415D59F04001A63D7 /* SMBaseDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = EE249A4215D59F04001A63D7 /* SMBaseDocument.m */; };
+		EE30FB35170A6F4400FF1809 /* SMFamilyHistoryObservation.h in Headers */ = {isa = PBXBuildFile; fileRef = EE30FB33170A6F4400FF1809 /* SMFamilyHistoryObservation.h */; };
+		EE30FB36170A6F4400FF1809 /* SMFamilyHistoryObservation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE30FB34170A6F4400FF1809 /* SMFamilyHistoryObservation.m */; };
+		EE30FB39170A6F5500FF1809 /* SMPhotograph.h in Headers */ = {isa = PBXBuildFile; fileRef = EE30FB37170A6F5500FF1809 /* SMPhotograph.h */; };
+		EE30FB3A170A6F5500FF1809 /* SMPhotograph.m in Sources */ = {isa = PBXBuildFile; fileRef = EE30FB38170A6F5500FF1809 /* SMPhotograph.m */; };
 		EE42D04C15DEB4C900F03EB0 /* SMART.h in Headers */ = {isa = PBXBuildFile; fileRef = EE42D04B15DEB4C900F03EB0 /* SMART.h */; settings = {ATTRIBUTES = (); }; };
 		EE59AC1615E34D4F00F4D738 /* SMRecord+Calls.h in Headers */ = {isa = PBXBuildFile; fileRef = EE59AC1415E34D4F00F4D738 /* SMRecord+Calls.h */; settings = {ATTRIBUTES = (); }; };
 		EE5D69751656F4C9001741E2 /* SMAllergy.rdf in Resources */ = {isa = PBXBuildFile; fileRef = EE5D69681656F4C9001741E2 /* SMAllergy.rdf */; };
@@ -54,8 +58,6 @@
 		EE6A5A9715CC753800DD0F68 /* SMRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6A5A9515CC753800DD0F68 /* SMRecord.m */; };
 		EE7BFC8516CFE4E2006D460E /* SMDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = EE7BFC8116CFE4E2006D460E /* SMDocument.h */; };
 		EE7BFC8616CFE4E2006D460E /* SMDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7BFC8216CFE4E2006D460E /* SMDocument.m */; };
-		EE7BFC8716CFE4E2006D460E /* SMFamilyHistory.h in Headers */ = {isa = PBXBuildFile; fileRef = EE7BFC8316CFE4E2006D460E /* SMFamilyHistory.h */; };
-		EE7BFC8816CFE4E2006D460E /* SMFamilyHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7BFC8416CFE4E2006D460E /* SMFamilyHistory.m */; };
 		EE7BFC8B16CFE51F006D460E /* SMResource.h in Headers */ = {isa = PBXBuildFile; fileRef = EE7BFC8916CFE51F006D460E /* SMResource.h */; };
 		EE7BFC8C16CFE51F006D460E /* SMResource.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7BFC8A16CFE51F006D460E /* SMResource.m */; };
 		EE7BFC8F16CFE57C006D460E /* SMContent.h in Headers */ = {isa = PBXBuildFile; fileRef = EE7BFC8D16CFE57C006D460E /* SMContent.h */; };
@@ -99,8 +101,6 @@
 		EEC147E015E076AD006B8798 /* SMDataType.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1473815E076AB006B8798 /* SMDataType.m */; };
 		EEC147E115E076AD006B8798 /* SMDateTime.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1473915E076AB006B8798 /* SMDateTime.h */; settings = {ATTRIBUTES = (); }; };
 		EEC147E215E076AD006B8798 /* SMDateTime.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1473A15E076AC006B8798 /* SMDateTime.m */; };
-		EEC147E315E076AD006B8798 /* SMDocumentWithFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1473B15E076AC006B8798 /* SMDocumentWithFormat.h */; settings = {ATTRIBUTES = (); }; };
-		EEC147E415E076AD006B8798 /* SMDocumentWithFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1473C15E076AC006B8798 /* SMDocumentWithFormat.m */; };
 		EEC147E515E076AD006B8798 /* SMEncounter.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1473D15E076AC006B8798 /* SMEncounter.h */; settings = {ATTRIBUTES = (); }; };
 		EEC147E615E076AD006B8798 /* SMEncounter.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1473E15E076AC006B8798 /* SMEncounter.m */; };
 		EEC147EB15E076AD006B8798 /* SMFulfillment.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1474315E076AC006B8798 /* SMFulfillment.h */; settings = {ATTRIBUTES = (); }; };
@@ -272,6 +272,10 @@
 		EE249AB215D5CBB1001A63D7 /* libraptor2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libraptor2.a; path = "../Redland-ObjC/Redland-source/Universal/libraptor2.a"; sourceTree = "<group>"; };
 		EE249AB415D5CBB4001A63D7 /* librasqal.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = librasqal.a; path = "../Redland-ObjC/Redland-source/Universal/librasqal.a"; sourceTree = "<group>"; };
 		EE249AB615D5CBB6001A63D7 /* librdf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = librdf.a; path = "../Redland-ObjC/Redland-source/Universal/librdf.a"; sourceTree = "<group>"; };
+		EE30FB33170A6F4400FF1809 /* SMFamilyHistoryObservation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMFamilyHistoryObservation.h; sourceTree = "<group>"; };
+		EE30FB34170A6F4400FF1809 /* SMFamilyHistoryObservation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMFamilyHistoryObservation.m; sourceTree = "<group>"; };
+		EE30FB37170A6F5500FF1809 /* SMPhotograph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMPhotograph.h; sourceTree = "<group>"; };
+		EE30FB38170A6F5500FF1809 /* SMPhotograph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMPhotograph.m; sourceTree = "<group>"; };
 		EE42D04B15DEB4C900F03EB0 /* SMART.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMART.h; sourceTree = "<group>"; };
 		EE59AC1215E342CC00F4D738 /* CategoryTemplate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoryTemplate.h; sourceTree = "<group>"; };
 		EE59AC1315E342CC00F4D738 /* CategoryTemplate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryTemplate.m; sourceTree = "<group>"; };
@@ -307,8 +311,6 @@
 		EE6A5A9515CC753800DD0F68 /* SMRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRecord.m; sourceTree = "<group>"; };
 		EE7BFC8116CFE4E2006D460E /* SMDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDocument.h; sourceTree = "<group>"; };
 		EE7BFC8216CFE4E2006D460E /* SMDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDocument.m; sourceTree = "<group>"; };
-		EE7BFC8316CFE4E2006D460E /* SMFamilyHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMFamilyHistory.h; sourceTree = "<group>"; };
-		EE7BFC8416CFE4E2006D460E /* SMFamilyHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMFamilyHistory.m; sourceTree = "<group>"; };
 		EE7BFC8916CFE51F006D460E /* SMResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMResource.h; sourceTree = "<group>"; };
 		EE7BFC8A16CFE51F006D460E /* SMResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMResource.m; sourceTree = "<group>"; };
 		EE7BFC8D16CFE57C006D460E /* SMContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMContent.h; sourceTree = "<group>"; };
@@ -358,8 +360,6 @@
 		EEC1473815E076AB006B8798 /* SMDataType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDataType.m; sourceTree = "<group>"; };
 		EEC1473915E076AB006B8798 /* SMDateTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDateTime.h; sourceTree = "<group>"; };
 		EEC1473A15E076AC006B8798 /* SMDateTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDateTime.m; sourceTree = "<group>"; };
-		EEC1473B15E076AC006B8798 /* SMDocumentWithFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDocumentWithFormat.h; sourceTree = "<group>"; };
-		EEC1473C15E076AC006B8798 /* SMDocumentWithFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDocumentWithFormat.m; sourceTree = "<group>"; };
 		EEC1473D15E076AC006B8798 /* SMEncounter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMEncounter.h; sourceTree = "<group>"; };
 		EEC1473E15E076AC006B8798 /* SMEncounter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMEncounter.m; sourceTree = "<group>"; };
 		EEC1474315E076AC006B8798 /* SMFulfillment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMFulfillment.h; sourceTree = "<group>"; };
@@ -581,12 +581,10 @@
 				EEC1470415DFE790006B8798 /* SMDemographics.m */,
 				EE7BFC8116CFE4E2006D460E /* SMDocument.h */,
 				EE7BFC8216CFE4E2006D460E /* SMDocument.m */,
-				EEC1473B15E076AC006B8798 /* SMDocumentWithFormat.h */,
-				EEC1473C15E076AC006B8798 /* SMDocumentWithFormat.m */,
 				EEC1473D15E076AC006B8798 /* SMEncounter.h */,
 				EEC1473E15E076AC006B8798 /* SMEncounter.m */,
-				EE7BFC8316CFE4E2006D460E /* SMFamilyHistory.h */,
-				EE7BFC8416CFE4E2006D460E /* SMFamilyHistory.m */,
+				EE30FB33170A6F4400FF1809 /* SMFamilyHistoryObservation.h */,
+				EE30FB34170A6F4400FF1809 /* SMFamilyHistoryObservation.m */,
 				EEC1474315E076AC006B8798 /* SMFulfillment.h */,
 				EEC1474415E076AC006B8798 /* SMFulfillment.m */,
 				EE7BFC9116CFE5A8006D460E /* SMHash.h */,
@@ -617,6 +615,8 @@
 				EEC1477A15E076AC006B8798 /* SMPerson.m */,
 				EEC1477B15E076AC006B8798 /* SMPharmacy.h */,
 				EEC1477C15E076AC006B8798 /* SMPharmacy.m */,
+				EE30FB37170A6F5500FF1809 /* SMPhotograph.h */,
+				EE30FB38170A6F5500FF1809 /* SMPhotograph.m */,
 				EEC1477F15E076AC006B8798 /* SMProblem.h */,
 				EEC1478015E076AC006B8798 /* SMProblem.m */,
 				EEADE77C16AF2D2B00E8715A /* SMProcedure.h */,
@@ -906,7 +906,6 @@
 				EEC147D915E076AD006B8798 /* SMCodeProvenance.h in Headers */,
 				EEC147DF15E076AD006B8798 /* SMDataType.h in Headers */,
 				EEC147E115E076AD006B8798 /* SMDateTime.h in Headers */,
-				EEC147E315E076AD006B8798 /* SMDocumentWithFormat.h in Headers */,
 				EEC147E515E076AD006B8798 /* SMEncounter.h in Headers */,
 				EEC147EB15E076AD006B8798 /* SMFulfillment.h in Headers */,
 				EEC147EF15E076AD006B8798 /* SMImmunization.h in Headers */,
@@ -937,11 +936,12 @@
 				EE59AC1615E34D4F00F4D738 /* SMRecord+Calls.h in Headers */,
 				EEADE77E16AF2D2B00E8715A /* SMProcedure.h in Headers */,
 				EE7BFC8516CFE4E2006D460E /* SMDocument.h in Headers */,
-				EE7BFC8716CFE4E2006D460E /* SMFamilyHistory.h in Headers */,
 				EE7BFC8B16CFE51F006D460E /* SMResource.h in Headers */,
 				EE7BFC8F16CFE57C006D460E /* SMContent.h in Headers */,
 				EE7BFC9316CFE5A8006D460E /* SMHash.h in Headers */,
 				EE93B37D1709FA1500B5A536 /* SMScratchpadData.h in Headers */,
+				EE30FB35170A6F4400FF1809 /* SMFamilyHistoryObservation.h in Headers */,
+				EE30FB39170A6F5500FF1809 /* SMPhotograph.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1171,7 +1171,6 @@
 				EEC147DA15E076AD006B8798 /* SMCodeProvenance.m in Sources */,
 				EEC147E015E076AD006B8798 /* SMDataType.m in Sources */,
 				EEC147E215E076AD006B8798 /* SMDateTime.m in Sources */,
-				EEC147E415E076AD006B8798 /* SMDocumentWithFormat.m in Sources */,
 				EEC147E615E076AD006B8798 /* SMEncounter.m in Sources */,
 				EEC147EC15E076AD006B8798 /* SMFulfillment.m in Sources */,
 				EEC147F015E076AD006B8798 /* SMImmunization.m in Sources */,
@@ -1201,11 +1200,12 @@
 				EEC1485815E076AD006B8798 /* SMVitalSignSet.m in Sources */,
 				EEADE77F16AF2D2B00E8715A /* SMProcedure.m in Sources */,
 				EE7BFC8616CFE4E2006D460E /* SMDocument.m in Sources */,
-				EE7BFC8816CFE4E2006D460E /* SMFamilyHistory.m in Sources */,
 				EE7BFC8C16CFE51F006D460E /* SMResource.m in Sources */,
 				EE7BFC9016CFE57C006D460E /* SMContent.m in Sources */,
 				EE7BFC9416CFE5A8006D460E /* SMHash.m in Sources */,
 				EE93B37E1709FA1500B5A536 /* SMScratchpadData.m in Sources */,
+				EE30FB36170A6F4400FF1809 /* SMFamilyHistoryObservation.m in Sources */,
+				EE30FB3A170A6F5500FF1809 /* SMPhotograph.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1269,10 +1269,7 @@
 				DSTROOT = /tmp/SMARTFramework_ios.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Resources/SMARTFramework-Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					"\"$(PROJECT_DIR)\"/**",
-					"\"$(SDK_DIR)/usr/include/libxml2\"",
-				);
+				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)\"/**";
 				LIBRARY_SEARCH_PATHS = "\"$(TARGET_BUILD_DIR)\"";
 				OTHER_CFLAGS = "-DDEBUG";
 				OTHER_LDFLAGS = "-ObjC";
@@ -1371,10 +1368,7 @@
 				DSTROOT = /tmp/SMARTFramework_ios.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Resources/SMARTFramework-Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					"\"$(PROJECT_DIR)\"/**",
-					"\"$(SDK_DIR)/usr/include/libxml2\"",
-				);
+				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)\"/**";
 				LIBRARY_SEARCH_PATHS = "\"$(TARGET_BUILD_DIR)\"";
 				OTHER_CFLAGS = "-DDEBUG";
 				OTHER_LDFLAGS = "-ObjC";
@@ -1389,10 +1383,7 @@
 				DSTROOT = /tmp/SMARTFramework_ios.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Resources/SMARTFramework-Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					"\"$(PROJECT_DIR)\"/**",
-					"\"$(SDK_DIR)/usr/include/libxml2\"",
-				);
+				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)\"/**";
 				LIBRARY_SEARCH_PATHS = "\"$(TARGET_BUILD_DIR)\"";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
