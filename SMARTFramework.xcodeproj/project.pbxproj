@@ -277,6 +277,7 @@
 		EE30FB34170A6F4400FF1809 /* SMFamilyHistoryObservation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMFamilyHistoryObservation.m; sourceTree = "<group>"; };
 		EE30FB37170A6F5500FF1809 /* SMPhotograph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMPhotograph.h; sourceTree = "<group>"; };
 		EE30FB38170A6F5500FF1809 /* SMPhotograph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMPhotograph.m; sourceTree = "<group>"; };
+		EE40DCC6170B957600398D0E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = file; path = README.md; sourceTree = "<group>"; };
 		EE42D04B15DEB4C900F03EB0 /* SMART.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMART.h; sourceTree = "<group>"; };
 		EE59AC1215E342CC00F4D738 /* CategoryTemplate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoryTemplate.h; sourceTree = "<group>"; };
 		EE59AC1315E342CC00F4D738 /* CategoryTemplate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryTemplate.m; sourceTree = "<group>"; };
@@ -659,6 +660,7 @@
 		EEC9C58815CB2EA800B7C568 = {
 			isa = PBXGroup;
 			children = (
+				EE40DCC6170B957600398D0E /* README.md */,
 				EE249A5815D5A19D001A63D7 /* ErrorCodes.md */,
 				EEF0192915CB447100FFD480 /* Config.h */,
 				EEF0192B15CB447900FFD480 /* Config-default.h */,

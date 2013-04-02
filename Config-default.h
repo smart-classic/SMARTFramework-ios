@@ -25,8 +25,8 @@
  *  This file should be named "Config.h" and added to your project. It contains the information necessary so the framework can connect to your server.
  */
 
-/// The URL to your server, with port number
-#define kSMARTAPIBaseURL @"http://sandbox.smartplatforms.org:7000"
+/// The URL to your server, with :port number (if other than 80)
+#define kSMARTAPIBaseURL @"http://sandbox-api-v06.smartplatforms.org"
 
 /// Your App's id, consumer key and -secret
 #define kSMARTAppId @"medsample@apps.smartplatforms.org"
