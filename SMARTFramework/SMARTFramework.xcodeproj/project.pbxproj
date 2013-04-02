@@ -65,7 +65,6 @@
 		EE7BFC9316CFE5A8006D460E /* SMHash.h in Headers */ = {isa = PBXBuildFile; fileRef = EE7BFC9116CFE5A8006D460E /* SMHash.h */; };
 		EE7BFC9416CFE5A8006D460E /* SMHash.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7BFC9216CFE5A8006D460E /* SMHash.m */; };
 		EE7BFC9716CFE5E6006D460E /* SMDocument.rdf in Resources */ = {isa = PBXBuildFile; fileRef = EE7BFC9516CFE5E6006D460E /* SMDocument.rdf */; };
-		EE7BFC9816CFE5E6006D460E /* SMFamilyHistory.rdf in Resources */ = {isa = PBXBuildFile; fileRef = EE7BFC9616CFE5E6006D460E /* SMFamilyHistory.rdf */; };
 		EE832F7D15D004A500E7FFF1 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EE832F7C15D004A500E7FFF1 /* libxml2.dylib */; };
 		EE832F8115D006D100E7FFF1 /* SMLoginViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EE832F7F15D006D100E7FFF1 /* SMLoginViewController.h */; settings = {ATTRIBUTES = (); }; };
 		EE832F8315D006EE00E7FFF1 /* SMLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE832F8015D006D100E7FFF1 /* SMLoginViewController.m */; };
@@ -159,6 +158,8 @@
 		EEC9C5A715CB2EA900B7C568 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEC9C5A615CB2EA900B7C568 /* SenTestingKit.framework */; };
 		EEC9C5AA15CB2EA900B7C568 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEC9C59815CB2EA800B7C568 /* Foundation.framework */; };
 		EEC9C5AD15CB2EA900B7C568 /* libSMART.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EEC9C59515CB2EA800B7C568 /* libSMART.a */; };
+		EEE6A877170A72AB00BD168C /* SMFamilyHistoryObservation.rdf in Resources */ = {isa = PBXBuildFile; fileRef = EEE6A875170A72AB00BD168C /* SMFamilyHistoryObservation.rdf */; };
+		EEE6A878170A72AB00BD168C /* SMPhotograph.rdf in Resources */ = {isa = PBXBuildFile; fileRef = EEE6A876170A72AB00BD168C /* SMPhotograph.rdf */; };
 		EEE82D8515D008510017EA0B /* SMActionView.h in Headers */ = {isa = PBXBuildFile; fileRef = EEE82D8315D008500017EA0B /* SMActionView.h */; settings = {ATTRIBUTES = (); }; };
 		EEE82D8615D008510017EA0B /* SMActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = EEE82D8415D008500017EA0B /* SMActionView.m */; };
 		EEE82D8D15D00D810017EA0B /* SMARTObjects.h in Headers */ = {isa = PBXBuildFile; fileRef = EEE82D8C15D00D810017EA0B /* SMARTObjects.h */; settings = {ATTRIBUTES = (); }; };
@@ -318,7 +319,6 @@
 		EE7BFC9116CFE5A8006D460E /* SMHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMHash.h; sourceTree = "<group>"; };
 		EE7BFC9216CFE5A8006D460E /* SMHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMHash.m; sourceTree = "<group>"; };
 		EE7BFC9516CFE5E6006D460E /* SMDocument.rdf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SMDocument.rdf; sourceTree = "<group>"; };
-		EE7BFC9616CFE5E6006D460E /* SMFamilyHistory.rdf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SMFamilyHistory.rdf; sourceTree = "<group>"; };
 		EE832F7C15D004A500E7FFF1 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		EE832F7F15D006D100E7FFF1 /* SMLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMLoginViewController.h; sourceTree = "<group>"; };
 		EE832F8015D006D100E7FFF1 /* SMLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMLoginViewController.m; sourceTree = "<group>"; };
@@ -421,6 +421,8 @@
 		EEC9C5A615CB2EA900B7C568 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		EEC9C5B015CB2EA900B7C568 /* SMARTFrameworkTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SMARTFrameworkTests-Info.plist"; sourceTree = "<group>"; };
 		EEE461F515E80F2000CCF120 /* Redland.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Redland.xcodeproj; path = "Redland-ObjC/Redland.xcodeproj"; sourceTree = "<group>"; };
+		EEE6A875170A72AB00BD168C /* SMFamilyHistoryObservation.rdf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SMFamilyHistoryObservation.rdf; sourceTree = "<group>"; };
+		EEE6A876170A72AB00BD168C /* SMPhotograph.rdf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SMPhotograph.rdf; sourceTree = "<group>"; };
 		EEE82D8315D008500017EA0B /* SMActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMActionView.h; sourceTree = "<group>"; };
 		EEE82D8415D008500017EA0B /* SMActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMActionView.m; sourceTree = "<group>"; };
 		EEE82D8C15D00D810017EA0B /* SMARTObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMARTObjects.h; path = Classes/SMARTObjects.h; sourceTree = "<group>"; };
@@ -519,13 +521,14 @@
 				EE5D696A1656F4C9001741E2 /* SMClinicalNote.rdf */,
 				EE5D696B1656F4C9001741E2 /* SMDemographics.rdf */,
 				EE7BFC9516CFE5E6006D460E /* SMDocument.rdf */,
-				EE7BFC9616CFE5E6006D460E /* SMFamilyHistory.rdf */,
+				EEE6A875170A72AB00BD168C /* SMFamilyHistoryObservation.rdf */,
 				EE5D696C1656F4C9001741E2 /* SMEncounter.rdf */,
 				EE5D696D1656F4C9001741E2 /* SMFulfillment.rdf */,
 				EE5D696E1656F4C9001741E2 /* SMImmunization.rdf */,
 				EEADE77A16AF0B1700E8715A /* SMLabPanel.rdf */,
 				EE5D696F1656F4C9001741E2 /* SMLabResult.rdf */,
 				EE5D69701656F4C9001741E2 /* SMMedication.rdf */,
+				EEE6A876170A72AB00BD168C /* SMPhotograph.rdf */,
 				EE5D69711656F4C9001741E2 /* SMProblem.rdf */,
 				EE5D69721656F4C9001741E2 /* SMProcedure.rdf */,
 				EE5D69731656F4C9001741E2 /* SMSocialHistory.rdf */,
@@ -952,7 +955,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EEC9C5B915CB2EA900B7C568 /* Build configuration list for PBXNativeTarget "SMART" */;
 			buildPhases = (
-				EE70EAFA1676EDE90066EB8F /* ShellScript */,
 				EEC9C59015CB2EA800B7C568 /* Sources */,
 				EEC9C59115CB2EA800B7C568 /* Frameworks */,
 				EEC9C59215CB2EA800B7C568 /* Headers */,
@@ -1074,26 +1076,14 @@
 				EE5D69881656FDF2001741E2 /* test-server-manifest.json in Resources */,
 				EEADE77B16AF0B1700E8715A /* SMLabPanel.rdf in Resources */,
 				EE7BFC9716CFE5E6006D460E /* SMDocument.rdf in Resources */,
-				EE7BFC9816CFE5E6006D460E /* SMFamilyHistory.rdf in Resources */,
+				EEE6A877170A72AB00BD168C /* SMFamilyHistoryObservation.rdf in Resources */,
+				EEE6A878170A72AB00BD168C /* SMPhotograph.rdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		EE70EAFA1676EDE90066EB8F /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "#xcodebuild -project SMARTFramework.xcodeproj -target \"SMART\" -showBuildSettings\nenv\n";
-		};
 		EE8CD2C115E5623200663A15 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
