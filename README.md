@@ -7,7 +7,7 @@ These are the developer instructions on how to use [SMARTFramework], an iOS fram
 
 - #### Objective-C ####
 The SMART Framework is an Objective-C framework using **ARC** ([Automatic Reference Counting][arc]), requiring **iOS 5.0 or greater**. It also uses some of the new Objective-C language features which means you must use **Xcode 4.4** or later. You can use it as a static library (or directly import the code files into your App project) as documented below.  
-The framework utilizes a fork of [MPOAuth], an OAuth framework by Karl Adam (matrixPointer), and an Objective-C wrapper around [Redland], an RDF library, originally created by Rene Puls.
+The framework utilizes a fork of [MPOAuth], an OAuth framework by Karl Adam (matrixPointer), and an Objective-C wrapper around [Redland], an RDF library, originally created by Rene Puls and now maintaned by Pascal Pfiffner.
 
 - #### SMART Container ####
 You need a [SMART container] running version 0.6 or above
@@ -36,34 +36,11 @@ Note that this assumes that you have write permissions for `/usr/local`, if not 
 
 As of this writing I'm still waiting for appledoc 3.0 to be released. It will add support for the `///<` property documentation style used in core parts of the framework, version 2.0 will therefore not document some of the properties I'm afraid.
 
-After installing and running the documentation target the documentation is available from within Xcode, just `ALT`-click any keyword like you would do with standard Cocoa keywords.
+After installing appledoc and running the documentation target the documentation is available from within Xcode, just `ALT`-click any keyword like you would do with standard Cocoa keywords.
 
 [appledoc]: http://gentlebytes.com/appledoc/
 [homebrew]: http://mxcl.github.com/homebrew/
 
-
-Server Side Setup
------------------
-
-Here is an example app manifest which would be the one you want to use with the Medications Sample App:
-
-```javascript
-{
-  "name" : "Medications Sample",
-  "description" : "A sample iOS app showing a list of medications",
-  "author" : "Pascal Pfiffner, Harvard Medical School",
-  "id" : "medsample@apps.smartplatforms.org",
-  "version" : "1.0",
-  "smart_version": "0.6",
-  
-  "mode" : "ui",
-  "scope" : "record",
-  
-  "index" :  "smart-app:///did_select_record",
-  "oauth_callback": "smart-app:///did_receive_verifier",
-  "icon" :  "http://apiverifier.smartplatforms.org/static/images/icon.png"
-}
-```
 
 Getting the Framework
 ---------------------
@@ -85,10 +62,38 @@ You now have the latest source code of the framework as well as the subprojects 
 [git]: http://git-scm.com/
 
 
+Server Side Setup
+-----------------
+
+Apps must be registered server-side with an app manifest. Here is an example app manifest which would be the one you want to use with the Medications Sample App:
+
+```javascript
+{
+  "name" : "Medications Sample",
+  "description" : "A sample iOS app showing a list of medications",
+  "author" : "Pascal Pfiffner, Harvard Medical School",
+  "id" : "medsample@apps.smartplatforms.org",
+  "version" : "1.0",
+  "smart_version": "0.6",
+  
+  "mode" : "ui",
+  "scope" : "record",
+  
+  "index" :  "smart-app:///did_select_record",
+  "oauth_callback": "smart-app:///did_receive_verifier",
+  "icon" :  "http://apiverifier.smartplatforms.org/static/images/icon.png"
+}
+```
+
+For more information about server side setup see the [SMART documentation][smart-doc].
+
+[smart-doc]: http://docs-v06.smartplatforms.org
+
+
 Running the Medication Sample App
 ---------------------------------
 
-If you have checked out the source from GitHub, open the SMARTFramework workspace (at `SMARTFramework-ios/MARTFramework.xcworkspace`) in Xcode. Expand the SMARTFramework group and right-click the file `Config-default.h`, select **show in Finder**. Duplicate this file and rename it to `Config.h`, the settings are correct for the app to run against our developer sandbox, so no need to adjust. Then make sure you have the **SMART Medications Sample** target selected and hit Run.
+If you have checked out the source from GitHub, open the SMARTFramework workspace (at `SMARTFramework-ios/SMARTFramework.xcworkspace`) in Xcode. Expand the SMARTFramework group and right-click the file `Config-default.h`, select **show in Finder**. Duplicate this file and rename it to `Config.h`, the settings are correct for the app to run against our developer sandbox, so no need to adjust. Then make sure you have the **SMART Medications Sample** target selected and hit Run.
 
 > **Note:** The first time the framework is built it will download and compile the [Redland] C libraries for you. This may take some time and Xcode will not show any progress, just be patient.
 
@@ -98,7 +103,7 @@ Framework Setup
 
 If you want to build your own app and use the SMART framework, follow these steps to set your app up:
 
-1. Add the framework project (located in `SMARTFramework-ios/SMARTFramework/SMARTFramework.xcodeproj`), **not** the workspace at the top level, to your Xcode workspace.
+1. Add the framework project `SMARTFramework.xcodeproj` (**not** the workspace) to your Xcode workspace.
 
 2. Tell your App to link with the necessary frameworks and libraries:  
 	Open your project's build settings, under **Link Binary With Libraries** add:
