@@ -8,7 +8,7 @@
       <sp:belongsTo rdf:resource="http://sandbox-api.smartplatforms.org/records/2169591" />
       <sp:smokingStatus>
       <sp:CodedValue>
-          <dcterms:title>Former smoker)</dcterms:title>      
+          <dcterms:title>Former smoker</dcterms:title>      
           <sp:code>
             <spcode:SmokingStatus rdf:about="http://purl.bioontology.org/ontology/SNOMEDCT/8517006">
               <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" /> 

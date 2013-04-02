@@ -162,8 +162,11 @@ _templates['class_unit_test'] = """/**
 	STAssertNotNil(rdfPath, @"Expecting an RDF file for the class {{ CLASS_NAME }}");
 	NSString *rdf = [NSString stringWithContentsOfFile:rdfPath encoding:NSUTF8StringEncoding error:nil];
 	{{ CLASS_NAME }} *item = [{{ CLASS_NAME }} newWithRDFXML:rdf];
+	STAssertNotNil(item, @"Failed to parse RDF");
 	
-	{{ ITEM_TESTS }};
+	if (item) {
+		{{ ITEM_TESTS }};
+	}
 }
 """
 
@@ -384,7 +387,7 @@ def handle_class(a_class):
 	myDict['CLASS_PROPERTIES'] = "\n\n".join(prop_statements)
 	myDict['CLASS_GETTERS'] = "\n\n".join(prop_getter)
 	if len(my_property_tests) > 0:
-		myDict['ITEM_TESTS'] = ";\n\t".join(my_property_tests)
+		myDict['ITEM_TESTS'] = ";\n\t\t".join(my_property_tests)
 	
 	# calls for this class (SMART_API_Call instances)
 	if a_class.calls and len(a_class.calls) > 0:
