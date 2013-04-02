@@ -53,17 +53,17 @@ with standard Cocoa keywords.
 Getting the Framework
 ---------------------
 
-I'll be assuming that you want to add the framework to your own project. The best way to get the framework is to check out the project via [git], if your own
-project is also git-controlled, add it as a submodule using `git submodule add ...` instead of git clone. Open Terminal, navigate to the desired directory, and
-execute:
+I'll be assuming that you want to add the framework to your own project. The best way to get the framework is to check out the project via **[GIT]**, and I'm
+assuming you are using git for your own project as well. If you are not then substitute `git clone` for _git submodule add_ at the second step below. Open
+Terminal and execute:
 
-    $ git clone git://github.com/chb/SMARTFramework-ios.git
+    $ cd YourApp
+	$ git submodule add git://github.com/chb/SMARTFramework-ios.git
     $ cd SMARTFramework-ios
     $ git submodule init
     $ git submodule update
 
-You now have the latest source code of the framework as well as the subprojects we use and the Medications Sample App. From now on you can just update to the
-latest source version with:
+You now have the latest source code of the framework as well as the subprojects used therein. From now on you can just update to the latest source version with:
 
     $ cd SMARTFramework-ios
     $ git pull
@@ -76,8 +76,7 @@ latest source version with:
 Server Side Setup
 -----------------
 
-Apps must be registered server-side with an app manifest. Here is an example app manifest which would be the one you want to use with the Medications Sample
-App:
+Apps must be registered server-side with an app manifest. Here is an example app manifest which you could use for your own App:
 
 ```javascript
 {
@@ -113,49 +112,41 @@ more information about server side setup see the [SMART documentation][smart-doc
 Framework Setup
 ---------------
 
-If you want to build your own app and use the SMART framework, follow these steps to set your app up:
+Follow these steps to set your app up:
 
 1. Add the framework project `SMARTFramework.xcodeproj` to your Xcode workspace.
 
-2. Make sure the framework has the necessary credentials in the file `Config.h`. Expand the SMARTFramework group and right-click the file `Config-default.h`,
-    select **show in Finder**. Duplicate this file and rename it to `Config.h`. The settings are correct for the app to run against our developer sandbox, so
-	no need to adjust for simple testing.
-
-3. Tell your App to link with the necessary frameworks and libraries:
+2. Tell your App to link with the necessary frameworks and libraries:
 	Open your project's build settings, under **Link Binary With Libraries** add:
 
 	`libSMART.a`  
 	`Security.framework`  
 	`libxml2.dylib`
 
-4. In the build settings look for **Header Search Paths** (USER_HEADER_SEARCH_PATHS) and add:
+3. In the build settings look for **Header Search Paths** (USER_HEADER_SEARCH_PATHS) and **User Header Search Paths** (HEADER_SEARCH_PATHS) and add:
 	
-    `$(PROJECT_DIR)/..`, with _recursive_ enabled
+    `"$(PROJECT_DIR)"`, with _recursive_ enabled
     
-    This should point to the directory where the SMART framework resides. Here I'm assuming it's in the same parent directory as your app. Do the same with
-	**User Header Search Paths** (HEADER_SEARCH_PATHS).
+    This should point to the directory (its parent is also fine, as is the case here) where the SMART framework resides. I'm assuming it's a subdirectory of
+	your app, if it's not adjust the path accordingly.
 
-5. Still in your project's build settings, look for **Other Linker Flags** (OTHER_LDFLAGS), and add:
+4. Still in your project's build settings, look for **Other Linker Flags** (OTHER_LDFLAGS), and add:
 
 	`-ObjC`
 
 	This must be added so the framework can be used as a static library, otherwise class categories will not work and your app will crash.
 
-6. You will have to provide **initial server settings** in the configuration file, but you can always change the properties in code later on (e.g. if your App
+5. You will have to provide **initial server settings** in the configuration file, but you can always change the properties in code later on (e.g. if your App
     can connect to different servers).  
-	Copy the file `Config-default.h` in the **framework** project (not your own app) to `Config.h` and adjust it to suit your needs. The setting names should
-	define NSStrings and are named:
+	Copy the file `Config-default.h` in the **framework** project (not your own app) to `Config.h` and adjust it to suit your needs. The defaults work for our
+	developer sandbox. The settings are:
+	
 	- `kSMARTAPIBaseURL`  (The Server URL)
 	- `kSMARTAppId`  (The App id)
 	- `kSMARTConsumerKey`  (Your consumer key)
 	- `kSMARTConsumerSecret`  (Your consumer secret)
 	
-	(Compare to the default file to see correct definitions)
-
-7. Add `Config.h` to the SMART Framework target. (In the default project Xcode should already know the file but show it in red because it's not in the
-    repository. As soon as you create it, Xcode should find it and you're all good).
-
-8. In your code, include the header files (where needed) as user header files:
+6. In your code, include the header files (where needed) as user header files:
 
 	    import "SMServer.h"
 	    import "SMARTObjects.h"
@@ -164,6 +155,8 @@ You are now ready to rumble!
 
 > **Note:** The first time the framework is built it will download and compile the [Redland] C libraries for you. This may take some time and Xcode will not
 > show any progress, just be patient.
+
+> **Note:** Xcode, after building the Redland C libraries for the first time, may not find the redland headers. Simply close the project and re-open it again.
 
 
 Using the Framework
