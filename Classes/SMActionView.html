@@ -1,0 +1,687 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>SMActionView Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.1 (build 858)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">SMART iOS Framework </a></h1>
+				<a id="developerHome" href="../index.html">CHIP</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">SMActionView Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/hideMainTextAnimated:">&nbsp;&nbsp;&nbsp;&nbsp;- hideMainTextAnimated:</option>
+	
+	<option value="//api/name/hideSpinnerAnimated:">&nbsp;&nbsp;&nbsp;&nbsp;- hideSpinnerAnimated:</option>
+	
+	<option value="//api/name/showActivityIn:animated:">&nbsp;&nbsp;&nbsp;&nbsp;- showActivityIn:animated:</option>
+	
+	<option value="//api/name/showHintText:animated:">&nbsp;&nbsp;&nbsp;&nbsp;- showHintText:animated:</option>
+	
+	<option value="//api/name/showIn:mainText:hintText:animated:">&nbsp;&nbsp;&nbsp;&nbsp;- showIn:mainText:hintText:animated:</option>
+	
+	<option value="//api/name/showMainText:animated:">&nbsp;&nbsp;&nbsp;&nbsp;- showMainText:animated:</option>
+	
+	<option value="//api/name/showSpinnerAnimated:">&nbsp;&nbsp;&nbsp;&nbsp;- showSpinnerAnimated:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/hideMainTextAnimated:">hideMainTextAnimated:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/hideSpinnerAnimated:">hideSpinnerAnimated:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/showActivityIn:animated:">showActivityIn:animated:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/showHintText:animated:">showHintText:animated:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/showIn:mainText:hintText:animated:">showIn:mainText:hintText:animated:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/showMainText:animated:">showMainText:animated:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/showSpinnerAnimated:">showSpinnerAnimated:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="SMActionView Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">SMActionView Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">UIControl</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">SMActionView.h<br />SMActionView.m</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>A semi-transparent view that can be overlaid over existing views and display text, a hint or a spinner</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/showActivityIn:animated:">&ndash;&nbsp;showActivityIn:animated:</a></code>
+		<span class="tooltip"><p>Adds the view displaying a spinner to the given view</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/showIn:mainText:hintText:animated:">&ndash;&nbsp;showIn:mainText:hintText:animated:</a></code>
+		<span class="tooltip"><p>Adds the view with given main and hint text</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/showSpinnerAnimated:">&ndash;&nbsp;showSpinnerAnimated:</a></code>
+		<span class="tooltip"><p>Display the spinner</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/hideSpinnerAnimated:">&ndash;&nbsp;hideSpinnerAnimated:</a></code>
+		<span class="tooltip"><p>Hides the spinner</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/showMainText:animated:">&ndash;&nbsp;showMainText:animated:</a></code>
+		<span class="tooltip"><p>Change the main text to the given string</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/hideMainTextAnimated:">&ndash;&nbsp;hideMainTextAnimated:</a></code>
+		<span class="tooltip"><p>Hides the main text</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/showHintText:animated:">&ndash;&nbsp;showHintText:animated:</a></code>
+		<span class="tooltip"><p>Show the given hint (smaller and faded when compared to the main text)</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/hideMainTextAnimated:" title="hideMainTextAnimated:"></a>
+	<h3 class="subsubtitle method-title">hideMainTextAnimated:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Hides the main text</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)hideMainTextAnimated:(BOOL)<em>animated</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>animated</em></dt>
+			<dd><p>Whether to animated the action</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMActionView.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/hideSpinnerAnimated:" title="hideSpinnerAnimated:"></a>
+	<h3 class="subsubtitle method-title">hideSpinnerAnimated:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Hides the spinner</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)hideSpinnerAnimated:(BOOL)<em>animated</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>animated</em></dt>
+			<dd><p>Whether to animated the action</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMActionView.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/showActivityIn:animated:" title="showActivityIn:animated:"></a>
+	<h3 class="subsubtitle method-title">showActivityIn:animated:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Adds the view displaying a spinner to the given view</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)showActivityIn:(UIView *)<em>aParent</em> animated:(BOOL)<em>animated</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>aParent</em></dt>
+			<dd><p>The view in which to display the spinner</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>animated</em></dt>
+			<dd><p>Whether the spinner should fade in</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMActionView.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/showHintText:animated:" title="showHintText:animated:"></a>
+	<h3 class="subsubtitle method-title">showHintText:animated:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Show the given hint (smaller and faded when compared to the main text)</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)showHintText:(NSString *)<em>hintText</em> animated:(BOOL)<em>animated</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>hintText</em></dt>
+			<dd><p>The text to show as hint</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>animated</em></dt>
+			<dd><p>Whether to animated the action</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMActionView.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/showIn:mainText:hintText:animated:" title="showIn:mainText:hintText:animated:"></a>
+	<h3 class="subsubtitle method-title">showIn:mainText:hintText:animated:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Adds the view with given main and hint text</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)showIn:(UIView *)<em>aParent</em> mainText:(NSString *)<em>mainText</em> hintText:(NSString *)<em>hintText</em> animated:(BOOL)<em>animated</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>aParent</em></dt>
+			<dd><p>The view in which to display the spinner</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>mainText</em></dt>
+			<dd><p>The text to display (can be nil)</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>hintText</em></dt>
+			<dd><p>The hint to display (can be nil); this is displayed smaller and faded when compared to mainText</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>animated</em></dt>
+			<dd><p>Whether the spinner should fade in</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMActionView.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/showMainText:animated:" title="showMainText:animated:"></a>
+	<h3 class="subsubtitle method-title">showMainText:animated:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Change the main text to the given string</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)showMainText:(NSString *)<em>mainText</em> animated:(BOOL)<em>animated</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>mainText</em></dt>
+			<dd><p>The text to show (can be nil)</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>animated</em></dt>
+			<dd><p>Whether to animated the action</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMActionView.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/showSpinnerAnimated:" title="showSpinnerAnimated:"></a>
+	<h3 class="subsubtitle method-title">showSpinnerAnimated:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Display the spinner</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)showSpinnerAnimated:(BOOL)<em>animated</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>animated</em></dt>
+			<dd><p>Whether to animated the action</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMActionView.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2013 CHIP. All rights reserved. (Last updated: 2013-04-02)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

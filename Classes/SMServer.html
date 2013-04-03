@@ -1,0 +1,2565 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>SMServer Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.1 (build 858)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">SMART iOS Framework </a></h1>
+				<a id="developerHome" href="../index.html">CHIP</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">SMServer Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/activeRecord">&nbsp;&nbsp;&nbsp;&nbsp;activeRecord</option>
+	
+	<option value="//api/name/activeRecordId">&nbsp;&nbsp;&nbsp;&nbsp;activeRecordId</option>
+	
+	<option value="//api/name/appId">&nbsp;&nbsp;&nbsp;&nbsp;appId</option>
+	
+	<option value="//api/name/appManifest">&nbsp;&nbsp;&nbsp;&nbsp;appManifest</option>
+	
+	<option value="//api/name/callbackScheme">&nbsp;&nbsp;&nbsp;&nbsp;callbackScheme</option>
+	
+	<option value="//api/name/consumerKey">&nbsp;&nbsp;&nbsp;&nbsp;consumerKey</option>
+	
+	<option value="//api/name/consumerSecret">&nbsp;&nbsp;&nbsp;&nbsp;consumerSecret</option>
+	
+	<option value="//api/name/delegate">&nbsp;&nbsp;&nbsp;&nbsp;delegate</option>
+	
+	<option value="//api/name/knownRecords">&nbsp;&nbsp;&nbsp;&nbsp;knownRecords</option>
+	
+	<option value="//api/name/lastOAuthVerifier">&nbsp;&nbsp;&nbsp;&nbsp;lastOAuthVerifier</option>
+	
+	<option value="//api/name/manifest">&nbsp;&nbsp;&nbsp;&nbsp;manifest</option>
+	
+	<option value="//api/name/startURL">&nbsp;&nbsp;&nbsp;&nbsp;startURL</option>
+	
+	<option value="//api/name/tokenAuthorizeURL">&nbsp;&nbsp;&nbsp;&nbsp;tokenAuthorizeURL</option>
+	
+	<option value="//api/name/tokenExchangeURL">&nbsp;&nbsp;&nbsp;&nbsp;tokenExchangeURL</option>
+	
+	<option value="//api/name/tokenRequestURL">&nbsp;&nbsp;&nbsp;&nbsp;tokenRequestURL</option>
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/serverWithDelegate:">&nbsp;&nbsp;&nbsp;&nbsp;+ serverWithDelegate:</option>
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/_dismissLoginScreenAnimated:">&nbsp;&nbsp;&nbsp;&nbsp;- _dismissLoginScreenAnimated:</option>
+	
+	<option value="//api/name/_presentLoginScreenAtURL:">&nbsp;&nbsp;&nbsp;&nbsp;- _presentLoginScreenAtURL:</option>
+	
+	<option value="//api/name/additionalRequestTokenParameters">&nbsp;&nbsp;&nbsp;&nbsp;- additionalRequestTokenParameters</option>
+	
+	<option value="//api/name/authenticate:">&nbsp;&nbsp;&nbsp;&nbsp;- authenticate:</option>
+	
+	<option value="//api/name/authorizeCallbackURL">&nbsp;&nbsp;&nbsp;&nbsp;- authorizeCallbackURL</option>
+	
+	<option value="//api/name/callDidFinish:">&nbsp;&nbsp;&nbsp;&nbsp;- callDidFinish:</option>
+	
+	<option value="//api/name/callbackSchemeForLoginView:">&nbsp;&nbsp;&nbsp;&nbsp;- callbackSchemeForLoginView:</option>
+	
+	<option value="//api/name/createOAuthWithAuthMethodClass:error:">&nbsp;&nbsp;&nbsp;&nbsp;- createOAuthWithAuthMethodClass:error:</option>
+	
+	<option value="//api/name/fetchAppManifest:">&nbsp;&nbsp;&nbsp;&nbsp;- fetchAppManifest:</option>
+	
+	<option value="//api/name/fetchAppSpecificDocumentsWithCallback:">&nbsp;&nbsp;&nbsp;&nbsp;- fetchAppSpecificDocumentsWithCallback:</option>
+	
+	<option value="//api/name/fetchServerManifest:">&nbsp;&nbsp;&nbsp;&nbsp;- fetchServerManifest:</option>
+	
+	<option value="//api/name/getOAuthOutError:">&nbsp;&nbsp;&nbsp;&nbsp;- getOAuthOutError:</option>
+	
+	<option value="//api/name/init">&nbsp;&nbsp;&nbsp;&nbsp;- init</option>
+	
+	<option value="//api/name/loginView:didReceiveVerifier:">&nbsp;&nbsp;&nbsp;&nbsp;- loginView:didReceiveVerifier:</option>
+	
+	<option value="//api/name/loginView:didSelectRecordId:">&nbsp;&nbsp;&nbsp;&nbsp;- loginView:didSelectRecordId:</option>
+	
+	<option value="//api/name/loginViewDidCancel:">&nbsp;&nbsp;&nbsp;&nbsp;- loginViewDidCancel:</option>
+	
+	<option value="//api/name/loginViewDidLogout:">&nbsp;&nbsp;&nbsp;&nbsp;- loginViewDidLogout:</option>
+	
+	<option value="//api/name/performCall:">&nbsp;&nbsp;&nbsp;&nbsp;- performCall:</option>
+	
+	<option value="//api/name/performWhenReadyToConnect:">&nbsp;&nbsp;&nbsp;&nbsp;- performWhenReadyToConnect:</option>
+	
+	<option value="//api/name/recordWithId:">&nbsp;&nbsp;&nbsp;&nbsp;- recordWithId:</option>
+	
+	<option value="//api/name/selectRecord:">&nbsp;&nbsp;&nbsp;&nbsp;- selectRecord:</option>
+	
+	<option value="//api/name/shouldAutomaticallyAuthenticateFrom:">&nbsp;&nbsp;&nbsp;&nbsp;- shouldAutomaticallyAuthenticateFrom:</option>
+	
+	<option value="//api/name/suspendCall:">&nbsp;&nbsp;&nbsp;&nbsp;- suspendCall:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Configuration">Configuration</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Manifests and Endpoints">Manifests and Endpoints</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Record Handling">Record Handling</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Allocator">Allocator</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Requests">Requests</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Authentication">Authentication</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_App-specific storage">App-specific storage</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_OAuth">OAuth</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/activeRecord">activeRecord</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/activeRecordId">activeRecordId</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/appId">appId</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/appManifest">appManifest</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/callbackScheme">callbackScheme</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/consumerKey">consumerKey</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/consumerSecret">consumerSecret</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/delegate">delegate</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/knownRecords">knownRecords</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/lastOAuthVerifier">lastOAuthVerifier</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/manifest">manifest</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/startURL">startURL</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/tokenAuthorizeURL">tokenAuthorizeURL</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/tokenExchangeURL">tokenExchangeURL</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/tokenRequestURL">tokenRequestURL</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/serverWithDelegate:">serverWithDelegate:</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/_dismissLoginScreenAnimated:">_dismissLoginScreenAnimated:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/_presentLoginScreenAtURL:">_presentLoginScreenAtURL:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/additionalRequestTokenParameters">additionalRequestTokenParameters</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/authenticate:">authenticate:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/authorizeCallbackURL">authorizeCallbackURL</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/callDidFinish:">callDidFinish:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/callbackSchemeForLoginView:">callbackSchemeForLoginView:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/createOAuthWithAuthMethodClass:error:">createOAuthWithAuthMethodClass:error:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/fetchAppManifest:">fetchAppManifest:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/fetchAppSpecificDocumentsWithCallback:">fetchAppSpecificDocumentsWithCallback:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/fetchServerManifest:">fetchServerManifest:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getOAuthOutError:">getOAuthOutError:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/init">init</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/loginView:didReceiveVerifier:">loginView:didReceiveVerifier:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/loginView:didSelectRecordId:">loginView:didSelectRecordId:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/loginViewDidCancel:">loginViewDidCancel:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/loginViewDidLogout:">loginViewDidLogout:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/performCall:">performCall:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/performWhenReadyToConnect:">performWhenReadyToConnect:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/recordWithId:">recordWithId:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/selectRecord:">selectRecord:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/shouldAutomaticallyAuthenticateFrom:">shouldAutomaticallyAuthenticateFrom:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/suspendCall:">suspendCall:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="SMServer Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">SMServer Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value"><a href="../Protocols/SMLoginViewControllerDelegate.html">SMLoginViewControllerDelegate</a></td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">SMServer.h<br />SMServer.m</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Represent the server you want to connect to.</p>
+
+<p>This is the main interaction point of the framework with your targeted SMART Server. You typically initialize a SMServer instance upon app launch and
+provide access to it via AppDelegate. The server instance will read its URL and OAuth key/secret configuration from the file <code>Config.h</code> and will auto-
+configure itself when the first URL request is made. This happens via the server instance downloading the server <a href="#//api/name/manifest">manifest</a>, which contains the app launch
+URL and the three OAuth endpoints.</p>
+
+<p>The server object orchestrates all requests that you make, but you only rarely interact with the server itself. What you are interested in is getting a
+record object, and you then use that record object to work with patient data. When you request a record object from the server, the app user is prompted
+to login and select a record. You initiate this as follows:</p>
+
+<pre><code>SMServer *smart = [SMServer serverWithDelegate:self];
+
+[smart selectRecord:^(BOOL userDidCancel, NSString *errorMessage) {
+
+    // there was an error selecting the record
+    if (errorMessage) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed to connect"
+                                                        message:errorMessage
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
+
+    // did successfully select a record
+    else if (!userDidCancel) {
+        // you can now use `smart.`activeRecord``
+    }
+}];
+</code></pre>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/delegate">&nbsp;&nbsp;delegate</a></code>
+		<span class="tooltip"><p>A delegate to receive notifications</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+						
+						<a title="Configuration" name="task_Configuration"></a>
+						<h3 class="subsubtitle task-title">Configuration</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/appId">&nbsp;&nbsp;appId</a></code>
+		<span class="tooltip"><p>The id of the app as it is known on the server</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/consumerKey">&nbsp;&nbsp;consumerKey</a></code>
+		<span class="tooltip"><p>The consumer key for the app</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/consumerSecret">&nbsp;&nbsp;consumerSecret</a></code>
+		<span class="tooltip"><p>The consumer secret for the app</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+						
+						<a title="Manifests and Endpoints" name="task_Manifests and Endpoints"></a>
+						<h3 class="subsubtitle task-title">Manifests and Endpoints</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/manifest">&nbsp;&nbsp;manifest</a></code>
+		<span class="tooltip"><p>Setting the server manifest automatically updates the endpoint URLs.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/appManifest">&nbsp;&nbsp;appManifest</a></code>
+		<span class="tooltip"><p>The app <a href="#//api/name/manifest">manifest</a>, decoded from JSON</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/startURL">&nbsp;&nbsp;startURL</a></code>
+		<span class="tooltip"><p>The URL to load to display the login screen and record selection</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/tokenRequestURL">&nbsp;&nbsp;tokenRequestURL</a></code>
+		<span class="tooltip"><p>Endpoint to request an OAuth request token</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/tokenAuthorizeURL">&nbsp;&nbsp;tokenAuthorizeURL</a></code>
+		<span class="tooltip"><p>Endpoint to authorize an OAuth request token</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/tokenExchangeURL">&nbsp;&nbsp;tokenExchangeURL</a></code>
+		<span class="tooltip"><p>Endpoint to trade the request for an OAuth access token</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/callbackScheme">&nbsp;&nbsp;callbackScheme</a></code>
+		<span class="tooltip"><p>Defaults to &ldquo;smart-app&rdquo;, but you can use your own</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/lastOAuthVerifier">&nbsp;&nbsp;lastOAuthVerifier</a></code>
+		<span class="tooltip"><p>Storing our OAuth verifier here until MPOAuth asks for it</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+						
+						<a title="Record Handling" name="task_Record Handling"></a>
+						<h3 class="subsubtitle task-title">Record Handling</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/activeRecord">&nbsp;&nbsp;activeRecord</a></code>
+		<span class="tooltip"><p>The currently active record.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/activeRecordId">&nbsp;&nbsp;activeRecordId</a></code>
+		<span class="tooltip"><p>Shortcut to the active record id.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/knownRecords">&nbsp;&nbsp;knownRecords</a></code>
+		<span class="tooltip"><p>A cache of the known records on this server</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/selectRecord:">&ndash;&nbsp;selectRecord:</a></code>
+		<span class="tooltip"><p>This is the main authentication entry point, this method will ask the <a href="#//api/name/delegate">delegate</a> where to present a login view controller, if authentication is necessary, and
+handle all user interactions until login was successful or the user cancels the login operation.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/recordWithId:">&ndash;&nbsp;recordWithId:</a></code>
+		<span class="tooltip"><p>The id of the record that we want</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Allocator" name="task_Allocator"></a>
+						<h3 class="subsubtitle task-title">Allocator</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/serverWithDelegate:">+&nbsp;serverWithDelegate:</a></code>
+		<span class="tooltip"><p>A convenience constructor creating the server for the given <a href="#//api/name/delegate">delegate</a>. Configuration is automatically read from &ldquo;Config.h&rdquo;</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Requests" name="task_Requests"></a>
+						<h3 class="subsubtitle task-title">Requests</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/performCall:">&ndash;&nbsp;performCall:</a></code>
+		<span class="tooltip"><p>Perform a method on our server.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/callDidFinish:">&ndash;&nbsp;callDidFinish:</a></code>
+		<span class="tooltip"><p>Callback to let us know a call has finished.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/suspendCall:">&ndash;&nbsp;suspendCall:</a></code>
+		<span class="tooltip"><p>Dequeues a call without finishing it.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/performWhenReadyToConnect:">&ndash;&nbsp;performWhenReadyToConnect:</a></code>
+		<span class="tooltip"><p>Fetches the server and app manifests, if needed, then executes the block.
+Authentication calls are wrapped into this method since we need to know our endpoints before we can authenticate.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/fetchServerManifest:">&ndash;&nbsp;fetchServerManifest:</a></code>
+		<span class="tooltip"><p>Fetches the server <a href="#//api/name/manifest">manifest</a>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/fetchAppManifest:">&ndash;&nbsp;fetchAppManifest:</a></code>
+		<span class="tooltip"><p>Fetches the app <a href="#//api/name/manifest">manifest</a>.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Authentication" name="task_Authentication"></a>
+						<h3 class="subsubtitle task-title">Authentication</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/authenticate:">&ndash;&nbsp;authenticate:</a></code>
+		<span class="tooltip"><p>Strips current credentials and then does the OAuth dance again. The authorize screen is automatically shown if necessary.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/shouldAutomaticallyAuthenticateFrom:">&ndash;&nbsp;shouldAutomaticallyAuthenticateFrom:</a></code>
+		<span class="tooltip"><p>Callback when the call is stuck at user authorization</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/authorizeCallbackURL">&ndash;&nbsp;authorizeCallbackURL</a></code>
+		<span class="tooltip"><p>The callback to feed to <a href="#//api/name/tokenAuthorizeURL">tokenAuthorizeURL</a></p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/additionalRequestTokenParameters">&ndash;&nbsp;additionalRequestTokenParameters</a></code>
+		<span class="tooltip"><p>We need to associate a token with a given record id, so we provide that when performing the request token request</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="App-specific storage" name="task_App-specific storage"></a>
+						<h3 class="subsubtitle task-title">App-specific storage</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/fetchAppSpecificDocumentsWithCallback:">&ndash;&nbsp;fetchAppSpecificDocumentsWithCallback:</a></code>
+		<span class="tooltip"><p>Fetches global, app-specific documents.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="OAuth" name="task_OAuth"></a>
+						<h3 class="subsubtitle task-title">OAuth</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/createOAuthWithAuthMethodClass:error:">&ndash;&nbsp;createOAuthWithAuthMethodClass:error:</a></code>
+		<span class="tooltip"><p>Creates a new MPOAuthAPI instance with our current settings.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/init">&ndash;&nbsp;init</a></code>
+		<span class="tooltip"><p>The designated initializer</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/_presentLoginScreenAtURL:">&ndash;&nbsp;_presentLoginScreenAtURL:</a></code>
+		<span class="tooltip"><p>Asks our <a href="#//api/name/delegate">delegate</a> where to place the login screen, then shows the login screen and loads the given URL.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/_dismissLoginScreenAnimated:">&ndash;&nbsp;_dismissLoginScreenAnimated:</a></code>
+		<span class="tooltip"><p>Dismisses the login screen, if present</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/loginView:didSelectRecordId:">&ndash;&nbsp;loginView:didSelectRecordId:</a></code>
+		<span class="tooltip"><p>Called when the user selected a record.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/loginView:didReceiveVerifier:">&ndash;&nbsp;loginView:didReceiveVerifier:</a></code>
+		<span class="tooltip"><p>Called when the login screen gets called with our verifier callback URL.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/loginViewDidCancel:">&ndash;&nbsp;loginViewDidCancel:</a></code>
+		<span class="tooltip"><p>Called when the user dismisses the login screen, i.e. cancels the record selection process.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/loginViewDidLogout:">&ndash;&nbsp;loginViewDidLogout:</a></code>
+		<span class="tooltip"><p>Called when the user logged out.
+This is your chance to discard cached data</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/callbackSchemeForLoginView:">&ndash;&nbsp;callbackSchemeForLoginView:</a></code>
+		<span class="tooltip"><p>The scheme for URL that we catch internally (by default this is &ldquo;smart-app&rdquo;).</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getOAuthOutError:">&ndash;&nbsp;getOAuthOutError:</a></code>
+		<span class="tooltip"><p>Returns our standard <a href="#//api/name/oauth">oauth</a> instance or fills the error, if it couldn&rsquo;t be created</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/activeRecord" title="activeRecord"></a>
+	<h3 class="subsubtitle method-title">activeRecord</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The currently active record.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) SMRecord *activeRecord</code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>aRecord</em></dt>
+			<dd><p>The record that should be active</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The setter sets the active record and resets the <a href="#//api/name/oauth">oauth</a> instance upon logout.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServer.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/activeRecordId" title="activeRecordId"></a>
+	<h3 class="subsubtitle method-title">activeRecordId</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Shortcut to the active record id.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly, copy) NSString *activeRecordId</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServer.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/appId" title="appId"></a>
+	<h3 class="subsubtitle method-title">appId</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The id of the app as it is known on the server</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *appId</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServer.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/appManifest" title="appManifest"></a>
+	<h3 class="subsubtitle method-title">appManifest</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The app <a href="#//api/name/manifest">manifest</a>, decoded from JSON</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSDictionary *appManifest</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServer.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/callbackScheme" title="callbackScheme"></a>
+	<h3 class="subsubtitle method-title">callbackScheme</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Defaults to &ldquo;smart-app&rdquo;, but you can use your own</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *callbackScheme</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServer.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/consumerKey" title="consumerKey"></a>
+	<h3 class="subsubtitle method-title">consumerKey</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The consumer key for the app</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *consumerKey</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServer.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/consumerSecret" title="consumerSecret"></a>
+	<h3 class="subsubtitle method-title">consumerSecret</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The consumer secret for the app</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *consumerSecret</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServer.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/delegate" title="delegate"></a>
+	<h3 class="subsubtitle method-title">delegate</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>A delegate to receive notifications</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) id&lt;SMARTServerDelegate&gt; delegate</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServer.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/knownRecords" title="knownRecords"></a>
+	<h3 class="subsubtitle method-title">knownRecords</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>A cache of the known records on this server</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly, strong) NSMutableArray *knownRecords</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServer.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/lastOAuthVerifier" title="lastOAuthVerifier"></a>
+	<h3 class="subsubtitle method-title">lastOAuthVerifier</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Storing our OAuth verifier here until MPOAuth asks for it</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly, copy) NSString *lastOAuthVerifier</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServer.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/manifest" title="manifest"></a>
+	<h3 class="subsubtitle method-title">manifest</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Setting the server manifest automatically updates the endpoint URLs.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSDictionary *manifest</code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>manifest</em></dt>
+			<dd><p>The dictionary the server returned</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The following <code>launch_urls</code> -items are extracted from the manifest:</p>
+
+<ul>
+<li>app_launch: <a href="#//api/name/startURL">startURL</a></li>
+<li>request_token: <a href="#//api/name/tokenRequestURL">tokenRequestURL</a></li>
+<li>authorize_token: <a href="#//api/name/tokenAuthorizeURL">tokenAuthorizeURL</a></li>
+<li>exchange_token: <a href="#//api/name/tokenExchangeURL">tokenExchangeURL</a></li>
+</ul>
+
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServer.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/startURL" title="startURL"></a>
+	<h3 class="subsubtitle method-title">startURL</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The URL to load to display the login screen and record selection</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSURL *startURL</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServer.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/tokenAuthorizeURL" title="tokenAuthorizeURL"></a>
+	<h3 class="subsubtitle method-title">tokenAuthorizeURL</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Endpoint to authorize an OAuth request token</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSURL *tokenAuthorizeURL</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServer.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/tokenExchangeURL" title="tokenExchangeURL"></a>
+	<h3 class="subsubtitle method-title">tokenExchangeURL</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Endpoint to trade the request for an OAuth access token</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSURL *tokenExchangeURL</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServer.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/tokenRequestURL" title="tokenRequestURL"></a>
+	<h3 class="subsubtitle method-title">tokenRequestURL</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Endpoint to request an OAuth request token</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSURL *tokenRequestURL</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServer.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/serverWithDelegate:" title="serverWithDelegate:"></a>
+	<h3 class="subsubtitle method-title">serverWithDelegate:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>A convenience constructor creating the server for the given <a href="#//api/name/delegate">delegate</a>. Configuration is automatically read from &ldquo;Config.h&rdquo;</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (id)serverWithDelegate:(id&lt;SMARTServerDelegate&gt;)<em>aDelegate</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>aDelegate</em></dt>
+			<dd><p>The server <a href="#//api/name/delegate">delegate</a></p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServer.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/_dismissLoginScreenAnimated:" title="_dismissLoginScreenAnimated:"></a>
+	<h3 class="subsubtitle method-title">_dismissLoginScreenAnimated:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Dismisses the login screen, if present</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)_dismissLoginScreenAnimated:(BOOL)<em>animated</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>animated</em></dt>
+			<dd><p>BOOL indicating whether the dismissal should be animated</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServer.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/_presentLoginScreenAtURL:" title="_presentLoginScreenAtURL:"></a>
+	<h3 class="subsubtitle method-title">_presentLoginScreenAtURL:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Asks our <a href="#//api/name/delegate">delegate</a> where to place the login screen, then shows the login screen and loads the given URL.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)_presentLoginScreenAtURL:(NSURL *)<em>loginURL</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>loginURL</em></dt>
+			<dd><p>The URL to load to show a login interface</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callbackURL</em></dt>
+			<dd><p>The URL to load after successful authentication</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Returns NO if the login screen could not be presented, YES if it&rsquo;s being shown</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServer.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/additionalRequestTokenParameters" title="additionalRequestTokenParameters"></a>
+	<h3 class="subsubtitle method-title">additionalRequestTokenParameters</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>We need to associate a token with a given record id, so we provide that when performing the request token request</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSDictionary *)additionalRequestTokenParameters</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServer.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/authenticate:" title="authenticate:"></a>
+	<h3 class="subsubtitle method-title">authenticate:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Strips current credentials and then does the OAuth dance again. The authorize screen is automatically shown if necessary.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)authenticate:(SMCancelErrorBlock)<em>callback</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>An SMCancelErrorBlock callback</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<div class="warning"><p><strong>Warning:</strong> This call is only useful if a call is in progress (but has hit an invalid access token), so it will not do anything without a current call.</p></div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServer.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/authorizeCallbackURL" title="authorizeCallbackURL"></a>
+	<h3 class="subsubtitle method-title">authorizeCallbackURL</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The callback to feed to <a href="#//api/name/tokenAuthorizeURL">tokenAuthorizeURL</a></p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSURL *)authorizeCallbackURL</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServer.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/callDidFinish:" title="callDidFinish:"></a>
+	<h3 class="subsubtitle method-title">callDidFinish:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Callback to let us know a call has finished.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)callDidFinish:(SMServerCall *)<em>aCall</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>aCall</em></dt>
+			<dd><p>The call that finished</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The call will have called the callback by now, no need for us to do any further handling</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServer.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/callbackSchemeForLoginView:" title="callbackSchemeForLoginView:"></a>
+	<h3 class="subsubtitle method-title">callbackSchemeForLoginView:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The scheme for URL that we catch internally (by default this is &ldquo;smart-app&rdquo;).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)callbackSchemeForLoginView:(SMLoginViewController *)<em>loginController</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>aLoginController</em></dt>
+			<dd><p>The login controller that asks for the scheme</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMLoginViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/createOAuthWithAuthMethodClass:error:" title="createOAuthWithAuthMethodClass:error:"></a>
+	<h3 class="subsubtitle method-title">createOAuthWithAuthMethodClass:error:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Creates a new MPOAuthAPI instance with our current settings.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (MPOAuthAPI *)createOAuthWithAuthMethodClass:(NSString *)<em>authClass</em> error:(NSError *__autoreleasing *)<em>error</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>authClass</em></dt>
+			<dd><p>An MPOAuthAuthenticationMethod class name. If nil picks three-legged <a href="#//api/name/oauth">oauth</a>.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>error</em></dt>
+			<dd><p>A pointer to an error object, which will be filled if the method returns null</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServer.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/fetchAppManifest:" title="fetchAppManifest:"></a>
+	<h3 class="subsubtitle method-title">fetchAppManifest:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Fetches the app <a href="#//api/name/manifest">manifest</a>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)fetchAppManifest:(SMCancelErrorBlock)<em>callback</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>The callback to perform when the <a href="#//api/name/manifest">manifest</a> has been fetched
+TODO: Implement</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServer.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/fetchAppSpecificDocumentsWithCallback:" title="fetchAppSpecificDocumentsWithCallback:"></a>
+	<h3 class="subsubtitle method-title">fetchAppSpecificDocumentsWithCallback:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Fetches global, app-specific documents.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)fetchAppSpecificDocumentsWithCallback:(SMSuccessRetvalueBlock)<em>callback</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>The callback to execute once the call has finished</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>GETs documents from /apps/{app id}/documents/ with a two-legged OAuth call.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServer.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/fetchServerManifest:" title="fetchServerManifest:"></a>
+	<h3 class="subsubtitle method-title">fetchServerManifest:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Fetches the server <a href="#//api/name/manifest">manifest</a>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)fetchServerManifest:(SMCancelErrorBlock)<em>callback</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>The callback to perform once the <a href="#//api/name/manifest">manifest</a> has been fetched</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<div class="warning"><p><strong>Warning:</strong> You usually don&rsquo;t call this method manually, use &ldquo;prepareToConnect:&rdquo; and access the server <a href="#//api/name/manifest">manifest</a> in &ldquo;manifest&rdquo; afterwards.</p></div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServer.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getOAuthOutError:" title="getOAuthOutError:"></a>
+	<h3 class="subsubtitle method-title">getOAuthOutError:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns our standard <a href="#//api/name/oauth">oauth</a> instance or fills the error, if it couldn&rsquo;t be created</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (MPOAuthAPI *)getOAuthOutError:(NSError *__autoreleasing *)<em>error</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>error</em></dt>
+			<dd><p>An error pointer to be filled if OAuth creation fails</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>self.<a href="#//api/name/oauth">oauth</a></p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServer.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/init" title="init"></a>
+	<h3 class="subsubtitle method-title">init</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The designated initializer</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)init</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServer.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/loginView:didReceiveVerifier:" title="loginView:didReceiveVerifier:"></a>
+	<h3 class="subsubtitle method-title">loginView:didReceiveVerifier:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Called when the login screen gets called with our verifier callback URL.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)loginView:(SMLoginViewController *)<em>aLoginController</em> didReceiveVerifier:(NSString *)<em>aVerifier</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>aLoginController</em></dt>
+			<dd><p>The login controller that received the verifier</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>aVerifier</em></dt>
+			<dd><p>The verifier</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMLoginViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/loginView:didSelectRecordId:" title="loginView:didSelectRecordId:"></a>
+	<h3 class="subsubtitle method-title">loginView:didSelectRecordId:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Called when the user selected a record.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)loginView:(SMLoginViewController *)<em>aLoginController</em> didSelectRecordId:(NSString *)<em>recordId</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>aLoginController</em></dt>
+			<dd><p>The login controller from which the user did select the record</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>recordId</em></dt>
+			<dd><p>The id for the record</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMLoginViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/loginViewDidCancel:" title="loginViewDidCancel:"></a>
+	<h3 class="subsubtitle method-title">loginViewDidCancel:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Called when the user dismisses the login screen, i.e. cancels the record selection process.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)loginViewDidCancel:(SMLoginViewController *)<em>loginController</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>aLoginController</em></dt>
+			<dd><p>The login controller that did cancel</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMLoginViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/loginViewDidLogout:" title="loginViewDidLogout:"></a>
+	<h3 class="subsubtitle method-title">loginViewDidLogout:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Called when the user logged out.
+This is your chance to discard cached data</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)loginViewDidLogout:(SMLoginViewController *)<em>loginController</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>aLoginController</em></dt>
+			<dd><p>The login controller from which the user logged out</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMLoginViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/performCall:" title="performCall:"></a>
+	<h3 class="subsubtitle method-title">performCall:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Perform a method on our server.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)performCall:(SMServerCall *)<em>aCall</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>aCall</em></dt>
+			<dd><p>The call to perform</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>This method is usally called by INServerObject subclasses, but you can use it bare if you wish</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServer.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/performWhenReadyToConnect:" title="performWhenReadyToConnect:"></a>
+	<h3 class="subsubtitle method-title">performWhenReadyToConnect:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Fetches the server and app manifests, if needed, then executes the block.
+Authentication calls are wrapped into this method since we need to know our endpoints before we can authenticate.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)performWhenReadyToConnect:(SMCancelErrorBlock)<em>callback</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>The callback to perform when ready</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServer.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/recordWithId:" title="recordWithId:"></a>
+	<h3 class="subsubtitle method-title">recordWithId:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The id of the record that we want</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (SMRecord *)recordWithId:(NSString *)<em>recordId</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>recordId</em></dt>
+			<dd><p>The id of the record that we want</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The record with the given id, nil if it is not found</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServer.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/selectRecord:" title="selectRecord:"></a>
+	<h3 class="subsubtitle method-title">selectRecord:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>This is the main authentication entry point, this method will ask the <a href="#//api/name/delegate">delegate</a> where to present a login view controller, if authentication is necessary, and
+handle all user interactions until login was successful or the user cancels the login operation.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)selectRecord:(SMCancelErrorBlock)<em>callback</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>A block with a first BOOL argument, which will be YES if the user cancelled the action, and an error string argument, which will be nil if
+authentication was successful. By the time this callback is called, the &ldquo;activeRecord&rdquo; property will be set (if the call was successful).</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServer.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/shouldAutomaticallyAuthenticateFrom:" title="shouldAutomaticallyAuthenticateFrom:"></a>
+	<h3 class="subsubtitle method-title">shouldAutomaticallyAuthenticateFrom:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Callback when the call is stuck at user authorization</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)shouldAutomaticallyAuthenticateFrom:(NSURL *)<em>authURL</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>authURL</em></dt>
+			<dd><p>The URL that the call wants to authorize against</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>We always return NO here, but display the login screen ourselves, loaded from the provided URL</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServer.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/suspendCall:" title="suspendCall:"></a>
+	<h3 class="subsubtitle method-title">suspendCall:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Dequeues a call without finishing it.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)suspendCall:(SMServerCall *)<em>aCall</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>aCall</em></dt>
+			<dd><p>The call to suspend</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>This is useful for calls that need to be re-performed after another call has been made, e.g. if the token was rejected and we&rsquo;ll be retrying the call after
+obtaining a new token. In this case, we don&rsquo;t want the call to finish, but we can&rsquo;t leave it in the queue because it would block subsequent calls.</p><div class="warning"><p><strong>Warning:</strong> Do NOT use this to cancel a call because the callback will not be called!</p></div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServer.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2013 CHIP. All rights reserved. (Last updated: 2013-04-02)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

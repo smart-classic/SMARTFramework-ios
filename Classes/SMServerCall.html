@@ -1,0 +1,1084 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>SMServerCall Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.1 (build 858)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">SMART iOS Framework </a></h1>
+				<a id="developerHome" href="../index.html">CHIP</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">SMServerCall Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/newForServer:">&nbsp;&nbsp;&nbsp;&nbsp;+ newForServer:</option>
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/abortWithError:">&nbsp;&nbsp;&nbsp;&nbsp;- abortWithError:</option>
+	
+	<option value="//api/name/callbackURLForCompletedUserAuthorizationDISABLED">&nbsp;&nbsp;&nbsp;&nbsp;- callbackURLForCompletedUserAuthorizationDISABLED</option>
+	
+	<option value="//api/name/cancel">&nbsp;&nbsp;&nbsp;&nbsp;- cancel</option>
+	
+	<option value="//api/name/didFinishSuccessfully:returnObject:">&nbsp;&nbsp;&nbsp;&nbsp;- didFinishSuccessfully:returnObject:</option>
+	
+	<option value="//api/name/finishWith:">&nbsp;&nbsp;&nbsp;&nbsp;- finishWith:</option>
+	
+	<option value="//api/name/fire">&nbsp;&nbsp;&nbsp;&nbsp;- fire</option>
+	
+	<option value="//api/name/fire:withParameters:httpMethod:oauth:callback:">&nbsp;&nbsp;&nbsp;&nbsp;- fire:withParameters:httpMethod:oauth:callback:</option>
+	
+	<option value="//api/name/get:withParameters:oauth:callback:">&nbsp;&nbsp;&nbsp;&nbsp;- get:withParameters:oauth:callback:</option>
+	
+	<option value="//api/name/initWithServer:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithServer:</option>
+	
+	<option value="//api/name/oauthVerifierForCompletedUserAuthorization">&nbsp;&nbsp;&nbsp;&nbsp;- oauthVerifierForCompletedUserAuthorization</option>
+	
+	<option value="//api/name/post:body:oauth:callback:">&nbsp;&nbsp;&nbsp;&nbsp;- post:body:oauth:callback:</option>
+	
+	<option value="//api/name/post:withParameters:oauth:callback:">&nbsp;&nbsp;&nbsp;&nbsp;- post:withParameters:oauth:callback:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Instantiation">Instantiation</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Performing Requests">Performing Requests</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/newForServer:">newForServer:</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/abortWithError:">abortWithError:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/callbackURLForCompletedUserAuthorizationDISABLED">callbackURLForCompletedUserAuthorizationDISABLED</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cancel">cancel</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didFinishSuccessfully:returnObject:">didFinishSuccessfully:returnObject:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/finishWith:">finishWith:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/fire">fire</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/fire:withParameters:httpMethod:oauth:callback:">fire:withParameters:httpMethod:oauth:callback:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/get:withParameters:oauth:callback:">get:withParameters:oauth:callback:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithServer:">initWithServer:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/oauthVerifierForCompletedUserAuthorization">oauthVerifierForCompletedUserAuthorization</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/post:body:oauth:callback:">post:body:oauth:callback:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/post:withParameters:oauth:callback:">post:withParameters:oauth:callback:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="SMServerCall Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">SMServerCall Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value">MPOAuthAPIAuthDelegate<br />MPOAuthAPILoadDelegate</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">SMServerCall.h<br />SMServerCall.m</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Our internal class to handle a call to the server, signed with OAuth credentials,</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						<a title="Instantiation" name="task_Instantiation"></a>
+						<h3 class="subsubtitle task-title">Instantiation</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/newForServer:">+&nbsp;newForServer:</a></code>
+		<span class="tooltip"><p>Convenience constructor, sets the server</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithServer:">&ndash;&nbsp;initWithServer:</a></code>
+		<span class="tooltip"><p>The designated initializer</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Performing Requests" name="task_Performing Requests"></a>
+						<h3 class="subsubtitle task-title">Performing Requests</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/get:withParameters:oauth:callback:">&ndash;&nbsp;get:withParameters:oauth:callback:</a></code>
+		<span class="tooltip"><p>Sends off as a GET request</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/post:withParameters:oauth:callback:">&ndash;&nbsp;post:withParameters:oauth:callback:</a></code>
+		<span class="tooltip"><p>Sends off as a POST request</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/post:body:oauth:callback:">&ndash;&nbsp;post:body:oauth:callback:</a></code>
+		<span class="tooltip"><p>Sends off a POST request with the given body</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/fire:withParameters:httpMethod:oauth:callback:">&ndash;&nbsp;fire:withParameters:httpMethod:oauth:callback:</a></code>
+		<span class="tooltip"><p>Most versatile <a href="#//api/name/fire">fire</a> method, used internally from the get: and post: methods.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/fire">&ndash;&nbsp;fire</a></code>
+		<span class="tooltip"><p>Fires the request as currently prepared.
+All get, post and fire methods go through this method in their last step.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/finishWith:">&ndash;&nbsp;finishWith:</a></code>
+		<span class="tooltip"><p>A method to finish the call early, but successfully.
+Use <a href="#//api/name/abortWithError:">abortWithError:</a> to finish a call early and unsuccessfully. This method provokes the same actions as if it was fired and returned successfully. This
+method is NOT being called when the URL connection finishes.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cancel">&ndash;&nbsp;cancel</a></code>
+		<span class="tooltip"><p>Cancels the call; calling &ldquo;abortWithError:nil&rdquo; has the same effect</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/abortWithError:">&ndash;&nbsp;abortWithError:</a></code>
+		<span class="tooltip"><p>This method can be called to abort a call and have it send the provided error with its callback</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/didFinishSuccessfully:returnObject:">&ndash;&nbsp;didFinishSuccessfully:returnObject:</a></code>
+		<span class="tooltip"><p>Internal finishing method.
+Calls the callback, if there is one, and informs the server that the call has finished.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/callbackURLForCompletedUserAuthorizationDISABLED">&ndash;&nbsp;callbackURLForCompletedUserAuthorizationDISABLED</a></code>
+		<span class="tooltip"><p>MPOAuth will call this method to know where to redirect after successfull authentication</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/oauthVerifierForCompletedUserAuthorization">&ndash;&nbsp;oauthVerifierForCompletedUserAuthorization</a></code>
+		<span class="tooltip"><p>MPOAuth will call this method to get ahold of the oAuth verifier.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/newForServer:" title="newForServer:"></a>
+	<h3 class="subsubtitle method-title">newForServer:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Convenience constructor, sets the server</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (SMServerCall *)newForServer:(SMServer *)<em>aServer</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>aServer</em></dt>
+			<dd><p>An indivo server instance</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>an autoreleased SMServerCall instance</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServerCall.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/abortWithError:" title="abortWithError:"></a>
+	<h3 class="subsubtitle method-title">abortWithError:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>This method can be called to abort a call and have it send the provided error with its callback</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)abortWithError:(NSError *)<em>error</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>error</em></dt>
+			<dd><p>An NSError object to be delivered through the callback</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServerCall.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/callbackURLForCompletedUserAuthorizationDISABLED" title="callbackURLForCompletedUserAuthorizationDISABLED"></a>
+	<h3 class="subsubtitle method-title">callbackURLForCompletedUserAuthorizationDISABLED</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>MPOAuth will call this method to know where to redirect after successfull authentication</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSURL *)callbackURLForCompletedUserAuthorizationDISABLED</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServerCall.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/cancel" title="cancel"></a>
+	<h3 class="subsubtitle method-title">cancel</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Cancels the call; calling &ldquo;abortWithError:nil&rdquo; has the same effect</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)cancel</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServerCall.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/didFinishSuccessfully:returnObject:" title="didFinishSuccessfully:returnObject:"></a>
+	<h3 class="subsubtitle method-title">didFinishSuccessfully:returnObject:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Internal finishing method.
+Calls the callback, if there is one, and informs the server that the call has finished.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)didFinishSuccessfully:(BOOL)<em>success</em> returnObject:(NSDictionary *)<em>returnObject</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>success</em></dt>
+			<dd><p>A BOOL indicating whether the call was successful</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>returnObject</em></dt>
+			<dd><p>The dictionary that we will return as userInfo with the callback</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServerCall.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/finishWith:" title="finishWith:"></a>
+	<h3 class="subsubtitle method-title">finishWith:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>A method to finish the call early, but successfully.
+Use <a href="#//api/name/abortWithError:">abortWithError:</a> to finish a call early and unsuccessfully. This method provokes the same actions as if it was fired and returned successfully. This
+method is NOT being called when the URL connection finishes.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)finishWith:(NSDictionary *)<em>returnObject</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>returnObject</em></dt>
+			<dd><p>The dictionary that we will return as userInfo with the callback</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServerCall.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/fire" title="fire"></a>
+	<h3 class="subsubtitle method-title">fire</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Fires the request as currently prepared.
+All get, post and fire methods go through this method in their last step.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)fire</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServerCall.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/fire:withParameters:httpMethod:oauth:callback:" title="fire:withParameters:httpMethod:oauth:callback:"></a>
+	<h3 class="subsubtitle method-title">fire:withParameters:httpMethod:oauth:callback:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Most versatile <a href="#//api/name/fire">fire</a> method, used internally from the get: and post: methods.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)fire:(NSString *)<em>inMethod</em> withParameters:(NSArray *)<em>inParameters</em> httpMethod:(NSString *)<em>httpMethod</em> oauth:(MPOAuthAPI *)<em>inOAuth</em> callback:(SMSuccessRetvalueBlock)<em>inCallback</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>inMethod</em></dt>
+			<dd><p>The method to use, i.e. the REST path</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>inParameters</em></dt>
+			<dd><p>An array full of @&ldquo;key=value&rdquo; NSString objects, can be nil</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>httpMethod</em></dt>
+			<dd><p>The HTTP-method (GET, PUT, POST) to use</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>inOAuth</em></dt>
+			<dd><p>The MPOAuthAPI instance to use for the call</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>inCallback</em></dt>
+			<dd><p>The callback block to call when the method has finished</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServerCall.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/get:withParameters:oauth:callback:" title="get:withParameters:oauth:callback:"></a>
+	<h3 class="subsubtitle method-title">get:withParameters:oauth:callback:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Sends off as a GET request</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)get:(NSString *)<em>inMethod</em> withParameters:(NSArray *)<em>inParameters</em> oauth:(MPOAuthAPI *)<em>inOAuth</em> callback:(SMSuccessRetvalueBlock)<em>inCallback</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>inMethod</em></dt>
+			<dd><p>The method to use, i.e. the REST path</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>inParameters</em></dt>
+			<dd><p>An array full of @&ldquo;key=value&rdquo; NSString objects, can be nil</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>inOAuth</em></dt>
+			<dd><p>The MPOAuthAPI instance to use for the call</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>inCallback</em></dt>
+			<dd><p>The callback block to call when the method has finished</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServerCall.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithServer:" title="initWithServer:"></a>
+	<h3 class="subsubtitle method-title">initWithServer:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The designated initializer</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithServer:(SMServer *)<em>aServer</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>aServer</em></dt>
+			<dd><p>The server against which we&rsquo;ll run</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServerCall.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/oauthVerifierForCompletedUserAuthorization" title="oauthVerifierForCompletedUserAuthorization"></a>
+	<h3 class="subsubtitle method-title">oauthVerifierForCompletedUserAuthorization</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>MPOAuth will call this method to get ahold of the oAuth verifier.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)oauthVerifierForCompletedUserAuthorization</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>We must extract the verifier from the callback URL (specified in &ldquo;&ndash; (NSURL *)callbackURLForCompletedUserAuthorization&rdquo; and
+called on the App Delegate) and return it from this method</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServerCall.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/post:body:oauth:callback:" title="post:body:oauth:callback:"></a>
+	<h3 class="subsubtitle method-title">post:body:oauth:callback:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Sends off a POST request with the given body</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)post:(NSString *)<em>inMethod</em> body:(NSString *)<em>bodyString</em> oauth:(MPOAuthAPI *)<em>inOAuth</em> callback:(SMSuccessRetvalueBlock)<em>inCallback</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>inMethod</em></dt>
+			<dd><p>The method to use, i.e. the REST path</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>bodyString</em></dt>
+			<dd><p>The body string to POST</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>inOAuth</em></dt>
+			<dd><p>The MPOAuthAPI instance to use for the call</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>inCallback</em></dt>
+			<dd><p>The callback block to call when the method has finished</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServerCall.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/post:withParameters:oauth:callback:" title="post:withParameters:oauth:callback:"></a>
+	<h3 class="subsubtitle method-title">post:withParameters:oauth:callback:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Sends off as a POST request</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)post:(NSString *)<em>inMethod</em> withParameters:(NSArray *)<em>inParameters</em> oauth:(MPOAuthAPI *)<em>inOAuth</em> callback:(SMSuccessRetvalueBlock)<em>inCallback</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>inMethod</em></dt>
+			<dd><p>The method to use, i.e. the REST path</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>inParameters</em></dt>
+			<dd><p>An array full of @&ldquo;key=value&rdquo; NSString objects, can be nil</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>inOAuth</em></dt>
+			<dd><p>The MPOAuthAPI instance to use for the call</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>inCallback</em></dt>
+			<dd><p>The callback block to call when the method has finished</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServerCall.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2013 CHIP. All rights reserved. (Last updated: 2013-04-02)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,2044 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>SMRecord Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.1 (build 858)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">SMART iOS Framework </a></h1>
+				<a id="developerHome" href="../index.html">CHIP</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">SMRecord Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/accessToken">&nbsp;&nbsp;&nbsp;&nbsp;accessToken</option>
+	
+	<option value="//api/name/accessTokenSecret">&nbsp;&nbsp;&nbsp;&nbsp;accessTokenSecret</option>
+	
+	<option value="//api/name/demographics">&nbsp;&nbsp;&nbsp;&nbsp;demographics</option>
+	
+	<option value="//api/name/name">&nbsp;&nbsp;&nbsp;&nbsp;name</option>
+	
+	<option value="//api/name/record_id">&nbsp;&nbsp;&nbsp;&nbsp;record_id</option>
+	
+	<option value="//api/name/scratchpad">&nbsp;&nbsp;&nbsp;&nbsp;scratchpad</option>
+	
+	<option value="//api/name/server">&nbsp;&nbsp;&nbsp;&nbsp;server</option>
+	
+	
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/getAllergies:">&nbsp;&nbsp;&nbsp;&nbsp;- getAllergies:</option>
+	
+	<option value="//api/name/getClinicalNotes:">&nbsp;&nbsp;&nbsp;&nbsp;- getClinicalNotes:</option>
+	
+	<option value="//api/name/getDemographics:">&nbsp;&nbsp;&nbsp;&nbsp;- getDemographics:</option>
+	
+	<option value="//api/name/getDemographicsWithCallback:">&nbsp;&nbsp;&nbsp;&nbsp;- getDemographicsWithCallback:</option>
+	
+	<option value="//api/name/getDocuments:">&nbsp;&nbsp;&nbsp;&nbsp;- getDocuments:</option>
+	
+	<option value="//api/name/getEncounters:">&nbsp;&nbsp;&nbsp;&nbsp;- getEncounters:</option>
+	
+	<option value="//api/name/getFamilyHistoryObservations:">&nbsp;&nbsp;&nbsp;&nbsp;- getFamilyHistoryObservations:</option>
+	
+	<option value="//api/name/getFulfillments:">&nbsp;&nbsp;&nbsp;&nbsp;- getFulfillments:</option>
+	
+	<option value="//api/name/getImmunizations:">&nbsp;&nbsp;&nbsp;&nbsp;- getImmunizations:</option>
+	
+	<option value="//api/name/getLabPanel:">&nbsp;&nbsp;&nbsp;&nbsp;- getLabPanel:</option>
+	
+	<option value="//api/name/getLabPanels:">&nbsp;&nbsp;&nbsp;&nbsp;- getLabPanels:</option>
+	
+	<option value="//api/name/getLabResults:">&nbsp;&nbsp;&nbsp;&nbsp;- getLabResults:</option>
+	
+	<option value="//api/name/getMedications:">&nbsp;&nbsp;&nbsp;&nbsp;- getMedications:</option>
+	
+	<option value="//api/name/getObjectsOfClass:from:callback:">&nbsp;&nbsp;&nbsp;&nbsp;- getObjectsOfClass:from:callback:</option>
+	
+	<option value="//api/name/getPhotograph:">&nbsp;&nbsp;&nbsp;&nbsp;- getPhotograph:</option>
+	
+	<option value="//api/name/getProblems:">&nbsp;&nbsp;&nbsp;&nbsp;- getProblems:</option>
+	
+	<option value="//api/name/getProcedures:">&nbsp;&nbsp;&nbsp;&nbsp;- getProcedures:</option>
+	
+	<option value="//api/name/getSocialHistory:">&nbsp;&nbsp;&nbsp;&nbsp;- getSocialHistory:</option>
+	
+	<option value="//api/name/getVitalSignSets:">&nbsp;&nbsp;&nbsp;&nbsp;- getVitalSignSets:</option>
+	
+	<option value="//api/name/initWithId:onServer:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithId:onServer:</option>
+	
+	<option value="//api/name/is:">&nbsp;&nbsp;&nbsp;&nbsp;- is:</option>
+	
+	<option value="//api/name/performMethod:withBody:orParameters:ofType:httpMethod:callback:">&nbsp;&nbsp;&nbsp;&nbsp;- performMethod:withBody:orParameters:ofType:httpMethod:callback:</option>
+	
+	<option value="//api/name/postClinicalNote:">&nbsp;&nbsp;&nbsp;&nbsp;- postClinicalNote:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Calls Methods">Calls Methods</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/accessToken">accessToken</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/accessTokenSecret">accessTokenSecret</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/demographics">demographics</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/name">name</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/record_id">record_id</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/scratchpad">scratchpad</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/server">server</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getAllergies:">getAllergies:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getClinicalNotes:">getClinicalNotes:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getDemographics:">getDemographics:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getDemographicsWithCallback:">getDemographicsWithCallback:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getDocuments:">getDocuments:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getEncounters:">getEncounters:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getFamilyHistoryObservations:">getFamilyHistoryObservations:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getFulfillments:">getFulfillments:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getImmunizations:">getImmunizations:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getLabPanel:">getLabPanel:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getLabPanels:">getLabPanels:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getLabResults:">getLabResults:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getMedications:">getMedications:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getObjectsOfClass:from:callback:">getObjectsOfClass:from:callback:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getPhotograph:">getPhotograph:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getProblems:">getProblems:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getProcedures:">getProcedures:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getSocialHistory:">getSocialHistory:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getVitalSignSets:">getVitalSignSets:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithId:onServer:">initWithId:onServer:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/is:">is:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/performMethod:withBody:orParameters:ofType:httpMethod:callback:">performMethod:withBody:orParameters:ofType:httpMethod:callback:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/postClinicalNote:">postClinicalNote:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="SMRecord Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">SMRecord Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">SMRecord.h<br />SMRecord.m</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>The record instance is your portal to the patient&rsquo;s documents.</p>
+
+<p>You typically use the record methods to retrieve the desired patient data. To obtain a record instance, call the method selectRecord: on your <a href="../Classes/SMServer.html">SMServer</a>
+instance which prompts your app user to login and select a record. Once you have a record instance you can use its convenience methods, for example, if
+<code>smart</code> was your <a href="../Classes/SMServer.html">SMServer</a> instance, to retrieve a patient&rsquo;s medications you could do:</p>
+
+<pre><code>[smart.activeRecord getMedications:^(BOOL success, NSDictionary *userInfo) {
+    if (!success) {
+        NSString *errMsg = [[userInfo objectForKey:INErrorKey] localizedDescription];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed to connect"
+                                                        message:errMsg
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
+    else {
+        NSArray *meds = [userInfo objectForKey:INResponseArrayKey];
+        // You have now got SMMedication objects in that array
+    }
+}];
+</code></pre>
+
+<p>A category on SMRecord, generated from the SMART ontology.</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/record_id">&nbsp;&nbsp;record_id</a></code>
+		<span class="tooltip"><p>The record id</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/server">&nbsp;&nbsp;server</a></code>
+		<span class="tooltip"><p>The server this record lives on</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/accessToken">&nbsp;&nbsp;accessToken</a></code>
+		<span class="tooltip"><p>The OAuth token tied to this record and its <a href="#//api/name/server">server</a></p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/accessTokenSecret">&nbsp;&nbsp;accessTokenSecret</a></code>
+		<span class="tooltip"><p>The OAuth secret</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/demographics">&nbsp;&nbsp;demographics</a></code>
+		<span class="tooltip"><p>The demographics document for this record</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/name">&nbsp;&nbsp;name</a></code>
+		<span class="tooltip"><p>Composed name from givenName and familyName, taken from the <a href="#//api/name/demographics">demographics</a> document</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/scratchpad">&nbsp;&nbsp;scratchpad</a></code>
+		<span class="tooltip"><p>The scratchpad document for this record &ndash; to get the data you will need to call &ldquo;get:&rdquo; on this first!</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithId:onServer:">&ndash;&nbsp;initWithId:onServer:</a></code>
+		<span class="tooltip"><p>The designated initializer, initializes a record from given parameters</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getDemographicsWithCallback:">&ndash;&nbsp;getDemographicsWithCallback:</a></code>
+		<span class="tooltip"><p>Fetches the record&rsquo;s <a href="#//api/name/demographics">demographics</a> document from /records/{record_id}/<a href="#//api/name/demographics">demographics</a></p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getObjectsOfClass:from:callback:">&ndash;&nbsp;getObjectsOfClass:from:callback:</a></code>
+		<span class="tooltip"><p>Performs a GET request to the given path and tries to instantiate objects of the given class from the returned data.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/performMethod:withBody:orParameters:ofType:httpMethod:callback:">&ndash;&nbsp;performMethod:withBody:orParameters:ofType:httpMethod:callback:</a></code>
+		<span class="tooltip"><p>The basic method to perform REST methods on the <a href="#//api/name/server">server</a> with App credentials.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/is:">&ndash;&nbsp;is:</a></code>
+		<span class="tooltip"><p>Shortcut method to test if the document has the given ID</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Calls Methods" name="task_Calls Methods"></a>
+						<h3 class="subsubtitle task-title">Calls Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getAllergies:">&ndash;&nbsp;getAllergies:</a></code>
+		<span class="tooltip"><p>Get all Allergies and Allergy Exclusions for a patient.
+Makes a call to /records/{record_id}/allergies/, originally named &ldquo;get_allergies&rdquo;.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getClinicalNotes:">&ndash;&nbsp;getClinicalNotes:</a></code>
+		<span class="tooltip"><p>Get all Clinical Notes for a patient.
+Makes a call to /records/{record_id}/clinical_notes/, originally named &ldquo;get_clinical_notes&rdquo;.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getDemographics:">&ndash;&nbsp;getDemographics:</a></code>
+		<span class="tooltip"><p>Get Demographics for a patient.
+Makes a call to /records/{record_id}/<a href="#//api/name/demographics">demographics</a>, originally named &ldquo;get_demographics&rdquo;.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getDocuments:">&ndash;&nbsp;getDocuments:</a></code>
+		<span class="tooltip"><p>Get all Documents for a patient.
+Makes a call to /records/{record_id}/documents/, originally named &ldquo;get_documents&rdquo;.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getEncounters:">&ndash;&nbsp;getEncounters:</a></code>
+		<span class="tooltip"><p>Get all Encounters for a patient.
+Makes a call to /records/{record_id}/encounters/, originally named &ldquo;get_encounters&rdquo;.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getFamilyHistoryObservations:">&ndash;&nbsp;getFamilyHistoryObservations:</a></code>
+		<span class="tooltip"><p>Get all Family Histories for a patient.
+Makes a call to /records/{record_id}/family_history/, originally named &ldquo;get_family_history_observations&rdquo;.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getFulfillments:">&ndash;&nbsp;getFulfillments:</a></code>
+		<span class="tooltip"><p>Get all Fulfillments for a patient.
+Makes a call to /records/{record_id}/fulfillments/, originally named &ldquo;get_fulfillments&rdquo;.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getImmunizations:">&ndash;&nbsp;getImmunizations:</a></code>
+		<span class="tooltip"><p>Get all Immunizations for a patient.
+Makes a call to /records/{record_id}/immunizations/, originally named &ldquo;get_immunizations&rdquo;.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getLabPanel:">&ndash;&nbsp;getLabPanel:</a></code>
+		<span class="tooltip"><p>Get one Lab Panel for a patient.
+Makes a call to /records/{record_id}/lab_panels/, originally named &ldquo;get_lab_panel&rdquo;.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getLabPanels:">&ndash;&nbsp;getLabPanels:</a></code>
+		<span class="tooltip"><p>Get all Lab Panels for a patient.
+Makes a call to /records/{record_id}/lab_panels/, originally named &ldquo;get_lab_panels&rdquo;.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getLabResults:">&ndash;&nbsp;getLabResults:</a></code>
+		<span class="tooltip"><p>Get all Lab Results for a patient.
+Makes a call to /records/{record_id}/lab_results/, originally named &ldquo;get_lab_results&rdquo;.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getMedications:">&ndash;&nbsp;getMedications:</a></code>
+		<span class="tooltip"><p>Get all Medications for a patient.
+Makes a call to /records/{record_id}/medications/, originally named &ldquo;get_medications&rdquo;.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getPhotograph:">&ndash;&nbsp;getPhotograph:</a></code>
+		<span class="tooltip"><p>Get one Photograph for a patient.
+Makes a call to /records/{record_id}/photograph, originally named &ldquo;get_photograph&rdquo;.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getProblems:">&ndash;&nbsp;getProblems:</a></code>
+		<span class="tooltip"><p>Get all Problems for a patient.
+Makes a call to /records/{record_id}/problems/, originally named &ldquo;get_problems&rdquo;.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getProcedures:">&ndash;&nbsp;getProcedures:</a></code>
+		<span class="tooltip"><p>Get all Procedures for a patient.
+Makes a call to /records/{record_id}/procedures/, originally named &ldquo;get_procedures&rdquo;.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getSocialHistory:">&ndash;&nbsp;getSocialHistory:</a></code>
+		<span class="tooltip"><p>Get Social History for a patient.
+Makes a call to /records/{record_id}/social_history, originally named &ldquo;get_social_history&rdquo;.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getVitalSignSets:">&ndash;&nbsp;getVitalSignSets:</a></code>
+		<span class="tooltip"><p>Get all Vital Sign Sets for a patient.
+Makes a call to /records/{record_id}/vital_sign_sets/, originally named &ldquo;get_vital_sign_sets&rdquo;.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/postClinicalNote:">&ndash;&nbsp;postClinicalNote:</a></code>
+		<span class="tooltip"><p>Post a Clinical Note for a patient
+Posts to /records/{record_id}/clinical_notes/, originally named &ldquo;post_clinical_note&rdquo;.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/accessToken" title="accessToken"></a>
+	<h3 class="subsubtitle method-title">accessToken</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The OAuth token tied to this record and its <a href="#//api/name/server">server</a></p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *accessToken</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMRecord.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/accessTokenSecret" title="accessTokenSecret"></a>
+	<h3 class="subsubtitle method-title">accessTokenSecret</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The OAuth secret</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *accessTokenSecret</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMRecord.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/demographics" title="demographics"></a>
+	<h3 class="subsubtitle method-title">demographics</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The demographics document for this record</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly, strong) SMDemographics *demographics</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMRecord.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/name" title="name"></a>
+	<h3 class="subsubtitle method-title">name</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Composed name from givenName and familyName, taken from the <a href="#//api/name/demographics">demographics</a> document</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *name</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMRecord.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/record_id" title="record_id"></a>
+	<h3 class="subsubtitle method-title">record_id</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The record id</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *record_id</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMRecord.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/scratchpad" title="scratchpad"></a>
+	<h3 class="subsubtitle method-title">scratchpad</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The scratchpad document for this record &ndash; to get the data you will need to call &ldquo;get:&rdquo; on this first!</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly, strong) SMScratchpadData *scratchpad</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMRecord.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/server" title="server"></a>
+	<h3 class="subsubtitle method-title">server</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The server this record lives on</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, weak) SMServer *server</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMRecord.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/getAllergies:" title="getAllergies:"></a>
+	<h3 class="subsubtitle method-title">getAllergies:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get all Allergies and Allergy Exclusions for a patient.
+Makes a call to /records/{record_id}/allergies/, originally named &ldquo;get_allergies&rdquo;.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)getAllergies:(SMSuccessRetvalueBlock)<em>callback</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing
+the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMRecord+Calls.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getClinicalNotes:" title="getClinicalNotes:"></a>
+	<h3 class="subsubtitle method-title">getClinicalNotes:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get all Clinical Notes for a patient.
+Makes a call to /records/{record_id}/clinical_notes/, originally named &ldquo;get_clinical_notes&rdquo;.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)getClinicalNotes:(SMSuccessRetvalueBlock)<em>callback</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing
+the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMRecord+Calls.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getDemographics:" title="getDemographics:"></a>
+	<h3 class="subsubtitle method-title">getDemographics:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get Demographics for a patient.
+Makes a call to /records/{record_id}/<a href="#//api/name/demographics">demographics</a>, originally named &ldquo;get_demographics&rdquo;.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)getDemographics:(SMSuccessRetvalueBlock)<em>callback</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing
+the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMRecord+Calls.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getDemographicsWithCallback:" title="getDemographicsWithCallback:"></a>
+	<h3 class="subsubtitle method-title">getDemographicsWithCallback:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Fetches the record&rsquo;s <a href="#//api/name/demographics">demographics</a> document from /records/{record_id}/<a href="#//api/name/demographics">demographics</a></p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)getDemographicsWithCallback:(SMCancelErrorBlock)<em>callback</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>A SMCancelErrorBlock block to be executed after the call returns from the <a href="#//api/name/server">server</a></p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMRecord.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getDocuments:" title="getDocuments:"></a>
+	<h3 class="subsubtitle method-title">getDocuments:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get all Documents for a patient.
+Makes a call to /records/{record_id}/documents/, originally named &ldquo;get_documents&rdquo;.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)getDocuments:(SMSuccessRetvalueBlock)<em>callback</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing
+the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMRecord+Calls.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getEncounters:" title="getEncounters:"></a>
+	<h3 class="subsubtitle method-title">getEncounters:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get all Encounters for a patient.
+Makes a call to /records/{record_id}/encounters/, originally named &ldquo;get_encounters&rdquo;.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)getEncounters:(SMSuccessRetvalueBlock)<em>callback</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing
+the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMRecord+Calls.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getFamilyHistoryObservations:" title="getFamilyHistoryObservations:"></a>
+	<h3 class="subsubtitle method-title">getFamilyHistoryObservations:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get all Family Histories for a patient.
+Makes a call to /records/{record_id}/family_history/, originally named &ldquo;get_family_history_observations&rdquo;.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)getFamilyHistoryObservations:(SMSuccessRetvalueBlock)<em>callback</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing
+the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMRecord+Calls.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getFulfillments:" title="getFulfillments:"></a>
+	<h3 class="subsubtitle method-title">getFulfillments:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get all Fulfillments for a patient.
+Makes a call to /records/{record_id}/fulfillments/, originally named &ldquo;get_fulfillments&rdquo;.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)getFulfillments:(SMSuccessRetvalueBlock)<em>callback</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing
+the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMRecord+Calls.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getImmunizations:" title="getImmunizations:"></a>
+	<h3 class="subsubtitle method-title">getImmunizations:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get all Immunizations for a patient.
+Makes a call to /records/{record_id}/immunizations/, originally named &ldquo;get_immunizations&rdquo;.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)getImmunizations:(SMSuccessRetvalueBlock)<em>callback</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing
+the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMRecord+Calls.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getLabPanel:" title="getLabPanel:"></a>
+	<h3 class="subsubtitle method-title">getLabPanel:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get one Lab Panel for a patient.
+Makes a call to /records/{record_id}/lab_panels/, originally named &ldquo;get_lab_panel&rdquo;.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)getLabPanel:(SMSuccessRetvalueBlock)<em>callback</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing
+the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMRecord+Calls.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getLabPanels:" title="getLabPanels:"></a>
+	<h3 class="subsubtitle method-title">getLabPanels:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get all Lab Panels for a patient.
+Makes a call to /records/{record_id}/lab_panels/, originally named &ldquo;get_lab_panels&rdquo;.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)getLabPanels:(SMSuccessRetvalueBlock)<em>callback</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing
+the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMRecord+Calls.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getLabResults:" title="getLabResults:"></a>
+	<h3 class="subsubtitle method-title">getLabResults:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get all Lab Results for a patient.
+Makes a call to /records/{record_id}/lab_results/, originally named &ldquo;get_lab_results&rdquo;.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)getLabResults:(SMSuccessRetvalueBlock)<em>callback</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing
+the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMRecord+Calls.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getMedications:" title="getMedications:"></a>
+	<h3 class="subsubtitle method-title">getMedications:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get all Medications for a patient.
+Makes a call to /records/{record_id}/medications/, originally named &ldquo;get_medications&rdquo;.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)getMedications:(SMSuccessRetvalueBlock)<em>callback</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing
+the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMRecord+Calls.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getObjectsOfClass:from:callback:" title="getObjectsOfClass:from:callback:"></a>
+	<h3 class="subsubtitle method-title">getObjectsOfClass:from:callback:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Performs a GET request to the given path and tries to instantiate objects of the given class from the returned data.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)getObjectsOfClass:(Class)<em>aClass</em> from:(NSString *)<em>aPath</em> callback:(SMSuccessRetvalueBlock)<em>callback</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>aClass</em></dt>
+			<dd><p>An <a href="../Classes/SMDocument.html">SMDocument</a> subclass that can represent objects returned from aPath</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>aPath</em></dt>
+			<dd><p>The path to call on the <a href="#//api/name/server">server</a></p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>A block to execute when the call has finished, passing a success flag and a user dictionary containing the fetched objects</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMRecord.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getPhotograph:" title="getPhotograph:"></a>
+	<h3 class="subsubtitle method-title">getPhotograph:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get one Photograph for a patient.
+Makes a call to /records/{record_id}/photograph, originally named &ldquo;get_photograph&rdquo;.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)getPhotograph:(SMSuccessRetvalueBlock)<em>callback</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing
+the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMRecord+Calls.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getProblems:" title="getProblems:"></a>
+	<h3 class="subsubtitle method-title">getProblems:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get all Problems for a patient.
+Makes a call to /records/{record_id}/problems/, originally named &ldquo;get_problems&rdquo;.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)getProblems:(SMSuccessRetvalueBlock)<em>callback</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing
+the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMRecord+Calls.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getProcedures:" title="getProcedures:"></a>
+	<h3 class="subsubtitle method-title">getProcedures:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get all Procedures for a patient.
+Makes a call to /records/{record_id}/procedures/, originally named &ldquo;get_procedures&rdquo;.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)getProcedures:(SMSuccessRetvalueBlock)<em>callback</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing
+the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMRecord+Calls.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getSocialHistory:" title="getSocialHistory:"></a>
+	<h3 class="subsubtitle method-title">getSocialHistory:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get Social History for a patient.
+Makes a call to /records/{record_id}/social_history, originally named &ldquo;get_social_history&rdquo;.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)getSocialHistory:(SMSuccessRetvalueBlock)<em>callback</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing
+the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMRecord+Calls.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getVitalSignSets:" title="getVitalSignSets:"></a>
+	<h3 class="subsubtitle method-title">getVitalSignSets:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get all Vital Sign Sets for a patient.
+Makes a call to /records/{record_id}/vital_sign_sets/, originally named &ldquo;get_vital_sign_sets&rdquo;.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)getVitalSignSets:(SMSuccessRetvalueBlock)<em>callback</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing
+the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMRecord+Calls.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithId:onServer:" title="initWithId:onServer:"></a>
+	<h3 class="subsubtitle method-title">initWithId:onServer:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The designated initializer, initializes a record from given parameters</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithId:(NSString *)<em>anId</em> onServer:(SMServer *)<em>aServer</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>anId</em></dt>
+			<dd><p>The id to use for this record</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>aServer</em></dt>
+			<dd><p>The <a href="#//api/name/server">server</a> on which this record lives</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMRecord.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/is:" title="is:"></a>
+	<h3 class="subsubtitle method-title">is:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Shortcut method to test if the document has the given ID</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)is:(NSString *)<em>anId</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>anId</em></dt>
+			<dd><p>The id to test</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMRecord.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/performMethod:withBody:orParameters:ofType:httpMethod:callback:" title="performMethod:withBody:orParameters:ofType:httpMethod:callback:"></a>
+	<h3 class="subsubtitle method-title">performMethod:withBody:orParameters:ofType:httpMethod:callback:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The basic method to perform REST methods on the <a href="#//api/name/server">server</a> with App credentials.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)performMethod:(NSString *)<em>aMethod</em> withBody:(NSString *)<em>body</em> orParameters:(NSArray *)<em>parameters</em> ofType:(NSString *)<em>contentType</em> httpMethod:(NSString *)<em>httpMethod</em> callback:(SMSuccessRetvalueBlock)<em>callback</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>aMethod</em></dt>
+			<dd><p>The path to call on the <a href="#//api/name/server">server</a></p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>body</em></dt>
+			<dd><p>The body string</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>parameters</em></dt>
+			<dd><p>An array full of strings in the form &ldquo;key=value&rdquo;</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>contentType</em></dt>
+			<dd><p>The optional contentType of the data for PUT or POST</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>httpMethod</em></dt>
+			<dd><p>The http method, for now GET, PUT or POST</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>A block to execute when the call has finished</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>All convenience methods invoke this method. It uses a <a href="../Classes/SMServerCall.html">SMServerCall</a> instance to handle the loading; <a href="../Classes/SMServerCall.html">SMServerCall</a> only allows a body string or parameters,
+but not both, with the body string taking precedence if both are present.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMRecord.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/postClinicalNote:" title="postClinicalNote:"></a>
+	<h3 class="subsubtitle method-title">postClinicalNote:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Post a Clinical Note for a patient
+Posts to /records/{record_id}/clinical_notes/, originally named &ldquo;post_clinical_note&rdquo;.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)postClinicalNote:(SMSuccessRetvalueBlock)<em>callback</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing
+the posted item (key: SMARTResponseDataKey) if successful.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMRecord+Calls.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2013 CHIP. All rights reserved. (Last updated: 2013-04-02)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>
