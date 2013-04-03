@@ -21,9 +21,7 @@
  */
 
 #import "SMObject.h"
-
-#import <RedlandParser.h>
-#import <RedlandURI.h>
+#import <Redland-ObjC.h>
 
 
 @interface SMObject ()
@@ -105,6 +103,9 @@
  *
  *  There is no need to specifically set the rdf-type for a single instance as the instance should always represent the same type of objects, but it is still
  *  possible.
+ *
+ *  **Note** that in RDF, things can be more than one type. The type retrieved here is the type that has been used to determine the class to be used for the
+ *  receiver, and most of the time this will be the only type anyway. Use rdfTypes to get all types an object has.
  */
 - (NSString *)rdfType
 {
@@ -120,6 +121,29 @@
 + (NSString *)rdfType
 {
 	return nil;
+}
+
+/**
+ *  All the types (as RedlandNode objects) that apply to the receiver.
+ */
+- (NSArray *)rdfTypes
+{
+	if (!_rdfTypes) {
+		RedlandNode *predicate = [RedlandNode nodeWithURIString:@"http://www.w3.org/1999/02/22-rdf-syntax-ns#type"];
+		RedlandStatement *statement = [RedlandStatement statementWithSubject:_subject predicate:predicate object:nil];
+		RedlandStreamEnumerator *query = [_model enumeratorOfStatementsLike:statement];
+		
+		// loop through the results
+		NSMutableArray *arr = [NSMutableArray array];
+		RedlandStatement *rslt = nil;
+		while ((rslt = [query nextObject])) {
+			if (rslt.object) {
+				[arr addObject:rslt.object];
+			}
+		}
+		self.rdfTypes = arr;
+	}
+	return _rdfTypes;
 }
 
 

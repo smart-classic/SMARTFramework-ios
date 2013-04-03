@@ -24,6 +24,7 @@
 #import "SMMockServer.h"
 #import "SMRecord+Calls.h"
 #import "SMARTObjects.h"
+#import <Redland-ObjC.h>
 
 @implementation TestServerCalls
 
@@ -51,6 +52,8 @@
 		
 		SMAllergy *allergy1 = [response objectAtIndex:0];
 		STAssertEqualObjects(@"Anaphylaxis", allergy1.allergicReaction.title, @"allergicReaction.title");
+		
+		STAssertTrue([allergy1.rdfTypes containsObject:[RedlandNode nodeWithURIString:allergy1.rdfType]], @"The main type has to be in the rdfTypes array, meaning %@ must be in %@", allergy1.rdfType, allergy1.rdfTypes);
 	}];
 }
 
