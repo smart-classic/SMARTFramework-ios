@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.1 (build 858)" />
+		<meta name="generator" content="appledoc 2.1 (build 840)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -59,8 +59,6 @@
 	
 	<option value="//api/name/get:parameters:callback:">&nbsp;&nbsp;&nbsp;&nbsp;- get:parameters:callback:</option>
 	
-	<option value="//api/name/performMethod:withBody:orParameters:ofType:httpMethod:callback:">&nbsp;&nbsp;&nbsp;&nbsp;- performMethod:withBody:orParameters:ofType:httpMethod:callback:</option>
-	
 	
 	
 </select>
@@ -107,8 +105,6 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/get:parameters:callback:">get:parameters:callback:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/performMethod:withBody:orParameters:ofType:httpMethod:callback:">performMethod:withBody:orParameters:ofType:httpMethod:callback:</a></span></li>
-	
 </ul></li>
 
 
@@ -148,7 +144,8 @@
 						<h2 class="subtitle subtitle-overview">Overview</h2>
 						<p>The base class for all SMART server documents.</p>
 
-<p>This class implements the basics for URL requests, which are all funnelled via <a href="#//api/name/performMethod:withBody:orParameters:ofType:httpMethod:callback:">performMethod:withBody:orParameters:ofType:httpMethod:callback:</a>.</p>
+<p>This class implements the basics for URL requests, which are all funnelled via <a href="../Classes/SMRecord.html">SMRecord</a> &rsquo;s performMethod:withBody:orParameters:ofType:httpMethod:callback:
+method.</p>
 					</div>
 					
 					
@@ -211,13 +208,6 @@
 	<span class="tooltip">
 		<code><a href="#//api/name/get:parameters:callback:">&ndash;&nbsp;get:parameters:callback:</a></code>
 		<span class="tooltip"><p>Shortcut for GETting data with parameters.</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/performMethod:withBody:orParameters:ofType:httpMethod:callback:">&ndash;&nbsp;performMethod:withBody:orParameters:ofType:httpMethod:callback:</a></code>
-		<span class="tooltip"><p>The basic method to perform REST methods on the server with App credentials.</p></span>
 	</span>
 	
 	
@@ -525,83 +515,6 @@
 	
 </div>
 						
-						<div class="section-method">
-	<a name="//api/name/performMethod:withBody:orParameters:ofType:httpMethod:callback:" title="performMethod:withBody:orParameters:ofType:httpMethod:callback:"></a>
-	<h3 class="subsubtitle method-title">performMethod:withBody:orParameters:ofType:httpMethod:callback:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>The basic method to perform REST methods on the server with App credentials.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (void)performMethod:(NSString *)<em>aMethod</em> withBody:(id)<em>body</em> orParameters:(NSArray *)<em>parameters</em> ofType:(NSString *)<em>contentType</em> httpMethod:(NSString *)<em>httpMethod</em> callback:(SMSuccessRetvalueBlock)<em>callback</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>aMethod</em></dt>
-			<dd><p>The path to call on the server</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>body</em></dt>
-			<dd><p>The body data (NSData) or string (NSString)</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>parameters</em></dt>
-			<dd><p>An array full of strings in the form &ldquo;key=value&rdquo;</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>contentType</em></dt>
-			<dd><p>The optional content-type for PUT and POST</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>httpMethod</em></dt>
-			<dd><p>The http method, for now GET, PUT or POST</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>callback</em></dt>
-			<dd><p>A block to execute when the call has finished</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>All convenience methods invoke this method. It uses a <a href="../Classes/SMServerCall.html">SMServerCall</a> instance to handle the loading; <a href="../Classes/SMServerCall.html">SMServerCall</a> only allows a body string or parameters,
-but not both, with the body string taking precedence if both are present.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SMBaseDocument.m</code><br />
-	</div>				
-	
-	
-</div>
-						
 					</div>
 					
 					
@@ -615,9 +528,9 @@ but not both, with the body string taking precedence if both are present.</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 CHIP. All rights reserved. (Last updated: 2013-04-02)</span><br />
+						<p><span class="copyright">&copy; 2013 CHIP. All rights reserved. (Last updated: 2013-04-03)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						
 					</div>
 				</div>

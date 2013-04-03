@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.1 (build 858)" />
+		<meta name="generator" content="appledoc 2.1 (build 840)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -105,7 +105,9 @@
 	
 	<option value="//api/name/performMethod:withBody:orParameters:ofType:httpMethod:callback:">&nbsp;&nbsp;&nbsp;&nbsp;- performMethod:withBody:orParameters:ofType:httpMethod:callback:</option>
 	
-	<option value="//api/name/postClinicalNote:">&nbsp;&nbsp;&nbsp;&nbsp;- postClinicalNote:</option>
+	<option value="//api/name/postBodyString:ofType:to:callback:">&nbsp;&nbsp;&nbsp;&nbsp;- postBodyString:ofType:to:callback:</option>
+	
+	<option value="//api/name/postClinicalNote:callback:">&nbsp;&nbsp;&nbsp;&nbsp;- postClinicalNote:callback:</option>
 	
 	
 	
@@ -122,6 +124,8 @@
 
 
 <li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Web Requests">Web Requests</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Calls Methods">Calls Methods</a></span></li>
 	
@@ -199,7 +203,9 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/performMethod:withBody:orParameters:ofType:httpMethod:callback:">performMethod:withBody:orParameters:ofType:httpMethod:callback:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/postClinicalNote:">postClinicalNote:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/postBodyString:ofType:to:callback:">postBodyString:ofType:to:callback:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/postClinicalNote:callback:">postClinicalNote:callback:</a></span></li>
 	
 </ul></li>
 
@@ -333,7 +339,15 @@ instance which prompts your app user to login and select a record. Once you have
 	</span>
 	
 	
-</li><li>
+</li>
+						</ul>
+						
+						
+						<a title="Web Requests" name="task_Web Requests"></a>
+						<h3 class="subsubtitle task-title">Web Requests</h3>
+
+						<ul class="task-list">
+							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/getDemographicsWithCallback:">&ndash;&nbsp;getDemographicsWithCallback:</a></code>
 		<span class="tooltip"><p>Fetches the record&rsquo;s <a href="#//api/name/demographics">demographics</a> document from /records/{record_id}/<a href="#//api/name/demographics">demographics</a></p></span>
@@ -344,6 +358,13 @@ instance which prompts your app user to login and select a record. Once you have
 	<span class="tooltip">
 		<code><a href="#//api/name/getObjectsOfClass:from:callback:">&ndash;&nbsp;getObjectsOfClass:from:callback:</a></code>
 		<span class="tooltip"><p>Performs a GET request to the given path and tries to instantiate objects of the given class from the returned data.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/postBodyString:ofType:to:callback:">&ndash;&nbsp;postBodyString:ofType:to:callback:</a></code>
+		<span class="tooltip"><p>Performs a POST request to the given path, posting the data as body data.</p></span>
 	</span>
 	
 	
@@ -372,144 +393,126 @@ instance which prompts your app user to login and select a record. Once you have
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/getAllergies:">&ndash;&nbsp;getAllergies:</a></code>
-		<span class="tooltip"><p>Get all Allergies and Allergy Exclusions for a patient.
-Makes a call to /records/{record_id}/allergies/, originally named &ldquo;get_allergies&rdquo;.</p></span>
+		<span class="tooltip"><p>Get all Allergies and Allergy Exclusions for a patient.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/getClinicalNotes:">&ndash;&nbsp;getClinicalNotes:</a></code>
-		<span class="tooltip"><p>Get all Clinical Notes for a patient.
-Makes a call to /records/{record_id}/clinical_notes/, originally named &ldquo;get_clinical_notes&rdquo;.</p></span>
+		<span class="tooltip"><p>Get all Clinical Notes for a patient.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/getDemographics:">&ndash;&nbsp;getDemographics:</a></code>
-		<span class="tooltip"><p>Get Demographics for a patient.
-Makes a call to /records/{record_id}/<a href="#//api/name/demographics">demographics</a>, originally named &ldquo;get_demographics&rdquo;.</p></span>
+		<span class="tooltip"><p>Get Demographics for a patient.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/getDocuments:">&ndash;&nbsp;getDocuments:</a></code>
-		<span class="tooltip"><p>Get all Documents for a patient.
-Makes a call to /records/{record_id}/documents/, originally named &ldquo;get_documents&rdquo;.</p></span>
+		<span class="tooltip"><p>Get all Documents for a patient.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/getEncounters:">&ndash;&nbsp;getEncounters:</a></code>
-		<span class="tooltip"><p>Get all Encounters for a patient.
-Makes a call to /records/{record_id}/encounters/, originally named &ldquo;get_encounters&rdquo;.</p></span>
+		<span class="tooltip"><p>Get all Encounters for a patient.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/getFamilyHistoryObservations:">&ndash;&nbsp;getFamilyHistoryObservations:</a></code>
-		<span class="tooltip"><p>Get all Family Histories for a patient.
-Makes a call to /records/{record_id}/family_history/, originally named &ldquo;get_family_history_observations&rdquo;.</p></span>
+		<span class="tooltip"><p>Get all Family Histories for a patient.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/getFulfillments:">&ndash;&nbsp;getFulfillments:</a></code>
-		<span class="tooltip"><p>Get all Fulfillments for a patient.
-Makes a call to /records/{record_id}/fulfillments/, originally named &ldquo;get_fulfillments&rdquo;.</p></span>
+		<span class="tooltip"><p>Get all Fulfillments for a patient.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/getImmunizations:">&ndash;&nbsp;getImmunizations:</a></code>
-		<span class="tooltip"><p>Get all Immunizations for a patient.
-Makes a call to /records/{record_id}/immunizations/, originally named &ldquo;get_immunizations&rdquo;.</p></span>
+		<span class="tooltip"><p>Get all Immunizations for a patient.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/getLabPanel:">&ndash;&nbsp;getLabPanel:</a></code>
-		<span class="tooltip"><p>Get one Lab Panel for a patient.
-Makes a call to /records/{record_id}/lab_panels/, originally named &ldquo;get_lab_panel&rdquo;.</p></span>
+		<span class="tooltip"><p>Get one Lab Panel for a patient.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/getLabPanels:">&ndash;&nbsp;getLabPanels:</a></code>
-		<span class="tooltip"><p>Get all Lab Panels for a patient.
-Makes a call to /records/{record_id}/lab_panels/, originally named &ldquo;get_lab_panels&rdquo;.</p></span>
+		<span class="tooltip"><p>Get all Lab Panels for a patient.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/getLabResults:">&ndash;&nbsp;getLabResults:</a></code>
-		<span class="tooltip"><p>Get all Lab Results for a patient.
-Makes a call to /records/{record_id}/lab_results/, originally named &ldquo;get_lab_results&rdquo;.</p></span>
+		<span class="tooltip"><p>Get all Lab Results for a patient.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/getMedications:">&ndash;&nbsp;getMedications:</a></code>
-		<span class="tooltip"><p>Get all Medications for a patient.
-Makes a call to /records/{record_id}/medications/, originally named &ldquo;get_medications&rdquo;.</p></span>
+		<span class="tooltip"><p>Get all Medications for a patient.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/getPhotograph:">&ndash;&nbsp;getPhotograph:</a></code>
-		<span class="tooltip"><p>Get one Photograph for a patient.
-Makes a call to /records/{record_id}/photograph, originally named &ldquo;get_photograph&rdquo;.</p></span>
+		<span class="tooltip"><p>Get one Photograph for a patient.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/getProblems:">&ndash;&nbsp;getProblems:</a></code>
-		<span class="tooltip"><p>Get all Problems for a patient.
-Makes a call to /records/{record_id}/problems/, originally named &ldquo;get_problems&rdquo;.</p></span>
+		<span class="tooltip"><p>Get all Problems for a patient.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/getProcedures:">&ndash;&nbsp;getProcedures:</a></code>
-		<span class="tooltip"><p>Get all Procedures for a patient.
-Makes a call to /records/{record_id}/procedures/, originally named &ldquo;get_procedures&rdquo;.</p></span>
+		<span class="tooltip"><p>Get all Procedures for a patient.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/getSocialHistory:">&ndash;&nbsp;getSocialHistory:</a></code>
-		<span class="tooltip"><p>Get Social History for a patient.
-Makes a call to /records/{record_id}/social_history, originally named &ldquo;get_social_history&rdquo;.</p></span>
+		<span class="tooltip"><p>Get Social History for a patient.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/getVitalSignSets:">&ndash;&nbsp;getVitalSignSets:</a></code>
-		<span class="tooltip"><p>Get all Vital Sign Sets for a patient.
-Makes a call to /records/{record_id}/vital_sign_sets/, originally named &ldquo;get_vital_sign_sets&rdquo;.</p></span>
+		<span class="tooltip"><p>Get all Vital Sign Sets for a patient.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/postClinicalNote:">&ndash;&nbsp;postClinicalNote:</a></code>
-		<span class="tooltip"><p>Post a Clinical Note for a patient
-Posts to /records/{record_id}/clinical_notes/, originally named &ldquo;post_clinical_note&rdquo;.</p></span>
+		<code><a href="#//api/name/postClinicalNote:callback:">&ndash;&nbsp;postClinicalNote:callback:</a></code>
+		<span class="tooltip"><p>Post a Clinical Note for a patient.</p></span>
 	</span>
 	
 	
@@ -795,8 +798,7 @@ Posts to /records/{record_id}/clinical_notes/, originally named &ldquo;post_clin
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Get all Allergies and Allergy Exclusions for a patient.
-Makes a call to /records/{record_id}/allergies/, originally named &ldquo;get_allergies&rdquo;.</p>
+		<p>Get all Allergies and Allergy Exclusions for a patient.</p>
 	</div>		
 	
     
@@ -822,6 +824,11 @@ the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
 	
 	
 	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Makes a call to /records/{record_id}/allergies/, originally named &ldquo;get_allergies&rdquo;.</p>
+	</div>
+	
 	
 	
 	
@@ -843,8 +850,7 @@ the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Get all Clinical Notes for a patient.
-Makes a call to /records/{record_id}/clinical_notes/, originally named &ldquo;get_clinical_notes&rdquo;.</p>
+		<p>Get all Clinical Notes for a patient.</p>
 	</div>		
 	
     
@@ -870,6 +876,11 @@ the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
 	
 	
 	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Makes a call to /records/{record_id}/clinical_notes/, originally named &ldquo;get_clinical_notes&rdquo;.</p>
+	</div>
+	
 	
 	
 	
@@ -891,8 +902,7 @@ the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Get Demographics for a patient.
-Makes a call to /records/{record_id}/<a href="#//api/name/demographics">demographics</a>, originally named &ldquo;get_demographics&rdquo;.</p>
+		<p>Get Demographics for a patient.</p>
 	</div>		
 	
     
@@ -917,6 +927,11 @@ the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
 	
 	
 	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Makes a call to /records/{record_id}/<a href="#//api/name/demographics">demographics</a>, originally named &ldquo;get_demographics&rdquo;.</p>
+	</div>
 	
 	
 	
@@ -985,8 +1000,7 @@ the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Get all Documents for a patient.
-Makes a call to /records/{record_id}/documents/, originally named &ldquo;get_documents&rdquo;.</p>
+		<p>Get all Documents for a patient.</p>
 	</div>		
 	
     
@@ -1012,6 +1026,11 @@ the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
 	
 	
 	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Makes a call to /records/{record_id}/documents/, originally named &ldquo;get_documents&rdquo;.</p>
+	</div>
+	
 	
 	
 	
@@ -1033,8 +1052,7 @@ the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Get all Encounters for a patient.
-Makes a call to /records/{record_id}/encounters/, originally named &ldquo;get_encounters&rdquo;.</p>
+		<p>Get all Encounters for a patient.</p>
 	</div>		
 	
     
@@ -1060,6 +1078,11 @@ the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
 	
 	
 	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Makes a call to /records/{record_id}/encounters/, originally named &ldquo;get_encounters&rdquo;.</p>
+	</div>
+	
 	
 	
 	
@@ -1081,8 +1104,7 @@ the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Get all Family Histories for a patient.
-Makes a call to /records/{record_id}/family_history/, originally named &ldquo;get_family_history_observations&rdquo;.</p>
+		<p>Get all Family Histories for a patient.</p>
 	</div>		
 	
     
@@ -1108,6 +1130,11 @@ the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
 	
 	
 	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Makes a call to /records/{record_id}/family_history/, originally named &ldquo;get_family_history_observations&rdquo;.</p>
+	</div>
+	
 	
 	
 	
@@ -1129,8 +1156,7 @@ the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Get all Fulfillments for a patient.
-Makes a call to /records/{record_id}/fulfillments/, originally named &ldquo;get_fulfillments&rdquo;.</p>
+		<p>Get all Fulfillments for a patient.</p>
 	</div>		
 	
     
@@ -1156,6 +1182,11 @@ the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
 	
 	
 	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Makes a call to /records/{record_id}/fulfillments/, originally named &ldquo;get_fulfillments&rdquo;.</p>
+	</div>
+	
 	
 	
 	
@@ -1177,8 +1208,7 @@ the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Get all Immunizations for a patient.
-Makes a call to /records/{record_id}/immunizations/, originally named &ldquo;get_immunizations&rdquo;.</p>
+		<p>Get all Immunizations for a patient.</p>
 	</div>		
 	
     
@@ -1204,6 +1234,11 @@ the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
 	
 	
 	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Makes a call to /records/{record_id}/immunizations/, originally named &ldquo;get_immunizations&rdquo;.</p>
+	</div>
+	
 	
 	
 	
@@ -1225,8 +1260,7 @@ the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Get one Lab Panel for a patient.
-Makes a call to /records/{record_id}/lab_panels/, originally named &ldquo;get_lab_panel&rdquo;.</p>
+		<p>Get one Lab Panel for a patient.</p>
 	</div>		
 	
     
@@ -1252,6 +1286,11 @@ the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
 	
 	
 	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Makes a call to /records/{record_id}/lab_panels/, originally named &ldquo;get_lab_panel&rdquo;.</p>
+	</div>
+	
 	
 	
 	
@@ -1273,8 +1312,7 @@ the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Get all Lab Panels for a patient.
-Makes a call to /records/{record_id}/lab_panels/, originally named &ldquo;get_lab_panels&rdquo;.</p>
+		<p>Get all Lab Panels for a patient.</p>
 	</div>		
 	
     
@@ -1300,6 +1338,11 @@ the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
 	
 	
 	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Makes a call to /records/{record_id}/lab_panels/, originally named &ldquo;get_lab_panels&rdquo;.</p>
+	</div>
+	
 	
 	
 	
@@ -1321,8 +1364,7 @@ the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Get all Lab Results for a patient.
-Makes a call to /records/{record_id}/lab_results/, originally named &ldquo;get_lab_results&rdquo;.</p>
+		<p>Get all Lab Results for a patient.</p>
 	</div>		
 	
     
@@ -1348,6 +1390,11 @@ the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
 	
 	
 	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Makes a call to /records/{record_id}/lab_results/, originally named &ldquo;get_lab_results&rdquo;.</p>
+	</div>
+	
 	
 	
 	
@@ -1369,8 +1416,7 @@ the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Get all Medications for a patient.
-Makes a call to /records/{record_id}/medications/, originally named &ldquo;get_medications&rdquo;.</p>
+		<p>Get all Medications for a patient.</p>
 	</div>		
 	
     
@@ -1395,6 +1441,11 @@ the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
 	
 	
 	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Makes a call to /records/{record_id}/medications/, originally named &ldquo;get_medications&rdquo;.</p>
+	</div>
 	
 	
 	
@@ -1473,8 +1524,7 @@ the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Get one Photograph for a patient.
-Makes a call to /records/{record_id}/photograph, originally named &ldquo;get_photograph&rdquo;.</p>
+		<p>Get one Photograph for a patient.</p>
 	</div>		
 	
     
@@ -1500,6 +1550,11 @@ the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
 	
 	
 	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Makes a call to /records/{record_id}/photograph, originally named &ldquo;get_photograph&rdquo;.</p>
+	</div>
+	
 	
 	
 	
@@ -1521,8 +1576,7 @@ the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Get all Problems for a patient.
-Makes a call to /records/{record_id}/problems/, originally named &ldquo;get_problems&rdquo;.</p>
+		<p>Get all Problems for a patient.</p>
 	</div>		
 	
     
@@ -1548,6 +1602,11 @@ the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
 	
 	
 	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Makes a call to /records/{record_id}/problems/, originally named &ldquo;get_problems&rdquo;.</p>
+	</div>
+	
 	
 	
 	
@@ -1569,8 +1628,7 @@ the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Get all Procedures for a patient.
-Makes a call to /records/{record_id}/procedures/, originally named &ldquo;get_procedures&rdquo;.</p>
+		<p>Get all Procedures for a patient.</p>
 	</div>		
 	
     
@@ -1596,6 +1654,11 @@ the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
 	
 	
 	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Makes a call to /records/{record_id}/procedures/, originally named &ldquo;get_procedures&rdquo;.</p>
+	</div>
+	
 	
 	
 	
@@ -1617,8 +1680,7 @@ the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Get Social History for a patient.
-Makes a call to /records/{record_id}/social_history, originally named &ldquo;get_social_history&rdquo;.</p>
+		<p>Get Social History for a patient.</p>
 	</div>		
 	
     
@@ -1644,6 +1706,11 @@ the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
 	
 	
 	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Makes a call to /records/{record_id}/social_history, originally named &ldquo;get_social_history&rdquo;.</p>
+	</div>
+	
 	
 	
 	
@@ -1665,8 +1732,7 @@ the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Get all Vital Sign Sets for a patient.
-Makes a call to /records/{record_id}/vital_sign_sets/, originally named &ldquo;get_vital_sign_sets&rdquo;.</p>
+		<p>Get all Vital Sign Sets for a patient.</p>
 	</div>		
 	
     
@@ -1691,6 +1757,11 @@ the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
 	
 	
 	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Makes a call to /records/{record_id}/vital_sign_sets/, originally named &ldquo;get_vital_sign_sets&rdquo;.</p>
+	</div>
 	
 	
 	
@@ -1815,7 +1886,7 @@ the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)performMethod:(NSString *)<em>aMethod</em> withBody:(NSString *)<em>body</em> orParameters:(NSArray *)<em>parameters</em> ofType:(NSString *)<em>contentType</em> httpMethod:(NSString *)<em>httpMethod</em> callback:(SMSuccessRetvalueBlock)<em>callback</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)performMethod:(NSString *)<em>aMethod</em> withBody:(id)<em>body</em> orParameters:(NSArray *)<em>parameters</em> ofType:(NSString *)<em>contentType</em> httpMethod:(NSString *)<em>httpMethod</em> callback:(SMSuccessRetvalueBlock)<em>callback</em></code></div>
 
     
 	
@@ -1829,7 +1900,7 @@ the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>body</em></dt>
-			<dd><p>The body string</p></dd>
+			<dd><p>The body data, has to be either NSData or NSString</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
@@ -1881,19 +1952,18 @@ but not both, with the body string taking precedence if both are present.</p>
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/postClinicalNote:" title="postClinicalNote:"></a>
-	<h3 class="subsubtitle method-title">postClinicalNote:</h3>
+	<a name="//api/name/postBodyString:ofType:to:callback:" title="postBodyString:ofType:to:callback:"></a>
+	<h3 class="subsubtitle method-title">postBodyString:ofType:to:callback:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Post a Clinical Note for a patient
-Posts to /records/{record_id}/clinical_notes/, originally named &ldquo;post_clinical_note&rdquo;.</p>
+		<p>Performs a POST request to the given path, posting the data as body data.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)postClinicalNote:(SMSuccessRetvalueBlock)<em>callback</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)postBodyString:(NSString *)<em>bodyString</em> ofType:(NSString *)<em>contentType</em> to:(NSString *)<em>path</em> callback:(SMSuccessRetvalueBlock)<em>callback</em></code></div>
 
     
 	
@@ -1901,9 +1971,23 @@ Posts to /records/{record_id}/clinical_notes/, originally named &ldquo;post_clin
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
+			<dt><em>bodyString</em></dt>
+			<dd><p>The string data to post as body data</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>contentType</em></dt>
+			<dd><p>The Content-Type to use</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>path</em></dt>
+			<dd><p>The REST method path to post to</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
 			<dt><em>callback</em></dt>
-			<dd><p>A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing
-the posted item (key: SMARTResponseDataKey) if successful.</p></dd>
+			<dd><p>A SMSuccessRetvalueBlock callback to execute when the request is done</p></dd>
 		</dl>
 		
 	</div>
@@ -1913,6 +1997,63 @@ the posted item (key: SMARTResponseDataKey) if successful.</p></dd>
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMRecord.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/postClinicalNote:callback:" title="postClinicalNote:callback:"></a>
+	<h3 class="subsubtitle method-title">postClinicalNote:callback:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Post a Clinical Note for a patient.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)postClinicalNote:(NSString *)<em>string</em> callback:(SMSuccessRetvalueBlock)<em>callback</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>string</em></dt>
+			<dd><p>The string to post</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Posts to /records/{record_id}/clinical_notes/, originally named &ldquo;post_clinical_note&rdquo;. As of SMART 0.6, this is limited to clinical notes, which
+only allows posting plain text. May be extended in the future.</p>
+	</div>
 	
 	
 	
@@ -1941,9 +2082,9 @@ the posted item (key: SMARTResponseDataKey) if successful.</p></dd>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 CHIP. All rights reserved. (Last updated: 2013-04-02)</span><br />
+						<p><span class="copyright">&copy; 2013 CHIP. All rights reserved. (Last updated: 2013-04-03)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						
 					</div>
 				</div>
