@@ -32,9 +32,9 @@
  */
 @interface SMObject : NSObject
 
-@property (nonatomic, readonly, strong) RedlandNode *subject;			///< The subject this class is describing
-@property (nonatomic, readonly, strong) RedlandModel *model;			///< The redland model represented by this object
-@property (nonatomic, copy) NSString *rdfType;							///< The rdf:type instances of this class represent
+@property (nonatomic, readonly, strong) RedlandNode *subject;			//< The subject this class is describing
+@property (nonatomic, readonly, strong) RedlandModel *model;			//< The redland model represented by this object
+@property (nonatomic, copy) NSString *rdfType;							//< The rdf:type instances of this class represent
 
 + (id)newWithSubject:(RedlandNode *)aSubject inModel:(RedlandModel *)aModel;
 + (id)newWithRDFXML:(NSString *)rdfString;

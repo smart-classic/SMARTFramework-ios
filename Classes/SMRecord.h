@@ -29,7 +29,27 @@
 
 
 /**
- *  Represents a SMART record on a SMART server
+ *  The record instance is your portal to the patient's documents.
+ *
+ *  You typically use the record methods to retrieve the desired patient data. To obtain a record instance, call the method selectRecord: on your SMServer
+ *  instance which prompts your app user to login and select a record. Once you have a record instance you can use its convenience methods, for example, if
+ *  `smart` was your SMServer instance, to retrieve a patient's medications you could do:
+ *
+ *	[smart.activeRecord getMedications:^(BOOL success, NSDictionary *userInfo) {
+ *		if (!success) {
+ *			NSString *errMsg = [[userInfo objectForKey:INErrorKey] localizedDescription];
+ *			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed to connect"
+ *			                                                message:errMsg
+ *			                                               delegate:nil
+ *			                                      cancelButtonTitle:@"OK"
+ *			                                      otherButtonTitles:nil];
+ *			[alert show];
+ *		}
+ *		else {
+ *			NSArray *meds = [userInfo objectForKey:INResponseArrayKey];
+ *			// You have now got SMMedication objects in that array
+ *		}
+ *	}];
  */
 @interface SMRecord : NSObject
 

@@ -30,8 +30,8 @@
  */
 @interface SMURLFetcher : NSObject
 
-@property (nonatomic, readonly, copy) NSArray *successfulLoads;					///< Contains SMURLLoader instances which loaded with an HTTP response < 400
-@property (nonatomic, readonly, copy) NSArray *failedLoads;						///< Contains all SMURLLoader instances that failed to load for any reason
+@property (nonatomic, readonly, copy) NSArray *successfulLoads;					//< Contains SMURLLoader instances which loaded with an HTTP response < 400
+@property (nonatomic, readonly, copy) NSArray *failedLoads;						//< Contains all SMURLLoader instances that failed to load for any reason
 
 - (void)getURLs:(NSArray *)anURLArray callback:(SMCancelErrorBlock)aCallback;
 - (void)cancel;

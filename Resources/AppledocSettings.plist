@@ -9,6 +9,8 @@
 		<string>SMARTFramework.xcodeproj</string>
 		<string>appledoc</string>
 	</array>
+	<key>--index-desc</key>
+	<string>Resources/Index.md</string>
 	<key>--project-name</key>
 	<string>SMART iOS Framework</string>
 	<key>--project-company</key>
@@ -26,6 +28,12 @@
 	<key>--exit-threshold</key>
 	<integer>2</integer>
 	<key>--merge-categories</key>
+	<true/>
+	<key>--merge-category-comment</key>
+	<true/>
+	<key>--no-repeat-first-par</key>
+	<true/>
+	<key>--prefix-merged-sections</key>
 	<true/>
 	<key>--warn-missing-arg</key>
 	<false/>

@@ -57,8 +57,8 @@
 /**
  *  The basic method to perform REST methods on the server with App credentials.
  *
- *  Uses a SMServerCall instance to handle the loading; SMServerCall only allows a body string or parameters, but not both, with
- *  the body string taking precedence.
+ *  All convenience methods invoke this method. It uses a SMServerCall instance to handle the loading; SMServerCall only allows a body string or parameters,
+ *  but not both, with the body string taking precedence if both are present.
  *  @param aMethod The path to call on the server
  *  @param body The body data (NSData) or string (NSString)
  *  @param parameters An array full of strings in the form "key=value"

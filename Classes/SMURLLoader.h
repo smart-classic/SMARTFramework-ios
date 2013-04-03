@@ -23,7 +23,7 @@
 #import <Foundation/Foundation.h>
 #import "SMART.h"
 
-#define kSMURLLoaderDefaultTimeoutInterval 60.0								///< timeout interval in seconds
+#define kSMURLLoaderDefaultTimeoutInterval 60.0								//< timeout interval in seconds
 
 
 /**
@@ -31,11 +31,11 @@
  */
 @interface SMURLLoader : NSObject
 
-@property (nonatomic, strong) NSURL *url;									///< The URL we will load from
-@property (nonatomic, readonly, copy) NSData *responseData;					///< Will contain the response data as loaded from url
-@property (nonatomic, readonly, copy) NSString *responseString;				///< Will contain the response as NSString as loaded from url
-@property (nonatomic, readonly, assign) NSUInteger responseStatus;			///< The HTTP response status code
-@property (nonatomic, assign) BOOL expectBinaryData;						///< NO by default. Set to YES if you expect binary data; "responseString" will be left nil!
+@property (nonatomic, strong) NSURL *url;									//< The URL we will load from
+@property (nonatomic, readonly, copy) NSData *responseData;					//< Will contain the response data as loaded from url
+@property (nonatomic, readonly, copy) NSString *responseString;				//< Will contain the response as NSString as loaded from url
+@property (nonatomic, readonly, assign) NSUInteger responseStatus;			//< The HTTP response status code
+@property (nonatomic, assign) BOOL expectBinaryData;						//< NO by default. Set to YES if you expect binary data; "responseString" will be left nil!
 
 + (NSDictionary *)queryFromRequest:(NSURLRequest *)aRequest;
 + (NSDictionary *)queryFromRequestString:(NSString *)aString;

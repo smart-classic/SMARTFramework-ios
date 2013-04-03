@@ -277,8 +277,9 @@
 		EE30FB34170A6F4400FF1809 /* SMFamilyHistoryObservation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMFamilyHistoryObservation.m; sourceTree = "<group>"; };
 		EE30FB37170A6F5500FF1809 /* SMPhotograph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMPhotograph.h; sourceTree = "<group>"; };
 		EE30FB38170A6F5500FF1809 /* SMPhotograph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMPhotograph.m; sourceTree = "<group>"; };
-		EE40DCC6170B957600398D0E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = file; path = README.md; sourceTree = "<group>"; };
+		EE40DCC6170B957600398D0E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		EE42D04B15DEB4C900F03EB0 /* SMART.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMART.h; sourceTree = "<group>"; };
+		EE47118C170BCD37007C2D3D /* Index.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = Index.md; sourceTree = "<group>"; };
 		EE59AC1215E342CC00F4D738 /* CategoryTemplate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoryTemplate.h; sourceTree = "<group>"; };
 		EE59AC1315E342CC00F4D738 /* CategoryTemplate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryTemplate.m; sourceTree = "<group>"; };
 		EE59AC1415E34D4F00F4D738 /* SMRecord+Calls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SMRecord+Calls.h"; sourceTree = "<group>"; };
@@ -724,6 +725,7 @@
 		EEC9C59B15CB2EA800B7C568 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EE47118C170BCD37007C2D3D /* Index.md */,
 				EEC146F815DED1D0006B8798 /* AppledocSettings.plist */,
 				EEC9C59C15CB2EA800B7C568 /* SMARTFramework-Prefix.pch */,
 			);

@@ -25,15 +25,21 @@
 
 /**
  *  The base class for all SMART server documents.
+ *
+ *  This class implements the basics for URL requests, which are all funnelled via performMethod:withBody:orParameters:ofType:httpMethod:callback:.
  */
 @interface SMBaseDocument : SMObject
 
-@property (nonatomic, copy) NSString *uuid;						///< This document's ID on the server
-@property (nonatomic, weak) SMRecord *record;					///< The record this document belongs to
+/// This document's ID on the server
+@property (nonatomic, copy) NSString *uuid;
 
-@property (nonatomic, copy) NSString *basePath;					///< Uses the class basePath and substitutes the placeholders with instance properties by default
+/// The record this document belongs to
+@property (nonatomic, weak) SMRecord *record;
 
-// performing server calls
+// Uses the class basePath and substitutes the placeholders with instance properties by default
+@property (nonatomic, copy) NSString *basePath;
+
+/// @name Performing server calls
 - (void)get:(SMCancelErrorBlock)callback;
 - (void)get:(NSString *)aMethod callback:(SMSuccessRetvalueBlock)callback;
 - (void)get:(NSString *)aMethod parameters:(NSArray *)paramArray callback:(SMSuccessRetvalueBlock)callback;

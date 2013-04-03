@@ -37,8 +37,8 @@
 
 @property (nonatomic, assign) BOOL userDidLogout;
 
-@property (nonatomic, strong) NSMutableArray *history;					///< Holds NSURLs (currently only used to reload the last page when an error occurred)
-@property (nonatomic, strong) SMActionView *loadingView;			///< A private view overlaid during loading activity
+@property (nonatomic, strong) NSMutableArray *history;				//< Holds NSURLs (currently only used to reload the last page when an error occurred)
+@property (nonatomic, strong) SMActionView *loadingView;			//< A private view overlaid during loading activity
 
 - (void)showHideBackButton;
 - (void)showStillLoadingHint;

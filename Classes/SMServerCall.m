@@ -299,6 +299,7 @@
 
 /**
  *  MPOAuth will call this method to get ahold of the oAuth verifier.
+ *
  *  We must extract the verifier from the callback URL (specified in "- (NSURL *)callbackURLForCompletedUserAuthorization" and
  *  called on the App Delegate) and return it from this method
  */

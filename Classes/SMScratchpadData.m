@@ -96,6 +96,7 @@
 
 /**
  *  Stores the current content of the "data" ivar on the server.
+ *  @param callback A SMCancelErrorBlock block to be executed after the call returns from the server
  */
 - (void)store:(SMCancelErrorBlock)callback
 {
@@ -117,6 +118,7 @@
 
 /**
  *  Deletes scratchpad data for this record (for your app).
+ *  @param callback A SMCancelErrorBlock block to be executed after the call returns from the server
  */
 - (void)delete:(SMCancelErrorBlock)callback
 {

@@ -37,12 +37,12 @@
 
 @property (nonatomic, readwrite, strong) NSMutableArray *knownRecords;
 
-@property (nonatomic, strong) MPOAuthAPI *oauth;								/// Handle to our MPOAuth instance with App credentials
-@property (nonatomic, strong) NSMutableArray *callQueue;						/// Calls are queued instead of performed in parallel to avoid getting inconsistent results
-@property (nonatomic, strong) NSMutableArray *suspendedCalls;					/// Calls that were dequeued, we need to hold on to them to not deallocate them
-@property (nonatomic, strong) SMServerCall *currentCall;						/// Only one call at a time, this is the current one
+@property (nonatomic, strong) MPOAuthAPI *oauth;								//< Handle to our MPOAuth instance with App credentials
+@property (nonatomic, strong) NSMutableArray *callQueue;						//< Calls are queued instead of performed in parallel to avoid getting inconsistent results
+@property (nonatomic, strong) NSMutableArray *suspendedCalls;					//< Calls that were dequeued, we need to hold on to them to not deallocate them
+@property (nonatomic, strong) SMServerCall *currentCall;						//< Only one call at a time, this is the current one
 
-@property (nonatomic, strong) SMLoginViewController *loginVC;					/// A handle to the currently shown login view controller
+@property (nonatomic, strong) SMLoginViewController *loginVC;					//< A handle to the currently shown login view controller
 @property (nonatomic, readwrite, copy) NSString *lastOAuthVerifier;
 
 - (void)_presentLoginScreenAtURL:(NSURL *)loginURL;
@@ -752,7 +752,9 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 
 #pragma mark - KVC
 /**
- *  Sets the active record and resets the oauth instance upon logout.
+ *  The currently active record.
+ *
+ *  The setter sets the active record and resets the oauth instance upon logout.
  *  @param aRecord The record that should be active
  */
 - (void)setActiveRecord:(SMRecord *)aRecord
@@ -767,7 +769,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 }
 
 /**
- *  Shortcut to the active record id
+ *  Shortcut to the active record id.
  */
 - (NSString *)activeRecordId
 {
@@ -779,10 +781,10 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
  *
  *  The following `launch_urls` -items are extracted from the manifest:
  *
- *  - app_launch
- *  - request_token
- *  - authorize_token
- *  - exchange_token
+ *  - app_launch: startURL
+ *  - request_token: tokenRequestURL
+ *  - authorize_token: tokenAuthorizeURL
+ *  - exchange_token: tokenExchangeURL
  *
  *  @param manifest The dictionary the server returned
  */

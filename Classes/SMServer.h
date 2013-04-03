@@ -20,17 +20,6 @@
  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-/**
- *  SMARTFramework-ios
- *  ==================
- *  Welcome to the API documentation of the SMART framework for iOS.
- *  
- *  Instructions
- *  ------------
- *  Instructions an how to setup the framework can be found in README.md also provided with the project, which can be viewed nicely formatted on our github
- *  page: https://github.com/chb/SMARTFramework-ios
- */
-
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "SMART.h"
@@ -68,62 +57,120 @@
 
 
 /**
- *  A class to represent the server you want to connect to.
+ *  Represent the server you want to connect to.
  *
- *  This is the main interaction point of the framework with your targeted SMART Server.
+ *  This is the main interaction point of the framework with your targeted SMART Server. You typically initialize a SMServer instance upon app launch and
+ *  provide access to it via AppDelegate. The server instance will read its URL and OAuth key/secret configuration from the file `Config.h` and will auto-
+ *  configure itself when the first URL request is made. This happens via the server instance downloading the server manifest, which contains the app launch
+ *  URL and the three OAuth endpoints.
+ *
+ *  The server object orchestrates all requests that you make, but you only rarely interact with the server itself. What you are interested in is getting a
+ *  record object, and you then use that record object to work with patient data. When you request a record object from the server, the app user is prompted
+ *  to login and select a record. You initiate this as follows:
+ *
+ *	SMServer *smart = [SMServer serverWithDelegate:self];
+ *	
+ *	[smart selectRecord:^(BOOL userDidCancel, NSString *errorMessage) {
+ *
+ *		// there was an error selecting the record
+ *		if (errorMessage) {
+ *			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed to connect"
+ *															message:errorMessage
+ *														   delegate:nil
+ *												  cancelButtonTitle:@"OK"
+ *												  otherButtonTitles:nil];
+ *			[alert show];
+ *		}
+ *
+ *		// did successfully select a record
+ *		else if (!userDidCancel) {
+ *			// you can now use `smart.activeRecord`
+ *		}
+ *	}];
  */
 @interface SMServer : NSObject <SMLoginViewControllerDelegate>
 
-@property (nonatomic, assign) id<SMARTServerDelegate> delegate;					///< A delegate to receive notifications
-
-@property (nonatomic, strong) NSURL *url;										///< The server URL
-@property (nonatomic, copy) NSString *appId;									///< The id of the app as it is known on the server
-
-@property (nonatomic, copy) NSDictionary *manifest;								///< The server manifest, decoded from JSON
-@property (nonatomic, copy) NSDictionary *appManifest;							///< The app manifest, decoded from JSON
-
-@property (nonatomic, copy) NSString *consumerKey;								///< The consumer key for the app
-@property (nonatomic, copy) NSString *consumerSecret;							///< The consumer secret for the app
-
-@property (nonatomic, strong) NSURL *startURL;									///< The URL to load to display the login screen and record selection
-@property (nonatomic, strong) NSURL *tokenRequestURL;							///< Endpoint to request an OAuth request token
-@property (nonatomic, strong) NSURL *tokenAuthorizeURL;							///< Endpoint to authorize an OAuth request token
-@property (nonatomic, strong) NSURL *tokenExchangeURL;							///< Endpoint to trade the request for an OAuth access token
-@property (nonatomic, copy) NSString *callbackScheme;							///< Defaults to "smart-app", but you can use your own
-
-@property (nonatomic, strong) SMRecord *activeRecord;							///< The currently active record
-@property (nonatomic, readonly, copy) NSString *activeRecordId;					///< Shortcut method to get the id of the currently active record
-@property (nonatomic, readonly, strong) NSMutableArray *knownRecords;			///< A cache of the known records on this server. Not currently used by the framework.
-
-@property (nonatomic, assign) BOOL storeCredentials;							///< NO by default. If you set this to YES, a successful login will save credentials to the system keychain
-@property (nonatomic, readonly, copy) NSString *lastOAuthVerifier;				///< Storing our OAuth verifier here until MPOAuth asks for it
+/// A delegate to receive notifications
+@property (nonatomic, assign) id<SMARTServerDelegate> delegate;
 
 
-+ (id)serverWithDelegate:(id<SMARTServerDelegate>)aDelegate;
+/// @name Configuration
+/// The server URL
+@property (nonatomic, strong) NSURL *url;
+
+/// The id of the app as it is known on the server
+@property (nonatomic, copy) NSString *appId;
+
+/// The consumer key for the app
+@property (nonatomic, copy) NSString *consumerKey;
+
+/// The consumer secret for the app
+@property (nonatomic, copy) NSString *consumerSecret;
+
+
+/// @name Manifests and Endpoints
+// The server manifest, decoded from JSON
+@property (nonatomic, copy) NSDictionary *manifest;
+
+/// The app manifest, decoded from JSON
+@property (nonatomic, copy) NSDictionary *appManifest;
+
+/// The URL to load to display the login screen and record selection
+@property (nonatomic, strong) NSURL *startURL;
+
+/// Endpoint to request an OAuth request token
+@property (nonatomic, strong) NSURL *tokenRequestURL;
+
+/// Endpoint to authorize an OAuth request token
+@property (nonatomic, strong) NSURL *tokenAuthorizeURL;
+
+/// Endpoint to trade the request for an OAuth access token
+@property (nonatomic, strong) NSURL *tokenExchangeURL;
+
+/// Defaults to "smart-app", but you can use your own
+@property (nonatomic, copy) NSString *callbackScheme;
+
+/// Storing our OAuth verifier here until MPOAuth asks for it
+@property (nonatomic, readonly, copy) NSString *lastOAuthVerifier;
+
+
+/// @name Record Handling
+// The currently active record
+@property (nonatomic, strong) SMRecord *activeRecord;
+
+// Shortcut method to get the id of the currently active record
+@property (nonatomic, readonly, copy) NSString *activeRecordId;
+
+/// A cache of the known records on this server
+@property (nonatomic, readonly, strong) NSMutableArray *knownRecords;
 
 - (void)selectRecord:(SMCancelErrorBlock)callback;
-- (void)authenticate:(SMCancelErrorBlock)callback;
-
-// authentication
-- (void)performWhenReadyToConnect:(SMCancelErrorBlock)callback;
-- (void)fetchServerManifest:(SMCancelErrorBlock)callback;
-- (void)fetchAppManifest:(SMCancelErrorBlock)callback;
-- (BOOL)shouldAutomaticallyAuthenticateFrom:(NSURL *)authURL;
-- (NSURL *)authorizeCallbackURL;
-- (NSDictionary *)additionalRequestTokenParameters;
-
-// records
 - (SMRecord *)recordWithId:(NSString *)recordId;
 
-// app-specific storage
-- (void)fetchAppSpecificDocumentsWithCallback:(SMSuccessRetvalueBlock)callback;
 
-// performing calls
+/// @name Allocator
++ (id)serverWithDelegate:(id<SMARTServerDelegate>)aDelegate;
+
+
+/// @name Requests
 - (void)performCall:(SMServerCall *)aCall;
 - (void)callDidFinish:(SMServerCall *)aCall;
 - (void)suspendCall:(SMServerCall *)aCall;
 
-// OAuth
+- (void)performWhenReadyToConnect:(SMCancelErrorBlock)callback;
+- (void)fetchServerManifest:(SMCancelErrorBlock)callback;
+- (void)fetchAppManifest:(SMCancelErrorBlock)callback;
+
+/// @name Authentication
+- (void)authenticate:(SMCancelErrorBlock)callback;
+- (BOOL)shouldAutomaticallyAuthenticateFrom:(NSURL *)authURL;
+- (NSURL *)authorizeCallbackURL;
+- (NSDictionary *)additionalRequestTokenParameters;
+
+/// @name App-specific storage
+- (void)fetchAppSpecificDocumentsWithCallback:(SMSuccessRetvalueBlock)callback;
+
+/// @name OAuth
 - (MPOAuthAPI *)createOAuthWithAuthMethodClass:(NSString *)authClass error:(NSError *__autoreleasing *)error;
 
 

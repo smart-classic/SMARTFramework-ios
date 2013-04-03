@@ -101,8 +101,10 @@
 
 #pragma mark - RDF Properties
 /**
- *  The rdf:type getter for this class gets the class-wide type if it is not specifically set for this instance; there is no need to specifically set the rdf-
- *  type for a single instance as the instance should always represent the same type of objects, but it is still possible.
+ *  The rdf:type getter for this class gets the class-wide type if it is not specifically set for this instance.
+ *
+ *  There is no need to specifically set the rdf-type for a single instance as the instance should always represent the same type of objects, but it is still
+ *  possible.
  */
 - (NSString *)rdfType
 {
@@ -113,7 +115,7 @@
 }
 
 /**
- *  The standard rdf:type represented by instances of this class
+ *  The standard rdf:type represented by instances of this class.
  */
 + (NSString *)rdfType
 {
