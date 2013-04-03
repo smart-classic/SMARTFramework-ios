@@ -41,7 +41,7 @@
 {
 	if (data != _data) {
 		_data = [data copy];
-		self.stringValue = nil;
+		_stringValue = nil;
 	}
 }
 
@@ -62,8 +62,8 @@
 - (void)setStringValue:(NSString *)stringValue
 {
 	if (stringValue != _stringValue) {
-		self.data = [stringValue dataUsingEncoding:NSUTF8StringEncoding];
 		_stringValue = [stringValue copy];
+		_data = [_stringValue dataUsingEncoding:NSUTF8StringEncoding];
 	}
 }
 
