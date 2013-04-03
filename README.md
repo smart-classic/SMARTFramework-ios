@@ -28,10 +28,11 @@ You need a [SMART container] running version 0.6 or above
 Technical Documentation
 -----------------------
 
-The code is documented using [appledoc] which you can build yourself as follows or install via [Homebrew]. After installing you can run the `SMART iOS
-Documentation` target right from within Xcode.
+The code is documented using [appledoc] and the **[documentation is available online][docs]**. You can also build the documentation yourself, which will
+install a Docset that is available from within Xcode.
 
-Building and installing appledoc yourself:
+To build the documentation yourself install appledoc as follows (or via [Homebrew]). After installing you can run the `SMART iOS Documentation` target right
+from within Xcode.
 
     $ cd SMARTFramework-ios/
     $ git clone git://github.com/tomaz/appledoc.git
@@ -46,6 +47,7 @@ framework, version 2.0 will therefore not document some of the properties I'm af
 After installing appledoc and running the documentation target the documentation is available from within Xcode, just `ALT`-click any keyword like you would do
 with standard Cocoa keywords.
 
+[docs]: http://chb.github.com/SMARTFramework-ios/
 [appledoc]: http://gentlebytes.com/appledoc/
 [homebrew]: http://mxcl.github.com/homebrew/
 
