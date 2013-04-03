@@ -26,7 +26,8 @@
 /**
  *  The base class for all SMART server documents.
  *
- *  This class implements the basics for URL requests, which are all funnelled via performMethod:withBody:orParameters:ofType:httpMethod:callback:.
+ *  This class implements the basics for URL requests, which are all funnelled via SMRecord 's performMethod:withBody:orParameters:ofType:httpMethod:callback:
+ *  method.
  */
 @interface SMBaseDocument : SMObject
 
@@ -43,7 +44,6 @@
 - (void)get:(SMCancelErrorBlock)callback;
 - (void)get:(NSString *)aMethod callback:(SMSuccessRetvalueBlock)callback;
 - (void)get:(NSString *)aMethod parameters:(NSArray *)paramArray callback:(SMSuccessRetvalueBlock)callback;
-- (void)performMethod:(NSString *)aMethod withBody:(id)body orParameters:(NSArray *)parameters ofType:(NSString *)contentType httpMethod:(NSString *)httpMethod callback:(SMSuccessRetvalueBlock)callback;
 
 + (NSString *)basePath;
 

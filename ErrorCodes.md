@@ -19,9 +19,11 @@ For the Indivo and SMART Obj-C frameworks.
 - 1005 -- No consumer secret provided
 - 1100 -- Call already in progress
 - 1101 -- Authentication already in progress
+- 1200 -- No data for POST
 
-### Server Objects
+### Server and Record Objects
 - 2000 -- No server set
 - 2001 -- Failed to create OAuth API
+- 2100 -- No record set
 - 2200 -- Class does not support reporting calls
 

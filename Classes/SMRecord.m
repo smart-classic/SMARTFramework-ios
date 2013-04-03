@@ -180,6 +180,28 @@
 			   }];
 }
 
+/**
+ *  Performs a POST request to the given path, posting the data as body data.
+ *  @param bodyString The string data to post as body data
+ *  @param contentType The Content-Type to use
+ *  @param path The REST method path to post to
+ *  @param callback A SMSuccessRetvalueBlock callback to execute when the request is done
+ */
+- (void)postBodyString:(NSString *)bodyString ofType:(NSString *)contentType to:(NSString *)path callback:(SMSuccessRetvalueBlock)callback
+{
+	if ([bodyString length] < 1) {
+		SUCCESS_RETVAL_CALLBACK_OR_LOG_ERR_STRING(callback, @"Need body data to perform a POST request but got none", 1200)
+		return;
+	}
+	
+	[self performMethod:path
+			   withBody:bodyString
+		   orParameters:nil
+				 ofType:contentType
+			 httpMethod:@"POST"
+			   callback:callback];
+}
+
 
 /**
  *  The basic method to perform REST methods on the server with App credentials.
@@ -187,13 +209,13 @@
  *  All convenience methods invoke this method. It uses a SMServerCall instance to handle the loading; SMServerCall only allows a body string or parameters,
  *  but not both, with the body string taking precedence if both are present.
  *  @param aMethod The path to call on the server
- *  @param body The body string
+ *  @param body The body data, has to be either NSData or NSString
  *  @param parameters An array full of strings in the form "key=value"
  *  @param contentType The optional contentType of the data for PUT or POST
  *  @param httpMethod The http method, for now GET, PUT or POST
  *  @param callback A block to execute when the call has finished
  */
-- (void)performMethod:(NSString *)aMethod withBody:(NSString *)body orParameters:(NSArray *)parameters ofType:(NSString *)contentType httpMethod:(NSString *)httpMethod callback:(SMSuccessRetvalueBlock)callback
+- (void)performMethod:(NSString *)aMethod withBody:(id)body orParameters:(NSArray *)parameters ofType:(NSString *)contentType httpMethod:(NSString *)httpMethod callback:(SMSuccessRetvalueBlock)callback
 {
 	if (!_server) {
 		NSString *errStr = [NSString stringWithFormat:@"Fatal Error: I have no server! %@", self];
@@ -204,7 +226,8 @@
 	// create the desired SMServerCall instance
 	SMServerCall *call = [SMServerCall new];
 	call.method = aMethod;
-	call.body = body;
+	call.body = [body isKindOfClass:[NSString class]] ? body : nil;
+	call.bodyData = [body isKindOfClass:[NSData class]] ? body : nil;
 	call.parameters = parameters;
 	call.HTTPMethod = httpMethod;
 	call.myCallback = callback;

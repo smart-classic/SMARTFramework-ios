@@ -7,37 +7,40 @@
 ### config ###
 _obj_c_class_prefix = 'SM'
 _template_dir = 'Generator'
-_generated_classes_dir = 'SMARTFramework/GeneratedClasses'
-_class_examples_dir = 'SMARTFramework/SMARTFrameworkTests/RDF'
-_class_unittests_dir = 'SMARTFramework/SMARTFrameworkTests/ClassTests'
+_generated_classes_dir = 'GeneratedClasses'
+_class_examples_dir = 'SMARTFrameworkTests/RDF'
+_class_unittests_dir = 'SMARTFrameworkTests/ClassTests'
 
 ### there's probably no need to edit anything beyond this line ###
 ### ---------------------------------------------------------- ###
 
 _classes_to_ignore = [
 	'http://www.w3.org/2001/XMLSchema#anyURI',
-	'http://smartplatforms.org/terms#AppManifest',
-	'http://smartplatforms.org/terms/api#Call',
-	'http://www.w3.org/2006/vcard/ns#Cell',
-	'http://smartplatforms.org/terms#Component',
-	'http://smartplatforms.org/terms#ContainerManifest',
-	'http://smartplatforms.org/terms/api#Filter',
-	'http://www.w3.org/2006/vcard/ns#Home',
 	'http://www.w3.org/2000/01/rdf-schema#Literal',
-	'http://smartplatforms.org/terms#Ontology',
+	
+	'http://www.w3.org/2006/vcard/ns#Cell',
+	'http://www.w3.org/2006/vcard/ns#Home',
+	'http://www.w3.org/2006/vcard/ns#Pref',
+	'http://www.w3.org/2006/vcard/ns#Work',
+	
+	'http://smartplatforms.org/terms/api#Call',
+	'http://smartplatforms.org/terms/api#Filter',
 	'http://smartplatforms.org/terms/api#Parameter',
 	'http://smartplatforms.org/terms/api#ParameterSet',
-	'http://www.w3.org/2006/vcard/ns#Pref',
-	'http://smartplatforms.org/terms#ScratchpadData',
+	
+	'http://smartplatforms.org/terms#AppManifest',
+	'http://smartplatforms.org/terms#Component',
+	'http://smartplatforms.org/terms#ContainerManifest',
+	'http://smartplatforms.org/terms#Ontology',
+	'http://smartplatforms.org/terms#ScratchpadData',		# curated by hand
 	'http://smartplatforms.org/terms#SMARTAPI',
 	'http://smartplatforms.org/terms#UserPreferences',
 	'http://smartplatforms.org/terms#VCardLabels',
-	'http://www.w3.org/2006/vcard/ns#Work',
 ]
 
 _templates = {}
 
-_templates['property_header'] = """/// Representing {{ uri }}
+_templates['property_header'] = """/// Representing {{ uri }} as {{ itemClass }}
 {{ add_comment }}@property (nonatomic, {{ strength }}) {{ useClass }} *{{ name }};"""
 
 _templates['literal_getter'] = """- ({{ itemClass }} *){{ name }}
@@ -129,6 +132,7 @@ _templates['class_base_path_getter'] = """+ (NSString *)basePath
 
 _templates['record_multi_item_getter'] = """/**
  *  {{ description }}.
+ *
  *  Makes a call to {{ path }}, originally named "{{ orig_name }}".
  *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing
  *  the desired objects (key: SMARTResponseArrayKey) if successful.
@@ -140,16 +144,17 @@ _templates['record_multi_item_getter'] = """/**
 }"""
 
 _templates['record_item_poster'] = """/**
- *  {{ description }}
- *  Posts to {{ path }}, originally named "{{ orig_name }}".
- *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing
- *  the posted item (key: SMARTResponseDataKey) if successful.
+ *  {{ description }}.
+ *
+ *  Posts to {{ path }}, originally named "{{ orig_name }}". As of SMART 0.6, this is limited to clinical notes, which
+ *  only allows posting plain text. May be extended in the future.
+ *  @param string The string to post
+ *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary.
  */
 {{ method_signature }}
 {
-	NSString *path = [NSString stringWithFormat:@"{{ nsstring_path }}", self.record_id];
-	DLog(@"POST Method: Should now POST to %@, but this is not yet implemented", path);
-	SUCCESS_RETVAL_CALLBACK_OR_LOG_USER_INFO(callback, NO, @{})
+	NSString *path = [NSString stringWithFormat:@"/records/%@/clinical_notes/", self.record_id];
+	[self postBodyString:string ofType:@"plain/text" to:path callback:callback];
 }
 """
 
@@ -194,6 +199,7 @@ _known_classes = {}			# will be { SMART name: Obj-C class name }
 _valid_values = {}			# will be { SMART name: { key: val } }
 _record_calls = []
 _single_item_calls = []
+_classes_written = []
 
 
 def toObjCClassName(name):
@@ -335,11 +341,10 @@ def handle_class(a_class):
 				
 		# if we have valid values, write a nice comment
 		if prop_class_id in _valid_values:
-			comment = "/**\n *  The codes in this property should be:\n"
+			comment = "///\n///  The codes in this property should be:\n///\n"
 			
 			for key, val in _valid_values[prop_class_id].iteritems():
-				comment += " *    - %s: \t%s\n" % (key, val)
-			comment += " */\n"
+				comment += "///  - \"%s\": \t%s\n" % (key, val)
 			
 			prop['add_comment'] = comment
 		
@@ -435,6 +440,7 @@ def write_class(class_dict, overwrite=False):
 			handle = open(path_m, 'w')
 			handle.write(implem)
 			written = True
+			_classes_written.append(class_dict['CLASS_NAME'])
 	
 	return written
 
@@ -518,12 +524,14 @@ def handle_class_method(class_name, api):
 		# put record-level getters in the array
 		if 1 == len(placeholders) and 'record_id' == placeholders[0]:
 			global _record_calls
-			cDict['method_signature'] = '%s%s:%s' % (prefix, method_name, block_arg)
+			if 'POST' == api.http_method:			# only one POST method is implemented so far, may need to revisit
+				cDict['method_signature'] = '%s%s:(NSString *)string callback:%s' % (prefix, method_name, block_arg)
+			else:
+				cDict['method_signature'] = '%s%s:%s' % (prefix, method_name, block_arg)
 			_record_calls.append(cDict)
 		
 		# find the "get one item" methods (first param 'record_id', second 'item_id')
-		elif 2 == len(placeholders) and 'record_id' == placeholders[0] \
-			and '%s_id' % guessed_item_id_name == placeholders[1]:
+		elif 2 == len(placeholders) and 'record_id' == placeholders[0]:
 			global _single_item_calls
 			_single_item_calls.append(orig_name)
 		
@@ -700,7 +708,7 @@ if __name__ == "__main__":
 			num_calls += 1
 	
 	# all classes are done
-	print '--> %d classes and %d categories processed.' % (num_classes, num_calls)
+	print '--> %d classes and %d categories processed, %d classes written.' % (num_classes, num_calls, len(_classes_written))
 	print '--> SMARTObjects.h'
 	
 	# output class imports

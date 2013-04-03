@@ -75,23 +75,19 @@
  */
 - (void)get:(SMCancelErrorBlock)callback
 {
-	[self performMethod:self.basePath
-			   withBody:nil
-		   orParameters:nil
-				 ofType:nil
-			 httpMethod:@"GET"
-			   callback:^(BOOL success, NSDictionary *__autoreleasing userInfo) {
-				   
-				   // on success, update our ivars
-				   if (success) {
-					   self.contentType = [userInfo objectForKey:SMARTResponseContentTypeKey];
-					   self.data = [userInfo objectForKey:SMARTResponseDataKey];
-				   }
-				   
-				   // call the callback
-				   NSError *anError = [userInfo objectForKey:SMARTErrorKey];
-				   CANCEL_ERROR_CALLBACK_OR_LOG_USER_INFO(callback, (!success && !anError), userInfo)
-			   }];
+	[self get:self.basePath
+	 callback:^(BOOL success, NSDictionary *__autoreleasing userInfo) {
+		 
+		 // on success, update our ivars
+		 if (success) {
+			 self.contentType = [userInfo objectForKey:SMARTResponseContentTypeKey];
+			 self.data = [userInfo objectForKey:SMARTResponseDataKey];
+		 }
+		 
+		 // call the callback
+		 NSError *anError = [userInfo objectForKey:SMARTErrorKey];
+		 CANCEL_ERROR_CALLBACK_OR_LOG_USER_INFO(callback, (!success && !anError), userInfo)
+	 }];
 }
 
 /**
@@ -104,16 +100,21 @@
 		CANCEL_ERROR_CALLBACK_OR_LOG_ERR_STRING(callback, NO, @"No data to store on the server (\"data\" is nil)");
 		return;
 	}
+	if (!self.record) {
+		NSString *errStr = [NSString stringWithFormat:@"Fatal Error: I have no record! %@", self];
+		CANCEL_ERROR_CALLBACK_OR_LOG_ERR_STRING(callback, NO, errStr)
+		return;
+	}
 	
-	[self performMethod:self.basePath
-			   withBody:_data
-		   orParameters:nil
-				 ofType:_contentType
-			 httpMethod:@"PUT"
-			   callback:^(BOOL success, NSDictionary *__autoreleasing userInfo) {
-				   NSError *anError = [userInfo objectForKey:SMARTErrorKey];
-				   CANCEL_ERROR_CALLBACK_OR_LOG_USER_INFO(callback, (!success && !anError), userInfo)
-			   }];
+	[self.record performMethod:self.basePath
+					  withBody:_data
+				  orParameters:nil
+						ofType:_contentType
+					httpMethod:@"PUT"
+					  callback:^(BOOL success, NSDictionary *__autoreleasing userInfo) {
+						  NSError *anError = [userInfo objectForKey:SMARTErrorKey];
+						  CANCEL_ERROR_CALLBACK_OR_LOG_USER_INFO(callback, (!success && !anError), userInfo)
+					  }];
 }
 
 /**
@@ -122,25 +123,31 @@
  */
 - (void)delete:(SMCancelErrorBlock)callback
 {
+	if (!self.record) {
+		NSString *errStr = [NSString stringWithFormat:@"Fatal Error: I have no record! %@", self];
+		CANCEL_ERROR_CALLBACK_OR_LOG_ERR_STRING(callback, NO, errStr)
+		return;
+	}
+	
 	__block SMScratchpadData *this = self;
 	
-	[self performMethod:self.basePath
-			   withBody:nil
-		   orParameters:nil
-				 ofType:nil
-			 httpMethod:@"DELETE"
-			   callback:^(BOOL success, NSDictionary *__autoreleasing userInfo) {
-				   
-				   // on success, mirror in our ivars
-				   if (success) {
-					   this.data = nil;
-					   this.stringValue = nil;
-				   }
-				   
-				   // call the callback
-				   NSError *anError = [userInfo objectForKey:SMARTErrorKey];
-				   CANCEL_ERROR_CALLBACK_OR_LOG_USER_INFO(callback, (!success && !anError), userInfo)
-			   }];
+	[self.record performMethod:self.basePath
+					  withBody:nil
+				  orParameters:nil
+						ofType:nil
+					httpMethod:@"DELETE"
+					  callback:^(BOOL success, NSDictionary *__autoreleasing userInfo) {
+						  
+						  // on success, mirror in our ivars
+						  if (success) {
+							  this.data = nil;
+							  this.stringValue = nil;
+						  }
+						  
+						  // call the callback
+						  NSError *anError = [userInfo objectForKey:SMARTErrorKey];
+						  CANCEL_ERROR_CALLBACK_OR_LOG_USER_INFO(callback, (!success && !anError), userInfo)
+					  }];
 }
 
 

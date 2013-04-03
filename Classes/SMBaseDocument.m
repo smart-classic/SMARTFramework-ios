@@ -30,7 +30,7 @@
 @implementation SMBaseDocument
 
 
-#pragma mark - Handling Instances
+#pragma mark - Data Fetching
 /**
  *  Performs a GET for the receiver against the server.
  *
@@ -51,44 +51,6 @@
 	}];
 }
 
-
-
-#pragma mark - Data Fetching
-/**
- *  The basic method to perform REST methods on the server with App credentials.
- *
- *  All convenience methods invoke this method. It uses a SMServerCall instance to handle the loading; SMServerCall only allows a body string or parameters,
- *  but not both, with the body string taking precedence if both are present.
- *  @param aMethod The path to call on the server
- *  @param body The body data (NSData) or string (NSString)
- *  @param parameters An array full of strings in the form "key=value"
- *  @param contentType The optional content-type for PUT and POST
- *  @param httpMethod The http method, for now GET, PUT or POST
- *  @param callback A block to execute when the call has finished
- */
-- (void)performMethod:(NSString *)aMethod withBody:(id)body orParameters:(NSArray *)parameters ofType:(NSString *)contentType httpMethod:(NSString *)httpMethod callback:(SMSuccessRetvalueBlock)callback
-{
-	if (!_record.server) {
-		NSString *errStr = [NSString stringWithFormat:@"Fatal Error: I have no %@! %@", (_record ? @"server" : @"record"), self];
-		SUCCESS_RETVAL_CALLBACK_OR_LOG_ERR_STRING(callback, errStr, 2000)
-		return;
-	}
-	
-	// create the desired SMServerCall instance
-	SMServerCall *call = [SMServerCall new];
-	call.method = aMethod;
-	call.contentType = contentType;
-	call.body = [body isKindOfClass:[NSString class]] ? body : nil;
-	call.bodyData = [body isKindOfClass:[NSData class]] ? body : nil;
-	call.parameters = parameters;
-	call.HTTPMethod = httpMethod;
-	call.myCallback = callback;
-	
-	// let the server do the work
-	[_record.server performCall:call];
-}
-
-
 /**
  *  Shortcut for GETting data.
  *
@@ -98,7 +60,13 @@
  */
 - (void)get:(NSString *)aMethod callback:(SMSuccessRetvalueBlock)callback
 {
-	[self performMethod:aMethod withBody:nil orParameters:nil ofType:nil httpMethod:@"GET" callback:callback];
+	if (!_record) {
+		NSString *errStr = [NSString stringWithFormat:@"Fatal Error: I have no record! %@", self];
+		SUCCESS_RETVAL_CALLBACK_OR_LOG_ERR_STRING(callback, errStr, 2100)
+		return;
+	}
+	
+	[_record performMethod:aMethod withBody:nil orParameters:nil ofType:nil httpMethod:@"GET" callback:callback];
 }
 
 /**
@@ -111,7 +79,13 @@
  */
 - (void)get:(NSString *)aMethod parameters:(NSArray *)paramArray callback:(SMSuccessRetvalueBlock)callback
 {
-	[self performMethod:aMethod withBody:nil orParameters:paramArray ofType:nil httpMethod:@"GET" callback:callback];
+	if (!_record) {
+		NSString *errStr = [NSString stringWithFormat:@"Fatal Error: I have no record! %@", self];
+		SUCCESS_RETVAL_CALLBACK_OR_LOG_ERR_STRING(callback, errStr, 2100)
+		return;
+	}
+	
+	[_record performMethod:aMethod withBody:nil orParameters:paramArray ofType:nil httpMethod:@"GET" callback:callback];
 }
 
 

@@ -47,7 +47,7 @@
 {
 	[_record getAllergies:^(BOOL success, NSDictionary *__autoreleasing userInfo) {
 		NSArray *response = [userInfo objectForKey:SMARTResponseArrayKey];
-		STAssertTrue(2 == [response count], @"Should have gotten 2 allergies");
+		STAssertTrue(2 == [response count], @"Should have gotten 2 allergies, but got %d", [response count]);
 		
 		SMAllergy *allergy1 = [response objectAtIndex:0];
 		STAssertEqualObjects(@"Anaphylaxis", allergy1.allergicReaction.title, @"allergicReaction.title");
