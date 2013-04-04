@@ -133,9 +133,19 @@
 	}
 }
 
+- (BOOL)shouldAutorotate
+{
+	return YES;
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (UIUserInterfaceIdiomPad == UI_USER_INTERFACE_IDIOM()) || (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (BOOL)disablesAutomaticKeyboardDismissal
+{
+    return NO;
 }
 
 
@@ -257,6 +267,11 @@
 	// was this the first load?
 	else if (1 == [_history count] && [_delegate respondsToSelector:@selector(loginViewURLCanBeReached:)]) {
 		[_delegate loginViewURLCanBeReached:self];
+	}
+	
+	// execute javascript
+	if (_jsOnEveryLoad) {
+		[aWebView stringByEvaluatingJavaScriptFromString:_jsOnEveryLoad];
 	}
 	
 	[self hideLoadingIndicator:nil];
