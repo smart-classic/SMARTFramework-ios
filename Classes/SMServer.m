@@ -43,10 +43,10 @@
 @property (nonatomic, strong) SMServerCall *currentCall;						//< Only one call at a time, this is the current one
 
 @property (nonatomic, strong) SMLoginViewController *loginVC;					//< A handle to the currently shown login view controller
+@property (nonatomic, strong) NSTimer *stillContactingTimer;					//< A timer that shows a message if contacting the server takes too long
 @property (nonatomic, readwrite, copy) NSString *lastOAuthVerifier;
 
 - (void)_presentLoginScreenAtURL:(NSURL *)loginURL;
-- (void)_dismissLoginScreenAnimated:(BOOL)animated;
 
 - (MPOAuthAPI *)getOAuthOutError:(NSError * __autoreleasing *)error;
 
@@ -237,10 +237,15 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 
 
 /**
+ *  Use this method to initiate record selection.
+ *
  *  This is the main authentication entry point, this method will ask the delegate where to present a login view controller, if authentication is necessary, and
- *  handle all user interactions until login was successful or the user cancels the login operation.
+ *  handle all user interactions until login was successful or the user cancels the login operation. By the time the method's callback is called, the
+ *  activeRecord property will be set (if the call was successful) and you can use it to interact with your record's data.
+ *
+ *  @warning Don't forget to dismiss the login screen in your callback with dismissLoginScreenAnimated:.
  *  @param callback A block with a first BOOL argument, which will be YES if the user cancelled the action, and an error string argument, which will be nil if
- *  authentication was successful. By the time this callback is called, the "activeRecord" property will be set (if the call was successful).
+ *  authentication was successful
  */
 - (void)selectRecord:(SMCancelErrorBlock)callback
 {
@@ -291,13 +296,11 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 						}
 						
 						CANCEL_ERROR_CALLBACK_OR_LOG_ERR_STRING(callback, NO, nil)
-						[this _dismissLoginScreenAnimated:YES];
 					}];
 				}
 				else {
 					DLog(@"There is no active record!");
 					CANCEL_ERROR_CALLBACK_OR_LOG_ERR_STRING(callback, NO, @"No active record")
-					[this _dismissLoginScreenAnimated:YES];
 				}
 			}
 			
@@ -305,7 +308,6 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 			else {
 				didCancel = (nil == [userInfo objectForKey:SMARTErrorKey]);
 				CANCEL_ERROR_CALLBACK_OR_LOG_USER_INFO(callback, didCancel, userInfo)
-				[this _dismissLoginScreenAnimated:YES];
 			}
 		};
 		
@@ -447,9 +449,42 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 		else {
 			[pvc presentModalViewController:_loginVC animated:YES];
 		}
+		
+		// set a timeout
+		if (!_stillContactingTimer) {
+			self.stillContactingTimer = [NSTimer timerWithTimeInterval:5.0 target:self selector:@selector(showStillLoadingHint) userInfo:nil repeats:NO];
+		}
 	}
 	else {
 		DLog(@"Delegate did not provide a view controller, cannot present login screen");
+	}
+}
+
+- (void)showStillLoadingHint
+{
+	if (_loginVC) {
+		NSString *hintText = [NSString stringWithFormat:@"Still contacting %@", [_loginVC.startURL host]];
+		[_loginVC showLoadingHint:hintText animated:YES];
+	}
+	self.stillContactingTimer = nil;
+}
+
+/**
+ *  If a loading screen is shown (!), displays the given text beneath the activity spinner.
+ *
+ *  You can but should not use this method during login/authentification, it's used automatically during that process. What you can and probably should do is
+ *  use this method in your selectRecord: callback if you perform additional steps, like fetching a patient's medications right after login. This way the user
+ *  will know why the activity spinner is still being shown.
+ *
+ *  Of course you can only use this method while the login screen is being shown
+ */
+- (void)displayLoginScreenHint:(NSString *)hintText
+{
+	if (_loginVC) {
+		[_loginVC showLoadingHint:hintText animated:YES];
+	}
+	else {
+		DLog(@"There is no login screen, cannot show hint \"%@\"", hintText);
 	}
 }
 
@@ -457,7 +492,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
  *  Dismisses the login screen, if present
  *  @param animated BOOL indicating whether the dismissal should be animated
  */
-- (void)_dismissLoginScreenAnimated:(BOOL)animated
+- (void)dismissLoginScreenAnimated:(BOOL)animated
 {
 	if (_loginVC) {
 		[_loginVC dismissAnimated:animated];
@@ -468,6 +503,12 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 
 
 #pragma mark - Login View Controller Delegate
+- (void)loginViewURLCanBeReached:(SMLoginViewController *)aLoginController
+{
+	[_stillContactingTimer invalidate];
+	self.stillContactingTimer = nil;
+}
+
 - (void)loginView:(SMLoginViewController *)aLoginController didSelectRecordId:(NSString *)recordId
 {
 	NSError *error = nil;
@@ -573,12 +614,6 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 	if (!aCall) {
 		DLog(@"No call to perform");
 		return;
-	}
-	
-	// performing an arbitrary call, we can dismiss any login view controller
-	if (_loginVC && ![aCall isAuthenticationCall]) {
-		[_loginVC dismissAnimated:YES];
-		self.loginVC = nil;
 	}
 	
 	// maybe this call was suspended, remove it from the store

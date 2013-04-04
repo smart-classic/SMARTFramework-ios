@@ -146,7 +146,7 @@
 /**
  *  Change the main text to the given string
  *  @param mainText The text to show (can be nil)
- *  @param animated Whether to animated the action
+ *  @param animated Whether to animate showing the text
  */
 - (void)showMainText:(NSString *)mainText animated:(BOOL)animated
 {
@@ -166,7 +166,7 @@
 
 /**
  *  Hides the main text
- *  @param animated Whether to animated the action
+ *  @param animated Whether or not to animate the hiding (results in animating the spinner sliding into place)
  */
 - (void)hideMainTextAnimated:(BOOL)animated
 {
@@ -179,22 +179,31 @@
 /**
  *  Show the given hint (smaller and faded when compared to the main text)
  *  @param hintText The text to show as hint
- *  @param animated Whether to animated the action
+ *  @param animated Whether to animate showing the text
  */
 - (void)showHintText:(NSString *)hintText animated:(BOOL)animated
 {
-	if (self == [hintLabel superview]) {
-		hintLabel.text = hintText;
+	if ([hintText length] < 1) {
+		[self hideHintTextAnimated:animated];
 		return;
 	}
 	
+	// update the label text
 	self.hintLabel.text = hintText;
-	[self addSubview:hintLabel];
+	[hintLabel sizeToFit];
+	if (self != [hintLabel superview]) {
+		[self addSubview:hintLabel];
+	}
 	
+	// request a layout
 	animateNextLayout = animateNextLayout || animated;
 	[self setNeedsLayout];
 }
 
+/**
+ *  Hides the hint text label.
+ *  @param animated Whether or not to animate the hiding (results in animating the spinner sliding into place)
+ */
 - (void)hideHintTextAnimated:(BOOL)animated
 {
 	[hintLabel removeFromSuperview];

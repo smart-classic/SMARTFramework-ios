@@ -139,15 +139,15 @@ Follow these steps to set your app up:
 	This must be added so the framework can be used as a static library, otherwise class categories will not work and your app will crash.
 
 5. You will have to provide **initial server settings** in the configuration file, but you can always change the properties in code later on (e.g. if your App
-    can connect to different servers).  
-	Copy the file `Config-default.h` in the **framework** project (not your own app) to `Config.h` and adjust it to suit your needs. The defaults work for our
-	developer sandbox. The settings are:
-	
-	- `kSMARTAPIBaseURL`  (The Server URL)
-	- `kSMARTAppId`  (The App id)
-	- `kSMARTConsumerKey`  (Your consumer key)
-	- `kSMARTConsumerSecret`  (Your consumer secret)
-	
+   can connect to different servers).
+   Copy the file `Config-default.h` in the **framework** project (not your own app) to `Config.h` and adjust it to suit your needs. The defaults work for our
+   developer sandbox. The settings are:
+
+   - `kSMARTAPIBaseURL`  (The Server URL)
+   - `kSMARTAppId`  (The App id)
+   - `kSMARTConsumerKey`  (Your consumer key)
+   - `kSMARTConsumerSecret`  (Your consumer secret)
+
 6. In your code, include the header files (where needed) as user header files:
 
 	    import "SMServer.h"

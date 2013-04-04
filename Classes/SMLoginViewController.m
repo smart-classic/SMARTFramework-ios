@@ -41,7 +41,7 @@
 @property (nonatomic, strong) SMActionView *loadingView;			//< A private view overlaid during loading activity
 
 - (void)showHideBackButton;
-- (void)showStillLoadingHint;
+
 
 @end
 
@@ -254,6 +254,11 @@
 		[_delegate loginViewDidLogout:self];
 	}
 	
+	// was this the first load?
+	else if (1 == [_history count] && [_delegate respondsToSelector:@selector(loginViewURLCanBeReached:)]) {
+		[_delegate loginViewURLCanBeReached:self];
+	}
+	
 	[self hideLoadingIndicator:nil];
 }
 
@@ -390,7 +395,7 @@
 
 #pragma mark - Progress Indicator
 /**
- *  <#comment#>
+ *  Overlays the web view with a semi-transparent loading animatien.
  *  @param sender The button sending the action (can be nil)
  */
 - (void)showLoadingIndicator:(id)sender
@@ -400,21 +405,20 @@
 		[_loadingView addTarget:self action:@selector(reloadDelayed:) forControlEvents:UIControlEventTouchUpInside];
 	}
 	[_loadingView showActivityIn:_webView animated:YES];
-	
-	// timer to show loading details if it takes long
-	[self performSelector:@selector(showStillLoadingHint) withObject:nil afterDelay:8.0];
 }
 
-- (void)showStillLoadingHint
+- (void)showLoadingHint:(NSString *)hintText animated:(BOOL)animated
 {
-	if (_webView.loading && _webView == [_loadingView superview]) {
-		NSString *hintText = [NSString stringWithFormat:@"Still contacting %@", ([_history count] > 0) ? ((NSURL *)[_history lastObject]).host : @"server"];
-		[_loadingView showHintText:hintText animated:YES];
+	if (_webView == [_loadingView superview]) {
+		[_loadingView showHintText:hintText animated:animated];
+	}
+	else {
+		DLog(@"There doesn't seem to be a loading view, display that one first");
 	}
 }
 
 /**
- *  <#comment#>
+ *  Hides the loading overlay.
  *  @param sender The button sending the action (can be nil)
  */
 - (void)hideLoadingIndicator:(id)sender

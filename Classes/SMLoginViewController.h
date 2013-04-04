@@ -64,6 +64,15 @@
  */
 - (NSString *)callbackSchemeForLoginView:(SMLoginViewController *)aLoginController;
 
+@optional
+
+/**
+ *  Optional delegate method that will be fired when the login view controller managed to load the first page after being shown.
+ *  @param aLoginController The login controller in question
+ */
+- (void)loginViewURLCanBeReached:(SMLoginViewController *)aLoginController;
+
+
 @end
 
 
@@ -87,6 +96,7 @@
 - (void)dismissAnimated:(BOOL)animated;
 
 - (void)showLoadingIndicator:(id)sender;
+- (void)showLoadingHint:(NSString *)hintText animated:(BOOL)animated;
 - (void)hideLoadingIndicator:(id)sender;
 
 

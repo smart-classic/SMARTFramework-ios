@@ -161,6 +161,12 @@
 - (void)fetchServerManifest:(SMCancelErrorBlock)callback;
 - (void)fetchAppManifest:(SMCancelErrorBlock)callback;
 
+
+/// @name Login Screen
+- (void)displayLoginScreenHint:(NSString *)hintText;
+- (void)dismissLoginScreenAnimated:(BOOL)animated;
+
+
 /// @name Authentication
 - (void)authenticate:(SMCancelErrorBlock)callback;
 - (BOOL)shouldAutomaticallyAuthenticateFrom:(NSURL *)authURL;
