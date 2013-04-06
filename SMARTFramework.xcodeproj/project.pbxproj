@@ -280,8 +280,6 @@
 		EE40DCC6170B957600398D0E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		EE42D04B15DEB4C900F03EB0 /* SMART.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMART.h; sourceTree = "<group>"; };
 		EE47118C170BCD37007C2D3D /* Index.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = Index.md; sourceTree = "<group>"; };
-		EE59AC1215E342CC00F4D738 /* CategoryTemplate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoryTemplate.h; sourceTree = "<group>"; };
-		EE59AC1315E342CC00F4D738 /* CategoryTemplate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryTemplate.m; sourceTree = "<group>"; };
 		EE59AC1415E34D4F00F4D738 /* SMRecord+Calls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SMRecord+Calls.h"; sourceTree = "<group>"; };
 		EE59AC1515E34D4F00F4D738 /* SMRecord+Calls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SMRecord+Calls.m"; sourceTree = "<group>"; };
 		EE5D69681656F4C9001741E2 /* SMAllergy.rdf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SMAllergy.rdf; sourceTree = "<group>"; };
@@ -326,16 +324,12 @@
 		EE832F8015D006D100E7FFF1 /* SMLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMLoginViewController.m; sourceTree = "<group>"; };
 		EE93B37B1709FA1500B5A536 /* SMScratchpadData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMScratchpadData.h; path = ../Classes/SMScratchpadData.h; sourceTree = "<group>"; };
 		EE93B37C1709FA1500B5A536 /* SMScratchpadData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMScratchpadData.m; path = ../Classes/SMScratchpadData.m; sourceTree = "<group>"; };
-		EEADE77016AEFDE500E8715A /* UnitTestTemplate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnitTestTemplate.h; sourceTree = "<group>"; };
-		EEADE77116AEFDE500E8715A /* UnitTestTemplate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnitTestTemplate.m; sourceTree = "<group>"; };
 		EEADE77216AF02B000E8715A /* TestGeneratedClasses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestGeneratedClasses.h; path = ClassTests/TestGeneratedClasses.h; sourceTree = "<group>"; };
 		EEADE77316AF02B000E8715A /* TestGeneratedClasses.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestGeneratedClasses.m; path = ClassTests/TestGeneratedClasses.m; sourceTree = "<group>"; };
 		EEADE77A16AF0B1700E8715A /* SMLabPanel.rdf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SMLabPanel.rdf; sourceTree = "<group>"; };
 		EEADE77C16AF2D2B00E8715A /* SMProcedure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMProcedure.h; sourceTree = "<group>"; };
 		EEADE77D16AF2D2B00E8715A /* SMProcedure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMProcedure.m; sourceTree = "<group>"; };
 		EEC146F815DED1D0006B8798 /* AppledocSettings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AppledocSettings.plist; sourceTree = "<group>"; };
-		EEC1470015DEE01A006B8798 /* ClassTemplate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClassTemplate.h; sourceTree = "<group>"; };
-		EEC1470115DEE01A006B8798 /* ClassTemplate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassTemplate.m; sourceTree = "<group>"; };
 		EEC1470315DFE790006B8798 /* SMDemographics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDemographics.h; sourceTree = "<group>"; };
 		EEC1470415DFE790006B8798 /* SMDemographics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDemographics.m; sourceTree = "<group>"; };
 		EEC1470515DFE790006B8798 /* SMName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMName.h; sourceTree = "<group>"; };
@@ -539,20 +533,6 @@
 			path = RDF;
 			sourceTree = "<group>";
 		};
-		EE9977BF15E565E60027886F /* Generator Templates */ = {
-			isa = PBXGroup;
-			children = (
-				EEC1470015DEE01A006B8798 /* ClassTemplate.h */,
-				EEC1470115DEE01A006B8798 /* ClassTemplate.m */,
-				EE59AC1215E342CC00F4D738 /* CategoryTemplate.h */,
-				EE59AC1315E342CC00F4D738 /* CategoryTemplate.m */,
-				EEADE77016AEFDE500E8715A /* UnitTestTemplate.h */,
-				EEADE77116AEFDE500E8715A /* UnitTestTemplate.m */,
-			);
-			name = "Generator Templates";
-			path = ../Generator;
-			sourceTree = "<group>";
-		};
 		EEC1470215DFE790006B8798 /* GeneratedClasses */ = {
 			isa = PBXGroup;
 			children = (
@@ -669,7 +649,6 @@
 				EEE82D8C15D00D810017EA0B /* SMARTObjects.h */,
 				EEC9C59A15CB2EA800B7C568 /* Classes */,
 				EEC1470215DFE790006B8798 /* GeneratedClasses */,
-				EE9977BF15E565E60027886F /* Generator Templates */,
 				EEF0193715CB453400FFD480 /* MPOAuth Framework */,
 				EEC9C59B15CB2EA800B7C568 /* Supporting Files */,
 				EEC9C5AE15CB2EA900B7C568 /* SMARTFrameworkTests */,
