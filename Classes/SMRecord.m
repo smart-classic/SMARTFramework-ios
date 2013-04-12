@@ -171,8 +171,26 @@
 							   DLog(@"Response is empty for GET call to %@", aPath);
 						   }
 					   }
+					   
+					   // An image might also have been returned, decode it as well
+					   else if ([@"image/jpeg" isEqualToString:contentType] || [@"image/png" isEqualToString:contentType]) {
+						   NSData *imageData = [userInfo objectForKey:SMARTResponseDataKey];
+						   UIImage *image = [UIImage imageWithData:imageData];
+						   if (image) {
+							   
+							   // got an image, complete the user-info dictionary and call the callback
+							   NSMutableDictionary *usrInf = [userInfo mutableCopy];
+							   [usrInf setObject:image forKey:SMARTResponseImageKey];
+							   SUCCESS_RETVAL_CALLBACK_OR_LOG_USER_INFO(callback, YES, usrInf)
+							   return;
+						   }
+						   else {
+							   DLog(@"Failed to decode image with Content-Type \"%@\"", contentType);
+						   }
+					   }
+					   
 					   else {
-						   DLog(@"Only content with Content-Type \"application/rdf+xml\" will be automatically parsed. The response came back as \"%@\"", contentType);
+						   DLog(@"Only content with Content-Type \"application/rdf+xml\" (and some images) will be automatically parsed. The response came back as \"%@\"", contentType);
 					   }
 				   }
 				   

@@ -58,10 +58,10 @@
 
 NSString *const SMARTErrorKey = @"SMARTError";
 NSString *const SMARTRecordIDKey = @"record_id";
-NSString *const SMARTResponseContentTypeKey = @"SMARTServerCallResponseContentType";
-NSString *const SMARTResponseDataKey = @"SMARTServerCallResponseData";
+NSString *const SMARTResponseContentTypeKey = @"SMARTResponseContentType";
+NSString *const SMARTResponseDataKey = @"SMARTResponseData";
 NSString *const SMARTResponseArrayKey = @"SMARTResponseArray";
-NSString *const SMARTResponseDocumentKey = @"SMARTResponseDocument";
+NSString *const SMARTResponseImageKey = @"SMARTResponseImage";
 
 NSString *const SMARTInternalScheme = @"smart-app";
 NSString *const SMARTOAuthRecordIDKey = @"smart_record_id";

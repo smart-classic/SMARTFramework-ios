@@ -32,7 +32,7 @@ extern NSString *const SMARTRecordIDKey;					/// Dictionaries return an NSString
 extern NSString *const SMARTResponseContentTypeKey;			/// Dictionaries return the server response's Content-Type as NSString for this key
 extern NSString *const SMARTResponseDataKey;				/// Dictionaries return the server's response as NSData for this key
 extern NSString *const SMARTResponseArrayKey;				/// Dictionaries return an NSArray for this key
-extern NSString *const SMARTResponseDocumentKey;			/// Dictionaries return an IndivoDocument for this key
+extern NSString *const SMARTResponseImageKey;				/// Dictionaries return a UIImage for this key (e.g. GET /records/{id}/photograph)
 
 // Other globals
 extern NSString *const SMARTInternalScheme;					/// The URL scheme we use to identify when the framework should intercept a request
