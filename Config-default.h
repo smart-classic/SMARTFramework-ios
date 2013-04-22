@@ -31,5 +31,5 @@
 /// Your App's id, consumer key and -secret
 #define kSMARTAppId @"medsample@apps.smartplatforms.org"
 #define kSMARTConsumerKey @"medsample@apps.smartplatforms.org"
-#define kSMARTConsumerSecret @"smart-secret"
+#define kSMARTConsumerSecret @"smartapp-secret"
 

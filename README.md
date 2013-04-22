@@ -103,7 +103,7 @@ You can run your app against our sandbox, located at `http://sandbox-api-v06.sma
 
 * app id: `my-ios-app@apps.smartplatforms.org`
 * key: `my-ios-app@apps.smartplatforms.org`
-* secret: `smart-secret`
+* secret: `smartapp-secret`
 
 Be aware that multiple developers may use these credentials, so if you are writing data (e.g. to the scratchpad) that data may get overwritten or deleted. For
 more information about server side setup see the [SMART documentation][smart-doc].
