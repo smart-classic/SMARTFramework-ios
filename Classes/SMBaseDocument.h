@@ -40,10 +40,14 @@
 // Uses the class basePath and substitutes the placeholders with instance properties by default
 @property (nonatomic, copy) NSString *basePath;
 
-/// @name Performing server calls
+// Creating a new document
++ (id)newForRecord:(SMRecord *)aRecord;
+
+// Performing server calls
 - (void)get:(SMCancelErrorBlock)callback;
 - (void)get:(NSString *)aMethod callback:(SMSuccessRetvalueBlock)callback;
 - (void)get:(NSString *)aMethod parameters:(NSArray *)paramArray callback:(SMSuccessRetvalueBlock)callback;
+- (void)post:(SMCancelErrorBlock)callback;
 
 + (NSString *)basePath;
 

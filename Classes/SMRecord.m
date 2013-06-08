@@ -247,6 +247,7 @@
 	call.body = [body isKindOfClass:[NSString class]] ? body : nil;
 	call.bodyData = [body isKindOfClass:[NSData class]] ? body : nil;
 	call.parameters = parameters;
+	call.contentType = contentType;
 	call.HTTPMethod = httpMethod;
 	call.myCallback = callback;
 	

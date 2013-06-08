@@ -25,12 +25,32 @@
 #import "SMServer.h"
 #import "SMRecord.h"
 #import "SMServerCall.h"
+#import <Redland-ObjC.h>
 
 
 @implementation SMBaseDocument
 
 
-#pragma mark - Data Fetching
+/**
+ *  Instantiates a new document, usually for posting to the server.
+ *
+ *  The "subject" node is set to a URI-node with the "rdfType" URI as value.
+ *  @param aRecord The record this instance belongs to
+ */
++ (id)newForRecord:(SMRecord *)aRecord
+{
+	RedlandNode *subject = [RedlandNode nodeWithURIString:self.rdfType];
+	RedlandModel *model = [RedlandModel new];
+	
+	SMBaseDocument *doc = [self newWithSubject:subject inModel:model];
+	doc.record = aRecord;
+	
+	return doc;
+}
+
+
+
+#pragma mark - Performing server calls
 /**
  *  Performs a GET for the receiver against the server.
  *
@@ -89,6 +109,43 @@
 }
 
 
+/**
+ *  Shortcut for POSTing the receiver's data representation to the server.
+ *
+ *  This method uses the receiver's "basePath" property and removes the {uuid} part to determine the POST method.
+ *  @param callback The callback block to execute when the call has finished
+ */
+- (void)post:(SMCancelErrorBlock)callback
+{
+	DLog(@"POST-ing is not yet finished! (As of SMART 0.6 posting data to the EMR is supported for clinical notes)");
+	
+	if (!_record) {
+		NSString *errStr = [NSString stringWithFormat:@"Fatal Error: I have no record! %@", self];
+		CANCEL_ERROR_CALLBACK_OR_LOG_ERR_STRING(callback, NO, errStr)
+		return;
+	}
+	
+	// get rid of an eventual UUID
+	if (_uuid) {
+		DLog(@"This document already had a UUID, I am resetting it for POSTing");
+		self.uuid = nil;
+	}
+	
+	// serialize
+	RedlandSerializer *serializer = [RedlandSerializer serializerWithName:RedlandRDFXMLSerializerName];
+	NSData *data = [serializer serializedDataFromModel:self.model withBaseURI:nil];
+	DLog(@"SERIALIZED: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+	
+	[_record performMethod:self.basePath withBody:data orParameters:nil ofType:@"application/rdf+xml" httpMethod:@"POST" callback:^(BOOL success, NSDictionary *__autoreleasing userInfo) {
+		if (success) {
+			// TODO: apply UUID
+			DLog(@"DATA: %@", userInfo);
+		}
+		CANCEL_ERROR_CALLBACK_OR_LOG_USER_INFO(callback, NO, userInfo);
+	}];
+}
+
+
 
 #pragma mark - Server Path
 /**
@@ -106,10 +163,8 @@
 		if (_record.record_id) {
 			base = [base stringByReplacingOccurrencesOfString:@"{record_id}" withString:_record.record_id];
 		}
-		if (_uuid) {
-			base = [base stringByReplacingOccurrencesOfString:@"{uuid}" withString:_uuid];
-		}
-		self.basePath = base;
+		
+		self.basePath = [base stringByReplacingOccurrencesOfString:@"{uuid}" withString:(_uuid ? _uuid : @"")];
 	}
 	return _basePath;
 }

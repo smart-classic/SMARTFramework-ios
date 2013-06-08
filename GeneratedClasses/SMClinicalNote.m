@@ -198,6 +198,9 @@
 	return _resource;
 }
 
+
+@synthesize title = _title;
+
 - (NSString *)title
 {
 	if (!_title) {
@@ -211,6 +214,17 @@
 	return _title;
 }
 
+- (void)setTitle:(NSString *)title
+{
+	if (title != _title) {
+		_title = title;
+		
+		RedlandNode *predicate = [RedlandNode nodeWithURIString:@"http://purl.org/dc/terms/title"];
+		RedlandStatement *statement = [RedlandStatement statementWithSubject:self.subject predicate:predicate object:title];
+		[self.model addStatement:statement];
+	}
+}
+
 
 
 #pragma mark - Class Properties
@@ -221,7 +235,7 @@
 
 + (NSString *)basePath
 {
-	return @"/records/{record_id}/clinical_notes/{clinical_note_id}";
+	return @"/records/{record_id}/clinical_notes/{uuid}";
 }
 
 
