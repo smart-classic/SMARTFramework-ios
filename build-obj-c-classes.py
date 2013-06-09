@@ -143,21 +143,6 @@ _templates['record_multi_item_getter'] = """/**
 	[self getObjectsOfClass:[{{ item_class }} class] from:path callback:callback];
 }"""
 
-_templates['record_item_poster'] = """/**
- *  {{ description }}.
- *
- *  Posts to {{ path }}, originally named "{{ orig_name }}". As of SMART 0.6, this is limited to clinical notes, which
- *  only allows posting plain text. May be extended in the future.
- *  @param string The string to post
- *  @param callback A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary.
- */
-{{ method_signature }}
-{
-	NSString *path = [NSString stringWithFormat:@"/records/%@/clinical_notes/", self.record_id];
-	[self postBodyString:string ofType:@"plain/text" to:path callback:callback];
-}
-"""
-
 _templates['class_unit_test'] = """/**
  *  Testing {{ CLASS_NAME }}
  */
@@ -524,9 +509,7 @@ def handle_class_method(class_name, api):
 		# put record-level getters in the array
 		if 1 == len(placeholders) and 'record_id' == placeholders[0]:
 			global _record_calls
-			if 'POST' == api.http_method:			# only one POST method is implemented so far, may need to revisit
-				cDict['method_signature'] = '%s%s:(NSString *)string callback:%s' % (prefix, method_name, block_arg)
-			else:
+			if 'GET' == api.http_method:
 				cDict['method_signature'] = '%s%s:%s' % (prefix, method_name, block_arg)
 			_record_calls.append(cDict)
 		
@@ -650,17 +633,17 @@ if __name__ == "__main__":
 		handle.write(implem)
 		print '--> Wrote %d class unit tests' % len(class_tests)
 	
-	# put record-scoped calls into a record category
+	# put record-scoped calls into a record category (only GET needs synthesized methods)
 	used_call_names = _single_item_calls
 	record_sigs = []
 	record_calls = []
 	for api in _record_calls:
-		used_call_names.append(api['orig_name'])
-		template = 'record_item_poster' if 'POST' == api['http_method'] else 'record_multi_item_getter'
-		call = apply_template(_templates[template], api)
-		
-		record_sigs.append('%s;' % api['method_signature'])
-		record_calls.append(call)
+		if 'GET' == api['http_method']:
+			used_call_names.append(api['orig_name'])
+			call = apply_template(_templates['record_multi_item_getter'], api)
+			
+			record_sigs.append('%s;' % api['method_signature'])
+			record_calls.append(call)
 	
 	# warn about the api calls that we did ignore
 	if _verbose:

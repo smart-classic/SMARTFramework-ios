@@ -198,28 +198,6 @@
 			   }];
 }
 
-/**
- *  Performs a POST request to the given path, posting the data as body data.
- *  @param bodyString The string data to post as body data
- *  @param contentType The Content-Type to use
- *  @param path The REST method path to post to
- *  @param callback A SMSuccessRetvalueBlock callback to execute when the request is done
- */
-- (void)postBodyString:(NSString *)bodyString ofType:(NSString *)contentType to:(NSString *)path callback:(SMSuccessRetvalueBlock)callback
-{
-	if ([bodyString length] < 1) {
-		SUCCESS_RETVAL_CALLBACK_OR_LOG_ERR_STRING(callback, @"Need body data to perform a POST request but got none", 1200)
-		return;
-	}
-	
-	[self performMethod:path
-			   withBody:bodyString
-		   orParameters:nil
-				 ofType:contentType
-			 httpMethod:@"POST"
-			   callback:callback];
-}
-
 
 /**
  *  The basic method to perform REST methods on the server with App credentials.

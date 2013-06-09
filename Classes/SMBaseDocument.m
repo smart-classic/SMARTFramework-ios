@@ -50,6 +50,19 @@
 
 
 
+#pragma mark - Serialization
+/**
+ *  Serializes the receiver as RDF+XML (abbreviated), UTF-8 encoded.
+ *  @return NSData representing a UTF-8 encoded string
+ */
+- (NSData *)rdfXMLRepresentation
+{
+	RedlandSerializer *serializer = [RedlandSerializer serializerWithName:RedlandAbbreviatedRDFXMLSerializer];
+	return [serializer serializedDataFromModel:self.model withBaseURI:nil];
+}
+
+
+
 #pragma mark - Performing server calls
 /**
  *  Performs a GET for the receiver against the server.
@@ -131,9 +144,8 @@
 		self.uuid = nil;
 	}
 	
-	// serialize
-	RedlandSerializer *serializer = [RedlandSerializer serializerWithName:RedlandRDFXMLSerializerName];
-	NSData *data = [serializer serializedDataFromModel:self.model withBaseURI:nil];
+	// serialize and post
+	NSData *data = [self rdfXMLRepresentation];
 	DLog(@"SERIALIZED: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
 	
 	[_record performMethod:self.basePath withBody:data orParameters:nil ofType:@"application/rdf+xml" httpMethod:@"POST" callback:^(BOOL success, NSDictionary *__autoreleasing userInfo) {

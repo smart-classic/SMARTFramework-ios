@@ -80,7 +80,6 @@
 /// @name Web Requests
 - (void)getDemographicsWithCallback:(SMCancelErrorBlock)callback;
 - (void)getObjectsOfClass:(Class)aClass from:(NSString *)aPath callback:(SMSuccessRetvalueBlock)callback;
-- (void)postBodyString:(NSString *)bodyString ofType:(NSString *)contentType to:(NSString *)path callback:(SMSuccessRetvalueBlock)callback;
 
 - (void)performMethod:(NSString *)aMethod withBody:(id)body orParameters:(NSArray *)parameters ofType:(NSString *)contentType httpMethod:(NSString *)httpMethod callback:(SMSuccessRetvalueBlock)callback;
 

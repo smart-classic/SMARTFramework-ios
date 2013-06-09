@@ -37,11 +37,14 @@
 /// The record this document belongs to
 @property (nonatomic, weak) SMRecord *record;
 
-// Uses the class basePath and substitutes the placeholders with instance properties by default
+/// Uses the class basePath and substitutes the placeholders with instance properties by default
 @property (nonatomic, copy) NSString *basePath;
 
 // Creating a new document
 + (id)newForRecord:(SMRecord *)aRecord;
+
+// Serialization
+- (NSData *)rdfXMLRepresentation;
 
 // Performing server calls
 - (void)get:(SMCancelErrorBlock)callback;
