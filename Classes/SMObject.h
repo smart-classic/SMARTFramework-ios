@@ -32,10 +32,18 @@
  */
 @interface SMObject : NSObject
 
-@property (nonatomic, readonly, strong) RedlandNode *subject;			//< The subject this class is describing
-@property (nonatomic, readonly, strong) RedlandModel *model;			//< The redland model represented by this object
+/// The subject this class is describing
+@property (nonatomic, readonly, strong) RedlandNode *subject;
+
+/// The model that this object is contained in; remember there might be triples unrelated to this object in there as well!
+@property (nonatomic, readonly, strong) RedlandModel *inModel;
+
+/// The model containing only the receiver's triples
+@property (nonatomic, readonly, strong) RedlandModel *model;
+
 @property (nonatomic, copy) NSString *rdfType;							//< The main rdf:type that this class represents
 @property (nonatomic, copy) NSArray *rdfTypes;							//< All rdf:types describing the receiver (as RedlandNode objects)
+
 
 + (id)newWithSubject:(RedlandNode *)aSubject inModel:(RedlandModel *)aModel;
 + (id)newWithRDFXML:(NSString *)rdfString;

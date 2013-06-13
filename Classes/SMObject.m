@@ -27,6 +27,7 @@
 @interface SMObject ()
 
 @property (nonatomic, readwrite, strong) RedlandNode *subject;
+@property (nonatomic, readwrite, strong) RedlandModel *inModel;
 @property (nonatomic, readwrite, strong) RedlandModel *model;
 
 @end
@@ -35,14 +36,29 @@
 @implementation SMObject
 
 
+/**
+ *  Convenience allocator.
+ */
 + (id)newWithSubject:(RedlandNode *)aSubject inModel:(RedlandModel *)aModel
 {
 	return [[self alloc] initWithSubject:aSubject inModel:aModel];
 }
 
+/**
+ *  Convenience allocator when allocating from RDF+XML.
+ *  @attention Note that if RDF+XML parsing fails, this method will return nil (i.e. it will catch the exception thrown in "initWithRDFXML:").
+ */
 + (id)newWithRDFXML:(NSString *)rdfString;
 {
-	return [[self alloc] initWithRDFXML:rdfString];
+	id obj = nil;
+	@try {
+		obj = [[self alloc] initWithRDFXML:rdfString];
+	}
+	@catch (NSException *exception) {
+		DLog(@"Failed to parse RDF: %@", [exception reason]);
+	}
+	
+	return obj;
 }
 
 
@@ -64,13 +80,14 @@
 	
 	if ((self = [super init])) {
 		self.subject = aSubject;
-		self.model = aModel;
+		self.inModel = aModel;
 	}
 	return self;
 }
 
 /**
  *  Method to initialize an instance from an RDF+XML string
+ *  @warning This method will raise an exception on invalid RDF+XML
  *  @param rdfString An RDF+XML string that should be parsed
  *  @return An instance containing a model initialized from the given RDF+XML string
  */
@@ -80,19 +97,28 @@
 		if ([rdfString length] > 0) {
 			RedlandParser *parser = [RedlandParser parserWithName:RedlandRDFXMLParserName];
 			RedlandURI *uri = [RedlandURI URIWithString:@"http://www.smartplatforms.org/terms#"];
-			self.model = [RedlandModel new];
+			self.inModel = [RedlandModel new];
 			
-			// parse
-			@try {
-				[parser parseString:rdfString intoModel:_model withBaseURI:uri];
-			}
-			@catch (NSException *exception) {
-				DLog(@"Failed to parse RDF: %@", [exception reason]);
-				return nil;
-			}
+			// parse (will raise on invalid input!)
+			[parser parseString:rdfString intoModel:_inModel withBaseURI:uri];
+			self.model = _inModel;
 		}
 	}
 	return self;
+}
+
+
+
+#pragma mark - Model
+- (RedlandModel *)model
+{
+	if (!_model) {
+		self.model = [_inModel submodelForSubject:_subject];
+		if (!_model) {
+			DLog(@"Failed to identify submodel for subject %@ in %@", _subject, _inModel);
+		}
+	}
+	return _model;
 }
 
 
@@ -129,9 +155,9 @@
 - (NSArray *)rdfTypes
 {
 	if (!_rdfTypes) {
-		RedlandNode *predicate = [RedlandNode nodeWithURIString:@"http://www.w3.org/1999/02/22-rdf-syntax-ns#type"];
+		RedlandNode *predicate = [RedlandNode typeNode];
 		RedlandStatement *statement = [RedlandStatement statementWithSubject:_subject predicate:predicate object:nil];
-		RedlandStreamEnumerator *query = [_model enumeratorOfStatementsLike:statement];
+		RedlandStreamEnumerator *query = [_inModel enumeratorOfStatementsLike:statement];
 		
 		// loop through the results
 		NSMutableArray *arr = [NSMutableArray array];

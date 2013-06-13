@@ -27,6 +27,7 @@
 		EE30FB36170A6F4400FF1809 /* SMFamilyHistoryObservation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE30FB34170A6F4400FF1809 /* SMFamilyHistoryObservation.m */; };
 		EE30FB39170A6F5500FF1809 /* SMPhotograph.h in Headers */ = {isa = PBXBuildFile; fileRef = EE30FB37170A6F5500FF1809 /* SMPhotograph.h */; };
 		EE30FB3A170A6F5500FF1809 /* SMPhotograph.m in Sources */ = {isa = PBXBuildFile; fileRef = EE30FB38170A6F5500FF1809 /* SMPhotograph.m */; };
+		EE348526176A1AD5006CF966 /* TestObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = EE348525176A1AD5006CF966 /* TestObjects.m */; };
 		EE42D04C15DEB4C900F03EB0 /* SMART.h in Headers */ = {isa = PBXBuildFile; fileRef = EE42D04B15DEB4C900F03EB0 /* SMART.h */; settings = {ATTRIBUTES = (); }; };
 		EE59AC1615E34D4F00F4D738 /* SMRecord+Calls.h in Headers */ = {isa = PBXBuildFile; fileRef = EE59AC1415E34D4F00F4D738 /* SMRecord+Calls.h */; settings = {ATTRIBUTES = (); }; };
 		EE5D69751656F4C9001741E2 /* SMAllergy.rdf in Resources */ = {isa = PBXBuildFile; fileRef = EE5D69681656F4C9001741E2 /* SMAllergy.rdf */; };
@@ -277,6 +278,14 @@
 		EE30FB34170A6F4400FF1809 /* SMFamilyHistoryObservation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMFamilyHistoryObservation.m; sourceTree = "<group>"; };
 		EE30FB37170A6F5500FF1809 /* SMPhotograph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMPhotograph.h; sourceTree = "<group>"; };
 		EE30FB38170A6F5500FF1809 /* SMPhotograph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMPhotograph.m; sourceTree = "<group>"; };
+		EE34851217693345006CF966 /* CategoryTemplate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoryTemplate.h; sourceTree = "<group>"; };
+		EE34851317693345006CF966 /* CategoryTemplate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryTemplate.m; sourceTree = "<group>"; };
+		EE34851417693345006CF966 /* ClassTemplate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClassTemplate.h; sourceTree = "<group>"; };
+		EE34851517693345006CF966 /* ClassTemplate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassTemplate.m; sourceTree = "<group>"; };
+		EE34851617693345006CF966 /* UnitTestTemplate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnitTestTemplate.h; sourceTree = "<group>"; };
+		EE34851717693345006CF966 /* UnitTestTemplate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnitTestTemplate.m; sourceTree = "<group>"; };
+		EE348524176A1AD5006CF966 /* TestObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestObjects.h; sourceTree = "<group>"; };
+		EE348525176A1AD5006CF966 /* TestObjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestObjects.m; sourceTree = "<group>"; };
 		EE40DCC6170B957600398D0E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		EE42D04B15DEB4C900F03EB0 /* SMART.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMART.h; sourceTree = "<group>"; };
 		EE47118C170BCD37007C2D3D /* Index.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = Index.md; sourceTree = "<group>"; };
@@ -509,6 +518,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EE34851117693345006CF966 /* Generator */ = {
+			isa = PBXGroup;
+			children = (
+				EE34851217693345006CF966 /* CategoryTemplate.h */,
+				EE34851317693345006CF966 /* CategoryTemplate.m */,
+				EE34851417693345006CF966 /* ClassTemplate.h */,
+				EE34851517693345006CF966 /* ClassTemplate.m */,
+				EE34851617693345006CF966 /* UnitTestTemplate.h */,
+				EE34851717693345006CF966 /* UnitTestTemplate.m */,
+			);
+			path = Generator;
+			sourceTree = SOURCE_ROOT;
+		};
 		EE5D69671656F4C9001741E2 /* RDF */ = {
 			isa = PBXGroup;
 			children = (
@@ -648,6 +670,7 @@
 				EE42D04B15DEB4C900F03EB0 /* SMART.h */,
 				EEE82D8C15D00D810017EA0B /* SMARTObjects.h */,
 				EEC9C59A15CB2EA800B7C568 /* Classes */,
+				EE34851117693345006CF966 /* Generator */,
 				EEC1470215DFE790006B8798 /* GeneratedClasses */,
 				EEF0193715CB453400FFD480 /* MPOAuth Framework */,
 				EEC9C59B15CB2EA800B7C568 /* Supporting Files */,
@@ -717,6 +740,8 @@
 			children = (
 				EE6A5A8E15CC736E00DD0F68 /* SMMockServer.h */,
 				EE6A5A8F15CC736E00DD0F68 /* SMMockServer.m */,
+				EE348524176A1AD5006CF966 /* TestObjects.h */,
+				EE348525176A1AD5006CF966 /* TestObjects.m */,
 				EE6A5A8015CC72D500DD0F68 /* TestServer.h */,
 				EE6A5A8115CC72D500DD0F68 /* TestServer.m */,
 				EE6A5A8315CC731200DD0F68 /* TestServerCalls.h */,
@@ -1190,6 +1215,7 @@
 				EE6A5A8515CC731200DD0F68 /* TestServerCalls.m in Sources */,
 				EE6A5A9015CC736E00DD0F68 /* SMMockServer.m in Sources */,
 				EEADE77416AF02B000E8715A /* TestGeneratedClasses.m in Sources */,
+				EE348526176A1AD5006CF966 /* TestObjects.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1260,7 +1286,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Resources/SMARTFramework-Prefix.pch";
-				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)\"/**";
+				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)\"/**";
 				INFOPLIST_FILE = "SMARTFrameworkTests/SMARTFrameworkTests-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1373,7 +1399,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Resources/SMARTFramework-Prefix.pch";
-				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)\"/**";
+				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)\"/**";
 				INFOPLIST_FILE = "SMARTFrameworkTests/SMARTFrameworkTests-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1390,7 +1416,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Resources/SMARTFramework-Prefix.pch";
-				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)\"/**";
+				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)\"/**";
 				INFOPLIST_FILE = "SMARTFrameworkTests/SMARTFrameworkTests-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1441,7 +1467,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Resources/SMARTFramework-Prefix.pch";
-				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)\"/**";
+				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)\"/**";
 				INFOPLIST_FILE = "SMARTFrameworkTests/SMARTFrameworkTests-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";

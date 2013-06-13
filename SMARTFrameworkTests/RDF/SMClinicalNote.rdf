@@ -4,10 +4,8 @@
   xmlns:sp="http://smartplatforms.org/terms#"
   xmlns:dcterms="http://purl.org/dc/terms/"
   xmlns:v="http://www.w3.org/2006/vcard/ns#"
-  xmlns:spcode="http://smartplatforms.org/terms/codes/"
 >
- <sp:ClinicalNote rdf:about="http://sandbox-api.smartplatforms.org/records/2169591/clinical_notes/827335">
-    <sp:belongsTo rdf:resource="http://sandbox-api.smartplatforms.org/records/2169591" />
+ <sp:ClinicalNote>
     <dcterms:date>2012-05-17</dcterms:date>
     <dcterms:title>Cardiology clinic follow-up</dcterms:title>
     <dcterms:format>
@@ -29,8 +27,8 @@
         <sp:Resource>
             <sp:content>
                 <sp:Content>
-				    <sp:encoding>UTF-8</sp:encoding>
-				    <sp:value>Patient states recent difficulties with sleeping and concentration due to current problem.</sp:value>
+                   <sp:encoding>UTF-8</sp:encoding>
+                   <sp:value>Patient states recent difficulties with sleeping and concentration due to current problem.</sp:value>
                 </sp:Content>
             </sp:content>
         </sp:Resource>

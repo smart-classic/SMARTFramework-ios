@@ -20,5 +20,6 @@
         </sp:code>
       </sp:CodedValue>
   </sp:allergyExclusionName>
+  <dcterms:date>2005-05-05</dcterms:date>
 </sp:AllergyExclusion>
 </rdf:RDF>

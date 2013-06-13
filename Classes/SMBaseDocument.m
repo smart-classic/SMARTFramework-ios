@@ -58,7 +58,7 @@
 - (NSData *)rdfXMLRepresentation
 {
 	RedlandSerializer *serializer = [RedlandSerializer serializerWithName:RedlandAbbreviatedRDFXMLSerializer];
-	return [serializer serializedDataFromModel:self.model withBaseURI:nil];
+	return [serializer serializedDataFromModel:self.inModel withBaseURI:nil];
 }
 
 

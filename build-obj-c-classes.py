@@ -48,7 +48,7 @@ _templates['literal_getter'] = """- ({{ itemClass }} *){{ name }}
 	if (!_{{ name }}) {
 		RedlandNode *predicate = [RedlandNode nodeWithURIString:@"{{ uri }}"];
 		RedlandStatement *statement = [RedlandStatement statementWithSubject:self.subject predicate:predicate object:nil];
-		RedlandStreamEnumerator *query = [self.model enumeratorOfStatementsLike:statement];
+		RedlandStreamEnumerator *query = [self.inModel enumeratorOfStatementsLike:statement];
 		
 		RedlandStatement *rslt = [query nextObject];
 		self.{{ name }} = [rslt.object literalValue];
@@ -61,7 +61,7 @@ _templates['multi_literal_getter'] = """- (NSArray *){{ name }}
 	if (!_{{ name }}) {
 		RedlandNode *predicate = [RedlandNode nodeWithURIString:@"{{ uri }}"];
 		RedlandStatement *statement = [RedlandStatement statementWithSubject:self.subject predicate:predicate object:nil];
-		RedlandStreamEnumerator *query = [self.model enumeratorOfStatementsLike:statement];
+		RedlandStreamEnumerator *query = [self.inModel enumeratorOfStatementsLike:statement];
 		
 		// loop results
 		NSMutableArray *arr = [NSMutableArray array];
@@ -84,11 +84,11 @@ _templates['model_getter'] = """- ({{ itemClass }} *){{ name }}
 		// get the "{{ name }}" element
 		RedlandNode *predicate = [RedlandNode nodeWithURIString:@"{{ uri }}"];
 		RedlandStatement *statement = [RedlandStatement statementWithSubject:self.subject predicate:predicate object:nil];
-		RedlandStreamEnumerator *query = [self.model enumeratorOfStatementsLike:statement];
+		RedlandStreamEnumerator *query = [self.inModel enumeratorOfStatementsLike:statement];
 		RedlandStatement *rslt = [query nextObject];
 		
 		// create an item for this object
-		{{ itemClass }} *obj = [{{ itemClass }} newWithSubject:rslt.object inModel:self.model];
+		{{ itemClass }} *obj = [{{ itemClass }} newWithSubject:rslt.object inModel:self.inModel];
 		self.{{ name }} = obj ? obj : (id)[NSNull null];
 	}
 	
@@ -107,7 +107,7 @@ _templates['multi_model_getter'] = """- (NSArray *){{ name }}
 		// get the "{{ name }}" elements
 		RedlandNode *predicate = [RedlandNode nodeWithURIString:@"{{ uri }}"];
 		RedlandStatement *statement = [RedlandStatement statementWithSubject:self.subject predicate:predicate object:nil];
-		RedlandStreamEnumerator *query = [self.model enumeratorOfStatementsLike:statement];
+		RedlandStreamEnumerator *query = [self.inModel enumeratorOfStatementsLike:statement];
 		
 		// loop through the results
 		NSMutableArray *arr = [NSMutableArray array];
@@ -115,7 +115,7 @@ _templates['multi_model_getter'] = """- (NSArray *){{ name }}
 		while ((rslt = [query nextObject])) {
 			
 			// instantiate an item for each object
-			{{ itemClass }} *newItem = [{{ itemClass }} newWithSubject:rslt.object inModel:self.model];
+			{{ itemClass }} *newItem = [{{ itemClass }} newWithSubject:rslt.object inModel:self.inModel];
 			if (newItem) {
 				[arr addObject:newItem];
 			}
