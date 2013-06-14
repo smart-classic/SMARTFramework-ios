@@ -164,6 +164,8 @@ You are now ready to rumble!
 Using the Framework
 -------------------
 
+Here are a few code examples, for a technical overview and detailed class documentation see the [full documentation online][docs].
+
 
 ### Instantiating a server handle ###
 
