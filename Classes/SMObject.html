@@ -40,16 +40,31 @@
 	
 	<option value="properties">Properties</option>
 	
+	<option value="//api/name/inModel">&nbsp;&nbsp;&nbsp;&nbsp;inModel</option>
+	
+	<option value="//api/name/model">&nbsp;&nbsp;&nbsp;&nbsp;model</option>
+	
 	<option value="//api/name/rdfType">&nbsp;&nbsp;&nbsp;&nbsp;rdfType</option>
 	
 	<option value="//api/name/rdfTypes">&nbsp;&nbsp;&nbsp;&nbsp;rdfTypes</option>
 	
+	<option value="//api/name/subject">&nbsp;&nbsp;&nbsp;&nbsp;subject</option>
 	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/newWithRDFXML:">&nbsp;&nbsp;&nbsp;&nbsp;+ newWithRDFXML:</option>
+	
+	<option value="//api/name/newWithSubject:inModel:">&nbsp;&nbsp;&nbsp;&nbsp;+ newWithSubject:inModel:</option>
 	
 	
 	
 	
 	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/init">&nbsp;&nbsp;&nbsp;&nbsp;- init</option>
 	
 	<option value="//api/name/initWithRDFXML:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithRDFXML:</option>
 	
@@ -79,17 +94,33 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/inModel">inModel</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/model">model</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/rdfType">rdfType</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/rdfTypes">rdfTypes</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/subject">subject</a></span></li>
 	
 </ul></li>
 
 
 
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/newWithRDFXML:">newWithRDFXML:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/newWithSubject:inModel:">newWithSubject:inModel:</a></span></li>
+	
+</ul></li>
+
 
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/init">init</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithRDFXML:">initWithRDFXML:</a></span></li>
 	
@@ -145,10 +176,31 @@
 						
 						
 						
-						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
 
 						<ul class="task-list">
 							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/subject">&nbsp;&nbsp;subject</a></code>
+		<span class="tooltip"><p>The subject this class is describing</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/inModel">&nbsp;&nbsp;inModel</a></code>
+		<span class="tooltip"><p>The <a href="#//api/name/model">model</a> that this object is contained in; remember there might be triples unrelated to this object in there as well!</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/model">&nbsp;&nbsp;model</a></code>
+		<span class="tooltip"><p>The model containing only the receiver&rsquo;s triples</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/rdfType">&nbsp;&nbsp;rdfType</a></code>
 		<span class="tooltip"><p>The rdf:type getter for this class gets the class-wide type if it is not specifically set for this instance.</p></span>
@@ -161,6 +213,21 @@
 		<span class="tooltip"><p>All the types (as RedlandNode objects) that apply to the receiver.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/newWithSubject:inModel:">+&nbsp;newWithSubject:inModel:</a></code>
+		<span class="tooltip"><p>Convenience allocator.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/newWithRDFXML:">+&nbsp;newWithRDFXML:</a></code>
+		<span class="tooltip"><p>Convenience allocator when allocating from RDF+XML.
+@attention Note that if RDF+XML parsing fails, this method will return nil (i.e. it will catch the exception thrown in &ldquo;initWithRDFXML:&rdquo;).</p></span>
+	</span>
+	
 	
 </li><li>
 	<span class="tooltip">
@@ -179,6 +246,21 @@
 </li>
 						</ul>
 						
+						
+						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/init">&ndash;&nbsp;init</a></code>
+		<span class="tooltip"><p>To catch all &ldquo;new&rdquo; and &ldquo;init&rdquo; calls, we are going to forward to our designated initializer &ldquo;initWithSubject:inModel:&rdquo;.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
 					</div>
 					
 					
@@ -188,6 +270,78 @@
 					<div class="section section-methods">
 						<a title="Properties" name="properties"></a>
 						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/inModel" title="inModel"></a>
+	<h3 class="subsubtitle method-title">inModel</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The <a href="#//api/name/model">model</a> that this object is contained in; remember there might be triples unrelated to this object in there as well!</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly, strong) RedlandModel *inModel</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMObject.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/model" title="model"></a>
+	<h3 class="subsubtitle method-title">model</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The model containing only the receiver&rsquo;s triples</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly, strong) RedlandModel *model</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMObject.h</code><br />
+	</div>				
+	
+	
+</div>
 						
 						<div class="section-method">
 	<a name="//api/name/rdfType" title="rdfType"></a>
@@ -270,15 +424,166 @@ receiver, and most of the time this will be the only type anyway. Use <a href=".
 	
 </div>
 						
+						<div class="section-method">
+	<a name="//api/name/subject" title="subject"></a>
+	<h3 class="subsubtitle method-title">subject</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The subject this class is describing</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly, strong) RedlandNode *subject</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMObject.h</code><br />
+	</div>				
+	
+	
+</div>
+						
 					</div>
 					
 					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/newWithRDFXML:" title="newWithRDFXML:"></a>
+	<h3 class="subsubtitle method-title">newWithRDFXML:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Convenience allocator when allocating from RDF+XML.
+@attention Note that if RDF+XML parsing fails, this method will return nil (i.e. it will catch the exception thrown in &ldquo;initWithRDFXML:&rdquo;).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (id)newWithRDFXML:(NSString *)<em>rdfString</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMObject.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/newWithSubject:inModel:" title="newWithSubject:inModel:"></a>
+	<h3 class="subsubtitle method-title">newWithSubject:inModel:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Convenience allocator.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (id)newWithSubject:(RedlandNode *)<em>aSubject</em> inModel:(RedlandModel *)<em>aModel</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMObject.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
 					
 					
 					
 					<div class="section section-methods">
 						<a title="Instance Methods" name="instance_methods"></a>
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/init" title="init"></a>
+	<h3 class="subsubtitle method-title">init</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>To catch all &ldquo;new&rdquo; and &ldquo;init&rdquo; calls, we are going to forward to our designated initializer &ldquo;initWithSubject:inModel:&rdquo;.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)init</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMObject.m</code><br />
+	</div>				
+	
+	
+</div>
 						
 						<div class="section-method">
 	<a name="//api/name/initWithRDFXML:" title="initWithRDFXML:"></a>
@@ -310,12 +615,17 @@ receiver, and most of the time this will be the only type anyway. Use <a href=".
 	
 	<div class="method-subsection return">
 		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>An instance containing a model initialized from the given RDF+XML string</p>
+		<p>An instance containing a <a href="#//api/name/model">model</a> initialized from the given RDF+XML string</p>
 	</div>
 	
 	
 	
 	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<div class="warning"><p><strong>Warning:</strong> This method will raise an exception on invalid RDF+XML</p></div>
+	</div>
 	
 	
 	
@@ -352,12 +662,12 @@ receiver, and most of the time this will be the only type anyway. Use <a href=".
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>aSubject</em></dt>
-			<dd><p>The node that represents the subject being wrapped by this class, can not be nil!</p></dd>
+			<dd><p>The node that represents the <a href="#//api/name/subject">subject</a> being wrapped by this class, can not be nil!</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>aModel</em></dt>
-			<dd><p>The complete model from which to pull properties for the instance</p></dd>
+			<dd><p>The complete <a href="#//api/name/model">model</a> from which to pull properties for the instance</p></dd>
 		</dl>
 		
 	</div>
@@ -366,7 +676,7 @@ receiver, and most of the time this will be the only type anyway. Use <a href=".
 	
 	<div class="method-subsection return">
 		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>An instance wrapping the given RDF model</p>
+		<p>An instance wrapping the given RDF <a href="#//api/name/model">model</a></p>
 	</div>
 	
 	
@@ -375,8 +685,8 @@ receiver, and most of the time this will be the only type anyway. Use <a href=".
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>An object is defined by anchoring to a subject in a model. This means a subject is needed if you want to be sure to get correct data from the model, and
-for this reason the initializer requires a subject or will return nil.</p><div class="warning"><p><strong>Warning:</strong> Will return nil if there is no subject.</p></div>
+		<p>An object is defined by anchoring to a <a href="#//api/name/subject">subject</a> in a <a href="#//api/name/model">model</a>. This means a <a href="#//api/name/subject">subject</a> is needed if you want to be sure to get correct data from the <a href="#//api/name/model">model</a>, and
+for this reason the initializer requires a <a href="#//api/name/subject">subject</a> or will return nil.</p><div class="warning"><p><strong>Warning:</strong> Will return nil if there is no <a href="#//api/name/subject">subject</a>.</p></div>
 	</div>
 	
 	
@@ -406,7 +716,7 @@ for this reason the initializer requires a subject or will return nil.</p><div c
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 CHIP. All rights reserved. (Last updated: 2013-04-03)</span><br />
+						<p><span class="copyright">&copy; 2013 CHIP. All rights reserved. (Last updated: 2013-06-14)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						

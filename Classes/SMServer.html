@@ -82,8 +82,6 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/_dismissLoginScreenAnimated:">&nbsp;&nbsp;&nbsp;&nbsp;- _dismissLoginScreenAnimated:</option>
-	
 	<option value="//api/name/_presentLoginScreenAtURL:">&nbsp;&nbsp;&nbsp;&nbsp;- _presentLoginScreenAtURL:</option>
 	
 	<option value="//api/name/additionalRequestTokenParameters">&nbsp;&nbsp;&nbsp;&nbsp;- additionalRequestTokenParameters</option>
@@ -97,6 +95,10 @@
 	<option value="//api/name/callbackSchemeForLoginView:">&nbsp;&nbsp;&nbsp;&nbsp;- callbackSchemeForLoginView:</option>
 	
 	<option value="//api/name/createOAuthWithAuthMethodClass:error:">&nbsp;&nbsp;&nbsp;&nbsp;- createOAuthWithAuthMethodClass:error:</option>
+	
+	<option value="//api/name/dismissLoginScreenAnimated:">&nbsp;&nbsp;&nbsp;&nbsp;- dismissLoginScreenAnimated:</option>
+	
+	<option value="//api/name/displayLoginScreenHint:">&nbsp;&nbsp;&nbsp;&nbsp;- displayLoginScreenHint:</option>
 	
 	<option value="//api/name/fetchAppManifest:">&nbsp;&nbsp;&nbsp;&nbsp;- fetchAppManifest:</option>
 	
@@ -115,6 +117,8 @@
 	<option value="//api/name/loginViewDidCancel:">&nbsp;&nbsp;&nbsp;&nbsp;- loginViewDidCancel:</option>
 	
 	<option value="//api/name/loginViewDidLogout:">&nbsp;&nbsp;&nbsp;&nbsp;- loginViewDidLogout:</option>
+	
+	<option value="//api/name/loginViewURLCanBeReached:">&nbsp;&nbsp;&nbsp;&nbsp;- loginViewURLCanBeReached:</option>
 	
 	<option value="//api/name/performCall:">&nbsp;&nbsp;&nbsp;&nbsp;- performCall:</option>
 	
@@ -153,6 +157,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Allocator">Allocator</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Requests">Requests</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Login Screen">Login Screen</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Authentication">Authentication</a></span></li>
 	
@@ -212,8 +218,6 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/_dismissLoginScreenAnimated:">_dismissLoginScreenAnimated:</a></span></li>
-	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/_presentLoginScreenAtURL:">_presentLoginScreenAtURL:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/additionalRequestTokenParameters">additionalRequestTokenParameters</a></span></li>
@@ -227,6 +231,10 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/callbackSchemeForLoginView:">callbackSchemeForLoginView:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/createOAuthWithAuthMethodClass:error:">createOAuthWithAuthMethodClass:error:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/dismissLoginScreenAnimated:">dismissLoginScreenAnimated:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/displayLoginScreenHint:">displayLoginScreenHint:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/fetchAppManifest:">fetchAppManifest:</a></span></li>
 	
@@ -245,6 +253,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/loginViewDidCancel:">loginViewDidCancel:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/loginViewDidLogout:">loginViewDidLogout:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/loginViewURLCanBeReached:">loginViewURLCanBeReached:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/performCall:">performCall:</a></span></li>
 	
@@ -476,8 +486,7 @@ to login and select a record. You initiate this as follows:</p>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/selectRecord:">&ndash;&nbsp;selectRecord:</a></code>
-		<span class="tooltip"><p>This is the main authentication entry point, this method will ask the <a href="#//api/name/delegate">delegate</a> where to present a login view controller, if authentication is necessary, and
-handle all user interactions until login was successful or the user cancels the login operation.</p></span>
+		<span class="tooltip"><p>Use this method to initiate record selection.</p></span>
 	</span>
 	
 	
@@ -551,6 +560,28 @@ Authentication calls are wrapped into this method since we need to know our endp
 	<span class="tooltip">
 		<code><a href="#//api/name/fetchAppManifest:">&ndash;&nbsp;fetchAppManifest:</a></code>
 		<span class="tooltip"><p>Fetches the app <a href="#//api/name/manifest">manifest</a>.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Login Screen" name="task_Login Screen"></a>
+						<h3 class="subsubtitle task-title">Login Screen</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/displayLoginScreenHint:">&ndash;&nbsp;displayLoginScreenHint:</a></code>
+		<span class="tooltip"><p>If a loading screen is shown (!), displays the given text beneath the activity spinner.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/dismissLoginScreenAnimated:">&ndash;&nbsp;dismissLoginScreenAnimated:</a></code>
+		<span class="tooltip"><p>Dismisses the login screen, if present</p></span>
 	</span>
 	
 	
@@ -644,8 +675,8 @@ Authentication calls are wrapped into this method since we need to know our endp
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/_dismissLoginScreenAnimated:">&ndash;&nbsp;_dismissLoginScreenAnimated:</a></code>
-		<span class="tooltip"><p>Dismisses the login screen, if present</p></span>
+		<code><a href="#//api/name/loginViewURLCanBeReached:">&ndash;&nbsp;loginViewURLCanBeReached:</a></code>
+		<span class="tooltip"><p>Optional delegate method that will be fired when the login view controller managed to load the first page after being shown.</p></span>
 	</span>
 	
 	
@@ -1346,52 +1377,6 @@ This is your chance to discard cached data</p></span>
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/_dismissLoginScreenAnimated:" title="_dismissLoginScreenAnimated:"></a>
-	<h3 class="subsubtitle method-title">_dismissLoginScreenAnimated:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Dismisses the login screen, if present</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (void)_dismissLoginScreenAnimated:(BOOL)<em>animated</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>animated</em></dt>
-			<dd><p>BOOL indicating whether the dismissal should be animated</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SMServer.m</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
 	<a name="//api/name/_presentLoginScreenAtURL:" title="_presentLoginScreenAtURL:"></a>
 	<h3 class="subsubtitle method-title">_presentLoginScreenAtURL:</h3>
 	
@@ -1703,6 +1688,97 @@ This is your chance to discard cached data</p></span>
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServer.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/dismissLoginScreenAnimated:" title="dismissLoginScreenAnimated:"></a>
+	<h3 class="subsubtitle method-title">dismissLoginScreenAnimated:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Dismisses the login screen, if present</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)dismissLoginScreenAnimated:(BOOL)<em>animated</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>animated</em></dt>
+			<dd><p>BOOL indicating whether the dismissal should be animated</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMServer.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/displayLoginScreenHint:" title="displayLoginScreenHint:"></a>
+	<h3 class="subsubtitle method-title">displayLoginScreenHint:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>If a loading screen is shown (!), displays the given text beneath the activity spinner.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)displayLoginScreenHint:(NSString *)<em>hintText</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>You can but should not use this method during login/authentification, it&rsquo;s used automatically during that process. What you can and probably should do is
+use this method in your <a href="#//api/name/selectRecord:">selectRecord:</a> callback if you perform additional steps, like fetching a patient&rsquo;s medications right after login. This way the user
+will know why the activity spinner is still being shown.</p>
+
+<p>Of course you can only use this method while the login screen is being shown</p>
+	</div>
 	
 	
 	
@@ -2150,6 +2226,52 @@ This is your chance to discard cached data</p>
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/loginViewURLCanBeReached:" title="loginViewURLCanBeReached:"></a>
+	<h3 class="subsubtitle method-title">loginViewURLCanBeReached:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Optional delegate method that will be fired when the login view controller managed to load the first page after being shown.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)loginViewURLCanBeReached:(SMLoginViewController *)<em>aLoginController</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>aLoginController</em></dt>
+			<dd><p>The login controller in question</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMLoginViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/performCall:" title="performCall:"></a>
 	<h3 class="subsubtitle method-title">performCall:</h3>
 	
@@ -2305,8 +2427,7 @@ Authentication calls are wrapped into this method since we need to know our endp
 	
 	
 	<div class="method-subsection brief-description">
-		<p>This is the main authentication entry point, this method will ask the <a href="#//api/name/delegate">delegate</a> where to present a login view controller, if authentication is necessary, and
-handle all user interactions until login was successful or the user cancels the login operation.</p>
+		<p>Use this method to initiate record selection.</p>
 	</div>		
 	
     
@@ -2321,7 +2442,7 @@ handle all user interactions until login was successful or the user cancels the 
 		<dl class="argument-def parameter-def">
 			<dt><em>callback</em></dt>
 			<dd><p>A block with a first BOOL argument, which will be YES if the user cancelled the action, and an error string argument, which will be nil if
-authentication was successful. By the time this callback is called, the &ldquo;activeRecord&rdquo; property will be set (if the call was successful).</p></dd>
+authentication was successful</p></dd>
 		</dl>
 		
 	</div>
@@ -2331,6 +2452,13 @@ authentication was successful. By the time this callback is called, the &ldquo;a
 	
 	
 	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>This is the main authentication entry point, this method will ask the <a href="#//api/name/delegate">delegate</a> where to present a login view controller, if authentication is necessary, and
+handle all user interactions until login was successful or the user cancels the login operation. By the time the method&rsquo;s callback is called, the
+<a href="#//api/name/activeRecord">activeRecord</a> property will be set (if the call was successful) and you can use it to interact with your record&rsquo;s data.</p><div class="warning"><p><strong>Warning:</strong> Don&rsquo;t forget to dismiss the login screen in your callback with <a href="#//api/name/dismissLoginScreenAnimated:">dismissLoginScreenAnimated:</a>.</p></div>
+	</div>
 	
 	
 	
@@ -2462,7 +2590,7 @@ obtaining a new token. In this case, we don&rsquo;t want the call to finish, but
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 CHIP. All rights reserved. (Last updated: 2013-04-03)</span><br />
+						<p><span class="copyright">&copy; 2013 CHIP. All rights reserved. (Last updated: 2013-06-14)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						

@@ -49,6 +49,11 @@
 	
 	
 	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/newForRecord:">&nbsp;&nbsp;&nbsp;&nbsp;+ newForRecord:</option>
+	
+	
 	
 	
 	<option value="instance_methods">Instance Methods</option>
@@ -58,6 +63,12 @@
 	<option value="//api/name/get:callback:">&nbsp;&nbsp;&nbsp;&nbsp;- get:callback:</option>
 	
 	<option value="//api/name/get:parameters:callback:">&nbsp;&nbsp;&nbsp;&nbsp;- get:parameters:callback:</option>
+	
+	<option value="//api/name/post:">&nbsp;&nbsp;&nbsp;&nbsp;- post:</option>
+	
+	<option value="//api/name/rdfXMLData">&nbsp;&nbsp;&nbsp;&nbsp;- rdfXMLData</option>
+	
+	<option value="//api/name/rdfXMLRepresentation">&nbsp;&nbsp;&nbsp;&nbsp;- rdfXMLRepresentation</option>
 	
 	
 	
@@ -74,8 +85,6 @@
 
 
 <li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Performing server calls">Performing server calls</a></span></li>
 	
 </ul></li>
 
@@ -95,6 +104,12 @@
 
 
 
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/newForRecord:">newForRecord:</a></span></li>
+	
+</ul></li>
+
 
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
@@ -104,6 +119,12 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/get:callback:">get:callback:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/get:parameters:callback:">get:parameters:callback:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/post:">post:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/rdfXMLData">rdfXMLData</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/rdfXMLRepresentation">rdfXMLRepresentation</a></span></li>
 	
 </ul></li>
 
@@ -158,7 +179,7 @@ method.</p>
 						
 						
 						
-						<h3 class="subsubtitle task-title">Other Methods</h3>
+						
 
 						<ul class="task-list">
 							<li>
@@ -178,19 +199,32 @@ method.</p>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/basePath">&nbsp;&nbsp;basePath</a></code>
-		<span class="tooltip"><p>Uses the class basePath and substitutes the placeholders with instance properties by default.</p></span>
+		<span class="tooltip"><p>Uses the class basePath and substitutes the placeholders with instance properties by default</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
-</li>
-						</ul>
-						
-						
-						<a title="Performing server calls" name="task_Performing server calls"></a>
-						<h3 class="subsubtitle task-title">Performing server calls</h3>
-
-						<ul class="task-list">
-							<li>
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/newForRecord:">+&nbsp;newForRecord:</a></code>
+		<span class="tooltip"><p>Instantiates a new document, usually for posting to the server.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/rdfXMLRepresentation">&ndash;&nbsp;rdfXMLRepresentation</a></code>
+		<span class="tooltip"><p>Serializes the receiver as RDF+XML (abbreviated).</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/rdfXMLData">&ndash;&nbsp;rdfXMLData</a></code>
+		<span class="tooltip"><p>Serializes the receiver as RDF+XML (abbreviated), UTF-8 encoded.</p></span>
+	</span>
+	
+	
+</li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/get:">&ndash;&nbsp;get:</a></code>
 		<span class="tooltip"><p>Performs a GET for the receiver against the server.</p></span>
@@ -208,6 +242,13 @@ method.</p>
 	<span class="tooltip">
 		<code><a href="#//api/name/get:parameters:callback:">&ndash;&nbsp;get:parameters:callback:</a></code>
 		<span class="tooltip"><p>Shortcut for GETting data with parameters.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/post:">&ndash;&nbsp;post:</a></code>
+		<span class="tooltip"><p>Shortcut for POSTing the receiver&rsquo;s data representation to the server.</p></span>
 	</span>
 	
 	
@@ -231,7 +272,7 @@ method.</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Uses the class basePath and substitutes the placeholders with instance properties by default.</p>
+		<p>Uses the class basePath and substitutes the placeholders with instance properties by default</p>
 	</div>		
 	
     
@@ -246,11 +287,6 @@ method.</p>
 	
 	
 	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>TODO: Use a nice text substitution method</p>
-	</div>
-	
 	
 	
 	
@@ -259,7 +295,7 @@ method.</p>
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SMBaseDocument.m</code><br />
+		<code class="declared-in-ref">SMBaseDocument.h</code><br />
 	</div>				
 	
 	
@@ -340,6 +376,63 @@ method.</p>
 					</div>
 					
 					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/newForRecord:" title="newForRecord:"></a>
+	<h3 class="subsubtitle method-title">newForRecord:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Instantiates a new document, usually for posting to the server.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (id)newForRecord:(SMRecord *)<em>aRecord</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>aRecord</em></dt>
+			<dd><p>The <a href="#//api/name/record">record</a> this instance belongs to</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The &ldquo;subject&rdquo; node is set to a URI-node with the &ldquo;rdfType&rdquo; URI as value.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMBaseDocument.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
 					
 					
 					
@@ -515,6 +608,139 @@ method.</p>
 	
 </div>
 						
+						<div class="section-method">
+	<a name="//api/name/post:" title="post:"></a>
+	<h3 class="subsubtitle method-title">post:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Shortcut for POSTing the receiver&rsquo;s data representation to the server.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)post:(SMCancelErrorBlock)<em>callback</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>The callback block to execute when the call has finished</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>This method uses the receiver&rsquo;s &ldquo;basePath&rdquo; property and removes the {uuid} part to determine the POST method.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMBaseDocument.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/rdfXMLData" title="rdfXMLData"></a>
+	<h3 class="subsubtitle method-title">rdfXMLData</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Serializes the receiver as RDF+XML (abbreviated), UTF-8 encoded.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSData *)rdfXMLData</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>NSData representing a UTF-8 encoded string</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMBaseDocument.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/rdfXMLRepresentation" title="rdfXMLRepresentation"></a>
+	<h3 class="subsubtitle method-title">rdfXMLRepresentation</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Serializes the receiver as RDF+XML (abbreviated).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)rdfXMLRepresentation</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>An NSString</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMBaseDocument.m</code><br />
+	</div>				
+	
+	
+</div>
+						
 					</div>
 					
 					
@@ -528,7 +754,7 @@ method.</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 CHIP. All rights reserved. (Last updated: 2013-04-03)</span><br />
+						<p><span class="copyright">&copy; 2013 CHIP. All rights reserved. (Last updated: 2013-06-14)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						

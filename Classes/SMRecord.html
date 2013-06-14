@@ -105,10 +105,6 @@
 	
 	<option value="//api/name/performMethod:withBody:orParameters:ofType:httpMethod:callback:">&nbsp;&nbsp;&nbsp;&nbsp;- performMethod:withBody:orParameters:ofType:httpMethod:callback:</option>
 	
-	<option value="//api/name/postBodyString:ofType:to:callback:">&nbsp;&nbsp;&nbsp;&nbsp;- postBodyString:ofType:to:callback:</option>
-	
-	<option value="//api/name/postClinicalNote:callback:">&nbsp;&nbsp;&nbsp;&nbsp;- postClinicalNote:callback:</option>
-	
 	
 	
 </select>
@@ -202,10 +198,6 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/is:">is:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/performMethod:withBody:orParameters:ofType:httpMethod:callback:">performMethod:withBody:orParameters:ofType:httpMethod:callback:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/postBodyString:ofType:to:callback:">postBodyString:ofType:to:callback:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/postClinicalNote:callback:">postClinicalNote:callback:</a></span></li>
 	
 </ul></li>
 
@@ -363,13 +355,6 @@ instance which prompts your app user to login and select a record. Once you have
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/postBodyString:ofType:to:callback:">&ndash;&nbsp;postBodyString:ofType:to:callback:</a></code>
-		<span class="tooltip"><p>Performs a POST request to the given path, posting the data as body data.</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
 		<code><a href="#//api/name/performMethod:withBody:orParameters:ofType:httpMethod:callback:">&ndash;&nbsp;performMethod:withBody:orParameters:ofType:httpMethod:callback:</a></code>
 		<span class="tooltip"><p>The basic method to perform REST methods on the <a href="#//api/name/server">server</a> with App credentials.</p></span>
 	</span>
@@ -414,7 +399,7 @@ instance which prompts your app user to login and select a record. Once you have
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/getDocuments:">&ndash;&nbsp;getDocuments:</a></code>
-		<span class="tooltip"><p>Get all Documents for a patient.</p></span>
+		<span class="tooltip"><p>Returns data about all the available documents for the patient record subject to the standard filter restrictions. The optional <code>format</code> parameter sets the output format of the call. The possible values are <code>metadata</code> and <code>combined</code>. In <code>format=metadata</code> mode, the container returns metadata and desceriptors of the documents in RDF-XML. In <code>format=combined</code> mode the call returns the serialized documents' content in addition to all the data from the <code>format=metadata</code> mode. In the absence of a <code>format</code> parameter, the API defaults to <code>format=metadata</code>..</p></span>
 	</span>
 	
 	
@@ -506,13 +491,6 @@ instance which prompts your app user to login and select a record. Once you have
 	<span class="tooltip">
 		<code><a href="#//api/name/getVitalSignSets:">&ndash;&nbsp;getVitalSignSets:</a></code>
 		<span class="tooltip"><p>Get all Vital Sign Sets for a patient.</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/postClinicalNote:callback:">&ndash;&nbsp;postClinicalNote:callback:</a></code>
-		<span class="tooltip"><p>Post a Clinical Note for a patient.</p></span>
 	</span>
 	
 	
@@ -1000,7 +978,7 @@ the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Get all Documents for a patient.</p>
+		<p>Returns data about all the available documents for the patient record subject to the standard filter restrictions. The optional <code>format</code> parameter sets the output format of the call. The possible values are <code>metadata</code> and <code>combined</code>. In <code>format=metadata</code> mode, the container returns metadata and desceriptors of the documents in RDF-XML. In <code>format=combined</code> mode the call returns the serialized documents' content in addition to all the data from the <code>format=metadata</code> mode. In the absence of a <code>format</code> parameter, the API defaults to <code>format=metadata</code>..</p>
 	</div>		
 	
     
@@ -1951,124 +1929,6 @@ but not both, with the body string taking precedence if both are present.</p>
 	
 </div>
 						
-						<div class="section-method">
-	<a name="//api/name/postBodyString:ofType:to:callback:" title="postBodyString:ofType:to:callback:"></a>
-	<h3 class="subsubtitle method-title">postBodyString:ofType:to:callback:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Performs a POST request to the given path, posting the data as body data.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (void)postBodyString:(NSString *)<em>bodyString</em> ofType:(NSString *)<em>contentType</em> to:(NSString *)<em>path</em> callback:(SMSuccessRetvalueBlock)<em>callback</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>bodyString</em></dt>
-			<dd><p>The string data to post as body data</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>contentType</em></dt>
-			<dd><p>The Content-Type to use</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>path</em></dt>
-			<dd><p>The REST method path to post to</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>callback</em></dt>
-			<dd><p>A SMSuccessRetvalueBlock callback to execute when the request is done</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SMRecord.m</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/postClinicalNote:callback:" title="postClinicalNote:callback:"></a>
-	<h3 class="subsubtitle method-title">postClinicalNote:callback:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Post a Clinical Note for a patient.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (void)postClinicalNote:(NSString *)<em>string</em> callback:(SMSuccessRetvalueBlock)<em>callback</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>string</em></dt>
-			<dd><p>The string to post</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>callback</em></dt>
-			<dd><p>A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Posts to /records/{record_id}/clinical_notes/, originally named &ldquo;post_clinical_note&rdquo;. As of SMART 0.6, this is limited to clinical notes, which
-only allows posting plain text. May be extended in the future.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SMRecord+Calls.m</code><br />
-	</div>				
-	
-	
-</div>
-						
 					</div>
 					
 					
@@ -2082,7 +1942,7 @@ only allows posting plain text. May be extended in the future.</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 CHIP. All rights reserved. (Last updated: 2013-04-03)</span><br />
+						<p><span class="copyright">&copy; 2013 CHIP. All rights reserved. (Last updated: 2013-06-14)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						
