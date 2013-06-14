@@ -24,11 +24,12 @@
 #import <Redland-ObjC.h>
 
 
-@interface SMObject ()
+@interface SMObject () {
+	BOOL initializedAsTopModel;
+}
 
 @property (nonatomic, readwrite, strong) RedlandNode *subject;
 @property (nonatomic, readwrite, strong) RedlandModel *inModel;
-@property (nonatomic, readwrite, strong) RedlandModel *model;
 
 @end
 
@@ -101,24 +102,36 @@
 			
 			// parse (will raise on invalid input!)
 			[parser parseString:rdfString intoModel:_inModel withBaseURI:uri];
-			self.model = _inModel;
+			initializedAsTopModel = YES;
 		}
 	}
 	return self;
 }
 
+/**
+ *  To catch all "new" and "init" calls, we are going to forward to our designated initializer "initWithSubject:inModel:".
+ */
+- (id)init
+{
+	RedlandNode *blank = [RedlandNode nodeWithBlankID:nil];
+	RedlandModel *model = [RedlandModel new];
+	
+	return [self initWithSubject:blank inModel:model];
+}
+
 
 
 #pragma mark - Model
+/**
+ *  Retrieve the submodel if the receiver is part of a model, the whole model if it has been initialized from RDF+XML as top-level model.
+ */
 - (RedlandModel *)model
 {
-	if (!_model) {
-		self.model = [_inModel submodelForSubject:_subject];
-		if (!_model) {
-			DLog(@"Failed to identify submodel for subject %@ in %@", _subject, _inModel);
-		}
+	if (initializedAsTopModel) {
+		return _inModel;
 	}
-	return _model;
+	
+	return [_inModel submodelForSubject:_subject];
 }
 
 

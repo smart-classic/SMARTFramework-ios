@@ -43,7 +43,9 @@ _templates = {}
 _templates['property_header'] = """/// Representing {{ uri }} as {{ itemClass }}
 {{ add_comment }}@property (nonatomic, {{ strength }}) {{ useClass }} *{{ name }};"""
 
-_templates['literal_getter'] = """- ({{ itemClass }} *){{ name }}
+_templates['literal_getter'] = """@synthesize {{ name }} = _{{ name }};
+
+- ({{ itemClass }} *){{ name }}
 {
 	if (!_{{ name }}) {
 		RedlandNode *predicate = [RedlandNode nodeWithURIString:@"{{ uri }}"];
@@ -51,12 +53,30 @@ _templates['literal_getter'] = """- ({{ itemClass }} *){{ name }}
 		RedlandStreamEnumerator *query = [self.inModel enumeratorOfStatementsLike:statement];
 		
 		RedlandStatement *rslt = [query nextObject];
-		self.{{ name }} = [rslt.object literalValue];
+		_{{ name }} = [rslt.object literalValue];
 	}
 	return _{{ name }};
+}
+
+- (void){{ setName }}:({{ itemClass }} *){{ name }}
+{
+	if ({{ name }} != _{{ name }}) {
+		RedlandNode *predicate = ({{ name }} || _{{ name }}) ? [RedlandNode nodeWithURIString:@"{{ uri }}"] : nil;
+		if (_{{ name }}) {
+			[self.inModel removeStatementsLike:[RedlandStatement statementWithSubject:self.subject predicate:predicate object:nil]];
+		}
+		
+		_{{ name }} = [{{ name }} copy];
+		
+		if (_{{ name }}) {
+			[self.inModel addStatement:[RedlandStatement statementWithSubject:self.subject predicate:predicate object:[_{{ name }} nodeValue]]];
+		}
+	}
 }"""
 
-_templates['multi_literal_getter'] = """- (NSArray *){{ name }}
+_templates['multi_literal_getter'] = """@synthesize {{ name }} = _{{ name }};
+
+- (NSArray *){{ name }}
 {
 	if (!_{{ name }}) {
 		RedlandNode *predicate = [RedlandNode nodeWithURIString:@"{{ uri }}"];
@@ -72,12 +92,32 @@ _templates['multi_literal_getter'] = """- (NSArray *){{ name }}
 				[arr addObject:newItem];
 			}
 		}
-		self.{{ name }} = arr;
+		_{{ name }} = [arr copy];
 	}
 	return _{{ name }};
+}
+
+- (void){{ setName }}:(NSArray *){{ name }}
+{
+	if ({{ name }} != _{{ name }}) {
+		RedlandNode *predicate = ({{ name }} || _{{ name }}) ? [RedlandNode nodeWithURIString:@"{{ uri }}"] : nil;
+		if (_{{ name }}) {
+			[self.inModel removeStatementsLike:[RedlandStatement statementWithSubject:self.subject predicate:predicate object:nil]];
+		}
+		
+		_{{ name }} = [{{ name }} copy];
+		
+		if (_{{ name }}) {
+			for ({{ itemClass }} *newItem in _{{ name }}) {
+				[self.inModel addStatement:[RedlandStatement statementWithSubject:self.subject predicate:predicate object:[newItem nodeValue]]];
+			}
+		}
+	}
 }"""
 
-_templates['model_getter'] = """- ({{ itemClass }} *){{ name }}
+_templates['model_getter'] = """@synthesize {{ name }} = _{{ name }};
+
+- ({{ itemClass }} *){{ name }}
 {
 	if (!_{{ name }}) {
 		
@@ -89,7 +129,7 @@ _templates['model_getter'] = """- ({{ itemClass }} *){{ name }}
 		
 		// create an item for this object
 		{{ itemClass }} *obj = [{{ itemClass }} newWithSubject:rslt.object inModel:self.inModel];
-		self.{{ name }} = obj ? obj : (id)[NSNull null];
+		_{{ name }} = obj ? obj : (id)[NSNull null];
 	}
 	
 	// we use NSNull as a placeholder in case we already searched the graph and haven't found the object. This should help with performance.
@@ -98,9 +138,29 @@ _templates['model_getter'] = """- ({{ itemClass }} *){{ name }}
 	}
 	
 	return _{{ name }};
+}
+
+- (void){{ setName }}:({{ itemClass }} *){{ name }}
+{
+	if ({{ name }} != _{{ name }}) {
+		RedlandNode *predicate = ({{ name }} || _{{ name }}) ? [RedlandNode nodeWithURIString:@"{{ uri }}"] : nil;
+		if (_{{ name }}) {
+			[self.inModel removeSubmodel:_{{ name }}.model];
+			[self.inModel removeStatementsLike:[RedlandStatement statementWithSubject:self.subject predicate:predicate object:nil]];
+		}
+		
+		_{{ name }} = {{ name }};
+		
+		if (_{{ name }}) {
+			[self.inModel addStatement:[RedlandStatement statementWithSubject:self.subject predicate:predicate object:_{{ name }}.subject]];
+			[self.inModel addSubmodel:_{{ name }}.model];
+		}
+	}
 }"""
 
-_templates['multi_model_getter'] = """- (NSArray *){{ name }}
+_templates['multi_model_getter'] = """@synthesize {{ name }} = _{{ name }};
+
+- (NSArray *){{ name }}
 {
 	if (!_{{ name }}) {
 		
@@ -120,9 +180,31 @@ _templates['multi_model_getter'] = """- (NSArray *){{ name }}
 				[arr addObject:newItem];
 			}
 		}
-		self.{{ name }} = arr;
+		_{{ name }} = [arr copy];
 	}
 	return _{{ name }};
+}
+
+- (void){{ setName }}:(NSArray *){{ name }}
+{
+	if ({{ name }} != _{{ name }}) {
+		RedlandNode *predicate = ({{ name }} || _{{ name }}) ? [RedlandNode nodeWithURIString:@"{{ uri }}"] : nil;
+		if (_{{ name }}) {
+			for ({{ itemClass }} *item in _{{ name }}) {
+				[self.inModel removeSubmodel:item.model];
+			}
+			[self.inModel removeStatementsLike:[RedlandStatement statementWithSubject:self.subject predicate:predicate object:nil]];
+		}
+		
+		_{{ name }} = [{{ name }} copy];
+		
+		if (_{{ name }}) {
+			for ({{ itemClass }} *item in _{{ name }}) {
+				[self.inModel addStatement:[RedlandStatement statementWithSubject:self.subject predicate:predicate object:item.subject]];
+				[self.inModel addSubmodel:item.model];
+			}
+		}
+	}
 }"""
 
 _templates['class_base_path_getter'] = """+ (NSString *)basePath
@@ -314,8 +396,10 @@ def handle_class(a_class):
 		prop_class_id = str(o_prop.to_class.uri)
 		
 		c_forwards.add(itemClass)
+		prop_name = toObjCPropertyName(o_prop.name);
 		prop = {
-			'name': toObjCPropertyName(o_prop.name),
+			'name': prop_name,
+			'setName': "set%s%s" % (prop_name[0].upper(), prop_name[1:]),
 			'uri': o_prop.uri,
 			'itemClass': itemClass,
 			'useClass': 'NSArray' if o_prop.multiple_cardinality else itemClass,
@@ -338,8 +422,10 @@ def handle_class(a_class):
 	# get data properties (OWL_DataProperty instances)
 	for d_prop in a_class.data_properties:
 		primitive = 'NSString'			# TODO: When to use NSNumber or NSDate?
+		prop_name = toObjCPropertyName(d_prop.name)
 		prop = {
-			'name': toObjCPropertyName(d_prop.name),
+			'name': prop_name,
+			'setName': "set%s%s" % (prop_name[0].upper(), prop_name[1:]),
 			'uri': d_prop.uri,
 			'itemClass': primitive,
 			'useClass': 'NSArray' if d_prop.multiple_cardinality else primitive,

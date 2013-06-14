@@ -229,3 +229,28 @@ as shown above):
 
 You can see the available convenience methods in `SMRecord+Calls.h` or, if you have built the documentation, pull up the documentation for `SMRecord`.
 
+
+### Writing data ###
+
+
+SMART 0.6 added write support for app scratchpad data and clinical notes. Here is how you would create and POST a clinical note to the server:
+
+```objective-c
+SMClinicalNote *note = [SMClinicalNote newForRecord:_activeRecord];
+note.title = @"A note with a resource";
+note.date = @"2013-06-14";
+
+SMResource *resource = [SMResource new];
+resource.location = @"http://www.chip.org/files/abc.data";
+note.resource = @[resource];
+
+[note post:^(BOOL userDidCancel, NSString *__autoreleasing errorMessage) {
+	if (errorMessage) {
+		NLLog(@"There was an error POSTing a clinical note: %@", errorMessage);
+	}
+}];
+```
+
+Newly instantiating SMART objects has not been extensively tested, please report any issues that you may find.
+
+Happy coding!

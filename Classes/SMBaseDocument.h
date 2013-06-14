@@ -44,7 +44,8 @@
 + (id)newForRecord:(SMRecord *)aRecord;
 
 // Serialization
-- (NSData *)rdfXMLRepresentation;
+- (NSString *)rdfXMLRepresentation;
+- (NSData *)rdfXMLData;
 
 // Performing server calls
 - (void)get:(SMCancelErrorBlock)callback;

@@ -20,6 +20,7 @@
  */
 
 #import "TestObjects.h"
+#import "SMRecord+Calls.h"
 #import "SMARTObjects.h"
 #import <Redland-ObjC.h>
 
@@ -29,7 +30,7 @@
 /**
  *  Test Object RDF Handling
  */
-- (void)testAllergy
+- (void)testModelHandling
 {
 	NSURL *url = [[NSBundle bundleForClass:[self class]] URLForResource:@"SMAllergy" withExtension:@"rdf"];
 	STAssertNotNil(url, nil);
@@ -54,6 +55,29 @@
 	STAssertTrue(before > after, nil);
 	STAssertEquals(before - after, subsize, nil);
 	NSLog(@"Model: %d, after: %d, sub: %d", before, after, subsize);
+}
+
+/**
+ *  Test object creation
+ */
+- (void)testCreation
+{
+	SMRecord *record = [SMRecord new];
+	SMClinicalNote *note = [SMClinicalNote newForRecord:record];
+	note.title = @"THIS IS DA TITLE";
+	note.date = @"2013-06-14";
+	STAssertEquals(3, [note.model size], nil);
+//	NSLog(@"--  1  -- (%d)\n%@", [note.model size], [note rdfXMLRepresentation]);
+	
+	SMResource *resource = [SMResource new];
+	resource.location = @"http://www.chip.org/files/abc.data";
+	note.resource = @[resource];
+	STAssertEquals(5, [note.model size], nil);
+//	NSLog(@"--  2  -- (%d)\n%@", [note.model size], [note rdfXMLRepresentation]);
+	
+	note.resource = nil;
+	STAssertEquals(3, [note.model size], nil);
+//	NSLog(@"--  3  -- (%d)\n%@", [note.model size], [note rdfXMLRepresentation]);
 }
 
 

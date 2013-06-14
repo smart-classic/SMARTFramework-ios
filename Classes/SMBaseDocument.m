@@ -39,9 +39,16 @@
  */
 + (id)newForRecord:(SMRecord *)aRecord
 {
-	RedlandNode *subject = [RedlandNode nodeWithURIString:self.rdfType];
+	RedlandNode *subject = [RedlandNode new];
 	RedlandModel *model = [RedlandModel new];
 	
+	// add the type statement
+	RedlandStatement *typeStmt = [RedlandStatement statementWithSubject:subject
+															  predicate:[RedlandNode typeNode]
+																 object:[RedlandNode nodeWithURIString:self.rdfType]];
+	[model addStatement:typeStmt];
+	
+	// create the document
 	SMBaseDocument *doc = [self newWithSubject:subject inModel:model];
 	doc.record = aRecord;
 	
@@ -55,10 +62,20 @@
  *  Serializes the receiver as RDF+XML (abbreviated), UTF-8 encoded.
  *  @return NSData representing a UTF-8 encoded string
  */
-- (NSData *)rdfXMLRepresentation
+- (NSData *)rdfXMLData
 {
 	RedlandSerializer *serializer = [RedlandSerializer serializerWithName:RedlandAbbreviatedRDFXMLSerializer];
-	return [serializer serializedDataFromModel:self.inModel withBaseURI:nil];
+	return [serializer serializedDataFromModel:self.inModel withBaseURI:[self.subject URIValue]];
+}
+
+/**
+ *  Serializes the receiver as RDF+XML (abbreviated).
+ *  @return An NSString
+ */
+- (NSString *)rdfXMLRepresentation
+{
+	RedlandSerializer *serializer = [RedlandSerializer serializerWithName:RedlandAbbreviatedRDFXMLSerializer];
+	return [serializer serializedStringFromModel:self.inModel withBaseURI:[self.subject URIValue]];
 }
 
 
@@ -145,16 +162,19 @@
 	}
 	
 	// serialize and post
-	NSData *data = [self rdfXMLRepresentation];
-	DLog(@"SERIALIZED: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-	
-	[_record performMethod:self.basePath withBody:data orParameters:nil ofType:@"application/rdf+xml" httpMethod:@"POST" callback:^(BOOL success, NSDictionary *__autoreleasing userInfo) {
-		if (success) {
-			// TODO: apply UUID
-			DLog(@"DATA: %@", userInfo);
-		}
-		CANCEL_ERROR_CALLBACK_OR_LOG_USER_INFO(callback, NO, userInfo);
-	}];
+	[_record performMethod:self.basePath
+				  withBody:[self rdfXMLData]
+			  orParameters:nil
+					ofType:@"application/rdf+xml"
+				httpMethod:@"POST"
+				  callback:^(BOOL success, NSDictionary *__autoreleasing userInfo) {
+					  
+					  if (success) {
+						  // TODO: apply UUID
+						  DLog(@"DATA: %@", userInfo);
+					  }
+					  CANCEL_ERROR_CALLBACK_OR_LOG_USER_INFO(callback, NO, userInfo);
+				  }];
 }
 
 
