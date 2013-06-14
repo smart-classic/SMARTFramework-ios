@@ -11,8 +11,6 @@ Framework Usage
 
 At the heart of the framework are these three classes:
 
-**SMServer** – **SMRecord** – **SMObject**
-
 
 ### SMServer ###
 
