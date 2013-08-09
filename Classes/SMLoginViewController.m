@@ -30,8 +30,6 @@
 @interface SMLoginViewController ()
 
 @property (nonatomic, readwrite, assign) UIWebView *webView;
-@property (nonatomic, readwrite, assign) UINavigationBar *titleBar;
-@property (nonatomic, readwrite, assign) UINavigationItem *titleItem;
 @property (nonatomic, readwrite, assign) UIBarButtonItem *backButton;
 @property (nonatomic, readwrite, assign) UIBarButtonItem *cancelButton;
 
@@ -63,6 +61,9 @@
 - (void)loadView
 {
 	self.title = @"SMART EMR";
+	self.edgesForExtendedLayout = UIRectEdgeAll;
+	self.automaticallyAdjustsScrollViewInsets = YES;
+	self.extendedLayoutIncludesOpaqueBars = YES;
 	
 	CGRect appFrame = [[UIScreen mainScreen] applicationFrame];
 	appFrame.origin = CGPointZero;
@@ -73,22 +74,11 @@
 	v.backgroundColor = [UIColor whiteColor];
 	
 	//** navigation bar with cancel button
-	UIBarButtonItem *cButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(cancel:)];
-	UINavigationItem *navItem = [[UINavigationItem alloc] initWithTitle:self.title];
-	navItem.rightBarButtonItem = cButton;
+	UIBarButtonItem *cButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
+	self.navigationItem.rightBarButtonItem = cButton;
 	self.cancelButton = cButton;
-	self.titleItem = navItem;
-	
-	CGRect barFrame = CGRectMake(0.f, 0.f, appFrame.size.width, 44.f);
-	UINavigationBar *navBar = [[UINavigationBar alloc] initWithFrame:barFrame];
-	navBar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
-	navBar.tintColor = [UIColor colorWithRed:0.42f green:0.69f blue:0.83f alpha:1.f];
-	[navBar setItems:[NSArray arrayWithObject:_titleItem] animated:NO];
-	self.titleBar = navBar;
 	
 	//** the web view
-	appFrame.size.height -= barFrame.size.height;
-	appFrame.origin.y = barFrame.size.height;
 	UIWebView *wv = [[UIWebView alloc] initWithFrame:appFrame];
 	wv.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	wv.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
@@ -97,7 +87,6 @@
 	
 	// compose
 	[v addSubview:_webView];
-	[v addSubview:_titleBar];
 	self.view = v;
 }
 
@@ -110,8 +99,6 @@
 	[_loadingView removeFromSuperview];
 	self.loadingView = nil;
 	
-	self.titleBar = nil;
-	self.titleItem = nil;
 	self.backButton = nil;
 	self.cancelButton = nil;
 }
@@ -211,16 +198,19 @@
 		// ** user did select a record
 		if ([@"did_select_record" isEqualToString:[urlComponents lastObject]]) {
 			NSDictionary *args = [SMURLLoader queryFromRequest:request];
-			//DLog(@"DID RECEIVE: %@", args);
+#ifdef MPOAUTH_DEBUG
+			DLog(@"DID SELECT RECORD: %@", args);
+#endif
 			[_delegate loginView:self didSelectRecordId:[args objectForKey:@"record_id"]];
-			// extract carenet_id here once supported
 			return NO;
 		}
 		
 		// ** received oauth verifier
 		if ([@"did_receive_verifier" isEqualToString:[urlComponents lastObject]]) {
 			NSDictionary *args = [SMURLLoader queryFromRequest:request];
-			//DLog(@"DID RECEIVE: %@", args);
+#ifdef MPOAUTH_DEBUG
+			DLog(@"DID RECEIVE VERIFIER: %@", args);
+#endif
 			[_delegate loginView:self didReceiveVerifier:[args objectForKey:@"oauth_verifier"]];
 			return NO;
 		}
@@ -329,12 +319,7 @@
 	[_webView stopLoading];
 	[self hideLoadingIndicator:nil];
 	
-	if ([self respondsToSelector:@selector(presentingViewController)]) {			// iOS 5+ only
-		[[self presentingViewController] dismissViewControllerAnimated:animated completion:NULL];
-	}
-	else {
-		[[self parentViewController] dismissModalViewControllerAnimated:animated];
-	}
+	[self.presentingViewController dismissViewControllerAnimated:animated completion:NULL];
 }
 
 
@@ -359,10 +344,10 @@
 - (void)showHideBackButton
 {
 	if ([_history count] > 1) {
-		_titleItem.leftBarButtonItem = self.backButton;
+		self.navigationItem.leftBarButtonItem = self.backButton;
 	}
 	else {
-		_titleItem.leftBarButtonItem = nil;
+		self.navigationItem.leftBarButtonItem = nil;
 	}
 }
 
@@ -389,12 +374,6 @@
 		self.history = [NSMutableArray array];
 	}
 	return _history;
-}
-
-- (void)setTitle:(NSString *)newTitle
-{
-	_titleItem.title = newTitle;
-	[super setTitle:newTitle];
 }
 
 - (UIBarButtonItem *)backButton

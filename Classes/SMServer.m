@@ -443,12 +443,10 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 		vc.delegate = self;
 		vc.startURL = loginURL;
 		self.loginVC = vc;
-		if ([pvc respondsToSelector:@selector(presentViewController:animated:completion:)]) {		// iOS 5+ only
-			[pvc presentViewController:_loginVC animated:YES completion:NULL];
-		}
-		else {
-			[pvc presentModalViewController:_loginVC animated:YES];
-		}
+		
+		// pack into a navigation controller and present
+		UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:vc];
+		[pvc presentViewController:navi animated:YES completion:NULL];
 		
 		// set a timeout
 		if (!_stillContactingTimer) {
