@@ -1268,7 +1268,10 @@
 				DSTROOT = /tmp/SMARTFramework_ios.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Resources/SMARTFramework-Prefix.pch";
-				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)\"/**";
+				HEADER_SEARCH_PATHS = (
+					"\"$(PROJECT_DIR)\"/**",
+					"\"$(SDK_DIR)/usr/include/libxml2\"/**",
+				);
 				LIBRARY_SEARCH_PATHS = "\"$(TARGET_BUILD_DIR)\"";
 				OTHER_CFLAGS = "-DDEBUG";
 				OTHER_LDFLAGS = "-ObjC";
@@ -1367,7 +1370,10 @@
 				DSTROOT = /tmp/SMARTFramework_ios.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Resources/SMARTFramework-Prefix.pch";
-				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)\"/**";
+				HEADER_SEARCH_PATHS = (
+					"\"$(PROJECT_DIR)\"/**",
+					"\"$(SDK_DIR)/usr/include/libxml2\"/**",
+				);
 				LIBRARY_SEARCH_PATHS = "\"$(TARGET_BUILD_DIR)\"";
 				OTHER_CFLAGS = "-DDEBUG";
 				OTHER_LDFLAGS = "-ObjC";
@@ -1382,7 +1388,10 @@
 				DSTROOT = /tmp/SMARTFramework_ios.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Resources/SMARTFramework-Prefix.pch";
-				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)\"/**";
+				HEADER_SEARCH_PATHS = (
+					"\"$(PROJECT_DIR)\"/**",
+					"\"$(SDK_DIR)/usr/include/libxml2\"/**",
+				);
 				LIBRARY_SEARCH_PATHS = "\"$(TARGET_BUILD_DIR)\"";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1450,7 +1459,10 @@
 				DSTROOT = /tmp/SMARTFramework_ios.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Resources/SMARTFramework-Prefix.pch";
-				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)\"/**";
+				HEADER_SEARCH_PATHS = (
+					"\"$(PROJECT_DIR)\"/**",
+					"\"$(SDK_DIR)/usr/include/libxml2\"/**",
+				);
 				LIBRARY_SEARCH_PATHS = "\"$(TARGET_BUILD_DIR)\"";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
