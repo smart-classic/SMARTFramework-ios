@@ -66,7 +66,6 @@
 		EE7BFC9316CFE5A8006D460E /* SMHash.h in Headers */ = {isa = PBXBuildFile; fileRef = EE7BFC9116CFE5A8006D460E /* SMHash.h */; };
 		EE7BFC9416CFE5A8006D460E /* SMHash.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7BFC9216CFE5A8006D460E /* SMHash.m */; };
 		EE7BFC9716CFE5E6006D460E /* SMDocument.rdf in Resources */ = {isa = PBXBuildFile; fileRef = EE7BFC9516CFE5E6006D460E /* SMDocument.rdf */; };
-		EE832F7D15D004A500E7FFF1 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EE832F7C15D004A500E7FFF1 /* libxml2.dylib */; };
 		EE832F8115D006D100E7FFF1 /* SMLoginViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EE832F7F15D006D100E7FFF1 /* SMLoginViewController.h */; settings = {ATTRIBUTES = (); }; };
 		EE832F8315D006EE00E7FFF1 /* SMLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE832F8015D006D100E7FFF1 /* SMLoginViewController.m */; };
 		EE93B37D1709FA1500B5A536 /* SMScratchpadData.h in Headers */ = {isa = PBXBuildFile; fileRef = EE93B37B1709FA1500B5A536 /* SMScratchpadData.h */; };
@@ -85,6 +84,7 @@
 		EEB4338919228DEB009E01C6 /* SMImagesList.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB4338719228DEB009E01C6 /* SMImagesList.m */; };
 		EEB433BE19228E60009E01C6 /* SMImagingStudy.rdf in Resources */ = {isa = PBXBuildFile; fileRef = EEB433BC19228E60009E01C6 /* SMImagingStudy.rdf */; };
 		EEB433BF19228E60009E01C6 /* SMMedicalImage.rdf in Resources */ = {isa = PBXBuildFile; fileRef = EEB433BD19228E60009E01C6 /* SMMedicalImage.rdf */; };
+		EEB433C519229A94009E01C6 /* libxslt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB433C419229A94009E01C6 /* libxslt.dylib */; };
 		EEC1470715DFE790006B8798 /* SMDemographics.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1470315DFE790006B8798 /* SMDemographics.h */; settings = {ATTRIBUTES = (); }; };
 		EEC1470815DFE790006B8798 /* SMDemographics.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1470415DFE790006B8798 /* SMDemographics.m */; };
 		EEC1470915DFE790006B8798 /* SMName.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1470515DFE790006B8798 /* SMName.h */; settings = {ATTRIBUTES = (); }; };
@@ -356,6 +356,7 @@
 		EEB4338719228DEB009E01C6 /* SMImagesList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMImagesList.m; sourceTree = "<group>"; };
 		EEB433BC19228E60009E01C6 /* SMImagingStudy.rdf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SMImagingStudy.rdf; sourceTree = "<group>"; };
 		EEB433BD19228E60009E01C6 /* SMMedicalImage.rdf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SMMedicalImage.rdf; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.xml; };
+		EEB433C419229A94009E01C6 /* libxslt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxslt.dylib; path = usr/lib/libxslt.dylib; sourceTree = SDKROOT; };
 		EEC146F815DED1D0006B8798 /* AppledocSettings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AppledocSettings.plist; sourceTree = "<group>"; };
 		EEC1470315DFE790006B8798 /* SMDemographics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDemographics.h; sourceTree = "<group>"; };
 		EEC1470415DFE790006B8798 /* SMDemographics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDemographics.m; sourceTree = "<group>"; };
@@ -512,7 +513,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEC9C59915CB2EA800B7C568 /* Foundation.framework in Frameworks */,
-				EE832F7D15D004A500E7FFF1 /* libxml2.dylib in Frameworks */,
 				EE6A5A7E15CC723500DD0F68 /* libredland-ios.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -527,6 +527,7 @@
 				EEE82D9215D02F4A0017EA0B /* UIKit.framework in Frameworks */,
 				EEC9C5A715CB2EA900B7C568 /* SenTestingKit.framework in Frameworks */,
 				EE5D69861656F695001741E2 /* libxml2.dylib in Frameworks */,
+				EEB433C519229A94009E01C6 /* libxslt.dylib in Frameworks */,
 				EEC9C5AD15CB2EA900B7C568 /* libSMART.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -717,6 +718,7 @@
 		EEC9C59715CB2EA800B7C568 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EEB433C419229A94009E01C6 /* libxslt.dylib */,
 				EEC9C59815CB2EA800B7C568 /* Foundation.framework */,
 				EEE82D9415D02F970017EA0B /* CoreGraphics.framework */,
 				EEE82D9115D02F4A0017EA0B /* UIKit.framework */,
