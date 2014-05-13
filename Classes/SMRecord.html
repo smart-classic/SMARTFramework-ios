@@ -77,6 +77,8 @@
 	
 	<option value="//api/name/getFulfillments:">&nbsp;&nbsp;&nbsp;&nbsp;- getFulfillments:</option>
 	
+	<option value="//api/name/getImagingStudies:">&nbsp;&nbsp;&nbsp;&nbsp;- getImagingStudies:</option>
+	
 	<option value="//api/name/getImmunizations:">&nbsp;&nbsp;&nbsp;&nbsp;- getImmunizations:</option>
 	
 	<option value="//api/name/getLabPanel:">&nbsp;&nbsp;&nbsp;&nbsp;- getLabPanel:</option>
@@ -84,6 +86,8 @@
 	<option value="//api/name/getLabPanels:">&nbsp;&nbsp;&nbsp;&nbsp;- getLabPanels:</option>
 	
 	<option value="//api/name/getLabResults:">&nbsp;&nbsp;&nbsp;&nbsp;- getLabResults:</option>
+	
+	<option value="//api/name/getMedicalImages:">&nbsp;&nbsp;&nbsp;&nbsp;- getMedicalImages:</option>
 	
 	<option value="//api/name/getMedications:">&nbsp;&nbsp;&nbsp;&nbsp;- getMedications:</option>
 	
@@ -171,6 +175,8 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getFulfillments:">getFulfillments:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getImagingStudies:">getImagingStudies:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getImmunizations:">getImmunizations:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getLabPanel:">getLabPanel:</a></span></li>
@@ -178,6 +184,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getLabPanels:">getLabPanels:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getLabResults:">getLabResults:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getMedicalImages:">getMedicalImages:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getMedications:">getMedications:</a></span></li>
 	
@@ -426,6 +434,13 @@ instance which prompts your app user to login and select a record. Once you have
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/getImagingStudies:">&ndash;&nbsp;getImagingStudies:</a></code>
+		<span class="tooltip"><p>Returns data about all the available imaging studies of the patient record..</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/getImmunizations:">&ndash;&nbsp;getImmunizations:</a></code>
 		<span class="tooltip"><p>Get all Immunizations for a patient.</p></span>
 	</span>
@@ -449,6 +464,13 @@ instance which prompts your app user to login and select a record. Once you have
 	<span class="tooltip">
 		<code><a href="#//api/name/getLabResults:">&ndash;&nbsp;getLabResults:</a></code>
 		<span class="tooltip"><p>Get all Lab Results for a patient.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getMedicalImages:">&ndash;&nbsp;getMedicalImages:</a></code>
+		<span class="tooltip"><p>Returns data about all the available medical images of the patient&rsquo;s body..</p></span>
 	</span>
 	
 	
@@ -1180,6 +1202,58 @@ the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/getImagingStudies:" title="getImagingStudies:"></a>
+	<h3 class="subsubtitle method-title">getImagingStudies:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns data about all the available imaging studies of the patient record..</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)getImagingStudies:(SMSuccessRetvalueBlock)<em>callback</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing
+the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Makes a call to /records/{record_id}/imaging_studies/, originally named &ldquo;get_imaging_studies&rdquo;.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMRecord+Calls.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/getImmunizations:" title="getImmunizations:"></a>
 	<h3 class="subsubtitle method-title">getImmunizations:</h3>
 	
@@ -1371,6 +1445,58 @@ the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Makes a call to /records/{record_id}/lab_results/, originally named &ldquo;get_lab_results&rdquo;.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMRecord+Calls.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getMedicalImages:" title="getMedicalImages:"></a>
+	<h3 class="subsubtitle method-title">getMedicalImages:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns data about all the available medical images of the patient&rsquo;s body..</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)getMedicalImages:(SMSuccessRetvalueBlock)<em>callback</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>A SMSuccessRetvalueBlock block that will have a success flag and a user info dictionary containing
+the desired objects (key: SMARTResponseArrayKey) if successful.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Makes a call to /records/{record_id}/medical_images/, originally named &ldquo;get_medical_images&rdquo;.</p>
 	</div>
 	
 	
@@ -1942,7 +2068,7 @@ but not both, with the body string taking precedence if both are present.</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 CHIP. All rights reserved. (Last updated: 2013-06-14)</span><br />
+						<p><span class="copyright">&copy; 2014 CHIP. All rights reserved. (Last updated: 2014-05-13)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						

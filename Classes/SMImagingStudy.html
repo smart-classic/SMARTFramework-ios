@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>SMParticipant Class Reference</title>
+		<title>SMImagingStudy Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
@@ -17,7 +17,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">SMParticipant Class Reference</h1>
+				<h1 class="hideInXcode">SMImagingStudy Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -40,18 +40,19 @@
 	
 	<option value="properties">Properties</option>
 	
-	<option value="//api/name/organization">&nbsp;&nbsp;&nbsp;&nbsp;organization</option>
+	<option value="//api/name/accessionNumber">&nbsp;&nbsp;&nbsp;&nbsp;accessionNumber</option>
 	
-	<option value="//api/name/person">&nbsp;&nbsp;&nbsp;&nbsp;person</option>
+	<option value="//api/name/belongsTo">&nbsp;&nbsp;&nbsp;&nbsp;belongsTo</option>
 	
-	<option value="//api/name/role">&nbsp;&nbsp;&nbsp;&nbsp;role</option>
+	<option value="//api/name/date">&nbsp;&nbsp;&nbsp;&nbsp;date</option>
+	
+	<option value="//api/name/modality">&nbsp;&nbsp;&nbsp;&nbsp;modality</option>
+	
+	<option value="//api/name/series">&nbsp;&nbsp;&nbsp;&nbsp;series</option>
+	
+	<option value="//api/name/title">&nbsp;&nbsp;&nbsp;&nbsp;title</option>
 	
 	
-	
-	
-	<option value="class_methods">Class Methods</option>
-	
-	<option value="//api/name/rdfType">&nbsp;&nbsp;&nbsp;&nbsp;+ rdfType</option>
 	
 	
 	
@@ -79,21 +80,21 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/organization">organization</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/accessionNumber">accessionNumber</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/person">person</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/belongsTo">belongsTo</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/role">role</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/date">date</a></span></li>
 	
-</ul></li>
-
-
-
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/modality">modality</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/rdfType">rdfType</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/series">series</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/title">title</a></span></li>
 	
 </ul></li>
+
+
 
 
 
@@ -102,7 +103,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="SMParticipant Class Reference" name="top"></a>
+				<a title="SMImagingStudy Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -111,7 +112,7 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">SMParticipant Class Reference</h1>
+						<h1 class="title title-header">SMImagingStudy Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
@@ -119,10 +120,10 @@
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<td class="specification-title">Inherits from</td>
-	<td class="specification-value"><a href="../Classes/SMObject.html">SMObject</a> : NSObject</td>
+	<td class="specification-value"><a href="../Classes/SMBaseDocument.html">SMBaseDocument</a> : <a href="../Classes/SMObject.html">SMObject</a> : NSObject</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">SMParticipant.h<br />SMParticipant.m</td>
+	<td class="specification-value">SMImagingStudy.h<br />SMImagingStudy.m</td>
 </tr>
 						</tbody></table></div>
 					
@@ -132,7 +133,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>A class representing &ldquo;<a href="http://smartplatforms.org/terms">http://smartplatforms.org/terms</a>#Participant&rdquo; objects, generated from the SMART ontology.</p>
+						<p>A class representing &ldquo;<a href="http://smartplatforms.org/terms">http://smartplatforms.org/terms</a>#ImagingStudy&rdquo; objects, generated from the SMART ontology.</p>
 					</div>
 					
 					
@@ -145,44 +146,50 @@
 						
 						
 						
-						<h3 class="subsubtitle task-title">Other Methods</h3>
+						
 
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/organization">&nbsp;&nbsp;organization</a></code>
-		<span class="tooltip"><p>Representing <a href="http://smartplatforms.org/terms">http://smartplatforms.org/terms</a>#organization as <a href="../Classes/SMOrganization.html">SMOrganization</a></p></span>
+		<code><a href="#//api/name/accessionNumber">&nbsp;&nbsp;accessionNumber</a></code>
+		<span class="tooltip"><p>Representing <a href="http://smartplatforms.org/terms">http://smartplatforms.org/terms</a>#accessionNumber as NSString</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/person">&nbsp;&nbsp;person</a></code>
-		<span class="tooltip"><p>Representing <a href="http://smartplatforms.org/terms">http://smartplatforms.org/terms</a>#person as <a href="../Classes/SMPerson.html">SMPerson</a></p></span>
+		<code><a href="#//api/name/belongsTo">&nbsp;&nbsp;belongsTo</a></code>
+		<span class="tooltip"><p>Representing <a href="http://smartplatforms.org/terms">http://smartplatforms.org/terms</a>#belongsTo as <a href="../Classes/SMMedicalRecord.html">SMMedicalRecord</a></p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/role">&nbsp;&nbsp;role</a></code>
-		<span class="tooltip"><p>Representing <a href="http://smartplatforms.org/terms">http://smartplatforms.org/terms</a>#role as NSString</p></span>
+		<code><a href="#//api/name/date">&nbsp;&nbsp;date</a></code>
+		<span class="tooltip"><p>Representing <a href="http://purl.org/dc/terms/date">http://purl.org/dc/terms/date</a> as NSString</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
-</li>
-						</ul>
-						
-						
-						
-						<h3 class="subsubtitle task-title">Other Methods</h3>
-
-						<ul class="task-list">
-							<li>
+</li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/rdfType">+&nbsp;rdfType</a></code>
-		<span class="tooltip"><p>The rdf:type getter for this class gets the class-wide type if it is not specifically set for this instance.</p></span>
+		<code><a href="#//api/name/modality">&nbsp;&nbsp;modality</a></code>
+		<span class="tooltip"><p>Representing <a href="http://smartplatforms.org/terms">http://smartplatforms.org/terms</a>#modality as <a href="../Classes/SMCodedValue.html">SMCodedValue</a></p></span>
 	</span>
+	<span class="task-item-suffix">property</span>
 	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/series">&nbsp;&nbsp;series</a></code>
+		<span class="tooltip"><p>Representing <a href="http://smartplatforms.org/terms">http://smartplatforms.org/terms</a>#series as <a href="../Classes/SMSeries.html">SMSeries</a></p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/title">&nbsp;&nbsp;title</a></code>
+		<span class="tooltip"><p>Representing <a href="http://purl.org/dc/terms/title">http://purl.org/dc/terms/title</a> as NSString</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
 	
 </li>
 						</ul>
@@ -198,18 +205,18 @@
 						<h2 class="subtitle subtitle-methods">Properties</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/organization" title="organization"></a>
-	<h3 class="subsubtitle method-title">organization</h3>
+	<a name="//api/name/accessionNumber" title="accessionNumber"></a>
+	<h3 class="subsubtitle method-title">accessionNumber</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Representing <a href="http://smartplatforms.org/terms">http://smartplatforms.org/terms</a>#organization as <a href="../Classes/SMOrganization.html">SMOrganization</a></p>
+		<p>Representing <a href="http://smartplatforms.org/terms">http://smartplatforms.org/terms</a>#accessionNumber as NSString</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) SMOrganization *organization</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *accessionNumber</code></div>
 
     
 	
@@ -227,25 +234,25 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SMParticipant.h</code><br />
+		<code class="declared-in-ref">SMImagingStudy.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/person" title="person"></a>
-	<h3 class="subsubtitle method-title">person</h3>
+	<a name="//api/name/belongsTo" title="belongsTo"></a>
+	<h3 class="subsubtitle method-title">belongsTo</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Representing <a href="http://smartplatforms.org/terms">http://smartplatforms.org/terms</a>#person as <a href="../Classes/SMPerson.html">SMPerson</a></p>
+		<p>Representing <a href="http://smartplatforms.org/terms">http://smartplatforms.org/terms</a>#belongsTo as <a href="../Classes/SMMedicalRecord.html">SMMedicalRecord</a></p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) SMPerson *person</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) SMMedicalRecord *belongsTo</code></div>
 
     
 	
@@ -263,25 +270,25 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SMParticipant.h</code><br />
+		<code class="declared-in-ref">SMImagingStudy.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/role" title="role"></a>
-	<h3 class="subsubtitle method-title">role</h3>
+	<a name="//api/name/date" title="date"></a>
+	<h3 class="subsubtitle method-title">date</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Representing <a href="http://smartplatforms.org/terms">http://smartplatforms.org/terms</a>#role as NSString</p>
+		<p>Representing <a href="http://purl.org/dc/terms/date">http://purl.org/dc/terms/date</a> as NSString</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *role</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *date</code></div>
 
     
 	
@@ -299,7 +306,115 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SMParticipant.h</code><br />
+		<code class="declared-in-ref">SMImagingStudy.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/modality" title="modality"></a>
+	<h3 class="subsubtitle method-title">modality</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Representing <a href="http://smartplatforms.org/terms">http://smartplatforms.org/terms</a>#modality as <a href="../Classes/SMCodedValue.html">SMCodedValue</a></p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSArray *modality</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMImagingStudy.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/series" title="series"></a>
+	<h3 class="subsubtitle method-title">series</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Representing <a href="http://smartplatforms.org/terms">http://smartplatforms.org/terms</a>#series as <a href="../Classes/SMSeries.html">SMSeries</a></p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSArray *series</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMImagingStudy.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/title" title="title"></a>
+	<h3 class="subsubtitle method-title">title</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Representing <a href="http://purl.org/dc/terms/title">http://purl.org/dc/terms/title</a> as NSString</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *title</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SMImagingStudy.h</code><br />
 	</div>				
 	
 	
@@ -308,57 +423,6 @@
 					</div>
 					
 					
-					
-					<div class="section section-methods">
-						<a title="Class Methods" name="class_methods"></a>
-						<h2 class="subtitle subtitle-methods">Class Methods</h2>
-						
-						<div class="section-method">
-	<a name="//api/name/rdfType" title="rdfType"></a>
-	<h3 class="subsubtitle method-title">rdfType</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>The rdf:type getter for this class gets the class-wide type if it is not specifically set for this instance.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>+ (NSString *)rdfType</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>There is no need to specifically set the rdf-type for a single instance as the instance should always represent the same type of objects, but it is still
-possible.</p>
-
-<p><strong>Note</strong> that in RDF, things can be more than one type. The type retrieved here is the type that has been used to determine the class to be used for the
-receiver, and most of the time this will be the only type anyway. Use <a href="../Classes/SMObject.html#//api/name/rdfTypes">rdfTypes</a> to get all types an object has.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SMObject.m</code><br />
-	</div>				
-	
-	
-</div>
-						
-					</div>
 					
 					
 					
