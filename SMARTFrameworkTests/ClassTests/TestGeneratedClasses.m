@@ -40,15 +40,15 @@
 	STAssertNotNil(item, @"Failed to parse RDF");
 	
 	if (item) {
-		STAssertTrue([item.allergicReaction isKindOfClass:[SMCodedValue class]], @"Expecting \"allergicReaction\" to be of class SMCodedValue, but is %@", NSStringFromClass([item.allergicReaction class]));
-		STAssertTrue([item.belongsTo isKindOfClass:[SMMedicalRecord class]], @"Expecting \"belongsTo\" to be of class SMMedicalRecord, but is %@", NSStringFromClass([item.belongsTo class]));
-		STAssertTrue([item.category isKindOfClass:[SMCodedValue class]], @"Expecting \"category\" to be of class SMCodedValue, but is %@", NSStringFromClass([item.category class]));
-		STAssertTrue([item.drugAllergen isKindOfClass:[SMCodedValue class]], @"Expecting \"drugAllergen\" to be of class SMCodedValue, but is %@", NSStringFromClass([item.drugAllergen class]));
-		STAssertTrue([item.drugClassAllergen isKindOfClass:[SMCodedValue class]], @"Expecting \"drugClassAllergen\" to be of class SMCodedValue, but is %@", NSStringFromClass([item.drugClassAllergen class]));
-		STAssertTrue([item.endDate isKindOfClass:[NSString class]], @"Expecting \"endDate\" to be of class NSString, but is %@", NSStringFromClass([item.endDate class]));
-		STAssertTrue([item.otherAllergen isKindOfClass:[SMCodedValue class]], @"Expecting \"otherAllergen\" to be of class SMCodedValue, but is %@", NSStringFromClass([item.otherAllergen class]));
-		STAssertTrue([item.severity isKindOfClass:[SMCodedValue class]], @"Expecting \"severity\" to be of class SMCodedValue, but is %@", NSStringFromClass([item.severity class]));
-		STAssertTrue([item.startDate isKindOfClass:[NSString class]], @"Expecting \"startDate\" to be of class NSString, but is %@", NSStringFromClass([item.startDate class]));
+		STAssertTrue(!item.allergicReaction || [item.allergicReaction isKindOfClass:[SMCodedValue class]], @"Expecting \"allergicReaction\" to be of class SMCodedValue, but is %@", NSStringFromClass([item.allergicReaction class]));
+		STAssertTrue(!item.belongsTo || [item.belongsTo isKindOfClass:[SMMedicalRecord class]], @"Expecting \"belongsTo\" to be of class SMMedicalRecord, but is %@", NSStringFromClass([item.belongsTo class]));
+		STAssertTrue(!item.category || [item.category isKindOfClass:[SMCodedValue class]], @"Expecting \"category\" to be of class SMCodedValue, but is %@", NSStringFromClass([item.category class]));
+		STAssertTrue(!item.drugAllergen || [item.drugAllergen isKindOfClass:[SMCodedValue class]], @"Expecting \"drugAllergen\" to be of class SMCodedValue, but is %@", NSStringFromClass([item.drugAllergen class]));
+		STAssertTrue(!item.drugClassAllergen || [item.drugClassAllergen isKindOfClass:[SMCodedValue class]], @"Expecting \"drugClassAllergen\" to be of class SMCodedValue, but is %@", NSStringFromClass([item.drugClassAllergen class]));
+		STAssertTrue(!item.endDate || [item.endDate isKindOfClass:[NSString class]], @"Expecting \"endDate\" to be of class NSString, but is %@", NSStringFromClass([item.endDate class]));
+		STAssertTrue(!item.otherAllergen || [item.otherAllergen isKindOfClass:[SMCodedValue class]], @"Expecting \"otherAllergen\" to be of class SMCodedValue, but is %@", NSStringFromClass([item.otherAllergen class]));
+		STAssertTrue(!item.severity || [item.severity isKindOfClass:[SMCodedValue class]], @"Expecting \"severity\" to be of class SMCodedValue, but is %@", NSStringFromClass([item.severity class]));
+		STAssertTrue(!item.startDate || [item.startDate isKindOfClass:[NSString class]], @"Expecting \"startDate\" to be of class NSString, but is %@", NSStringFromClass([item.startDate class]));
 	}
 }
 
@@ -65,9 +65,9 @@
 	STAssertNotNil(item, @"Failed to parse RDF");
 	
 	if (item) {
-		STAssertTrue([item.allergyExclusionName isKindOfClass:[SMCodedValue class]], @"Expecting \"allergyExclusionName\" to be of class SMCodedValue, but is %@", NSStringFromClass([item.allergyExclusionName class]));
-		STAssertTrue([item.belongsTo isKindOfClass:[SMMedicalRecord class]], @"Expecting \"belongsTo\" to be of class SMMedicalRecord, but is %@", NSStringFromClass([item.belongsTo class]));
-		STAssertTrue([item.date isKindOfClass:[NSString class]], @"Expecting \"date\" to be of class NSString, but is %@", NSStringFromClass([item.date class]));
+		STAssertTrue(!item.allergyExclusionName || [item.allergyExclusionName isKindOfClass:[SMCodedValue class]], @"Expecting \"allergyExclusionName\" to be of class SMCodedValue, but is %@", NSStringFromClass([item.allergyExclusionName class]));
+		STAssertTrue(!item.belongsTo || [item.belongsTo isKindOfClass:[SMMedicalRecord class]], @"Expecting \"belongsTo\" to be of class SMMedicalRecord, but is %@", NSStringFromClass([item.belongsTo class]));
+		STAssertTrue(!item.date || [item.date isKindOfClass:[NSString class]], @"Expecting \"date\" to be of class NSString, but is %@", NSStringFromClass([item.date class]));
 	}
 }
 
@@ -84,15 +84,15 @@
 	STAssertNotNil(item, @"Failed to parse RDF");
 	
 	if (item) {
-		STAssertTrue([item.belongsTo isKindOfClass:[SMMedicalRecord class]], @"Expecting \"belongsTo\" to be of class SMMedicalRecord, but is %@", NSStringFromClass([item.belongsTo class]));
-		STAssertTrue([item.date isKindOfClass:[NSString class]], @"Expecting \"date\" to be of class NSString, but is %@", NSStringFromClass([item.date class]));
-		STAssertTrue([item.documentType isKindOfClass:[NSArray class]], @"Expecting \"documentType\" to be of class NSArray, but is %@", NSStringFromClass([item.documentType class]));
-		STAssertTrue([item.fileName isKindOfClass:[NSString class]], @"Expecting \"fileName\" to be of class NSString, but is %@", NSStringFromClass([item.fileName class]));
-		STAssertTrue([item.fileSize isKindOfClass:[SMValueAndUnit class]], @"Expecting \"fileSize\" to be of class SMValueAndUnit, but is %@", NSStringFromClass([item.fileSize class]));
-		STAssertTrue([item.format isKindOfClass:[SMMediaTypeOrExtent class]], @"Expecting \"format\" to be of class SMMediaTypeOrExtent, but is %@", NSStringFromClass([item.format class]));
-		STAssertTrue([item.provider isKindOfClass:[SMProvider class]], @"Expecting \"provider\" to be of class SMProvider, but is %@", NSStringFromClass([item.provider class]));
-		STAssertTrue([item.resource isKindOfClass:[NSArray class]], @"Expecting \"resource\" to be of class NSArray, but is %@", NSStringFromClass([item.resource class]));
-		STAssertTrue([item.title isKindOfClass:[NSString class]], @"Expecting \"title\" to be of class NSString, but is %@", NSStringFromClass([item.title class]));
+		STAssertTrue(!item.belongsTo || [item.belongsTo isKindOfClass:[SMMedicalRecord class]], @"Expecting \"belongsTo\" to be of class SMMedicalRecord, but is %@", NSStringFromClass([item.belongsTo class]));
+		STAssertTrue(!item.date || [item.date isKindOfClass:[NSString class]], @"Expecting \"date\" to be of class NSString, but is %@", NSStringFromClass([item.date class]));
+		STAssertTrue(!item.documentType || [item.documentType isKindOfClass:[NSArray class]], @"Expecting \"documentType\" to be of class NSArray, but is %@", NSStringFromClass([item.documentType class]));
+		STAssertTrue(!item.fileName || [item.fileName isKindOfClass:[NSString class]], @"Expecting \"fileName\" to be of class NSString, but is %@", NSStringFromClass([item.fileName class]));
+		STAssertTrue(!item.fileSize || [item.fileSize isKindOfClass:[SMValueAndUnit class]], @"Expecting \"fileSize\" to be of class SMValueAndUnit, but is %@", NSStringFromClass([item.fileSize class]));
+		STAssertTrue(!item.format || [item.format isKindOfClass:[SMMediaTypeOrExtent class]], @"Expecting \"format\" to be of class SMMediaTypeOrExtent, but is %@", NSStringFromClass([item.format class]));
+		STAssertTrue(!item.provider || [item.provider isKindOfClass:[SMProvider class]], @"Expecting \"provider\" to be of class SMProvider, but is %@", NSStringFromClass([item.provider class]));
+		STAssertTrue(!item.resource || [item.resource isKindOfClass:[NSArray class]], @"Expecting \"resource\" to be of class NSArray, but is %@", NSStringFromClass([item.resource class]));
+		STAssertTrue(!item.title || [item.title isKindOfClass:[NSString class]], @"Expecting \"title\" to be of class NSString, but is %@", NSStringFromClass([item.title class]));
 	}
 }
 
@@ -109,19 +109,19 @@
 	STAssertNotNil(item, @"Failed to parse RDF");
 	
 	if (item) {
-		STAssertTrue([item.adr isKindOfClass:[NSArray class]], @"Expecting \"adr\" to be of class NSArray, but is %@", NSStringFromClass([item.adr class]));
-		STAssertTrue([item.bday isKindOfClass:[NSString class]], @"Expecting \"bday\" to be of class NSString, but is %@", NSStringFromClass([item.bday class]));
-		STAssertTrue([item.belongsTo isKindOfClass:[SMMedicalRecord class]], @"Expecting \"belongsTo\" to be of class SMMedicalRecord, but is %@", NSStringFromClass([item.belongsTo class]));
-		STAssertTrue([item.deathdate isKindOfClass:[NSString class]], @"Expecting \"deathdate\" to be of class NSString, but is %@", NSStringFromClass([item.deathdate class]));
-		STAssertTrue([item.email isKindOfClass:[NSArray class]], @"Expecting \"email\" to be of class NSArray, but is %@", NSStringFromClass([item.email class]));
-		STAssertTrue([item.ethnicity isKindOfClass:[NSString class]], @"Expecting \"ethnicity\" to be of class NSString, but is %@", NSStringFromClass([item.ethnicity class]));
-		STAssertTrue([item.gender isKindOfClass:[NSString class]], @"Expecting \"gender\" to be of class NSString, but is %@", NSStringFromClass([item.gender class]));
-		STAssertTrue([item.gestationalAgeAtBirth isKindOfClass:[SMValueAndUnit class]], @"Expecting \"gestationalAgeAtBirth\" to be of class SMValueAndUnit, but is %@", NSStringFromClass([item.gestationalAgeAtBirth class]));
-		STAssertTrue([item.medicalRecordNumber isKindOfClass:[NSArray class]], @"Expecting \"medicalRecordNumber\" to be of class NSArray, but is %@", NSStringFromClass([item.medicalRecordNumber class]));
-		STAssertTrue([item.n isKindOfClass:[SMName class]], @"Expecting \"n\" to be of class SMName, but is %@", NSStringFromClass([item.n class]));
-		STAssertTrue([item.preferredLanguage isKindOfClass:[NSString class]], @"Expecting \"preferredLanguage\" to be of class NSString, but is %@", NSStringFromClass([item.preferredLanguage class]));
-		STAssertTrue([item.race isKindOfClass:[NSString class]], @"Expecting \"race\" to be of class NSString, but is %@", NSStringFromClass([item.race class]));
-		STAssertTrue([item.tel isKindOfClass:[NSArray class]], @"Expecting \"tel\" to be of class NSArray, but is %@", NSStringFromClass([item.tel class]));
+		STAssertTrue(!item.adr || [item.adr isKindOfClass:[NSArray class]], @"Expecting \"adr\" to be of class NSArray, but is %@", NSStringFromClass([item.adr class]));
+		STAssertTrue(!item.bday || [item.bday isKindOfClass:[NSString class]], @"Expecting \"bday\" to be of class NSString, but is %@", NSStringFromClass([item.bday class]));
+		STAssertTrue(!item.belongsTo || [item.belongsTo isKindOfClass:[SMMedicalRecord class]], @"Expecting \"belongsTo\" to be of class SMMedicalRecord, but is %@", NSStringFromClass([item.belongsTo class]));
+		STAssertTrue(!item.deathdate || [item.deathdate isKindOfClass:[NSString class]], @"Expecting \"deathdate\" to be of class NSString, but is %@", NSStringFromClass([item.deathdate class]));
+		STAssertTrue(!item.email || [item.email isKindOfClass:[NSArray class]], @"Expecting \"email\" to be of class NSArray, but is %@", NSStringFromClass([item.email class]));
+		STAssertTrue(!item.ethnicity || [item.ethnicity isKindOfClass:[NSString class]], @"Expecting \"ethnicity\" to be of class NSString, but is %@", NSStringFromClass([item.ethnicity class]));
+		STAssertTrue(!item.gender || [item.gender isKindOfClass:[NSString class]], @"Expecting \"gender\" to be of class NSString, but is %@", NSStringFromClass([item.gender class]));
+		STAssertTrue(!item.gestationalAgeAtBirth || [item.gestationalAgeAtBirth isKindOfClass:[SMValueAndUnit class]], @"Expecting \"gestationalAgeAtBirth\" to be of class SMValueAndUnit, but is %@", NSStringFromClass([item.gestationalAgeAtBirth class]));
+		STAssertTrue(!item.medicalRecordNumber || [item.medicalRecordNumber isKindOfClass:[NSArray class]], @"Expecting \"medicalRecordNumber\" to be of class NSArray, but is %@", NSStringFromClass([item.medicalRecordNumber class]));
+		STAssertTrue(!item.n || [item.n isKindOfClass:[SMName class]], @"Expecting \"n\" to be of class SMName, but is %@", NSStringFromClass([item.n class]));
+		STAssertTrue(!item.preferredLanguage || [item.preferredLanguage isKindOfClass:[NSString class]], @"Expecting \"preferredLanguage\" to be of class NSString, but is %@", NSStringFromClass([item.preferredLanguage class]));
+		STAssertTrue(!item.race || [item.race isKindOfClass:[NSString class]], @"Expecting \"race\" to be of class NSString, but is %@", NSStringFromClass([item.race class]));
+		STAssertTrue(!item.tel || [item.tel isKindOfClass:[NSArray class]], @"Expecting \"tel\" to be of class NSArray, but is %@", NSStringFromClass([item.tel class]));
 	}
 }
 
@@ -138,15 +138,15 @@
 	STAssertNotNil(item, @"Failed to parse RDF");
 	
 	if (item) {
-		STAssertTrue([item.belongsTo isKindOfClass:[SMMedicalRecord class]], @"Expecting \"belongsTo\" to be of class SMMedicalRecord, but is %@", NSStringFromClass([item.belongsTo class]));
-		STAssertTrue([item.date isKindOfClass:[NSString class]], @"Expecting \"date\" to be of class NSString, but is %@", NSStringFromClass([item.date class]));
-		STAssertTrue([item.documentType isKindOfClass:[NSArray class]], @"Expecting \"documentType\" to be of class NSArray, but is %@", NSStringFromClass([item.documentType class]));
-		STAssertTrue([item.fileName isKindOfClass:[NSString class]], @"Expecting \"fileName\" to be of class NSString, but is %@", NSStringFromClass([item.fileName class]));
-		STAssertTrue([item.fileSize isKindOfClass:[SMValueAndUnit class]], @"Expecting \"fileSize\" to be of class SMValueAndUnit, but is %@", NSStringFromClass([item.fileSize class]));
-		STAssertTrue([item.format isKindOfClass:[SMMediaTypeOrExtent class]], @"Expecting \"format\" to be of class SMMediaTypeOrExtent, but is %@", NSStringFromClass([item.format class]));
-		STAssertTrue([item.provider isKindOfClass:[SMProvider class]], @"Expecting \"provider\" to be of class SMProvider, but is %@", NSStringFromClass([item.provider class]));
-		STAssertTrue([item.resource isKindOfClass:[NSArray class]], @"Expecting \"resource\" to be of class NSArray, but is %@", NSStringFromClass([item.resource class]));
-		STAssertTrue([item.title isKindOfClass:[NSString class]], @"Expecting \"title\" to be of class NSString, but is %@", NSStringFromClass([item.title class]));
+		STAssertTrue(!item.belongsTo || [item.belongsTo isKindOfClass:[SMMedicalRecord class]], @"Expecting \"belongsTo\" to be of class SMMedicalRecord, but is %@", NSStringFromClass([item.belongsTo class]));
+		STAssertTrue(!item.date || [item.date isKindOfClass:[NSString class]], @"Expecting \"date\" to be of class NSString, but is %@", NSStringFromClass([item.date class]));
+		STAssertTrue(!item.documentType || [item.documentType isKindOfClass:[NSArray class]], @"Expecting \"documentType\" to be of class NSArray, but is %@", NSStringFromClass([item.documentType class]));
+		STAssertTrue(!item.fileName || [item.fileName isKindOfClass:[NSString class]], @"Expecting \"fileName\" to be of class NSString, but is %@", NSStringFromClass([item.fileName class]));
+		STAssertTrue(!item.fileSize || [item.fileSize isKindOfClass:[SMValueAndUnit class]], @"Expecting \"fileSize\" to be of class SMValueAndUnit, but is %@", NSStringFromClass([item.fileSize class]));
+		STAssertTrue(!item.format || [item.format isKindOfClass:[SMMediaTypeOrExtent class]], @"Expecting \"format\" to be of class SMMediaTypeOrExtent, but is %@", NSStringFromClass([item.format class]));
+		STAssertTrue(!item.provider || [item.provider isKindOfClass:[SMProvider class]], @"Expecting \"provider\" to be of class SMProvider, but is %@", NSStringFromClass([item.provider class]));
+		STAssertTrue(!item.resource || [item.resource isKindOfClass:[NSArray class]], @"Expecting \"resource\" to be of class NSArray, but is %@", NSStringFromClass([item.resource class]));
+		STAssertTrue(!item.title || [item.title isKindOfClass:[NSString class]], @"Expecting \"title\" to be of class NSString, but is %@", NSStringFromClass([item.title class]));
 	}
 }
 
@@ -163,12 +163,12 @@
 	STAssertNotNil(item, @"Failed to parse RDF");
 	
 	if (item) {
-		STAssertTrue([item.belongsTo isKindOfClass:[SMMedicalRecord class]], @"Expecting \"belongsTo\" to be of class SMMedicalRecord, but is %@", NSStringFromClass([item.belongsTo class]));
-		STAssertTrue([item.encounterType isKindOfClass:[SMCodedValue class]], @"Expecting \"encounterType\" to be of class SMCodedValue, but is %@", NSStringFromClass([item.encounterType class]));
-		STAssertTrue([item.endDate isKindOfClass:[NSString class]], @"Expecting \"endDate\" to be of class NSString, but is %@", NSStringFromClass([item.endDate class]));
-		STAssertTrue([item.facility isKindOfClass:[SMOrganization class]], @"Expecting \"facility\" to be of class SMOrganization, but is %@", NSStringFromClass([item.facility class]));
-		STAssertTrue([item.provider isKindOfClass:[SMProvider class]], @"Expecting \"provider\" to be of class SMProvider, but is %@", NSStringFromClass([item.provider class]));
-		STAssertTrue([item.startDate isKindOfClass:[NSString class]], @"Expecting \"startDate\" to be of class NSString, but is %@", NSStringFromClass([item.startDate class]));
+		STAssertTrue(!item.belongsTo || [item.belongsTo isKindOfClass:[SMMedicalRecord class]], @"Expecting \"belongsTo\" to be of class SMMedicalRecord, but is %@", NSStringFromClass([item.belongsTo class]));
+		STAssertTrue(!item.encounterType || [item.encounterType isKindOfClass:[SMCodedValue class]], @"Expecting \"encounterType\" to be of class SMCodedValue, but is %@", NSStringFromClass([item.encounterType class]));
+		STAssertTrue(!item.endDate || [item.endDate isKindOfClass:[NSString class]], @"Expecting \"endDate\" to be of class NSString, but is %@", NSStringFromClass([item.endDate class]));
+		STAssertTrue(!item.facility || [item.facility isKindOfClass:[SMOrganization class]], @"Expecting \"facility\" to be of class SMOrganization, but is %@", NSStringFromClass([item.facility class]));
+		STAssertTrue(!item.provider || [item.provider isKindOfClass:[SMProvider class]], @"Expecting \"provider\" to be of class SMProvider, but is %@", NSStringFromClass([item.provider class]));
+		STAssertTrue(!item.startDate || [item.startDate isKindOfClass:[NSString class]], @"Expecting \"startDate\" to be of class NSString, but is %@", NSStringFromClass([item.startDate class]));
 	}
 }
 
@@ -185,12 +185,12 @@
 	STAssertNotNil(item, @"Failed to parse RDF");
 	
 	if (item) {
-		STAssertTrue([item.aboutRelative isKindOfClass:[SMCodedValue class]], @"Expecting \"aboutRelative\" to be of class SMCodedValue, but is %@", NSStringFromClass([item.aboutRelative class]));
-		STAssertTrue([item.bday isKindOfClass:[NSString class]], @"Expecting \"bday\" to be of class NSString, but is %@", NSStringFromClass([item.bday class]));
-		STAssertTrue([item.belongsTo isKindOfClass:[SMMedicalRecord class]], @"Expecting \"belongsTo\" to be of class SMMedicalRecord, but is %@", NSStringFromClass([item.belongsTo class]));
-		STAssertTrue([item.deathdate isKindOfClass:[NSString class]], @"Expecting \"deathdate\" to be of class NSString, but is %@", NSStringFromClass([item.deathdate class]));
-		STAssertTrue([item.hasProblem isKindOfClass:[NSArray class]], @"Expecting \"hasProblem\" to be of class NSArray, but is %@", NSStringFromClass([item.hasProblem class]));
-		STAssertTrue([item.height isKindOfClass:[SMVitalSign class]], @"Expecting \"height\" to be of class SMVitalSign, but is %@", NSStringFromClass([item.height class]));
+		STAssertTrue(!item.aboutRelative || [item.aboutRelative isKindOfClass:[SMCodedValue class]], @"Expecting \"aboutRelative\" to be of class SMCodedValue, but is %@", NSStringFromClass([item.aboutRelative class]));
+		STAssertTrue(!item.bday || [item.bday isKindOfClass:[NSString class]], @"Expecting \"bday\" to be of class NSString, but is %@", NSStringFromClass([item.bday class]));
+		STAssertTrue(!item.belongsTo || [item.belongsTo isKindOfClass:[SMMedicalRecord class]], @"Expecting \"belongsTo\" to be of class SMMedicalRecord, but is %@", NSStringFromClass([item.belongsTo class]));
+		STAssertTrue(!item.deathdate || [item.deathdate isKindOfClass:[NSString class]], @"Expecting \"deathdate\" to be of class NSString, but is %@", NSStringFromClass([item.deathdate class]));
+		STAssertTrue(!item.hasProblem || [item.hasProblem isKindOfClass:[NSArray class]], @"Expecting \"hasProblem\" to be of class NSArray, but is %@", NSStringFromClass([item.hasProblem class]));
+		STAssertTrue(!item.height || [item.height isKindOfClass:[SMVitalSign class]], @"Expecting \"height\" to be of class SMVitalSign, but is %@", NSStringFromClass([item.height class]));
 	}
 }
 
@@ -207,14 +207,14 @@
 	STAssertNotNil(item, @"Failed to parse RDF");
 	
 	if (item) {
-		STAssertTrue([item.belongsTo isKindOfClass:[SMMedicalRecord class]], @"Expecting \"belongsTo\" to be of class SMMedicalRecord, but is %@", NSStringFromClass([item.belongsTo class]));
-		STAssertTrue([item.date isKindOfClass:[NSString class]], @"Expecting \"date\" to be of class NSString, but is %@", NSStringFromClass([item.date class]));
-		STAssertTrue([item.dispenseDaysSupply isKindOfClass:[NSString class]], @"Expecting \"dispenseDaysSupply\" to be of class NSString, but is %@", NSStringFromClass([item.dispenseDaysSupply class]));
-		STAssertTrue([item.medication isKindOfClass:[SMMedication class]], @"Expecting \"medication\" to be of class SMMedication, but is %@", NSStringFromClass([item.medication class]));
-		STAssertTrue([item.pbm isKindOfClass:[NSString class]], @"Expecting \"pbm\" to be of class NSString, but is %@", NSStringFromClass([item.pbm class]));
-		STAssertTrue([item.pharmacy isKindOfClass:[SMPharmacy class]], @"Expecting \"pharmacy\" to be of class SMPharmacy, but is %@", NSStringFromClass([item.pharmacy class]));
-		STAssertTrue([item.provider isKindOfClass:[SMProvider class]], @"Expecting \"provider\" to be of class SMProvider, but is %@", NSStringFromClass([item.provider class]));
-		STAssertTrue([item.quantityDispensed isKindOfClass:[SMValueAndUnit class]], @"Expecting \"quantityDispensed\" to be of class SMValueAndUnit, but is %@", NSStringFromClass([item.quantityDispensed class]));
+		STAssertTrue(!item.belongsTo || [item.belongsTo isKindOfClass:[SMMedicalRecord class]], @"Expecting \"belongsTo\" to be of class SMMedicalRecord, but is %@", NSStringFromClass([item.belongsTo class]));
+		STAssertTrue(!item.date || [item.date isKindOfClass:[NSString class]], @"Expecting \"date\" to be of class NSString, but is %@", NSStringFromClass([item.date class]));
+		STAssertTrue(!item.dispenseDaysSupply || [item.dispenseDaysSupply isKindOfClass:[NSString class]], @"Expecting \"dispenseDaysSupply\" to be of class NSString, but is %@", NSStringFromClass([item.dispenseDaysSupply class]));
+		STAssertTrue(!item.medication || [item.medication isKindOfClass:[SMMedication class]], @"Expecting \"medication\" to be of class SMMedication, but is %@", NSStringFromClass([item.medication class]));
+		STAssertTrue(!item.pbm || [item.pbm isKindOfClass:[NSString class]], @"Expecting \"pbm\" to be of class NSString, but is %@", NSStringFromClass([item.pbm class]));
+		STAssertTrue(!item.pharmacy || [item.pharmacy isKindOfClass:[SMPharmacy class]], @"Expecting \"pharmacy\" to be of class SMPharmacy, but is %@", NSStringFromClass([item.pharmacy class]));
+		STAssertTrue(!item.provider || [item.provider isKindOfClass:[SMProvider class]], @"Expecting \"provider\" to be of class SMProvider, but is %@", NSStringFromClass([item.provider class]));
+		STAssertTrue(!item.quantityDispensed || [item.quantityDispensed isKindOfClass:[SMValueAndUnit class]], @"Expecting \"quantityDispensed\" to be of class SMValueAndUnit, but is %@", NSStringFromClass([item.quantityDispensed class]));
 	}
 }
 
@@ -231,12 +231,12 @@
 	STAssertNotNil(item, @"Failed to parse RDF");
 	
 	if (item) {
-		STAssertTrue([item.accessionNumber isKindOfClass:[NSString class]], @"Expecting \"accessionNumber\" to be of class NSString, but is %@", NSStringFromClass([item.accessionNumber class]));
-		STAssertTrue([item.belongsTo isKindOfClass:[SMMedicalRecord class]], @"Expecting \"belongsTo\" to be of class SMMedicalRecord, but is %@", NSStringFromClass([item.belongsTo class]));
-		STAssertTrue([item.date isKindOfClass:[NSString class]], @"Expecting \"date\" to be of class NSString, but is %@", NSStringFromClass([item.date class]));
-		STAssertTrue([item.modality isKindOfClass:[NSArray class]], @"Expecting \"modality\" to be of class NSArray, but is %@", NSStringFromClass([item.modality class]));
-		STAssertTrue([item.series isKindOfClass:[NSArray class]], @"Expecting \"series\" to be of class NSArray, but is %@", NSStringFromClass([item.series class]));
-		STAssertTrue([item.title isKindOfClass:[NSString class]], @"Expecting \"title\" to be of class NSString, but is %@", NSStringFromClass([item.title class]));
+		STAssertTrue(!item.accessionNumber || [item.accessionNumber isKindOfClass:[NSString class]], @"Expecting \"accessionNumber\" to be of class NSString, but is %@", NSStringFromClass([item.accessionNumber class]));
+		STAssertTrue(!item.belongsTo || [item.belongsTo isKindOfClass:[SMMedicalRecord class]], @"Expecting \"belongsTo\" to be of class SMMedicalRecord, but is %@", NSStringFromClass([item.belongsTo class]));
+		STAssertTrue(!item.date || [item.date isKindOfClass:[NSString class]], @"Expecting \"date\" to be of class NSString, but is %@", NSStringFromClass([item.date class]));
+		STAssertTrue(!item.modality || [item.modality isKindOfClass:[NSArray class]], @"Expecting \"modality\" to be of class NSArray, but is %@", NSStringFromClass([item.modality class]));
+		STAssertTrue(!item.series || [item.series isKindOfClass:[NSArray class]], @"Expecting \"series\" to be of class NSArray, but is %@", NSStringFromClass([item.series class]));
+		STAssertTrue(!item.title || [item.title isKindOfClass:[NSString class]], @"Expecting \"title\" to be of class NSString, but is %@", NSStringFromClass([item.title class]));
 	}
 }
 
@@ -253,12 +253,12 @@
 	STAssertNotNil(item, @"Failed to parse RDF");
 	
 	if (item) {
-		STAssertTrue([item.administrationStatus isKindOfClass:[SMCodedValue class]], @"Expecting \"administrationStatus\" to be of class SMCodedValue, but is %@", NSStringFromClass([item.administrationStatus class]));
-		STAssertTrue([item.belongsTo isKindOfClass:[SMMedicalRecord class]], @"Expecting \"belongsTo\" to be of class SMMedicalRecord, but is %@", NSStringFromClass([item.belongsTo class]));
-		STAssertTrue([item.date isKindOfClass:[NSString class]], @"Expecting \"date\" to be of class NSString, but is %@", NSStringFromClass([item.date class]));
-		STAssertTrue([item.productClass isKindOfClass:[NSArray class]], @"Expecting \"productClass\" to be of class NSArray, but is %@", NSStringFromClass([item.productClass class]));
-		STAssertTrue([item.productName isKindOfClass:[SMCodedValue class]], @"Expecting \"productName\" to be of class SMCodedValue, but is %@", NSStringFromClass([item.productName class]));
-		STAssertTrue([item.refusalReason isKindOfClass:[SMCodedValue class]], @"Expecting \"refusalReason\" to be of class SMCodedValue, but is %@", NSStringFromClass([item.refusalReason class]));
+		STAssertTrue(!item.administrationStatus || [item.administrationStatus isKindOfClass:[SMCodedValue class]], @"Expecting \"administrationStatus\" to be of class SMCodedValue, but is %@", NSStringFromClass([item.administrationStatus class]));
+		STAssertTrue(!item.belongsTo || [item.belongsTo isKindOfClass:[SMMedicalRecord class]], @"Expecting \"belongsTo\" to be of class SMMedicalRecord, but is %@", NSStringFromClass([item.belongsTo class]));
+		STAssertTrue(!item.date || [item.date isKindOfClass:[NSString class]], @"Expecting \"date\" to be of class NSString, but is %@", NSStringFromClass([item.date class]));
+		STAssertTrue(!item.productClass || [item.productClass isKindOfClass:[NSArray class]], @"Expecting \"productClass\" to be of class NSArray, but is %@", NSStringFromClass([item.productClass class]));
+		STAssertTrue(!item.productName || [item.productName isKindOfClass:[SMCodedValue class]], @"Expecting \"productName\" to be of class SMCodedValue, but is %@", NSStringFromClass([item.productName class]));
+		STAssertTrue(!item.refusalReason || [item.refusalReason isKindOfClass:[SMCodedValue class]], @"Expecting \"refusalReason\" to be of class SMCodedValue, but is %@", NSStringFromClass([item.refusalReason class]));
 	}
 }
 
@@ -275,9 +275,9 @@
 	STAssertNotNil(item, @"Failed to parse RDF");
 	
 	if (item) {
-		STAssertTrue([item.belongsTo isKindOfClass:[SMMedicalRecord class]], @"Expecting \"belongsTo\" to be of class SMMedicalRecord, but is %@", NSStringFromClass([item.belongsTo class]));
-		STAssertTrue([item.labName isKindOfClass:[SMCodedValue class]], @"Expecting \"labName\" to be of class SMCodedValue, but is %@", NSStringFromClass([item.labName class]));
-		STAssertTrue([item.labResult isKindOfClass:[NSArray class]], @"Expecting \"labResult\" to be of class NSArray, but is %@", NSStringFromClass([item.labResult class]));
+		STAssertTrue(!item.belongsTo || [item.belongsTo isKindOfClass:[SMMedicalRecord class]], @"Expecting \"belongsTo\" to be of class SMMedicalRecord, but is %@", NSStringFromClass([item.belongsTo class]));
+		STAssertTrue(!item.labName || [item.labName isKindOfClass:[SMCodedValue class]], @"Expecting \"labName\" to be of class SMCodedValue, but is %@", NSStringFromClass([item.labName class]));
+		STAssertTrue(!item.labResult || [item.labResult isKindOfClass:[NSArray class]], @"Expecting \"labResult\" to be of class NSArray, but is %@", NSStringFromClass([item.labResult class]));
 	}
 }
 
@@ -294,15 +294,15 @@
 	STAssertNotNil(item, @"Failed to parse RDF");
 	
 	if (item) {
-		STAssertTrue([item.abnormalInterpretation isKindOfClass:[SMCodedValue class]], @"Expecting \"abnormalInterpretation\" to be of class SMCodedValue, but is %@", NSStringFromClass([item.abnormalInterpretation class]));
-		STAssertTrue([item.accessionNumber isKindOfClass:[NSString class]], @"Expecting \"accessionNumber\" to be of class NSString, but is %@", NSStringFromClass([item.accessionNumber class]));
-		STAssertTrue([item.belongsTo isKindOfClass:[SMMedicalRecord class]], @"Expecting \"belongsTo\" to be of class SMMedicalRecord, but is %@", NSStringFromClass([item.belongsTo class]));
-		STAssertTrue([item.date isKindOfClass:[NSString class]], @"Expecting \"date\" to be of class NSString, but is %@", NSStringFromClass([item.date class]));
-		STAssertTrue([item.labName isKindOfClass:[SMCodedValue class]], @"Expecting \"labName\" to be of class SMCodedValue, but is %@", NSStringFromClass([item.labName class]));
-		STAssertTrue([item.labStatus isKindOfClass:[SMCodedValue class]], @"Expecting \"labStatus\" to be of class SMCodedValue, but is %@", NSStringFromClass([item.labStatus class]));
-		STAssertTrue([item.narrativeResult isKindOfClass:[SMNarrativeResult class]], @"Expecting \"narrativeResult\" to be of class SMNarrativeResult, but is %@", NSStringFromClass([item.narrativeResult class]));
-		STAssertTrue([item.notes isKindOfClass:[NSString class]], @"Expecting \"notes\" to be of class NSString, but is %@", NSStringFromClass([item.notes class]));
-		STAssertTrue([item.quantitativeResult isKindOfClass:[SMQuantitativeResult class]], @"Expecting \"quantitativeResult\" to be of class SMQuantitativeResult, but is %@", NSStringFromClass([item.quantitativeResult class]));
+		STAssertTrue(!item.abnormalInterpretation || [item.abnormalInterpretation isKindOfClass:[SMCodedValue class]], @"Expecting \"abnormalInterpretation\" to be of class SMCodedValue, but is %@", NSStringFromClass([item.abnormalInterpretation class]));
+		STAssertTrue(!item.accessionNumber || [item.accessionNumber isKindOfClass:[NSString class]], @"Expecting \"accessionNumber\" to be of class NSString, but is %@", NSStringFromClass([item.accessionNumber class]));
+		STAssertTrue(!item.belongsTo || [item.belongsTo isKindOfClass:[SMMedicalRecord class]], @"Expecting \"belongsTo\" to be of class SMMedicalRecord, but is %@", NSStringFromClass([item.belongsTo class]));
+		STAssertTrue(!item.date || [item.date isKindOfClass:[NSString class]], @"Expecting \"date\" to be of class NSString, but is %@", NSStringFromClass([item.date class]));
+		STAssertTrue(!item.labName || [item.labName isKindOfClass:[SMCodedValue class]], @"Expecting \"labName\" to be of class SMCodedValue, but is %@", NSStringFromClass([item.labName class]));
+		STAssertTrue(!item.labStatus || [item.labStatus isKindOfClass:[SMCodedValue class]], @"Expecting \"labStatus\" to be of class SMCodedValue, but is %@", NSStringFromClass([item.labStatus class]));
+		STAssertTrue(!item.narrativeResult || [item.narrativeResult isKindOfClass:[SMNarrativeResult class]], @"Expecting \"narrativeResult\" to be of class SMNarrativeResult, but is %@", NSStringFromClass([item.narrativeResult class]));
+		STAssertTrue(!item.notes || [item.notes isKindOfClass:[NSString class]], @"Expecting \"notes\" to be of class NSString, but is %@", NSStringFromClass([item.notes class]));
+		STAssertTrue(!item.quantitativeResult || [item.quantitativeResult isKindOfClass:[SMQuantitativeResult class]], @"Expecting \"quantitativeResult\" to be of class SMQuantitativeResult, but is %@", NSStringFromClass([item.quantitativeResult class]));
 	}
 }
 
@@ -319,19 +319,19 @@
 	STAssertNotNil(item, @"Failed to parse RDF");
 	
 	if (item) {
-		STAssertTrue([item.belongsTo isKindOfClass:[SMMedicalRecord class]], @"Expecting \"belongsTo\" to be of class SMMedicalRecord, but is %@", NSStringFromClass([item.belongsTo class]));
-		STAssertTrue([item.date isKindOfClass:[NSString class]], @"Expecting \"date\" to be of class NSString, but is %@", NSStringFromClass([item.date class]));
-		STAssertTrue([item.dicomImageUID isKindOfClass:[NSString class]], @"Expecting \"dicomImageUID\" to be of class NSString, but is %@", NSStringFromClass([item.dicomImageUID class]));
-		STAssertTrue([item.dicomSeriesUID isKindOfClass:[NSString class]], @"Expecting \"dicomSeriesUID\" to be of class NSString, but is %@", NSStringFromClass([item.dicomSeriesUID class]));
-		STAssertTrue([item.dicomStudyUID isKindOfClass:[NSString class]], @"Expecting \"dicomStudyUID\" to be of class NSString, but is %@", NSStringFromClass([item.dicomStudyUID class]));
-		STAssertTrue([item.documentType isKindOfClass:[NSArray class]], @"Expecting \"documentType\" to be of class NSArray, but is %@", NSStringFromClass([item.documentType class]));
-		STAssertTrue([item.fileName isKindOfClass:[NSString class]], @"Expecting \"fileName\" to be of class NSString, but is %@", NSStringFromClass([item.fileName class]));
-		STAssertTrue([item.fileSize isKindOfClass:[SMValueAndUnit class]], @"Expecting \"fileSize\" to be of class SMValueAndUnit, but is %@", NSStringFromClass([item.fileSize class]));
-		STAssertTrue([item.format isKindOfClass:[SMMediaTypeOrExtent class]], @"Expecting \"format\" to be of class SMMediaTypeOrExtent, but is %@", NSStringFromClass([item.format class]));
-		STAssertTrue([item.imagingStudy isKindOfClass:[NSArray class]], @"Expecting \"imagingStudy\" to be of class NSArray, but is %@", NSStringFromClass([item.imagingStudy class]));
-		STAssertTrue([item.provider isKindOfClass:[SMProvider class]], @"Expecting \"provider\" to be of class SMProvider, but is %@", NSStringFromClass([item.provider class]));
-		STAssertTrue([item.resource isKindOfClass:[NSArray class]], @"Expecting \"resource\" to be of class NSArray, but is %@", NSStringFromClass([item.resource class]));
-		STAssertTrue([item.title isKindOfClass:[NSString class]], @"Expecting \"title\" to be of class NSString, but is %@", NSStringFromClass([item.title class]));
+		STAssertTrue(!item.belongsTo || [item.belongsTo isKindOfClass:[SMMedicalRecord class]], @"Expecting \"belongsTo\" to be of class SMMedicalRecord, but is %@", NSStringFromClass([item.belongsTo class]));
+		STAssertTrue(!item.date || [item.date isKindOfClass:[NSString class]], @"Expecting \"date\" to be of class NSString, but is %@", NSStringFromClass([item.date class]));
+		STAssertTrue(!item.dicomImageUID || [item.dicomImageUID isKindOfClass:[NSString class]], @"Expecting \"dicomImageUID\" to be of class NSString, but is %@", NSStringFromClass([item.dicomImageUID class]));
+		STAssertTrue(!item.dicomSeriesUID || [item.dicomSeriesUID isKindOfClass:[NSString class]], @"Expecting \"dicomSeriesUID\" to be of class NSString, but is %@", NSStringFromClass([item.dicomSeriesUID class]));
+		STAssertTrue(!item.dicomStudyUID || [item.dicomStudyUID isKindOfClass:[NSString class]], @"Expecting \"dicomStudyUID\" to be of class NSString, but is %@", NSStringFromClass([item.dicomStudyUID class]));
+		STAssertTrue(!item.documentType || [item.documentType isKindOfClass:[NSArray class]], @"Expecting \"documentType\" to be of class NSArray, but is %@", NSStringFromClass([item.documentType class]));
+		STAssertTrue(!item.fileName || [item.fileName isKindOfClass:[NSString class]], @"Expecting \"fileName\" to be of class NSString, but is %@", NSStringFromClass([item.fileName class]));
+		STAssertTrue(!item.fileSize || [item.fileSize isKindOfClass:[SMValueAndUnit class]], @"Expecting \"fileSize\" to be of class SMValueAndUnit, but is %@", NSStringFromClass([item.fileSize class]));
+		STAssertTrue(!item.format || [item.format isKindOfClass:[SMMediaTypeOrExtent class]], @"Expecting \"format\" to be of class SMMediaTypeOrExtent, but is %@", NSStringFromClass([item.format class]));
+		STAssertTrue(!item.imagingStudy || [item.imagingStudy isKindOfClass:[NSArray class]], @"Expecting \"imagingStudy\" to be of class NSArray, but is %@", NSStringFromClass([item.imagingStudy class]));
+		STAssertTrue(!item.provider || [item.provider isKindOfClass:[SMProvider class]], @"Expecting \"provider\" to be of class SMProvider, but is %@", NSStringFromClass([item.provider class]));
+		STAssertTrue(!item.resource || [item.resource isKindOfClass:[NSArray class]], @"Expecting \"resource\" to be of class NSArray, but is %@", NSStringFromClass([item.resource class]));
+		STAssertTrue(!item.title || [item.title isKindOfClass:[NSString class]], @"Expecting \"title\" to be of class NSString, but is %@", NSStringFromClass([item.title class]));
 	}
 }
 
@@ -348,15 +348,15 @@
 	STAssertNotNil(item, @"Failed to parse RDF");
 	
 	if (item) {
-		STAssertTrue([item.belongsTo isKindOfClass:[SMMedicalRecord class]], @"Expecting \"belongsTo\" to be of class SMMedicalRecord, but is %@", NSStringFromClass([item.belongsTo class]));
-		STAssertTrue([item.drugName isKindOfClass:[SMCodedValue class]], @"Expecting \"drugName\" to be of class SMCodedValue, but is %@", NSStringFromClass([item.drugName class]));
-		STAssertTrue([item.endDate isKindOfClass:[NSString class]], @"Expecting \"endDate\" to be of class NSString, but is %@", NSStringFromClass([item.endDate class]));
-		STAssertTrue([item.frequency isKindOfClass:[SMValueAndUnit class]], @"Expecting \"frequency\" to be of class SMValueAndUnit, but is %@", NSStringFromClass([item.frequency class]));
-		STAssertTrue([item.fulfillment isKindOfClass:[NSArray class]], @"Expecting \"fulfillment\" to be of class NSArray, but is %@", NSStringFromClass([item.fulfillment class]));
-		STAssertTrue([item.instructions isKindOfClass:[NSString class]], @"Expecting \"instructions\" to be of class NSString, but is %@", NSStringFromClass([item.instructions class]));
-		STAssertTrue([item.provenance isKindOfClass:[NSArray class]], @"Expecting \"provenance\" to be of class NSArray, but is %@", NSStringFromClass([item.provenance class]));
-		STAssertTrue([item.quantity isKindOfClass:[SMValueAndUnit class]], @"Expecting \"quantity\" to be of class SMValueAndUnit, but is %@", NSStringFromClass([item.quantity class]));
-		STAssertTrue([item.startDate isKindOfClass:[NSString class]], @"Expecting \"startDate\" to be of class NSString, but is %@", NSStringFromClass([item.startDate class]));
+		STAssertTrue(!item.belongsTo || [item.belongsTo isKindOfClass:[SMMedicalRecord class]], @"Expecting \"belongsTo\" to be of class SMMedicalRecord, but is %@", NSStringFromClass([item.belongsTo class]));
+		STAssertTrue(!item.drugName || [item.drugName isKindOfClass:[SMCodedValue class]], @"Expecting \"drugName\" to be of class SMCodedValue, but is %@", NSStringFromClass([item.drugName class]));
+		STAssertTrue(!item.endDate || [item.endDate isKindOfClass:[NSString class]], @"Expecting \"endDate\" to be of class NSString, but is %@", NSStringFromClass([item.endDate class]));
+		STAssertTrue(!item.frequency || [item.frequency isKindOfClass:[SMValueAndUnit class]], @"Expecting \"frequency\" to be of class SMValueAndUnit, but is %@", NSStringFromClass([item.frequency class]));
+		STAssertTrue(!item.fulfillment || [item.fulfillment isKindOfClass:[NSArray class]], @"Expecting \"fulfillment\" to be of class NSArray, but is %@", NSStringFromClass([item.fulfillment class]));
+		STAssertTrue(!item.instructions || [item.instructions isKindOfClass:[NSString class]], @"Expecting \"instructions\" to be of class NSString, but is %@", NSStringFromClass([item.instructions class]));
+		STAssertTrue(!item.provenance || [item.provenance isKindOfClass:[NSArray class]], @"Expecting \"provenance\" to be of class NSArray, but is %@", NSStringFromClass([item.provenance class]));
+		STAssertTrue(!item.quantity || [item.quantity isKindOfClass:[SMValueAndUnit class]], @"Expecting \"quantity\" to be of class SMValueAndUnit, but is %@", NSStringFromClass([item.quantity class]));
+		STAssertTrue(!item.startDate || [item.startDate isKindOfClass:[NSString class]], @"Expecting \"startDate\" to be of class NSString, but is %@", NSStringFromClass([item.startDate class]));
 	}
 }
 
@@ -373,15 +373,15 @@
 	STAssertNotNil(item, @"Failed to parse RDF");
 	
 	if (item) {
-		STAssertTrue([item.belongsTo isKindOfClass:[SMMedicalRecord class]], @"Expecting \"belongsTo\" to be of class SMMedicalRecord, but is %@", NSStringFromClass([item.belongsTo class]));
-		STAssertTrue([item.date isKindOfClass:[NSString class]], @"Expecting \"date\" to be of class NSString, but is %@", NSStringFromClass([item.date class]));
-		STAssertTrue([item.documentType isKindOfClass:[NSArray class]], @"Expecting \"documentType\" to be of class NSArray, but is %@", NSStringFromClass([item.documentType class]));
-		STAssertTrue([item.fileName isKindOfClass:[NSString class]], @"Expecting \"fileName\" to be of class NSString, but is %@", NSStringFromClass([item.fileName class]));
-		STAssertTrue([item.fileSize isKindOfClass:[SMValueAndUnit class]], @"Expecting \"fileSize\" to be of class SMValueAndUnit, but is %@", NSStringFromClass([item.fileSize class]));
-		STAssertTrue([item.format isKindOfClass:[SMMediaTypeOrExtent class]], @"Expecting \"format\" to be of class SMMediaTypeOrExtent, but is %@", NSStringFromClass([item.format class]));
-		STAssertTrue([item.provider isKindOfClass:[SMProvider class]], @"Expecting \"provider\" to be of class SMProvider, but is %@", NSStringFromClass([item.provider class]));
-		STAssertTrue([item.resource isKindOfClass:[NSArray class]], @"Expecting \"resource\" to be of class NSArray, but is %@", NSStringFromClass([item.resource class]));
-		STAssertTrue([item.title isKindOfClass:[NSString class]], @"Expecting \"title\" to be of class NSString, but is %@", NSStringFromClass([item.title class]));
+		STAssertTrue(!item.belongsTo || [item.belongsTo isKindOfClass:[SMMedicalRecord class]], @"Expecting \"belongsTo\" to be of class SMMedicalRecord, but is %@", NSStringFromClass([item.belongsTo class]));
+		STAssertTrue(!item.date || [item.date isKindOfClass:[NSString class]], @"Expecting \"date\" to be of class NSString, but is %@", NSStringFromClass([item.date class]));
+		STAssertTrue(!item.documentType || [item.documentType isKindOfClass:[NSArray class]], @"Expecting \"documentType\" to be of class NSArray, but is %@", NSStringFromClass([item.documentType class]));
+		STAssertTrue(!item.fileName || [item.fileName isKindOfClass:[NSString class]], @"Expecting \"fileName\" to be of class NSString, but is %@", NSStringFromClass([item.fileName class]));
+		STAssertTrue(!item.fileSize || [item.fileSize isKindOfClass:[SMValueAndUnit class]], @"Expecting \"fileSize\" to be of class SMValueAndUnit, but is %@", NSStringFromClass([item.fileSize class]));
+		STAssertTrue(!item.format || [item.format isKindOfClass:[SMMediaTypeOrExtent class]], @"Expecting \"format\" to be of class SMMediaTypeOrExtent, but is %@", NSStringFromClass([item.format class]));
+		STAssertTrue(!item.provider || [item.provider isKindOfClass:[SMProvider class]], @"Expecting \"provider\" to be of class SMProvider, but is %@", NSStringFromClass([item.provider class]));
+		STAssertTrue(!item.resource || [item.resource isKindOfClass:[NSArray class]], @"Expecting \"resource\" to be of class NSArray, but is %@", NSStringFromClass([item.resource class]));
+		STAssertTrue(!item.title || [item.title isKindOfClass:[NSString class]], @"Expecting \"title\" to be of class NSString, but is %@", NSStringFromClass([item.title class]));
 	}
 }
 
@@ -398,13 +398,13 @@
 	STAssertNotNil(item, @"Failed to parse RDF");
 	
 	if (item) {
-		STAssertTrue([item.belongsTo isKindOfClass:[SMMedicalRecord class]], @"Expecting \"belongsTo\" to be of class SMMedicalRecord, but is %@", NSStringFromClass([item.belongsTo class]));
-		STAssertTrue([item.encounters isKindOfClass:[NSArray class]], @"Expecting \"encounters\" to be of class NSArray, but is %@", NSStringFromClass([item.encounters class]));
-		STAssertTrue([item.endDate isKindOfClass:[NSString class]], @"Expecting \"endDate\" to be of class NSString, but is %@", NSStringFromClass([item.endDate class]));
-		STAssertTrue([item.notes isKindOfClass:[NSString class]], @"Expecting \"notes\" to be of class NSString, but is %@", NSStringFromClass([item.notes class]));
-		STAssertTrue([item.problemName isKindOfClass:[SMCodedValue class]], @"Expecting \"problemName\" to be of class SMCodedValue, but is %@", NSStringFromClass([item.problemName class]));
-		STAssertTrue([item.problemStatus isKindOfClass:[SMCodedValue class]], @"Expecting \"problemStatus\" to be of class SMCodedValue, but is %@", NSStringFromClass([item.problemStatus class]));
-		STAssertTrue([item.startDate isKindOfClass:[NSString class]], @"Expecting \"startDate\" to be of class NSString, but is %@", NSStringFromClass([item.startDate class]));
+		STAssertTrue(!item.belongsTo || [item.belongsTo isKindOfClass:[SMMedicalRecord class]], @"Expecting \"belongsTo\" to be of class SMMedicalRecord, but is %@", NSStringFromClass([item.belongsTo class]));
+		STAssertTrue(!item.encounters || [item.encounters isKindOfClass:[NSArray class]], @"Expecting \"encounters\" to be of class NSArray, but is %@", NSStringFromClass([item.encounters class]));
+		STAssertTrue(!item.endDate || [item.endDate isKindOfClass:[NSString class]], @"Expecting \"endDate\" to be of class NSString, but is %@", NSStringFromClass([item.endDate class]));
+		STAssertTrue(!item.notes || [item.notes isKindOfClass:[NSString class]], @"Expecting \"notes\" to be of class NSString, but is %@", NSStringFromClass([item.notes class]));
+		STAssertTrue(!item.problemName || [item.problemName isKindOfClass:[SMCodedValue class]], @"Expecting \"problemName\" to be of class SMCodedValue, but is %@", NSStringFromClass([item.problemName class]));
+		STAssertTrue(!item.problemStatus || [item.problemStatus isKindOfClass:[SMCodedValue class]], @"Expecting \"problemStatus\" to be of class SMCodedValue, but is %@", NSStringFromClass([item.problemStatus class]));
+		STAssertTrue(!item.startDate || [item.startDate isKindOfClass:[NSString class]], @"Expecting \"startDate\" to be of class NSString, but is %@", NSStringFromClass([item.startDate class]));
 	}
 }
 
@@ -421,12 +421,12 @@
 	STAssertNotNil(item, @"Failed to parse RDF");
 	
 	if (item) {
-		STAssertTrue([item.belongsTo isKindOfClass:[SMMedicalRecord class]], @"Expecting \"belongsTo\" to be of class SMMedicalRecord, but is %@", NSStringFromClass([item.belongsTo class]));
-		STAssertTrue([item.date isKindOfClass:[NSString class]], @"Expecting \"date\" to be of class NSString, but is %@", NSStringFromClass([item.date class]));
-		STAssertTrue([item.notes isKindOfClass:[NSString class]], @"Expecting \"notes\" to be of class NSString, but is %@", NSStringFromClass([item.notes class]));
-		STAssertTrue([item.procedureName isKindOfClass:[SMCodedValue class]], @"Expecting \"procedureName\" to be of class SMCodedValue, but is %@", NSStringFromClass([item.procedureName class]));
-		STAssertTrue([item.procedureStatus isKindOfClass:[SMCodedValue class]], @"Expecting \"procedureStatus\" to be of class SMCodedValue, but is %@", NSStringFromClass([item.procedureStatus class]));
-		STAssertTrue([item.provider isKindOfClass:[NSArray class]], @"Expecting \"provider\" to be of class NSArray, but is %@", NSStringFromClass([item.provider class]));
+		STAssertTrue(!item.belongsTo || [item.belongsTo isKindOfClass:[SMMedicalRecord class]], @"Expecting \"belongsTo\" to be of class SMMedicalRecord, but is %@", NSStringFromClass([item.belongsTo class]));
+		STAssertTrue(!item.date || [item.date isKindOfClass:[NSString class]], @"Expecting \"date\" to be of class NSString, but is %@", NSStringFromClass([item.date class]));
+		STAssertTrue(!item.notes || [item.notes isKindOfClass:[NSString class]], @"Expecting \"notes\" to be of class NSString, but is %@", NSStringFromClass([item.notes class]));
+		STAssertTrue(!item.procedureName || [item.procedureName isKindOfClass:[SMCodedValue class]], @"Expecting \"procedureName\" to be of class SMCodedValue, but is %@", NSStringFromClass([item.procedureName class]));
+		STAssertTrue(!item.procedureStatus || [item.procedureStatus isKindOfClass:[SMCodedValue class]], @"Expecting \"procedureStatus\" to be of class SMCodedValue, but is %@", NSStringFromClass([item.procedureStatus class]));
+		STAssertTrue(!item.provider || [item.provider isKindOfClass:[NSArray class]], @"Expecting \"provider\" to be of class NSArray, but is %@", NSStringFromClass([item.provider class]));
 	}
 }
 
@@ -443,8 +443,8 @@
 	STAssertNotNil(item, @"Failed to parse RDF");
 	
 	if (item) {
-		STAssertTrue([item.belongsTo isKindOfClass:[SMMedicalRecord class]], @"Expecting \"belongsTo\" to be of class SMMedicalRecord, but is %@", NSStringFromClass([item.belongsTo class]));
-		STAssertTrue([item.smokingStatus isKindOfClass:[SMCodedValue class]], @"Expecting \"smokingStatus\" to be of class SMCodedValue, but is %@", NSStringFromClass([item.smokingStatus class]));
+		STAssertTrue(!item.belongsTo || [item.belongsTo isKindOfClass:[SMMedicalRecord class]], @"Expecting \"belongsTo\" to be of class SMMedicalRecord, but is %@", NSStringFromClass([item.belongsTo class]));
+		STAssertTrue(!item.smokingStatus || [item.smokingStatus isKindOfClass:[SMCodedValue class]], @"Expecting \"smokingStatus\" to be of class SMCodedValue, but is %@", NSStringFromClass([item.smokingStatus class]));
 	}
 }
 
@@ -461,18 +461,18 @@
 	STAssertNotNil(item, @"Failed to parse RDF");
 	
 	if (item) {
-		STAssertTrue([item.belongsTo isKindOfClass:[SMMedicalRecord class]], @"Expecting \"belongsTo\" to be of class SMMedicalRecord, but is %@", NSStringFromClass([item.belongsTo class]));
-		STAssertTrue([item.bloodPressure isKindOfClass:[SMBloodPressure class]], @"Expecting \"bloodPressure\" to be of class SMBloodPressure, but is %@", NSStringFromClass([item.bloodPressure class]));
-		STAssertTrue([item.bodyMassIndex isKindOfClass:[SMVitalSign class]], @"Expecting \"bodyMassIndex\" to be of class SMVitalSign, but is %@", NSStringFromClass([item.bodyMassIndex class]));
-		STAssertTrue([item.date isKindOfClass:[NSString class]], @"Expecting \"date\" to be of class NSString, but is %@", NSStringFromClass([item.date class]));
-		STAssertTrue([item.encounter isKindOfClass:[SMEncounter class]], @"Expecting \"encounter\" to be of class SMEncounter, but is %@", NSStringFromClass([item.encounter class]));
-		STAssertTrue([item.headCircumference isKindOfClass:[SMVitalSign class]], @"Expecting \"headCircumference\" to be of class SMVitalSign, but is %@", NSStringFromClass([item.headCircumference class]));
-		STAssertTrue([item.heartRate isKindOfClass:[SMVitalSign class]], @"Expecting \"heartRate\" to be of class SMVitalSign, but is %@", NSStringFromClass([item.heartRate class]));
-		STAssertTrue([item.height isKindOfClass:[SMVitalSign class]], @"Expecting \"height\" to be of class SMVitalSign, but is %@", NSStringFromClass([item.height class]));
-		STAssertTrue([item.oxygenSaturation isKindOfClass:[SMVitalSign class]], @"Expecting \"oxygenSaturation\" to be of class SMVitalSign, but is %@", NSStringFromClass([item.oxygenSaturation class]));
-		STAssertTrue([item.respiratoryRate isKindOfClass:[SMVitalSign class]], @"Expecting \"respiratoryRate\" to be of class SMVitalSign, but is %@", NSStringFromClass([item.respiratoryRate class]));
-		STAssertTrue([item.temperature isKindOfClass:[SMVitalSign class]], @"Expecting \"temperature\" to be of class SMVitalSign, but is %@", NSStringFromClass([item.temperature class]));
-		STAssertTrue([item.weight isKindOfClass:[SMVitalSign class]], @"Expecting \"weight\" to be of class SMVitalSign, but is %@", NSStringFromClass([item.weight class]));
+		STAssertTrue(!item.belongsTo || [item.belongsTo isKindOfClass:[SMMedicalRecord class]], @"Expecting \"belongsTo\" to be of class SMMedicalRecord, but is %@", NSStringFromClass([item.belongsTo class]));
+		STAssertTrue(!item.bloodPressure || [item.bloodPressure isKindOfClass:[SMBloodPressure class]], @"Expecting \"bloodPressure\" to be of class SMBloodPressure, but is %@", NSStringFromClass([item.bloodPressure class]));
+		STAssertTrue(!item.bodyMassIndex || [item.bodyMassIndex isKindOfClass:[SMVitalSign class]], @"Expecting \"bodyMassIndex\" to be of class SMVitalSign, but is %@", NSStringFromClass([item.bodyMassIndex class]));
+		STAssertTrue(!item.date || [item.date isKindOfClass:[NSString class]], @"Expecting \"date\" to be of class NSString, but is %@", NSStringFromClass([item.date class]));
+		STAssertTrue(!item.encounter || [item.encounter isKindOfClass:[SMEncounter class]], @"Expecting \"encounter\" to be of class SMEncounter, but is %@", NSStringFromClass([item.encounter class]));
+		STAssertTrue(!item.headCircumference || [item.headCircumference isKindOfClass:[SMVitalSign class]], @"Expecting \"headCircumference\" to be of class SMVitalSign, but is %@", NSStringFromClass([item.headCircumference class]));
+		STAssertTrue(!item.heartRate || [item.heartRate isKindOfClass:[SMVitalSign class]], @"Expecting \"heartRate\" to be of class SMVitalSign, but is %@", NSStringFromClass([item.heartRate class]));
+		STAssertTrue(!item.height || [item.height isKindOfClass:[SMVitalSign class]], @"Expecting \"height\" to be of class SMVitalSign, but is %@", NSStringFromClass([item.height class]));
+		STAssertTrue(!item.oxygenSaturation || [item.oxygenSaturation isKindOfClass:[SMVitalSign class]], @"Expecting \"oxygenSaturation\" to be of class SMVitalSign, but is %@", NSStringFromClass([item.oxygenSaturation class]));
+		STAssertTrue(!item.respiratoryRate || [item.respiratoryRate isKindOfClass:[SMVitalSign class]], @"Expecting \"respiratoryRate\" to be of class SMVitalSign, but is %@", NSStringFromClass([item.respiratoryRate class]));
+		STAssertTrue(!item.temperature || [item.temperature isKindOfClass:[SMVitalSign class]], @"Expecting \"temperature\" to be of class SMVitalSign, but is %@", NSStringFromClass([item.temperature class]));
+		STAssertTrue(!item.weight || [item.weight isKindOfClass:[SMVitalSign class]], @"Expecting \"weight\" to be of class SMVitalSign, but is %@", NSStringFromClass([item.weight class]));
 	}
 }
 

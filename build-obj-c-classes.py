@@ -448,7 +448,7 @@ def handle_class(a_class):
 		item_prop = 'item.%s' % prop['name']
 		item_comment = '@"Expecting \\\"%s\\\" to be of class %s, but is %%@"' % (prop['name'], prop['useClass'])
 		item_class = 'NSStringFromClass([%s class])' % item_prop
-		item_test = 'STAssertTrue([%s isKindOfClass:[%s class]], %s, %s)' % (item_prop, prop['useClass'], item_comment, item_class)
+		item_test = 'STAssertTrue(!%s || [%s isKindOfClass:[%s class]], %s, %s)' % (item_prop, item_prop, prop['useClass'], item_comment, item_class)
 		my_property_tests.append(item_test)
 	
 	# base path
