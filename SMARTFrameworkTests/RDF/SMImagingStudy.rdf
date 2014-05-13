@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:sp="http://smartplatforms.org/terms#"
+  xmlns:spcode="http://smartplatforms.org/terms/codes/"
+  xmlns:dcterms="http://purl.org/dc/terms/">
+    <sp:ImagingStudy rdf:about="http://sandbox-api.smartplatforms.org/records/1234567/imgaging_studies/501">
+      <sp:belongsTo  rdf:resource="http://sandbox-api.smartplatforms.org/records/1234567" />
+      <dcterms:title>Knee MRI showing tissue damage</dcterms:title>
+      <dcterms:date>2013-05-26T04:00:00Z</dcterms:date>
+      <sp:accessionNumber>87654321</sp:accessionNumber>
+      <sp:modality>
+          <sp:CodedValue>
+            <dcterms:title>Magnetic Resonance</dcterms:title>
+            <sp:code>
+              <spcode:DocumentType rdf:about="http://smartplatforms.org/terms/codes/ModalityType#MR">
+                <rdf:type rdf:resource="http://smartplatforms.org/terms#Code" />
+                <dcterms:title>Magnetic Resonance</dcterms:title>
+                <sp:system>http://smartplatforms.org/terms/codes/ModalityType#</sp:system>
+                <dcterms:identifier>MR</dcterms:identifier>
+              </spcode:DocumentType>
+            </sp:code>
+          </sp:CodedValue>
+      </sp:modality>
+      <sp:series>
+      	<sp:Series>
+          <sp:images rdf:parseType="Resource">
+            <rdf:first rdf:resource="http://sandbox-api.smartplatforms.org/records/1234567/medical_images/1003"/>
+            <rdf:rest rdf:parseType="Resource">
+                <rdf:first rdf:resource="http://sandbox-api.smartplatforms.org/records/1234567/medical_images/1004"/>
+                <rdf:rest rdf:parseType="Resource">
+                    <rdf:first rdf:resource="http://sandbox-api.smartplatforms.org/records/1234567/medical_images/1005"/>
+                    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                </rdf:rest>
+            </rdf:rest>
+          </sp:images>
+      	</sp:Series>
+      </sp:series>
+      <sp:series>
+      	<sp:Series>
+          <sp:images rdf:parseType="Resource">
+            <rdf:first rdf:resource="http://sandbox-api.smartplatforms.org/records/1234567/medical_images/1011"/>
+            <rdf:rest rdf:parseType="Resource">
+                <rdf:first rdf:resource="http://sandbox-api.smartplatforms.org/records/1234567/medical_images/1012"/>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:rest>
+          </sp:images>
+      	</sp:Series>
+      </sp:series>
+    </sp:ImagingStudy>
+</rdf:RDF>

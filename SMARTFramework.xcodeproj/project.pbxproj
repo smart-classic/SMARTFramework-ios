@@ -75,6 +75,16 @@
 		EEADE77B16AF0B1700E8715A /* SMLabPanel.rdf in Resources */ = {isa = PBXBuildFile; fileRef = EEADE77A16AF0B1700E8715A /* SMLabPanel.rdf */; };
 		EEADE77E16AF2D2B00E8715A /* SMProcedure.h in Headers */ = {isa = PBXBuildFile; fileRef = EEADE77C16AF2D2B00E8715A /* SMProcedure.h */; };
 		EEADE77F16AF2D2B00E8715A /* SMProcedure.m in Sources */ = {isa = PBXBuildFile; fileRef = EEADE77D16AF2D2B00E8715A /* SMProcedure.m */; };
+		EEB4337619228CC0009E01C6 /* SMImagingStudy.h in Headers */ = {isa = PBXBuildFile; fileRef = EEB4337019228CC0009E01C6 /* SMImagingStudy.h */; };
+		EEB4337719228CC0009E01C6 /* SMImagingStudy.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB4337119228CC0009E01C6 /* SMImagingStudy.m */; };
+		EEB4337919228CC0009E01C6 /* SMMedicalImage.h in Headers */ = {isa = PBXBuildFile; fileRef = EEB4337219228CC0009E01C6 /* SMMedicalImage.h */; };
+		EEB4337A19228CC0009E01C6 /* SMMedicalImage.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB4337319228CC0009E01C6 /* SMMedicalImage.m */; };
+		EEB4337C19228CC0009E01C6 /* SMSeries.h in Headers */ = {isa = PBXBuildFile; fileRef = EEB4337419228CC0009E01C6 /* SMSeries.h */; };
+		EEB4337D19228CC0009E01C6 /* SMSeries.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB4337519228CC0009E01C6 /* SMSeries.m */; };
+		EEB4338819228DEB009E01C6 /* SMImagesList.h in Headers */ = {isa = PBXBuildFile; fileRef = EEB4338619228DEB009E01C6 /* SMImagesList.h */; };
+		EEB4338919228DEB009E01C6 /* SMImagesList.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB4338719228DEB009E01C6 /* SMImagesList.m */; };
+		EEB433BE19228E60009E01C6 /* SMImagingStudy.rdf in Resources */ = {isa = PBXBuildFile; fileRef = EEB433BC19228E60009E01C6 /* SMImagingStudy.rdf */; };
+		EEB433BF19228E60009E01C6 /* SMMedicalImage.rdf in Resources */ = {isa = PBXBuildFile; fileRef = EEB433BD19228E60009E01C6 /* SMMedicalImage.rdf */; };
 		EEC1470715DFE790006B8798 /* SMDemographics.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1470315DFE790006B8798 /* SMDemographics.h */; settings = {ATTRIBUTES = (); }; };
 		EEC1470815DFE790006B8798 /* SMDemographics.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1470415DFE790006B8798 /* SMDemographics.m */; };
 		EEC1470915DFE790006B8798 /* SMName.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1470515DFE790006B8798 /* SMName.h */; settings = {ATTRIBUTES = (); }; };
@@ -99,8 +109,6 @@
 		EEC147DA15E076AD006B8798 /* SMCodeProvenance.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1473215E076AB006B8798 /* SMCodeProvenance.m */; };
 		EEC147DF15E076AD006B8798 /* SMDataType.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1473715E076AB006B8798 /* SMDataType.h */; settings = {ATTRIBUTES = (); }; };
 		EEC147E015E076AD006B8798 /* SMDataType.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1473815E076AB006B8798 /* SMDataType.m */; };
-		EEC147E115E076AD006B8798 /* SMDateTime.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1473915E076AB006B8798 /* SMDateTime.h */; settings = {ATTRIBUTES = (); }; };
-		EEC147E215E076AD006B8798 /* SMDateTime.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1473A15E076AC006B8798 /* SMDateTime.m */; };
 		EEC147E515E076AD006B8798 /* SMEncounter.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1473D15E076AC006B8798 /* SMEncounter.h */; settings = {ATTRIBUTES = (); }; };
 		EEC147E615E076AD006B8798 /* SMEncounter.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC1473E15E076AC006B8798 /* SMEncounter.m */; };
 		EEC147EB15E076AD006B8798 /* SMFulfillment.h in Headers */ = {isa = PBXBuildFile; fileRef = EEC1474315E076AC006B8798 /* SMFulfillment.h */; settings = {ATTRIBUTES = (); }; };
@@ -338,6 +346,16 @@
 		EEADE77A16AF0B1700E8715A /* SMLabPanel.rdf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SMLabPanel.rdf; sourceTree = "<group>"; };
 		EEADE77C16AF2D2B00E8715A /* SMProcedure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMProcedure.h; sourceTree = "<group>"; };
 		EEADE77D16AF2D2B00E8715A /* SMProcedure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMProcedure.m; sourceTree = "<group>"; };
+		EEB4337019228CC0009E01C6 /* SMImagingStudy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMImagingStudy.h; sourceTree = "<group>"; };
+		EEB4337119228CC0009E01C6 /* SMImagingStudy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMImagingStudy.m; sourceTree = "<group>"; };
+		EEB4337219228CC0009E01C6 /* SMMedicalImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMedicalImage.h; sourceTree = "<group>"; };
+		EEB4337319228CC0009E01C6 /* SMMedicalImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMedicalImage.m; sourceTree = "<group>"; };
+		EEB4337419228CC0009E01C6 /* SMSeries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSeries.h; sourceTree = "<group>"; };
+		EEB4337519228CC0009E01C6 /* SMSeries.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSeries.m; sourceTree = "<group>"; };
+		EEB4338619228DEB009E01C6 /* SMImagesList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMImagesList.h; sourceTree = "<group>"; };
+		EEB4338719228DEB009E01C6 /* SMImagesList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMImagesList.m; sourceTree = "<group>"; };
+		EEB433BC19228E60009E01C6 /* SMImagingStudy.rdf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SMImagingStudy.rdf; sourceTree = "<group>"; };
+		EEB433BD19228E60009E01C6 /* SMMedicalImage.rdf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SMMedicalImage.rdf; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.xml; };
 		EEC146F815DED1D0006B8798 /* AppledocSettings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AppledocSettings.plist; sourceTree = "<group>"; };
 		EEC1470315DFE790006B8798 /* SMDemographics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDemographics.h; sourceTree = "<group>"; };
 		EEC1470415DFE790006B8798 /* SMDemographics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDemographics.m; sourceTree = "<group>"; };
@@ -363,8 +381,6 @@
 		EEC1473215E076AB006B8798 /* SMCodeProvenance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCodeProvenance.m; sourceTree = "<group>"; };
 		EEC1473715E076AB006B8798 /* SMDataType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDataType.h; sourceTree = "<group>"; };
 		EEC1473815E076AB006B8798 /* SMDataType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDataType.m; sourceTree = "<group>"; };
-		EEC1473915E076AB006B8798 /* SMDateTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDateTime.h; sourceTree = "<group>"; };
-		EEC1473A15E076AC006B8798 /* SMDateTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDateTime.m; sourceTree = "<group>"; };
 		EEC1473D15E076AC006B8798 /* SMEncounter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMEncounter.h; sourceTree = "<group>"; };
 		EEC1473E15E076AC006B8798 /* SMEncounter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMEncounter.m; sourceTree = "<group>"; };
 		EEC1474315E076AC006B8798 /* SMFulfillment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMFulfillment.h; sourceTree = "<group>"; };
@@ -539,12 +555,14 @@
 				EE5D696A1656F4C9001741E2 /* SMClinicalNote.rdf */,
 				EE5D696B1656F4C9001741E2 /* SMDemographics.rdf */,
 				EE7BFC9516CFE5E6006D460E /* SMDocument.rdf */,
-				EEE6A875170A72AB00BD168C /* SMFamilyHistoryObservation.rdf */,
 				EE5D696C1656F4C9001741E2 /* SMEncounter.rdf */,
+				EEE6A875170A72AB00BD168C /* SMFamilyHistoryObservation.rdf */,
 				EE5D696D1656F4C9001741E2 /* SMFulfillment.rdf */,
+				EEB433BC19228E60009E01C6 /* SMImagingStudy.rdf */,
 				EE5D696E1656F4C9001741E2 /* SMImmunization.rdf */,
 				EEADE77A16AF0B1700E8715A /* SMLabPanel.rdf */,
 				EE5D696F1656F4C9001741E2 /* SMLabResult.rdf */,
+				EEB433BD19228E60009E01C6 /* SMMedicalImage.rdf */,
 				EE5D69701656F4C9001741E2 /* SMMedication.rdf */,
 				EEE6A876170A72AB00BD168C /* SMPhotograph.rdf */,
 				EE5D69711656F4C9001741E2 /* SMProblem.rdf */,
@@ -582,8 +600,6 @@
 				EE7BFC8E16CFE57C006D460E /* SMContent.m */,
 				EEC1473715E076AB006B8798 /* SMDataType.h */,
 				EEC1473815E076AB006B8798 /* SMDataType.m */,
-				EEC1473915E076AB006B8798 /* SMDateTime.h */,
-				EEC1473A15E076AC006B8798 /* SMDateTime.m */,
 				EEC1470315DFE790006B8798 /* SMDemographics.h */,
 				EEC1470415DFE790006B8798 /* SMDemographics.m */,
 				EE7BFC8116CFE4E2006D460E /* SMDocument.h */,
@@ -596,6 +612,10 @@
 				EEC1474415E076AC006B8798 /* SMFulfillment.m */,
 				EE7BFC9116CFE5A8006D460E /* SMHash.h */,
 				EE7BFC9216CFE5A8006D460E /* SMHash.m */,
+				EEB4338619228DEB009E01C6 /* SMImagesList.h */,
+				EEB4338719228DEB009E01C6 /* SMImagesList.m */,
+				EEB4337019228CC0009E01C6 /* SMImagingStudy.h */,
+				EEB4337119228CC0009E01C6 /* SMImagingStudy.m */,
 				EEC1474715E076AC006B8798 /* SMImmunization.h */,
 				EEC1474815E076AC006B8798 /* SMImmunization.m */,
 				EEC1475115E076AC006B8798 /* SMLabPanel.h */,
@@ -604,6 +624,8 @@
 				EEC1475415E076AC006B8798 /* SMLabResult.m */,
 				EEC1475D15E076AC006B8798 /* SMMediaTypeOrExtent.h */,
 				EEC1475E15E076AC006B8798 /* SMMediaTypeOrExtent.m */,
+				EEB4337219228CC0009E01C6 /* SMMedicalImage.h */,
+				EEB4337319228CC0009E01C6 /* SMMedicalImage.m */,
 				EEC1475F15E076AC006B8798 /* SMMedicalRecord.h */,
 				EEC1476015E076AC006B8798 /* SMMedicalRecord.m */,
 				EEC1476315E076AC006B8798 /* SMMedication.h */,
@@ -636,6 +658,8 @@
 				EE7BFC8A16CFE51F006D460E /* SMResource.m */,
 				EE93B37B1709FA1500B5A536 /* SMScratchpadData.h */,
 				EE93B37C1709FA1500B5A536 /* SMScratchpadData.m */,
+				EEB4337419228CC0009E01C6 /* SMSeries.h */,
+				EEB4337519228CC0009E01C6 /* SMSeries.m */,
 				EEC1479115E076AD006B8798 /* SMSMARTStatement.h */,
 				EEC1479215E076AD006B8798 /* SMSMARTStatement.m */,
 				EEC1479715E076AD006B8798 /* SMSocialHistory.h */,
@@ -871,6 +895,7 @@
 				EEF0192A15CB447100FFD480 /* Config.h in Headers */,
 				EEF0196715CB453400FFD480 /* Base64Transcoder.h in Headers */,
 				EEF0196815CB453400FFD480 /* MPDebug.h in Headers */,
+				EEB4337C19228CC0009E01C6 /* SMSeries.h in Headers */,
 				EEF0196E15CB453400FFD480 /* MPOAuthAuthenticationMethod.h in Headers */,
 				EEF0197015CB453400FFD480 /* MPOAuthAuthenticationMethodAuthExchange.h in Headers */,
 				EEF0197215CB453400FFD480 /* MPOAuthAuthenticationMethodOAuth.h in Headers */,
@@ -897,10 +922,12 @@
 				EEF0198015CB453400FFD480 /* MPOAuthParameterFactory.h in Headers */,
 				EEF0196C15CB453400FFD480 /* MPOAuthAPIRequestLoader.h in Headers */,
 				EEF0197F15CB453400FFD480 /* MPOAuthCredentialStore.h in Headers */,
+				EEB4337919228CC0009E01C6 /* SMMedicalImage.h in Headers */,
 				EEE82D8515D008510017EA0B /* SMActionView.h in Headers */,
 				EEF0199915CB489A00FFD480 /* SMServerCall.h in Headers */,
 				EEF0199B15CB489A00FFD480 /* SMURLFetcher.h in Headers */,
 				EEF0199D15CB489A00FFD480 /* SMURLLoader.h in Headers */,
+				EEB4337619228CC0009E01C6 /* SMImagingStudy.h in Headers */,
 				EE832F8115D006D100E7FFF1 /* SMLoginViewController.h in Headers */,
 				EE68EB5C15DC54CC006B149E /* SMObject.h in Headers */,
 				EE42D04C15DEB4C900F03EB0 /* SMART.h in Headers */,
@@ -916,7 +943,6 @@
 				EEC147D715E076AD006B8798 /* SMCodedValue.h in Headers */,
 				EEC147D915E076AD006B8798 /* SMCodeProvenance.h in Headers */,
 				EEC147DF15E076AD006B8798 /* SMDataType.h in Headers */,
-				EEC147E115E076AD006B8798 /* SMDateTime.h in Headers */,
 				EEC147E515E076AD006B8798 /* SMEncounter.h in Headers */,
 				EEC147EB15E076AD006B8798 /* SMFulfillment.h in Headers */,
 				EEC147EF15E076AD006B8798 /* SMImmunization.h in Headers */,
@@ -924,6 +950,7 @@
 				EEC147FB15E076AD006B8798 /* SMLabResult.h in Headers */,
 				EEC1480515E076AD006B8798 /* SMMediaTypeOrExtent.h in Headers */,
 				EEC1480715E076AD006B8798 /* SMMedicalRecord.h in Headers */,
+				EEB4338819228DEB009E01C6 /* SMImagesList.h in Headers */,
 				EEC1480B15E076AD006B8798 /* SMMedication.h in Headers */,
 				EEC1480D15E076AD006B8798 /* SMNarrativeResult.h in Headers */,
 				EEC1481715E076AD006B8798 /* SMOrganization.h in Headers */,
@@ -1066,6 +1093,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEB433BF19228E60009E01C6 /* SMMedicalImage.rdf in Resources */,
 				EE5D69751656F4C9001741E2 /* SMAllergy.rdf in Resources */,
 				EE5D69761656F4C9001741E2 /* SMAllergyExclusion.rdf in Resources */,
 				EE5D69771656F4C9001741E2 /* SMClinicalNote.rdf in Resources */,
@@ -1073,6 +1101,7 @@
 				EE5D69791656F4C9001741E2 /* SMEncounter.rdf in Resources */,
 				EE5D697A1656F4C9001741E2 /* SMFulfillment.rdf in Resources */,
 				EE5D697B1656F4C9001741E2 /* SMImmunization.rdf in Resources */,
+				EEB433BE19228E60009E01C6 /* SMImagingStudy.rdf in Resources */,
 				EE5D697C1656F4C9001741E2 /* SMLabResult.rdf in Resources */,
 				EE5D697D1656F4C9001741E2 /* SMMedication.rdf in Resources */,
 				EE5D697E1656F4C9001741E2 /* SMProblem.rdf in Resources */,
@@ -1128,6 +1157,7 @@
 				EEF0193415CB448700FFD480 /* SMServer.m in Sources */,
 				EEF0196615CB453400FFD480 /* Base64Transcoder.c in Sources */,
 				EEF0196B15CB453400FFD480 /* MPOAuthAPI.m in Sources */,
+				EEB4337A19228CC0009E01C6 /* SMMedicalImage.m in Sources */,
 				EEF0196D15CB453400FFD480 /* MPOAuthAPIRequestLoader.m in Sources */,
 				EEF0196F15CB453400FFD480 /* MPOAuthAuthenticationMethod.m in Sources */,
 				EEF0197115CB453400FFD480 /* MPOAuthAuthenticationMethodAuthExchange.m in Sources */,
@@ -1167,8 +1197,8 @@
 				EEC147D615E076AD006B8798 /* SMCode.m in Sources */,
 				EEC147D815E076AD006B8798 /* SMCodedValue.m in Sources */,
 				EEC147DA15E076AD006B8798 /* SMCodeProvenance.m in Sources */,
+				EEB4338919228DEB009E01C6 /* SMImagesList.m in Sources */,
 				EEC147E015E076AD006B8798 /* SMDataType.m in Sources */,
-				EEC147E215E076AD006B8798 /* SMDateTime.m in Sources */,
 				EEC147E615E076AD006B8798 /* SMEncounter.m in Sources */,
 				EEC147EC15E076AD006B8798 /* SMFulfillment.m in Sources */,
 				EEC147F015E076AD006B8798 /* SMImmunization.m in Sources */,
@@ -1189,6 +1219,7 @@
 				EEC1483A15E076AD006B8798 /* SMSMARTStatement.m in Sources */,
 				EEC1484015E076AD006B8798 /* SMSocialHistory.m in Sources */,
 				EEC1484215E076AD006B8798 /* SMTel.m in Sources */,
+				EEB4337719228CC0009E01C6 /* SMImagingStudy.m in Sources */,
 				EEC1484815E076AD006B8798 /* SMUser.m in Sources */,
 				EEC1484C15E076AD006B8798 /* SMValueAndUnit.m in Sources */,
 				EEC1484E15E076AD006B8798 /* SMValueRange.m in Sources */,
@@ -1201,6 +1232,7 @@
 				EE7BFC8C16CFE51F006D460E /* SMResource.m in Sources */,
 				EE7BFC9016CFE57C006D460E /* SMContent.m in Sources */,
 				EE7BFC9416CFE5A8006D460E /* SMHash.m in Sources */,
+				EEB4337D19228CC0009E01C6 /* SMSeries.m in Sources */,
 				EE93B37E1709FA1500B5A536 /* SMScratchpadData.m in Sources */,
 				EE30FB36170A6F4400FF1809 /* SMFamilyHistoryObservation.m in Sources */,
 				EE30FB3A170A6F5500FF1809 /* SMPhotograph.m in Sources */,

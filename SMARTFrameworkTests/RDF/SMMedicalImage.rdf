@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:sp="http://smartplatforms.org/terms#"
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:v="http://www.w3.org/2006/vcard/ns#"
+>
+  <sp:MedicalImage>
+      <sp:belongsTo rdf:resource="http://sandbox-api.smartplatforms.org/records/99912345" />
+      <sp:imagingStudy rdf:resource="http://sandbox-api.smartplatforms.org/records/99912345/imaging_studies/456" />
+      <sp:fileName>IM-0002-1021.dcm</sp:fileName>
+      <dcterms:title>Image from chest CT scan to study bone structure</dcterms:title>
+      <dcterms:date>2004-09-30T12:14:00.6848Z</dcterms:date>
+      <sp:dicomStudyUID>53722</sp:dicomStudyUID>
+      <sp:dicomSeriesUID>748225</sp:dicomSeriesUID>
+      <sp:dicomImageUID>60937345</sp:dicomImageUID>
+      <dcterms:format>
+        <dcterms:MediaTypeOrExtent rdf:about="http://purl.org/NET/mediatypes/application/dicom">
+            <rdfs:label>application/dicom</rdfs:label>
+        </dcterms:MediaTypeOrExtent>
+      </dcterms:format>
+      <sp:resource>
+        <sp:Resource>
+           <sp:location>http://sandbox-api.smartplatforms.org/records/99912345/medical_images/843853</sp:location>
+           <sp:hash>
+              <sp:Hash>
+                 <sp:algorithm>SHA-256</sp:algorithm>
+                 <sp:value>0e7981902c6c410d673771a3dd0a830712c15930bdec77701922138ea950c620</sp:value>
+              </sp:Hash>
+           </sp:hash>
+        </sp:Resource>
+      </sp:resource>
+  </sp:MedicalImage>
+</rdf:RDF>
