@@ -68,19 +68,19 @@ typedef void (^SMCancelErrorBlock)(BOOL userDidCancel, NSString * __autoreleasin
 
 /// Macro to create an error in the NSCocoaErrorDomain domain
 #ifndef ERR
-# define ERR(p, s, c)\
-	if (p != NULL && s) {\
-		*p = [NSError errorWithDomain:NSCocoaErrorDomain code:(c ? c : 0) userInfo:@{NSLocalizedDescriptionKey: s}];\
+# define ERR(sm_err_p, sm_err_s, sm_err_c)\
+	if (sm_err_p != NULL && sm_err_s) {\
+		*sm_err_p = [NSError errorWithDomain:NSCocoaErrorDomain code:(sm_err_c ? sm_err_c : 0) userInfo:@{NSLocalizedDescriptionKey: sm_err_s}];\
 	}\
 	else {\
-		DLog(@"Ignored Error: %@", s);\
+		DLog(@"Ignored Error: %@", sm_err_s);\
 	}
 #endif
 
 /// This creates an error object with NSXMLParserErrorDomain domain
-#define XERR(p, s, c)\
-	if (p != NULL && s) {\
-		*p = [NSError errorWithDomain:NSXMLParserErrorDomain code:(c ? c : 0) userInfo:@{NSLocalizedDescriptionKey: s}];\
+#define XERR(sm_err_p, sm_err_s, sm_err_c)\
+	if (sm_err_p != NULL && sm_err_s) {\
+		*sm_err_p = [NSError errorWithDomain:NSXMLParserErrorDomain code:(sm_err_c ? sm_err_c : 0) userInfo:@{NSLocalizedDescriptionKey: sm_err_s}];\
 	}
 
 /// Make callback or logging easy

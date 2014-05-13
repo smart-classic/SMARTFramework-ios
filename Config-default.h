@@ -26,7 +26,7 @@
  */
 
 /// The URL to your server, with :port number (if other than 80)
-#define kSMARTAPIBaseURL @"http://sandbox-api-v06.smartplatforms.org"
+#define kSMARTAPIBaseURL @"http://sandbox-api.smartplatforms.org"
 
 /// Your App's id, consumer key and -secret
 #define kSMARTAppId @"medsample@apps.smartplatforms.org"

@@ -96,7 +96,7 @@
 	}
 	
 	[self get:basePath callback:^(BOOL success, NSDictionary *__autoreleasing userInfo) {
-		NSError *anError = [userInfo objectForKey:SMARTErrorKey];
+		NSError *anError = userInfo[SMARTErrorKey];
 		CANCEL_ERROR_CALLBACK_OR_LOG_USER_INFO(callback, (!success && !anError), userInfo)
 	}];
 }

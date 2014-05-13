@@ -80,12 +80,12 @@
 		 
 		 // on success, update our ivars
 		 if (success) {
-			 self.contentType = [userInfo objectForKey:SMARTResponseContentTypeKey];
-			 self.data = [userInfo objectForKey:SMARTResponseDataKey];
+			 self.contentType = userInfo[SMARTResponseContentTypeKey];
+			 self.data = userInfo[SMARTResponseDataKey];
 		 }
 		 
 		 // call the callback
-		 NSError *anError = [userInfo objectForKey:SMARTErrorKey];
+		 NSError *anError = userInfo[SMARTErrorKey];
 		 CANCEL_ERROR_CALLBACK_OR_LOG_USER_INFO(callback, (!success && !anError), userInfo)
 	 }];
 }
@@ -112,7 +112,7 @@
 						ofType:_contentType
 					httpMethod:@"PUT"
 					  callback:^(BOOL success, NSDictionary *__autoreleasing userInfo) {
-						  NSError *anError = [userInfo objectForKey:SMARTErrorKey];
+						  NSError *anError = userInfo[SMARTErrorKey];
 						  CANCEL_ERROR_CALLBACK_OR_LOG_USER_INFO(callback, (!success && !anError), userInfo)
 					  }];
 }
@@ -145,7 +145,7 @@
 						  }
 						  
 						  // call the callback
-						  NSError *anError = [userInfo objectForKey:SMARTErrorKey];
+						  NSError *anError = userInfo[SMARTErrorKey];
 						  CANCEL_ERROR_CALLBACK_OR_LOG_USER_INFO(callback, (!success && !anError), userInfo)
 					  }];
 }

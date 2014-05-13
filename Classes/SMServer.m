@@ -134,7 +134,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 - (NSDictionary *)additionalRequestTokenParameters
 {
 	if ([self activeRecordId]) {
-		return [NSDictionary dictionaryWithObject:[self activeRecordId] forKey:SMARTOAuthRecordIDKey];
+		return @{SMARTOAuthRecordIDKey: [self activeRecordId]};
 	}
 	return nil;
 }
@@ -280,10 +280,10 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 			
 			// successfully selected a record
 			if (success) {
-				NSString *forRecordId = [userInfo objectForKey:SMARTRecordIDKey];
+				NSString *forRecordId = userInfo[SMARTRecordIDKey];
 				if (forRecordId && [this.activeRecord is:forRecordId]) {
-					this.activeRecord.accessToken = [userInfo objectForKey:@"oauth_token"];
-					this.activeRecord.accessTokenSecret = [userInfo objectForKey:@"oauth_token_secret"];
+					this.activeRecord.accessToken = userInfo[@"oauth_token"];
+					this.activeRecord.accessTokenSecret = userInfo[@"oauth_token_secret"];
 				}
 				
 				// fetch record info to get the record label (this non-authentication call will make the login view controller disappear, don't forget that if you remove it)
@@ -306,7 +306,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 			
 			// failed: Cancelled or other failure
 			else {
-				didCancel = (nil == [userInfo objectForKey:SMARTErrorKey]);
+				didCancel = (nil == userInfo[SMARTErrorKey]);
 				CANCEL_ERROR_CALLBACK_OR_LOG_USER_INFO(callback, didCancel, userInfo)
 			}
 		};
@@ -360,15 +360,15 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 			
 			// successfully authenticated
 			if (success) {
-				NSString *forRecordId = [userInfo objectForKey:SMARTRecordIDKey];
+				NSString *forRecordId = userInfo[SMARTRecordIDKey];
 				if (forRecordId && [this.activeRecord is:forRecordId]) {
-					this.activeRecord.accessToken = [userInfo objectForKey:@"oauth_token"];
-					this.activeRecord.accessTokenSecret = [userInfo objectForKey:@"oauth_token_secret"];
+					this.activeRecord.accessToken = userInfo[@"oauth_token"];
+					this.activeRecord.accessTokenSecret = userInfo[@"oauth_token_secret"];
 				}
 				
 				userInfo = nil;
 			}
-			else if (![userInfo objectForKey:SMARTErrorKey]) {
+			else if (!userInfo[SMARTErrorKey]) {
 				didCancel = YES;
 			}
 			
@@ -405,7 +405,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 		
 		// fetched successfully...
 		if (success) {
-			DLog(@"Incoming DATA: %@", [userInfo objectForKey:SMARTResponseDataKey]);
+			DLog(@"Incoming DATA: %@", userInfo[SMARTResponseDataKey]);
 			//usrIfo = [NSDictionary dictionaryWithObject:appDocArr forKey:SMARTResponseArrayKey];
 		}
 		else {
@@ -656,10 +656,10 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 	// move on
 	SMServerCall *nextCall = nil;
 	if ([_callQueue count] > 0) {
-		nextCall = [_callQueue objectAtIndex:0];
+		nextCall = _callQueue[0];
 	}
 	else if ([_suspendedCalls count] > 0) {
-		nextCall = [_suspendedCalls objectAtIndex:0];
+		nextCall = _suspendedCalls[0];
 	}
 	
 	if (nextCall) {
@@ -723,10 +723,8 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 	MPOAuthAPI *api = nil;
 	NSString *errStr = nil;
 	NSUInteger errCode = 0;
-	NSDictionary *credentials = [NSDictionary dictionaryWithObjectsAndKeys:
-								 self.consumerKey, kMPOAuthCredentialConsumerKey,
-								 self.consumerSecret, kMPOAuthCredentialConsumerSecret,
-								 nil];
+	NSDictionary *credentials = @{kMPOAuthCredentialConsumerKey: self.consumerKey,
+								 kMPOAuthCredentialConsumerSecret: self.consumerSecret};
 	
 	// we need a URL
 	if (!_url) {
@@ -735,11 +733,11 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 	}
 	
 	// and we certainly need consumer key and secret
-	else if ([[credentials objectForKey:kMPOAuthCredentialConsumerKey] length] < 1) {
+	else if ([credentials[kMPOAuthCredentialConsumerKey] length] < 1) {
 		errStr = @"Cannot create our oauth instance: No consumer key provided";
 		errCode = 1004;
 	}
-	else if ([[credentials objectForKey:kMPOAuthCredentialConsumerSecret] length] < 1) {
+	else if ([credentials[kMPOAuthCredentialConsumerSecret] length] < 1) {
 		errStr = @"Cannot create our oauth instance: No consumer secret provided";
 		errCode = 1005;
 	}
@@ -756,7 +754,7 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 		
 		// specify authentication method
 		if ([authClass length] > 0) {
-			[config setObject:authClass forKey:MPOAuthAuthenticationMethodKey];
+			config[MPOAuthAuthenticationMethodKey] = authClass;
 		}
 		
 		// create
@@ -828,12 +826,12 @@ NSString *const SMARTRecordUserInfoKey = @"SMARTRecordUserInfoKey";
 		
 		// extract data
 		if (_manifest) {
-			NSDictionary *endpoints = [_manifest objectForKey:@"launch_urls"];
+			NSDictionary *endpoints = _manifest[@"launch_urls"];
 			if ([endpoints isKindOfClass:[NSDictionary class]]) {
-				NSString *start = [endpoints objectForKey:@"app_launch"];
-				NSString *tokenRequest = [endpoints objectForKey:@"request_token"];
-				NSString *tokenAuthorize = [endpoints objectForKey:@"authorize_token"];
-				NSString *tokenExchange = [endpoints objectForKey:@"exchange_token"];
+				NSString *start = endpoints[@"app_launch"];
+				NSString *tokenRequest = endpoints[@"request_token"];
+				NSString *tokenAuthorize = endpoints[@"authorize_token"];
+				NSString *tokenExchange = endpoints[@"exchange_token"];
 				
 				// set endpoint URLs
 				if ([start length] > 0) {

@@ -364,7 +364,7 @@
 	
 	// we finally got an access token, that's what we've been waiting for
 	else if ([MPOAuthNotificationAccessTokenReceived isEqualToString:nName]) {
-		if (![nDict objectForKey:SMARTRecordIDKey]) {
+		if (!nDict[SMARTRecordIDKey]) {
 			DLog(@"Got access token but no record id??\n%@", nDict);
 		}
 		self.responseObject = nDict;
@@ -386,7 +386,7 @@
 	// general error
 	else if ([MPOAuthNotificationErrorHasOccurred isEqualToString:nName]) {
 		NSError *error = nil;
-		ERR(&error, [nDict objectForKey:NSLocalizedDescriptionKey] ? [nDict objectForKey:NSLocalizedDescriptionKey] : @"OAuth Error", 400);
+		ERR(&error, nDict[NSLocalizedDescriptionKey] ? nDict[NSLocalizedDescriptionKey] : @"OAuth Error", 400);
 		self.responseObject = @{SMARTErrorKey: error};
 	}
 	
@@ -403,11 +403,11 @@
 {
 	// set response data
 	NSMutableDictionary *retDict = _responseObject ? [_responseObject mutableCopy] : [NSMutableDictionary dictionary];
-	[retDict setObject:inData forKey:SMARTResponseDataKey];
+	retDict[SMARTResponseDataKey] = inData;
 	
 	// set response Content-Type
 	if ([aResponse isKindOfClass:[NSHTTPURLResponse class]]) {
-		[retDict setObject:[[(NSHTTPURLResponse *)aResponse allHeaderFields] objectForKey:@"Content-Type"] forKey:SMARTResponseContentTypeKey];
+		retDict[SMARTResponseContentTypeKey] = [(NSHTTPURLResponse *)aResponse allHeaderFields][@"Content-Type"];
 	}
 	
 	self.responseObject = retDict;
@@ -417,7 +417,7 @@
 - (void)connectionFailedWithResponse:(NSURLResponse *)aResponse error:(NSError *)inError
 {
 	// get the correct error (if we have one in responseObject alread, we ignore inError)
-	NSError *prevError = [_responseObject objectForKey:SMARTErrorKey];
+	NSError *prevError = _responseObject[SMARTErrorKey];
 	NSError *actualError = prevError ? prevError : inError;
 	DLog(@"%@ to server %@  method: %@ failed  xxxxx  %@", _HTTPMethod, _server.url, _method, [actualError localizedDescription]);
 	
@@ -440,7 +440,7 @@
 	
 	// set the response object
 	if (!prevError) {
-		self.responseObject = [NSDictionary dictionaryWithObject:inError forKey:SMARTErrorKey];
+		self.responseObject = @{SMARTErrorKey: inError};
 	}
 	else {
 		DLog(@"Failed with error %@, but will return previously encountered error %@", inError, prevError);

@@ -258,12 +258,12 @@
 		for (NSString *param in params) {
 			NSArray *hat = [param componentsSeparatedByString:@"="];
 			if ([hat count] > 1) {
-				NSString *key = [hat objectAtIndex:0];
+				NSString *key = hat[0];
 				hat = [hat mutableCopy];
 				[(NSMutableArray *)hat removeObjectAtIndex:0];
 				NSString *val = [hat componentsJoinedByString:@"="];	// we split by '=', which SHOULD only occur once, but may occur more than that
 				
-				[dict setObject:[val stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding] forKey:key];
+				dict[key] = [val stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 			}
 		}
 	}

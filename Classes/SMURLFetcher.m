@@ -66,7 +66,7 @@
 	if ([anURLArray count] > 0) {
 		self.callback = aCallback;
 		self.queuedLoaders = [NSMutableArray arrayWithCapacity:[anURLArray count] - 1];
-		self.currentLoader = [[SMURLLoader alloc] initWithURL:[anURLArray objectAtIndex:0]];
+		self.currentLoader = [[SMURLLoader alloc] initWithURL:anURLArray[0]];
 		
 		// create loaders for each URL
 		BOOL first = YES;
@@ -116,7 +116,7 @@
 	// continue
 	[queuedLoaders removeObject:aLoader];
 	if ([queuedLoaders count] > 0) {
-		self.currentLoader = [queuedLoaders objectAtIndex:0];
+		self.currentLoader = queuedLoaders[0];
 		
 		__block SMURLFetcher *this = self;
 		[currentLoader getWithCallback:^(BOOL userDidCancel, NSString *__autoreleasing errorMessage) {

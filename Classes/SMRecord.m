@@ -73,7 +73,7 @@
 		
 		// error?
 		if (!success) {
-			errorMessage = [[userInfo objectForKey:SMARTErrorKey] localizedDescription];
+			errorMessage = [userInfo[SMARTErrorKey] localizedDescription];
 			if ([errorMessage length] < 1) {
 				errorMessage = @"An unknown error happened when fetching this record's demographics document";
 			}
@@ -81,7 +81,7 @@
 		
 		// success, create a demographics document
 		else {
-			NSData *rdfData = [userInfo objectForKey:SMARTResponseDataKey];
+			NSData *rdfData = userInfo[SMARTResponseDataKey];
 			NSString *rdf = [[NSString alloc] initWithData:rdfData encoding:NSUTF8StringEncoding];
 			if ([rdf length] > 0) {
 				self.demographics = [SMDemographics newWithRDFXML:rdf];
@@ -118,11 +118,11 @@
 			 httpMethod:@"GET"
 			   callback:^(BOOL success, NSDictionary * __autoreleasing userInfo) {
 				   if (success) {
-					   NSString *contentType = [userInfo objectForKey:SMARTResponseContentTypeKey];
+					   NSString *contentType = userInfo[SMARTResponseContentTypeKey];
 					   
 					   // if we get RDF-XML data back we parse it
 					   if ([contentType hasPrefix:@"application/rdf+xml"]) {
-						   NSData *rdfData = [userInfo objectForKey:SMARTResponseDataKey];
+						   NSData *rdfData = userInfo[SMARTResponseDataKey];
 						   NSString *rdf = [[NSString alloc] initWithData:rdfData encoding:NSUTF8StringEncoding];
 						   if ([rdf length] > 0) {
 				//			   DLog(@"-->  GET  %@", aPath);
@@ -140,7 +140,7 @@
 								   NSError *err = nil;
 								   ERR(&err, errMessage, 0)
 								   NSMutableDictionary *usrInf = [userInfo mutableCopy];
-								   [usrInf setObject:err forKey:SMARTErrorKey];
+								   usrInf[SMARTErrorKey] = err;
 								   SUCCESS_RETVAL_CALLBACK_OR_LOG_USER_INFO(callback, NO, usrInf)
 								   return;
 							   }
@@ -163,7 +163,7 @@
 							   
 							   // complete the user-info dictionary and call the callback
 							   NSMutableDictionary *usrInf = [userInfo mutableCopy];
-							   [usrInf setObject:array forKey:SMARTResponseArrayKey];
+							   usrInf[SMARTResponseArrayKey] = array;
 							   SUCCESS_RETVAL_CALLBACK_OR_LOG_USER_INFO(callback, YES, usrInf)
 							   return;
 						   }
@@ -174,13 +174,13 @@
 					   
 					   // An image might also have been returned, decode it as well
 					   else if ([@"image/jpeg" isEqualToString:contentType] || [@"image/png" isEqualToString:contentType]) {
-						   NSData *imageData = [userInfo objectForKey:SMARTResponseDataKey];
+						   NSData *imageData = userInfo[SMARTResponseDataKey];
 						   UIImage *image = [UIImage imageWithData:imageData];
 						   if (image) {
 							   
 							   // got an image, complete the user-info dictionary and call the callback
 							   NSMutableDictionary *usrInf = [userInfo mutableCopy];
-							   [usrInf setObject:image forKey:SMARTResponseImageKey];
+							   usrInf[SMARTResponseImageKey] = image;
 							   SUCCESS_RETVAL_CALLBACK_OR_LOG_USER_INFO(callback, YES, usrInf)
 							   return;
 						   }

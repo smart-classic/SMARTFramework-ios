@@ -201,7 +201,7 @@
 #ifdef MPOAUTH_DEBUG
 			DLog(@"DID SELECT RECORD: %@", args);
 #endif
-			[_delegate loginView:self didSelectRecordId:[args objectForKey:@"record_id"]];
+			[_delegate loginView:self didSelectRecordId:args[@"record_id"]];
 			return NO;
 		}
 		
@@ -211,7 +211,7 @@
 #ifdef MPOAUTH_DEBUG
 			DLog(@"DID RECEIVE VERIFIER: %@", args);
 #endif
-			[_delegate loginView:self didReceiveVerifier:[args objectForKey:@"oauth_verifier"]];
+			[_delegate loginView:self didReceiveVerifier:args[@"oauth_verifier"]];
 			return NO;
 		}
 	}
