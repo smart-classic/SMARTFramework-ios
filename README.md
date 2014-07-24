@@ -155,11 +155,12 @@ Follow these steps to set your app up:
 
 You are now ready to rumble!
 
-> **Note:** The first time the framework is built it will download and compile the [Redland] C libraries for you. This may take some time and Xcode will not
-> show any progress, just be patient.
+> **Note:** The first time the framework is built it will download and compile the [Redland] C libraries for you.
+> This may take some time and Xcode will not show any progress, just be patient.
 
-> **Note:** Xcode, after building the Redland C libraries for the first time, may not find the redland headers. Simply hit the "Run" button a second time, and
-> if that's not enough close the project and re-open it again. If it still doesn't work you might have another problem.
+> **Note:** Xcode, after building the Redland C libraries for the first time, may not find the redland headers.
+> Simply hit the "Run" button a second time, and if that's not enough close the project and re-open it again.
+> If it still doesn't work you might have another problem.
 
 
 Using the Framework
